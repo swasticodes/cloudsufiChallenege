@@ -1,0 +1,3 @@
+pageObjects\LoginPage.class
+resources\BasicVariables.class
+pageObjects\HomePage.class

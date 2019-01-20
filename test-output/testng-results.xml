@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" ignored="0" total="3" passed="3">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Suite" duration-ms="23773" started-at="2019-01-18T09:44:35Z" finished-at="2019-01-18T09:44:58Z">
+    <groups>
+    </groups>
+    <test name="Test" duration-ms="23773" started-at="2019-01-18T09:44:35Z" finished-at="2019-01-18T09:44:58Z">
+      <class name="Blume2000.homePageTest">
+        <test-method status="PASS" signature="openBrowser()[pri:0, instance:Blume2000.homePageTest@6f7fd0e6]" name="openBrowser" is-config="true" duration-ms="9142" started-at="2019-01-18T09:44:35Z" finished-at="2019-01-18T09:44:44Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- openBrowser -->
+        <test-method status="PASS" signature="openBrowser()[pri:0, instance:Blume2000.loginPageTest@27efef64]" name="openBrowser" is-config="true" duration-ms="8196" started-at="2019-01-18T09:44:44Z" finished-at="2019-01-18T09:44:52Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- openBrowser -->
+        <test-method status="PASS" signature="registerationTest()[pri:0, instance:Blume2000.homePageTest@6f7fd0e6]" name="registerationTest" duration-ms="1511" started-at="2019-01-18T09:44:56Z" finished-at="2019-01-18T09:44:58Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- registerationTest -->
+        <test-method status="PASS" signature="closeBrowser()[pri:0, instance:Blume2000.homePageTest@6f7fd0e6]" name="closeBrowser" is-config="true" duration-ms="628" started-at="2019-01-18T09:44:58Z" finished-at="2019-01-18T09:44:58Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- closeBrowser -->
+        <test-method status="PASS" signature="closeBrowser()[pri:0, instance:Blume2000.loginPageTest@27efef64]" name="closeBrowser" is-config="true" duration-ms="1" started-at="2019-01-18T09:44:58Z" finished-at="2019-01-18T09:44:58Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- closeBrowser -->
+      </class> <!-- Blume2000.homePageTest -->
+      <class name="Blume2000.loginPageTest">
+        <test-method status="PASS" signature="loginTest(java.lang.String, java.lang.String)[pri:0, instance:Blume2000.loginPageTest@27efef64]" name="loginTest" duration-ms="2505" started-at="2019-01-18T09:44:52Z" data-provider="testData" finished-at="2019-01-18T09:44:54Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[test@test.com]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[testpassword]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- loginTest -->
+        <test-method status="PASS" signature="loginTest(java.lang.String, java.lang.String)[pri:0, instance:Blume2000.loginPageTest@27efef64]" name="loginTest" duration-ms="1751" started-at="2019-01-18T09:44:54Z" data-provider="testData" finished-at="2019-01-18T09:44:56Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[test2@test.com]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[test2password]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- loginTest -->
+      </class> <!-- Blume2000.loginPageTest -->
+    </test> <!-- Test -->
+  </suite> <!-- Suite -->
+</testng-results>
