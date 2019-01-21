@@ -1,4 +1,14 @@
 -------------------------------------------------------------------------------
 Test set: TestSuite
 -------------------------------------------------------------------------------
-Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 26.261 s - in TestSuite
+Tests run: 7, Failures: 2, Errors: 0, Skipped: 5, Time elapsed: 2.423 s <<< FAILURE! - in TestSuite
+openBrowser(Blume2000.loginPageTest)  Time elapsed: 1.617 s  <<< FAILURE!
+java.lang.NoClassDefFoundError: org/openqa/selenium/remote/service/DriverService$Builder
+	at Blume2000.loginPageTest.openBrowser(loginPageTest.java:24)
+Caused by: java.lang.ClassNotFoundException: org.openqa.selenium.remote.service.DriverService$Builder
+	at Blume2000.loginPageTest.openBrowser(loginPageTest.java:24)
+
+openBrowser(Blume2000.homePageTest)  Time elapsed: 1.757 s  <<< FAILURE!
+java.lang.NoClassDefFoundError: org/openqa/selenium/chrome/ChromeDriverService$Builder
+	at Blume2000.homePageTest.openBrowser(homePageTest.java:22)
+

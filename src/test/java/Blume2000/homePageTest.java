@@ -35,6 +35,8 @@ public class homePageTest<inherits> extends BasicVariables {
 	public void closeBrowser()
 	{
 		driver.quit();
+		//releasing the memory
+		driver = null;
 	}
 
 }

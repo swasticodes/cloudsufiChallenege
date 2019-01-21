@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite guice-stage="DEVELOPMENT" verbose="0" name="Failed suite [Suite]">
+  <listeners>
+    <listener class-name="Blume2000.listeners"/>
+  </listeners>
+  <test thread-count="5" verbose="0" name="Login Page Tests(failed)">
+    <classes>
+      <class name="Blume2000.loginPageTest">
+        <methods>
+          <include name="closeBrowser"/>
+          <include name="loginTest"/>
+          <include name="openBrowser"/>
+        </methods>
+      </class> <!-- Blume2000.loginPageTest -->
+    </classes>
+  </test> <!-- Login Page Tests(failed) -->
+  <test thread-count="5" verbose="0" name="Home Page Tests(failed)">
+    <classes>
+      <class name="Blume2000.homePageTest">
+        <methods>
+          <include name="closeBrowser"/>
+          <include name="registerationTest"/>
+          <include name="openBrowser"/>
+        </methods>
+      </class> <!-- Blume2000.homePageTest -->
+    </classes>
+  </test> <!-- Home Page Tests(failed) -->
+</suite> <!-- Failed suite [Suite] -->
