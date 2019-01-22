@@ -19,7 +19,6 @@ public class BasicVariables {
 	public WebDriver initializeDriver() throws IOException
 	{
 		 prop= new Properties();
-		 //ToDo: Make the path mentioned below relative
 		 FileInputStream fis=new FileInputStream(System.getProperty("user.dir")+"\\src\\main\\java\\resources\\data.properties");
 		 //Load the properties file
 		 prop.load(fis);
@@ -28,15 +27,15 @@ public class BasicVariables {
 		 String URL = prop.getProperty("URL");
 		 if(browserName.equals("chrome"))
 		 {
-			//ToDo: Make the path mentioned below relative
-		 	 System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir")+"\\src\\main\\java\\resources\\chromedriver.exe");
+			 System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir")+"\\src\\main\\java\\resources\\chromedriver.exe");
+			 //System.setProperty("webdriver.chrome.driver", System.getProperty("C:\\Users\\Comp-7\\Desktop\\chromedriver.exe"));
 		 	 driver = new ChromeDriver();
 		 	 //execute in chrome driver
-		 	
 		 }
 		 else if (browserName.equals("firefox"))
 		 {
-		 	 driver= new FirefoxDriver();
+			 System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir")+"\\src\\main\\java\\resources\\geckodriver.exe");
+		 	 driver = new FirefoxDriver();
 		 	//execute in firefox browser
 		 }
 		 else if (browserName.equals("IE"))
@@ -58,6 +57,6 @@ public class BasicVariables {
 	{
 		File src = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
 		//Make the path below relative
-		FileUtils.copyFile(src, new File(("user.dir")+"\\src\\test\\Screenshots" + result + System.currentTimeMillis() + "_ss.png"));
+		FileUtils.copyFile(src, new File(System.getProperty("user.dir")+"\\src\\test\\Screenshots\\"+ result + System.currentTimeMillis()+"_ss.png"));
 	}
 }

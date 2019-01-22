@@ -9,21 +9,10 @@
       <class name="Blume2000.loginPageTest">
         <methods>
           <include name="closeBrowser"/>
-          <include name="loginTest"/>
+          <include name="loginTest" invocation-numbers="0 1"/>
           <include name="openBrowser"/>
         </methods>
       </class> <!-- Blume2000.loginPageTest -->
     </classes>
   </test> <!-- Login Page Tests(failed) -->
-  <test thread-count="5" name="Home Page Tests(failed)">
-    <classes>
-      <class name="Blume2000.homePageTest">
-        <methods>
-          <include name="closeBrowser"/>
-          <include name="registerationTest"/>
-          <include name="openBrowser"/>
-        </methods>
-      </class> <!-- Blume2000.homePageTest -->
-    </classes>
-  </test> <!-- Home Page Tests(failed) -->
 </suite> <!-- Failed suite [Suite] -->

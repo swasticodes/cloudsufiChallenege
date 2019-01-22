@@ -9,98 +9,19 @@
 <table>
 <tr><th>Test</th><th># Passed</th><th># Skipped</th><th># Failed</th><th>Time (ms)</th><th>Included Groups</th><th>Excluded Groups</th></tr>
 <tr><th colspan="7">Suite</th></tr>
-<tr><td><a href="#t0">Login Page Tests</a></td><td class="num">0</td><td class="num attn">2</td><td class="num">0</td><td class="num">54</td><td></td><td></td></tr>
-<tr class="stripe"><td><a href="#t1">Home Page Tests</a></td><td class="num">0</td><td class="num attn">1</td><td class="num">0</td><td class="num">30</td><td></td><td></td></tr>
-<tr><th>Total</th><th class="num">0</th><th class="num attn">3</th><th class="num">0</th><th class="num">84</th><th colspan="2"></th></tr>
+<tr><td><a href="#t0">Login Page Tests</a></td><td class="num">0</td><td class="num">0</td><td class="num attn">2</td><td class="num">90,321</td><td></td><td></td></tr>
+<tr class="stripe"><td><a href="#t1">Home Page Tests</a></td><td class="num">1</td><td class="num">0</td><td class="num">0</td><td class="num">10,738</td><td></td><td></td></tr>
+<tr><th>Total</th><th class="num">1</th><th class="num">0</th><th class="num attn">2</th><th class="num">101,059</th><th colspan="2"></th></tr>
 </table>
-<table id='summary'><thead><tr><th>Class</th><th>Method</th><th>Start</th><th>Time (ms)</th></tr></thead><tbody><tr><th colspan="4">Suite</th></tr></tbody><tbody id="t0"><tr><th colspan="4">Login Page Tests &#8212; failed (configuration methods)</th></tr><tr class="failedeven"><td rowspan="1">Blume2000.loginPageTest</td><td><a href="#m0">openBrowser</a></td><td rowspan="1">1548069287535</td><td rowspan="1">23</td></tr><tr><th colspan="4">Login Page Tests &#8212; skipped (configuration methods)</th></tr><tr class="skippedeven"><td rowspan="1">Blume2000.loginPageTest</td><td><a href="#m1">closeBrowser</a></td><td rowspan="1">1548069287589</td><td rowspan="1">0</td></tr><tr><th colspan="4">Login Page Tests &#8212; skipped</th></tr><tr class="skippedeven"><td rowspan="2">Blume2000.loginPageTest</td><td><a href="#m2">loginTest</a></td><td rowspan="2">1548069287589</td><td rowspan="2">0</td></tr><tr class="skippedeven"><td><a href="#m3">loginTest</a></td></tr></tbody>
-<tbody id="t1"><tr><th colspan="4">Home Page Tests &#8212; failed (configuration methods)</th></tr><tr class="failedeven"><td rowspan="1">Blume2000.homePageTest</td><td><a href="#m4">openBrowser</a></td><td rowspan="1">1548069287670</td><td rowspan="1">16</td></tr><tr><th colspan="4">Home Page Tests &#8212; skipped (configuration methods)</th></tr><tr class="skippedeven"><td rowspan="1">Blume2000.homePageTest</td><td><a href="#m5">closeBrowser</a></td><td rowspan="1">1548069287694</td><td rowspan="1">0</td></tr><tr><th colspan="4">Home Page Tests &#8212; skipped</th></tr><tr class="skippedeven"><td rowspan="1">Blume2000.homePageTest</td><td><a href="#m6">registerationTest</a></td><td rowspan="1">1548069287692</td><td rowspan="1">0</td></tr></tbody>
+<table id='summary'><thead><tr><th>Class</th><th>Method</th><th>Start</th><th>Time (ms)</th></tr></thead><tbody><tr><th colspan="4">Suite</th></tr></tbody><tbody id="t0"><tr><th colspan="4">Login Page Tests &#8212; failed</th></tr><tr class="failedeven"><td rowspan="2">Blume2000.loginPageTest</td><td><a href="#m0">loginTest</a></td><td rowspan="2">1548139335960</td><td rowspan="2">3237</td></tr><tr class="failedeven"><td><a href="#m1">loginTest</a></td></tr></tbody>
+<tbody id="t1"><tr><th colspan="4">Home Page Tests &#8212; passed</th></tr><tr class="passedeven"><td rowspan="1">Blume2000.homePageTest</td><td><a href="#m2">registerationTest</a></td><td rowspan="1">1548139422662</td><td rowspan="1">1711</td></tr></tbody>
 </table>
-<h2>Login Page Tests</h2><h3 id="m0">Blume2000.loginPageTest#openBrowser</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">java.lang.NoClassDefFoundError: org/openqa/selenium/remote/service/DriverService$Builder
-	at java.lang.ClassLoader.defineClass1(Native Method)
-	at java.lang.ClassLoader.defineClass(Unknown Source)
-	at java.security.SecureClassLoader.defineClass(Unknown Source)
-	at java.net.URLClassLoader.defineClass(Unknown Source)
-	at java.net.URLClassLoader.access$100(Unknown Source)
-	at java.net.URLClassLoader$1.run(Unknown Source)
-	at java.net.URLClassLoader$1.run(Unknown Source)
-	at java.security.AccessController.doPrivileged(Native Method)
-	at java.net.URLClassLoader.findClass(Unknown Source)
-	at java.lang.ClassLoader.loadClass(Unknown Source)
-	at sun.misc.Launcher$AppClassLoader.loadClass(Unknown Source)
-	at java.lang.ClassLoader.loadClass(Unknown Source)
-	at org.openqa.selenium.chrome.ChromeDriverService.createDefaultService(ChromeDriverService.java:94)
-	at org.openqa.selenium.chrome.ChromeDriver.&lt;init&gt;(ChromeDriver.java:123)
-	at resources.BasicVariables.initializeDriver(BasicVariables.java:33)
-	at Blume2000.loginPageTest.openBrowser(loginPageTest.java:24)
-Caused by: java.lang.ClassNotFoundException: org.openqa.selenium.remote.service.DriverService$Builder
-	at java.net.URLClassLoader.findClass(Unknown Source)
-	at java.lang.ClassLoader.loadClass(Unknown Source)
-	at sun.misc.Launcher$AppClassLoader.loadClass(Unknown Source)
-	at java.lang.ClassLoader.loadClass(Unknown Source)
-	... 40 more
-... Removed 24 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
-<h3 id="m1">Blume2000.loginPageTest#closeBrowser</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
-<h3 id="m2">Blume2000.loginPageTest#loginTest</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">java.lang.NoClassDefFoundError: org/openqa/selenium/remote/service/DriverService$Builder
-	at java.lang.ClassLoader.defineClass1(Native Method)
-	at java.lang.ClassLoader.defineClass(Unknown Source)
-	at java.security.SecureClassLoader.defineClass(Unknown Source)
-	at java.net.URLClassLoader.defineClass(Unknown Source)
-	at java.net.URLClassLoader.access$100(Unknown Source)
-	at java.net.URLClassLoader$1.run(Unknown Source)
-	at java.net.URLClassLoader$1.run(Unknown Source)
-	at java.security.AccessController.doPrivileged(Native Method)
-	at java.net.URLClassLoader.findClass(Unknown Source)
-	at java.lang.ClassLoader.loadClass(Unknown Source)
-	at sun.misc.Launcher$AppClassLoader.loadClass(Unknown Source)
-	at java.lang.ClassLoader.loadClass(Unknown Source)
-	at org.openqa.selenium.chrome.ChromeDriverService.createDefaultService(ChromeDriverService.java:94)
-	at org.openqa.selenium.chrome.ChromeDriver.&lt;init&gt;(ChromeDriver.java:123)
-	at resources.BasicVariables.initializeDriver(BasicVariables.java:33)
-	at Blume2000.loginPageTest.openBrowser(loginPageTest.java:24)
-Caused by: java.lang.ClassNotFoundException: org.openqa.selenium.remote.service.DriverService$Builder
-	at java.net.URLClassLoader.findClass(Unknown Source)
-	at java.lang.ClassLoader.loadClass(Unknown Source)
-	at sun.misc.Launcher$AppClassLoader.loadClass(Unknown Source)
-	at java.lang.ClassLoader.loadClass(Unknown Source)
-	... 40 more
-... Removed 24 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
-<h3 id="m3">Blume2000.loginPageTest#loginTest</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">java.lang.NoClassDefFoundError: org/openqa/selenium/remote/service/DriverService$Builder
-	at java.lang.ClassLoader.defineClass1(Native Method)
-	at java.lang.ClassLoader.defineClass(Unknown Source)
-	at java.security.SecureClassLoader.defineClass(Unknown Source)
-	at java.net.URLClassLoader.defineClass(Unknown Source)
-	at java.net.URLClassLoader.access$100(Unknown Source)
-	at java.net.URLClassLoader$1.run(Unknown Source)
-	at java.net.URLClassLoader$1.run(Unknown Source)
-	at java.security.AccessController.doPrivileged(Native Method)
-	at java.net.URLClassLoader.findClass(Unknown Source)
-	at java.lang.ClassLoader.loadClass(Unknown Source)
-	at sun.misc.Launcher$AppClassLoader.loadClass(Unknown Source)
-	at java.lang.ClassLoader.loadClass(Unknown Source)
-	at org.openqa.selenium.chrome.ChromeDriverService.createDefaultService(ChromeDriverService.java:94)
-	at org.openqa.selenium.chrome.ChromeDriver.&lt;init&gt;(ChromeDriver.java:123)
-	at resources.BasicVariables.initializeDriver(BasicVariables.java:33)
-	at Blume2000.loginPageTest.openBrowser(loginPageTest.java:24)
-Caused by: java.lang.ClassNotFoundException: org.openqa.selenium.remote.service.DriverService$Builder
-	at java.net.URLClassLoader.findClass(Unknown Source)
-	at java.lang.ClassLoader.loadClass(Unknown Source)
-	at sun.misc.Launcher$AppClassLoader.loadClass(Unknown Source)
-	at java.lang.ClassLoader.loadClass(Unknown Source)
-	... 40 more
-... Removed 24 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
-<h2>Home Page Tests</h2><h3 id="m4">Blume2000.homePageTest#openBrowser</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">java.lang.NoClassDefFoundError: org/openqa/selenium/chrome/ChromeDriverService$Builder
-	at org.openqa.selenium.chrome.ChromeDriverService.createDefaultService(ChromeDriverService.java:94)
-	at org.openqa.selenium.chrome.ChromeDriver.&lt;init&gt;(ChromeDriver.java:123)
-	at resources.BasicVariables.initializeDriver(BasicVariables.java:33)
-	at Blume2000.homePageTest.openBrowser(homePageTest.java:22)
-... Removed 24 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
-<h3 id="m5">Blume2000.homePageTest#closeBrowser</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
-<h3 id="m6">Blume2000.homePageTest#registerationTest</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">java.lang.NoClassDefFoundError: org/openqa/selenium/chrome/ChromeDriverService$Builder
-	at org.openqa.selenium.chrome.ChromeDriverService.createDefaultService(ChromeDriverService.java:94)
-	at org.openqa.selenium.chrome.ChromeDriver.&lt;init&gt;(ChromeDriver.java:123)
-	at resources.BasicVariables.initializeDriver(BasicVariables.java:33)
-	at Blume2000.homePageTest.openBrowser(homePageTest.java:22)
-... Removed 24 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h2>Login Page Tests</h2><h3 id="m0">Blume2000.loginPageTest#loginTest</h3><table class="result"><tr class="param"><th>Parameter #1</th><th>Parameter #2</th></tr><tr class="param stripe"><td>test@test.com</td><td>testpassword</td></tr><tr><th colspan="2">Exception</th></tr><tr><td colspan="2"><div class="stacktrace">java.lang.AssertionError: expected [Ich2 bin bereits Kunde bei Blume2000.de] but found [Ich bin bereits Kunde bei Blume2000.de]
+	at Blume2000.loginPageTest.loginTest(loginPageTest.java:35)
+... Removed 31 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m1">Blume2000.loginPageTest#loginTest</h3><table class="result"><tr class="param"><th>Parameter #1</th><th>Parameter #2</th></tr><tr class="param stripe"><td>test2@test.com</td><td>test2password</td></tr><tr><th colspan="2">Exception</th></tr><tr><td colspan="2"><div class="stacktrace">java.lang.AssertionError: expected [Ich2 bin bereits Kunde bei Blume2000.de] but found [Ich bin bereits Kunde bei Blume2000.de]
+	at Blume2000.loginPageTest.loginTest(loginPageTest.java:35)
+... Removed 31 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h2>Home Page Tests</h2><h3 id="m2">Blume2000.homePageTest#registerationTest</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
 </body>
 </html>
