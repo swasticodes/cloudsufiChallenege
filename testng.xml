@@ -15,4 +15,9 @@
       <class name="Blume2000.homePageTest"/>
     </classes>
   </test> <!-- Test -->
+    <test name="New User Registeration Tests">
+  	<classes>    
+      <class name="Blume2000.accountTypeNewCustomer"/>
+    </classes>
+  </test> <!-- Test -->
 </suite> <!-- Suite -->

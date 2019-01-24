@@ -32,7 +32,7 @@ public class loginPageTest<inherits> extends BasicVariables{
 		HomePage homePage = new HomePage(driver);
 		LoginPage loginPage = new LoginPage(driver);
 		homePage.linkLogin().click();
-		Assert.assertEquals(loginPage.textExistingCustomer().getText(),"Ich2 bin bereits Kunde bei Blume2000.de");
+		Assert.assertEquals(loginPage.textExistingCustomer().getText(),"Ich bin bereits Kunde bei Blume2000.de");
 		loginPage.textFieldEmail().sendKeys(uname);
 		loginPage.textFieldPassword().sendKeys(pass);
 	}
