@@ -5,16 +5,6 @@
 		<listener class-name="Blume2000.listeners">
 		</listener>
 	</listeners>
-  <test name="Login Page Tests">
-    <classes>
-      <class name="Blume2000.loginPageTest"/>
-    </classes>
-  </test>
-  <test name="Home Page Tests">
-  	<classes>    
-      <class name="Blume2000.homePageTest"/>
-    </classes>
-  </test> <!-- Test -->
     <test name="New User Registeration Tests">
   	<classes>    
       <class name="Blume2000.accountTypeNewCustomer"/>
