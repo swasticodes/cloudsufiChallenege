@@ -11,8 +11,11 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
+import junit.framework.Assert;
 import pageObjects.HomePage;
 import pageObjects.LoginPage;
+import pageObjects.OrderOverviewPage;
+import pageObjects.PayPalPage;
 import pageObjects.RegistrationPage;
 import pageObjects.DeliveryPage;
 import pageObjects.GeburtstagPage;
@@ -32,7 +35,7 @@ public class accountTypeNewCustomer<inherits> extends BasicVariables {
 		driver.get(prop.getProperty("URL"));
 	}
 	@Test
-	public void newCustomerPaypalPaymentMethodTest() throws InterruptedException 
+	public void newCustomerPaypalPaymentMethodTest() throws InterruptedException, IOException
 	{
 		//Creating the Objects below to access the functions
 		HomePage homePage = new HomePage(driver);
@@ -41,6 +44,8 @@ public class accountTypeNewCustomer<inherits> extends BasicVariables {
 		DeliveryPage deliveryPage = new DeliveryPage(driver);
 		LoginPage loginPage = new LoginPage(driver);
 		RegistrationPage registerationPage = new RegistrationPage(driver);
+		OrderOverviewPage orderOverviewPage = new OrderOverviewPage(driver);
+		PayPalPage payPalPage = new PayPalPage(driver);
 		
 		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 		generalPage.closeCookieMessage().click();
@@ -69,8 +74,6 @@ public class accountTypeNewCustomer<inherits> extends BasicVariables {
 		Thread.sleep(1000);
 		deliveryPage.continueWithoutGifts().click();
 		log.info("Clicked on Weiter ohne Geschenke button");
-		generalPage.closeCookieMessage().click();
-		log.info("Closed the cookie message at the bottom so that register button is visible");
 		loginPage.buttonRegister().click();
 		log.info("Clicked on the Register Button");
 		//Creating a random email id to register user
@@ -81,8 +84,6 @@ public class accountTypeNewCustomer<inherits> extends BasicVariables {
 		log.info("For registeration entered password as 123456");
 		registerationPage.registrationConfrimPassword().sendKeys("123456");
 		log.info("For registeration confirmed password as 123456");
-		generalPage.closeCookieMessage().click();
-		log.info("Closing the cookie message at the bottom so that salutauion field is visible");
 		registerationPage.registrationSalutation().click();
 		log.info("For registration selected salutation as Herr");
 		registerationPage.registrationFirstName().sendKeys("TestFirst");
@@ -95,18 +96,31 @@ public class accountTypeNewCustomer<inherits> extends BasicVariables {
 		log.info("For registeration entered street number as 33");
 		registerationPage.registrationCity().sendKeys("Hamburg");
 		log.info("For registeration entered city as Hamburg");
-		//registerationPage.registrationSalutation().click();
 		((JavascriptExecutor) driver).executeScript("window.scrollBy(0,-180)");
 		registerationPage.copyDeliveryAndInvoiceAddress().click();
 		log.info("Checking he checkbox so that delivery and invoice address are same");
 		registerationPage.continueToOverview().click();
-		
+		log.info("Clicked on Weiter zur Übersicht button");
+		orderOverviewPage.buttonToBuy().click();
+		log.info("Clicked on Kaufen button");
+		payPalPage.textFieldEmail().sendKeys(payPalPage.payPalEMail());
+		log.info("Entered the PayPal Email address as "+payPalPage.payPalEMail());
+		payPalPage.buttonPaypalPageContinue().click();
+		log.info("Clicked on the Wieter button on Paypal page");
+		payPalPage.textFieldPassword().sendKeys(payPalPage.payPalPassword());
+		log.info("Entered the PayPal Password as "+payPalPage.payPalPassword());
+		payPalPage.buttonPaypalLogin().click();
+		log.info("Clicked on the login button on Paypal page");
+		payPalPage.buttonPaypalPaymentConfirmation().click();
+		log.info("Clicked on the Jetzt bezhalen for payment confirmation");
+		Assert.assertEquals("Glückwunsch! Gute Wahl getroffen", generalPage.textOrderConfirmation().getText());
+		log.info("Order is placed successfully");
 	}
 	
 	@AfterTest
 	public void closeBrowser()
 	{
-		//driver.quit();
+		driver.quit();
 		//releasing the memory
 		driver = null;
 	}
