@@ -10,7 +10,7 @@ public class GeburtstagPage
 {
 	public WebDriver driver;
 	
-	@FindBy (xpath="/html/body/div[5]/div[3]/div[2]/div/div/div[2]/div[1]/div/a/div[1]/img") WebElement link_Birthday_First_Item;
+	@FindBy (xpath="//*[contains(@class, \"widget-teaser-tile highlight-banner\")]/ancestor::div[1]/following-sibling::div/div[2]/div/div/div/div/div") WebElement link_Birthday_First_Item; 
 	//Comment the above code and uncomment the code below in case of using Page Object model instead of Page Factory Model
 	//By link_Login = By.linkText("Anmelden");
 	

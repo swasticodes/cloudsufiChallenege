@@ -11,6 +11,7 @@ public class GeneralPage
 	public WebDriver driver;
 	
 	@FindBy (xpath="//*[@id=\"openDeliveryBtn\"]") WebElement btn_SelectedItem_Next;
+	@FindBy (xpath="//*[@id='cookieNote']/div/button") WebElement btn_Close_Cookie_Msg;
 	//Comment the above code and uncomment the code below in case of using Page Object model instead of Page Factory Model
 	//By link_Login = By.linkText("Anmelden");
 	
@@ -27,6 +28,10 @@ public class GeneralPage
 		return btn_SelectedItem_Next;
 		//Comment the above code and Uncomment the code below in case using Page object instead of Page factory
 		//return driver.findElement(link_Login);
+	}
+	public WebElement closeCookieMessage()
+	{
+		return btn_Close_Cookie_Msg;
 	}
 
 }
