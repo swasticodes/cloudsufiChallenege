@@ -36,6 +36,7 @@ public class BasicVariables {
 			initializeDirectWebDriver();
 		}
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		driver.manage().deleteAllCookies();driver.manage().deleteAllCookies();
 		driver.manage().window().maximize();
 		return driver;
 	}

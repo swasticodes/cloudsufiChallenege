@@ -13,6 +13,7 @@ public class HomePage
 	@FindBy (linkText="Anmelden") WebElement link_Login;
 	@FindBy (linkText="Anlässe") WebElement link_Events;
 	@FindBy (linkText="Geburtstag") WebElement link_Birthday;
+	@FindBy (linkText="Dankeschön") WebElement link_ThankYou;
 	//Comment the above code and uncomment the code below in case of using Page Object model instead of Page Factory Model
 	//By link_Login = By.linkText("Anmelden");
 	
@@ -37,6 +38,10 @@ public class HomePage
 	public WebElement linkBirthday()
 	{
 		return link_Birthday;
+	}
+	public WebElement linkThankYou()
+	{
+		return link_ThankYou;
 	}
 
 }
