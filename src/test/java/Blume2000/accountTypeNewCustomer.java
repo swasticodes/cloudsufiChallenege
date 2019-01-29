@@ -178,8 +178,6 @@ public class accountTypeNewCustomer<inherits> extends BasicVariables {
 		log.info("For registeration entered password as 123456");
 		registerationPage.registrationConfrimPassword().sendKeys("123456");
 		log.info("For registeration confirmed password as 123456");
-		//scrolling the Salutation radio buttons into view so that it is not hidden behind the confirmation for cookie message
-		//((JavascriptExecutor) driver).executeScript("window.scrollBy(0,225)");
 		if (generalPage.closeCookieMessage().isDisplayed())
 		{
 			generalPage.closeCookieMessage().click();
@@ -211,6 +209,97 @@ public class accountTypeNewCustomer<inherits> extends BasicVariables {
 		log.info("Clicked on Weiter zur Übersicht button");
 		orderOverviewPage.buttonToBuy().click();
 		log.info("Clicked on Kaufen button");
+		Assert.assertEquals("Glückwunsch! Gute Wahl getroffen", generalPage.textOrderConfirmation().getText());
+		log.info("Order is placed successfully");
+	}
+
+	@Test
+	public void newCustomerCreditCardMethodTest() throws InterruptedException
+	{
+		//Creating the Objects below to access the functions
+		HomePage homePage = new HomePage(driver);
+		GeneralPage generalPage = new GeneralPage(driver);
+		DeliveryPage deliveryPage = new DeliveryPage(driver);
+		LoginPage loginPage = new LoginPage(driver);
+		RegistrationPage registerationPage = new RegistrationPage(driver);
+		AddressAndPaymentMethodPage addressAndPaymentPage = new AddressAndPaymentMethodPage(driver);
+		OrderOverviewPage orderOverviewPage = new OrderOverviewPage(driver);
+
+		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+		generalPage.closeCookieMessage().click();
+
+		homePage.linkProducts().click();
+		log.info("Clicked on the Produkte link");
+		homePage.linkBouquets().click();
+		log.info("Clicked on the Blumensträuße link");
+		generalPage.linkFirstItem().click();
+		log.info("Selecting the first item on Blumensträuße page");
+		generalPage.buttonSelectedItemNext().click();
+		log.info("Clicked on the Next button after selecting item");
+		deliveryPage.textFieldDeliveryPostalCode().sendKeys("22");
+		deliveryPage.textFieldDeliveryPostalCode().sendKeys("2");
+		deliveryPage.textFieldDeliveryPostalCode().sendKeys("97");
+		log.info("Entered the delivery postal code 22297");
+		deliveryPage.buttonNextPostalCode().click();
+		log.info("Clicked the next button after entering Postal Code");
+		deliveryPage.dayNextDay().click();
+		log.info("Selecting the next day to active day for delivery");
+		Thread.sleep(1000);
+		deliveryPage.continueToGreetingCard().click();
+		log.info("Clicked on Weiter zur Grußkarte button");
+		Thread.sleep(1000);
+		deliveryPage.continueWithoutGreetingCard().click();
+		log.info("Clicked on Weiter ohne Grußkarte button");
+		Thread.sleep(1000);
+		deliveryPage.continueWithoutGifts().click();
+		log.info("Clicked on Weiter ohne Geschenke button");
+		//scrolling the register button into view so that it is not hidden behind the confirmation for cookie message
+		((JavascriptExecutor) driver).executeScript("window.scrollBy(0,120)");
+		loginPage.buttonRegister().click();
+		log.info("Clicked on the Register Button");
+		//Creating a random email id to register user
+		String emailId = RandomStringUtils.randomAlphabetic(8);
+		registerationPage.registrationEmail().sendKeys(emailId+"@testemail.com");
+		log.info("For registeration entered email id "+ emailId);
+		registerationPage.registrationPassword().sendKeys("123456");
+		log.info("For registeration entered password as 123456");
+		registerationPage.registrationConfrimPassword().sendKeys("123456");
+		log.info("For registeration confirmed password as 123456");
+		if (generalPage.closeCookieMessage().isDisplayed())
+		{
+			generalPage.closeCookieMessage().click();
+		}
+		registerationPage.registrationSalutation().click();
+		log.info("For registration selected salutation as Herr");
+		registerationPage.registrationFirstName().sendKeys("TestFirst");
+		log.info("For registeration entered first name as TestFirst");
+		registerationPage.registrationLastName().sendKeys("TestLast");
+		log.info("For registeration entered last name as TestLast");
+		registerationPage.registrationStreet().sendKeys("Überseering");
+		log.info("For registeration entered street name as Überseering");
+		registerationPage.registrationStreetNumber().sendKeys("33");
+		log.info("For registeration entered street number as 33");
+		registerationPage.registrationCity().sendKeys("Hamburg");
+		log.info("For registeration entered city as Hamburg");
+		((JavascriptExecutor) driver).executeScript("window.scrollBy(0,-180)");
+		registerationPage.copyDeliveryAndInvoiceAddress().click();
+		log.info("Checking the checkbox so that delivery and invoice address are same");
+		addressAndPaymentPage.radioButtonCreditCard().click();
+		log.info("Selected the payment method as Credit Card by clicking radio button Kreditkarte");
+		registerationPage.continueToOverview().click();
+		log.info("Clicked on Weiter zur Übersicht button");
+		orderOverviewPage.buttonToBuy().click();
+		log.info("Clicked on Kaufen button");
+		driver.switchTo().frame(0);
+		log.info("Switched Frame so that credit card details can be entered");
+		addressAndPaymentPage.textFieldCreditCardNumber().sendKeys(addressAndPaymentPage.creditCardNumber());
+		log.info("Entering the credit card number as "+addressAndPaymentPage.creditCardNumber());
+		addressAndPaymentPage.dropDownCreditCardExpiryMonth().sendKeys(addressAndPaymentPage.creditCardExpiryMonth());
+		log.info("Entered Credit Card Expiry Month as "+addressAndPaymentPage.creditCardExpiryMonth());
+		addressAndPaymentPage.dropDownCreditCardExpiryYear().sendKeys(addressAndPaymentPage.creditCardExpiryYear());
+		log.info("Entered Credit Card Expiry Year as "+addressAndPaymentPage.creditCardExpiryYear());
+		addressAndPaymentPage.creditCardContinueButton().click();
+		log.info("Clicked on the Weiter button on teh Credit Card page");
 		Assert.assertEquals("Glückwunsch! Gute Wahl getroffen", generalPage.textOrderConfirmation().getText());
 		log.info("Order is placed successfully");
 	}
