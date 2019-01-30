@@ -16,6 +16,7 @@ public class HomePage
 	@FindBy (linkText="Dankeschön") WebElement link_ThankYou;
 	@FindBy (linkText="Produkte") WebElement link_Products;
 	@FindBy (linkText="Blumensträuße") WebElement link_Bouquets;
+	@FindBy (linkText="Topseller") WebElement link_Topseller;
 	//Comment the above code and uncomment the code below in case of using Page Object model instead of Page Factory Model
 	//By link_Login = By.linkText("Anmelden");
 	
@@ -52,6 +53,10 @@ public class HomePage
 	public WebElement linkBouquets()
 	{
 		return link_Bouquets;
+	}
+	public WebElement linkTopseller()
+	{
+		return link_Topseller;
 	}
 
 }

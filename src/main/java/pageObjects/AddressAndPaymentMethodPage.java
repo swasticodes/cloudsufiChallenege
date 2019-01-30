@@ -21,6 +21,7 @@ public class AddressAndPaymentMethodPage
 	@FindBy (xpath="//*[@id=\"sfpCardExpiryYear\"]") WebElement dropDown_CreditCard_ExpiryYear;
 	@FindBy (xpath="//*[@id=\"sfpCardNumber\"]") WebElement textField_CreditCardNumber;
 	@FindBy (name="SubmitToNext") WebElement btn_CreditCard_Continue;
+	@FindBy (xpath="//span[contains(text(),'Rechnung')]") WebElement radioButton_Invoice;
 
 	String SEPAAccountHolder = "Tester";
 	String IBANNumber = "DE12500105170648489890";
@@ -103,5 +104,9 @@ public class AddressAndPaymentMethodPage
 	public WebElement creditCardContinueButton()
 	{
 		return btn_CreditCard_Continue;
+	}
+	public WebElement radioButtonInvoice()
+	{
+		return radioButton_Invoice;
 	}
 }

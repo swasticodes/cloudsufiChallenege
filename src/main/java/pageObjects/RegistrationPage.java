@@ -13,7 +13,6 @@ public class RegistrationPage
 	@FindBy (id="paymentEmail") WebElement textField_Email;
 	@FindBy (id="password") WebElement textField_Password;
 	@FindBy (id="repeatPassword") WebElement textField_ConfirmPassword;
-	//@FindBy (xpath="//*[contains(text(),'Herr')]/preceding-sibling::span") WebElement radioButton_Herr_Salutation;
 	@FindBy (xpath="//*[@id=\"shippingAndPaymentForm\"]/section[2]/div/div/div[2]/div[1]/div/div/div/div/a[1]/div/label/span[1]") WebElement radioButton_Herr_Salutation;
 	@FindBy (id="shippingFirstName") WebElement textField_Shipping_FirstName;
 	@FindBy (id="shippingLastName") WebElement textField_Shipping_LastName;

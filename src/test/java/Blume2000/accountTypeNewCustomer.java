@@ -9,6 +9,7 @@ import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.JavascriptExecutor;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
@@ -28,7 +29,7 @@ public class accountTypeNewCustomer<inherits> extends BasicVariables {
 	//Use the line below to enable logging in your test cases
 	public static Logger log = LogManager.getLogger(BasicVariables.class.getName());
 	
-	@BeforeTest
+	@BeforeMethod
 	public void openBrowser() throws IOException
 	{
 		log.info("Driver is initializing");
@@ -89,10 +90,6 @@ public class accountTypeNewCustomer<inherits> extends BasicVariables {
 		log.info("For registeration entered password as 123456");
 		registerationPage.registrationConfrimPassword().sendKeys("123456");
 		log.info("For registeration confirmed password as 123456");
-		if (generalPage.closeCookieMessage().isDisplayed())
-		{
-			generalPage.closeCookieMessage().click();
-		}
 		registerationPage.registrationSalutation().click();
 		log.info("For registration selected salutation as Herr");
 		registerationPage.registrationFirstName().sendKeys("TestFirst");
@@ -112,10 +109,9 @@ public class accountTypeNewCustomer<inherits> extends BasicVariables {
 		log.info("Clicked on Weiter zur ‹bersicht button");
 		orderOverviewPage.buttonToBuy().click();
 		log.info("Clicked on Kaufen button");
+		payPalPage.textFieldEmail().clear();
 		payPalPage.textFieldEmail().sendKeys(payPalPage.payPalEMail());
 		log.info("Entered the PayPal Email address as "+payPalPage.payPalEMail());
-		payPalPage.buttonPaypalPageContinue().click();
-		log.info("Clicked on the Wieter button on Paypal page");
 		payPalPage.textFieldPassword().sendKeys(payPalPage.payPalPassword());
 		log.info("Entered the PayPal Password as "+payPalPage.payPalPassword());
 		payPalPage.buttonPaypalLogin().click();
@@ -178,10 +174,6 @@ public class accountTypeNewCustomer<inherits> extends BasicVariables {
 		log.info("For registeration entered password as 123456");
 		registerationPage.registrationConfrimPassword().sendKeys("123456");
 		log.info("For registeration confirmed password as 123456");
-		if (generalPage.closeCookieMessage().isDisplayed())
-		{
-			generalPage.closeCookieMessage().click();
-		}
 		registerationPage.registrationSalutation().click();
 		log.info("For registration selected salutation as Herr");
 		registerationPage.registrationFirstName().sendKeys("TestFirst");
@@ -265,10 +257,6 @@ public class accountTypeNewCustomer<inherits> extends BasicVariables {
 		log.info("For registeration entered password as 123456");
 		registerationPage.registrationConfrimPassword().sendKeys("123456");
 		log.info("For registeration confirmed password as 123456");
-		if (generalPage.closeCookieMessage().isDisplayed())
-		{
-			generalPage.closeCookieMessage().click();
-		}
 		registerationPage.registrationSalutation().click();
 		log.info("For registration selected salutation as Herr");
 		registerationPage.registrationFirstName().sendKeys("TestFirst");
@@ -304,6 +292,80 @@ public class accountTypeNewCustomer<inherits> extends BasicVariables {
 		log.info("Order is placed successfully");
 	}
 
+	@Test
+	public void newCustomerInvoiceMethodTest() throws InterruptedException
+	{
+		//Creating the Objects below to access the functions
+		HomePage homePage = new HomePage(driver);
+		GeneralPage generalPage = new GeneralPage(driver);
+		DeliveryPage deliveryPage = new DeliveryPage(driver);
+		LoginPage loginPage = new LoginPage(driver);
+		RegistrationPage registerationPage = new RegistrationPage(driver);
+		AddressAndPaymentMethodPage addressAndPaymentPage = new AddressAndPaymentMethodPage(driver);
+		OrderOverviewPage orderOverviewPage = new OrderOverviewPage(driver);
+
+		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+		generalPage.closeCookieMessage().click();
+		homePage.linkTopseller().click();
+		log.info("Clicked on the Topseller link");
+		generalPage.linkFirstItem().click();
+		log.info("Selecting the first item on Blumenstr‰uﬂe page");
+		generalPage.buttonSelectedItemNext().click();
+		log.info("Clicked on the Next button after selecting item");
+		deliveryPage.textFieldDeliveryPostalCode().sendKeys("22");
+		deliveryPage.textFieldDeliveryPostalCode().sendKeys("2");
+		deliveryPage.textFieldDeliveryPostalCode().sendKeys("97");
+		log.info("Entered the delivery postal code 22297");
+		deliveryPage.buttonNextPostalCode().click();
+		log.info("Clicked the next button after entering Postal Code");
+		deliveryPage.dayNextDay().click();
+		log.info("Selecting the next day to active day for delivery");
+		Thread.sleep(1000);
+		deliveryPage.continueToGreetingCard().click();
+		log.info("Clicked on Weiter zur Gruﬂkarte button");
+		Thread.sleep(1000);
+		deliveryPage.continueWithoutGreetingCard().click();
+		log.info("Clicked on Weiter ohne Gruﬂkarte button");
+		Thread.sleep(1000);
+		deliveryPage.continueWithoutGifts().click();
+		log.info("Clicked on Weiter ohne Geschenke button");
+		//scrolling the register button into view so that it is not hidden behind the confirmation for cookie message
+		((JavascriptExecutor) driver).executeScript("window.scrollBy(0,120)");
+		loginPage.buttonRegister().click();
+		log.info("Clicked on the Register Button");
+		//Creating a random email id to register user
+		String emailId = RandomStringUtils.randomAlphabetic(8);
+		registerationPage.registrationEmail().sendKeys(emailId+"@testemail.com");
+		log.info("For registeration entered email id "+ emailId);
+		registerationPage.registrationPassword().sendKeys("123456");
+		log.info("For registeration entered password as 123456");
+		registerationPage.registrationConfrimPassword().sendKeys("123456");
+		log.info("For registeration confirmed password as 123456");
+		registerationPage.registrationSalutation().click();
+		log.info("For registration selected salutation as Herr");
+		registerationPage.registrationFirstName().sendKeys("TestFirst");
+		log.info("For registeration entered first name as TestFirst");
+		registerationPage.registrationLastName().sendKeys("TestLast");
+		log.info("For registeration entered last name as TestLast");
+		registerationPage.registrationStreet().sendKeys("‹berseering");
+		log.info("For registeration entered street name as ‹berseering");
+		registerationPage.registrationStreetNumber().sendKeys("33");
+		log.info("For registeration entered street number as 33");
+		registerationPage.registrationCity().sendKeys("Hamburg");
+		log.info("For registeration entered city as Hamburg");
+		((JavascriptExecutor) driver).executeScript("window.scrollBy(0,-180)");
+		registerationPage.copyDeliveryAndInvoiceAddress().click();
+		log.info("Checking the checkbox so that delivery and invoice address are same");
+		addressAndPaymentPage.radioButtonInvoice().click();
+		log.info("Selected the payment method as Invoice by clicking radio button Rechnung");
+		registerationPage.continueToOverview().click();
+		log.info("Clicked on Weiter zur ‹bersicht button");
+		orderOverviewPage.buttonToBuy().click();
+		log.info("Clicked on Kaufen button");
+		Assert.assertEquals("Gl¸ckwunsch! Gute Wahl getroffen", generalPage.textOrderConfirmation().getText());
+		log.info("Order is placed successfully");
+	}
+
 	@AfterMethod
 	public void logout()
 	{
@@ -313,19 +375,15 @@ public class accountTypeNewCustomer<inherits> extends BasicVariables {
 		{
 			generalPage.linkMyAccount().click();
 			log.info("Clicked on the Mein Konto link for logging out");
-			if(generalPage.closeCookieMessage().isDisplayed())
-			{
-				generalPage.closeCookieMessage().click();
-			}
 			generalPage.linkLogout().click();
 			log.info("Clicked on the Abmelden link for logging out");
 		}
+		driver.quit();
 	}
 	
 	@AfterTest
 	public void closeBrowser()
 	{
-		driver.quit();
 		//releasing the memory
 		driver = null;
 	}
