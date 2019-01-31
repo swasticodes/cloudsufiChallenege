@@ -13,7 +13,7 @@ public class RegistrationPage
 	@FindBy (id="paymentEmail") WebElement textField_Email;
 	@FindBy (id="password") WebElement textField_Password;
 	@FindBy (id="repeatPassword") WebElement textField_ConfirmPassword;
-	@FindBy (xpath="//*[@id=\"shippingAndPaymentForm\"]/section[2]/div/div/div[2]/div[1]/div/div/div/div/a[1]/div/label/span[1]") WebElement radioButton_Herr_Salutation;
+	@FindBy (xpath="//*[contains(text(),'Herr')]") WebElement radioButton_Herr_Salutation;
 	@FindBy (id="shippingFirstName") WebElement textField_Shipping_FirstName;
 	@FindBy (id="shippingLastName") WebElement textField_Shipping_LastName;
 	@FindBy (id="shippingStreet") WebElement textField_Shipping_StreetName;
@@ -21,8 +21,9 @@ public class RegistrationPage
 	@FindBy (id="shippingPostcode") WebElement textField_Shipping_PostalCode;
 	@FindBy (id="shippingCity") WebElement textField_Shipping_City;
 	@FindBy (id="shippingCountry") WebElement textField_Shipping_Country;
-	@FindBy (xpath="//*[@id=\"shippingAndPaymentForm\"]/section[3]/div/div/div[2]/label/span[1]") WebElement chkBox_SameDeliveryAndInvoiceAddress;
+	@FindBy (xpath="//*[contains(text(),'Liefer- und Rechungsanschrift sind identisch')]") WebElement chkBox_SameDeliveryAndInvoiceAddress;
 	@FindBy (xpath="//*[contains(text(), 'Weiter zur Übersicht')]") WebElement btn_Continue_To_Overview;
+	@FindBy (xpath="//button[contains(text(), 'Als Gast bestellen')]") WebElement btn_Order_As_Guest;
 	//Comment the above code and uncomment the code below in case of using Page Object model instead of Page Factory Model
 	//By link_Login = By.linkText("Anmelden");
 
@@ -87,6 +88,10 @@ public class RegistrationPage
 	public WebElement continueToOverview()
 	{
 		return btn_Continue_To_Overview;
+	}
+	public WebElement buttonOrderAsGuest()
+	{
+		return btn_Order_As_Guest;
 	}
 
 }

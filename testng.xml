@@ -9,5 +9,10 @@
   	<classes>    
       <class name="Blume2000.accountTypeNewCustomer"/>
     </classes>
-  </test> <!-- Test -->
+    </test>
+    <test name="Guest User Tests">
+    <classes>
+		<class name= "Blume2000.accountTypeGuestCustomer"/>
+    </classes>
+    </test>
 </suite> <!-- Suite -->
