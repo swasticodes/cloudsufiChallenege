@@ -88,7 +88,7 @@ public class BasicVariables {
 		}
 		else if (browserName.equals("firefox"))
 		{
-			 System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir")+"\\src\\main\\java\\resources\\geckodriver.exe");
+			 System.setProperty("webdriver.gecko.driver", System.getProperty("user.dir")+"\\src\\main\\java\\resources\\geckodriver.exe");
 			 driver = new FirefoxDriver();
 			//execute in firefox browser
 		}
