@@ -61,6 +61,7 @@ public class accountTypeNewCustomer<inherits> extends BasicVariables {
 		log.info("Selecting the first item on the birtday page");
 		generalPage.buttonSelectedItemNext().click();
 		log.info("Clicked on the Next button after selecting item");
+		Thread.sleep(1000);
 		deliveryPage.textFieldDeliveryPostalCode().sendKeys("22");
 		deliveryPage.textFieldDeliveryPostalCode().sendKeys("2");
 		deliveryPage.textFieldDeliveryPostalCode().sendKeys("97");
@@ -145,6 +146,7 @@ public class accountTypeNewCustomer<inherits> extends BasicVariables {
 		log.info("Selecting the first item on Dankeschön page");
 		generalPage.buttonSelectedItemNext().click();
 		log.info("Clicked on the Next button after selecting item");
+		Thread.sleep(1000);
 		deliveryPage.textFieldDeliveryPostalCode().sendKeys("22");
 		deliveryPage.textFieldDeliveryPostalCode().sendKeys("2");
 		deliveryPage.textFieldDeliveryPostalCode().sendKeys("97");
@@ -228,6 +230,7 @@ public class accountTypeNewCustomer<inherits> extends BasicVariables {
 		log.info("Selecting the first item on Blumensträuße page");
 		generalPage.buttonSelectedItemNext().click();
 		log.info("Clicked on the Next button after selecting item");
+		Thread.sleep(1000);
 		deliveryPage.textFieldDeliveryPostalCode().sendKeys("22");
 		deliveryPage.textFieldDeliveryPostalCode().sendKeys("2");
 		deliveryPage.textFieldDeliveryPostalCode().sendKeys("97");
@@ -312,6 +315,7 @@ public class accountTypeNewCustomer<inherits> extends BasicVariables {
 		log.info("Selecting the first item on Blumensträuße page");
 		generalPage.buttonSelectedItemNext().click();
 		log.info("Clicked on the Next button after selecting item");
+		Thread.sleep(1000);
 		deliveryPage.textFieldDeliveryPostalCode().sendKeys("22");
 		deliveryPage.textFieldDeliveryPostalCode().sendKeys("2");
 		deliveryPage.textFieldDeliveryPostalCode().sendKeys("97");
