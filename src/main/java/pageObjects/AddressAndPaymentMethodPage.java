@@ -22,6 +22,7 @@ public class AddressAndPaymentMethodPage
 	@FindBy (xpath="//*[@id=\"sfpCardNumber\"]") WebElement textField_CreditCardNumber;
 	@FindBy (name="SubmitToNext") WebElement btn_CreditCard_Continue;
 	@FindBy (xpath="//span[contains(text(),'Rechnung')]") WebElement radioButton_Invoice;
+	@FindBy (xpath="//span[contains(text(),'PayPal')]") WebElement radioButton_PayPal;
 
 	String SEPAAccountHolder = "Tester";
 	String IBANNumber = "DE12500105170648489890";
@@ -108,5 +109,9 @@ public class AddressAndPaymentMethodPage
 	public WebElement radioButtonInvoice()
 	{
 		return radioButton_Invoice;
+	}
+	public WebElement radioButtonPayPal()
+	{
+		return radioButton_PayPal;
 	}
 }
