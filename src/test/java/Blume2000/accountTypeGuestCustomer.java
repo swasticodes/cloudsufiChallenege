@@ -54,6 +54,7 @@ public class accountTypeGuestCustomer<inherits> extends BasicVariables {
 		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 
 		homePage.linkProducts().click();
+		Assert.assertTrue(true, "Clicked on the Produkte link");
 		log.info("Clicked on the Produkte link");
 		homePage.linkBirthday().click();
 		log.info("Clicked on the Geburtstag link");
