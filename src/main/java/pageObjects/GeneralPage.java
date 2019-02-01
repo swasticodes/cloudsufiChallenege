@@ -14,6 +14,7 @@ public class GeneralPage
 	@FindBy (xpath="//*[@id='cookieNote']/div/button") WebElement btn_Close_Cookie_Msg;
 	@FindBy (xpath="//*[contains(@class,'text-center xs-two-line')]") WebElement text_Order_Confirmation;
 	@FindBy (xpath="//*[contains(@class, \"widget-teaser-tile highlight-banner\")]/ancestor::div[1]/following-sibling::div/div[2]/div/div/div/div/div") WebElement link_First_Item;
+	@FindBy (xpath="//*[contains(@class,'container-list')]/div[3]/div[2]/div/div/div[2]/div[2]") WebElement link_Second_Item;
 	@FindBy (xpath="//span[contains(text(),'Mein Konto')]") WebElement link_MyAccount;
 	@FindBy (xpath="//a[contains(text(),'Abmelden')]") WebElement link_Logout;
 	@FindBy (xpath="//span[contains(text(),'Premium-Lieferung')]") WebElement radioBtn_PremiumDelivery;
@@ -57,6 +58,10 @@ public class GeneralPage
 	public WebElement radioButtonPremiumDelivery()
 	{
 		return radioBtn_PremiumDelivery;
+	}
+	public WebElement linkSecondItem()
+	{
+		return link_Second_Item;
 	}
 
 }
