@@ -16,6 +16,7 @@ public class GeneralPage
 	@FindBy (xpath="//*[contains(@class, \"widget-teaser-tile highlight-banner\")]/ancestor::div[1]/following-sibling::div/div[2]/div/div/div/div/div") WebElement link_First_Item;
 	@FindBy (xpath="//span[contains(text(),'Mein Konto')]") WebElement link_MyAccount;
 	@FindBy (xpath="//a[contains(text(),'Abmelden')]") WebElement link_Logout;
+	@FindBy (xpath="//span[contains(text(),'Premium-Lieferung')]") WebElement radioBtn_PremiumDelivery;
 	//Comment the above code and uncomment the code below in case of using Page Object model instead of Page Factory Model
 	//By link_Login = By.linkText("Anmelden");
 	
@@ -52,6 +53,10 @@ public class GeneralPage
 	public WebElement linkLogout()
 	{
 		return link_Logout;
+	}
+	public WebElement radioButtonPremiumDelivery()
+	{
+		return radioBtn_PremiumDelivery;
 	}
 
 }
