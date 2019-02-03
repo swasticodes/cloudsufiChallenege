@@ -7,6 +7,7 @@ import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.NoSuchElementException;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterTest;
@@ -395,12 +396,16 @@ public class accountTypeNewCustomer<inherits> extends BasicVariables {
 	{
 		GeneralPage generalPage = new GeneralPage(driver);
 		//Logging out if the user is signed in before starting the next test
-		if (generalPage.linkMyAccount().isDisplayed())
-		{
-			generalPage.linkMyAccount().click();
-			log.info("Clicked on the Mein Konto link for logging out");
-			generalPage.linkLogout().click();
-			log.info("Clicked on the Abmelden link for logging out");
+		try {
+			if (generalPage.linkMyAccount().isDisplayed())
+			{
+				generalPage.linkMyAccount().click();
+				log.info("Clicked on the Mein Konto link for logging out");
+				generalPage.linkLogout().click();
+				log.info("Clicked on the Abmelden link for logging out");
+			}
+		} catch(NoSuchElementException ex) {
+			log.info("No need for logging out.");
 		}
 		driver.quit();
 	}
