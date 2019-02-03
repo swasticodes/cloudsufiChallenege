@@ -227,7 +227,9 @@ public class accountTypeGuestCustomer<inherits> extends BasicVariables {
 		log.info("Entered the PayPal Password as <CENSORED>");
 		payPalPage.buttonPaypalLogin().click();
 		log.info("Clicked on the login button on Paypal page");
+		driver.switchTo().defaultContent();
 		payPalPage.buttonPaypalPaymentConfirmation().click();
+		driver.switchTo().defaultContent();
 		log.info("Clicked on the 'Jetzt bezahlen' button for payment confirmation");
 		Assert.assertEquals("Glückwunsch! Gute Wahl getroffen", generalPage.textOrderConfirmation().getText());
 		log.info("Order is placed successfully");
