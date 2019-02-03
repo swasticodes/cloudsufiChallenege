@@ -1,10 +1,13 @@
 package pageObjects;
 
+import org.apache.http.util.Asserts;
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.testng.Assert;
 
 public class HomePage 
 {
@@ -46,10 +49,22 @@ public class HomePage
 	{
 		return link_ThankYou;
 	}
+	
 	public WebElement linkProducts()
 	{
 		return link_Products;
 	}
+	
+	public void clickLinkProducts()
+	{
+		try {
+			linkProducts().click();
+		} catch(NoSuchElementException ex) {
+			Assert.assertTrue(false, "Clicked on the Produkte link. " + ex.getMessage());
+			throw ex;
+		}
+	}
+	
 	public WebElement linkBouquets()
 	{
 		return link_Bouquets;

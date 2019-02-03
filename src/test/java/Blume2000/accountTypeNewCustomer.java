@@ -34,12 +34,14 @@ public class accountTypeNewCustomer<inherits> extends BasicVariables {
 	{
 		log.info("Driver is initializing");
 		driver = initializeDriver();
-		log.info("Opening the URL"+(prop.getProperty("URL")));
+		log.info("Opening the URL "+(prop.getProperty("URL")));
 		driver.get(prop.getProperty("URL"));
 	}
 	@Test
 	public void newCustomerPaypalPaymentMethodTest() throws InterruptedException, IOException
 	{
+		log.info("*** Starting Test: newCustomerPaypalPaymentMethodTest");
+		
 		//Creating the Objects below to access the functions
 		HomePage homePage = new HomePage(driver);
 		GeneralPage generalPage = new GeneralPage(driver);
@@ -50,8 +52,9 @@ public class accountTypeNewCustomer<inherits> extends BasicVariables {
 		OrderOverviewPage orderOverviewPage = new OrderOverviewPage(driver);
 		PayPalPage payPalPage = new PayPalPage(driver);
 
-		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
-		generalPage.closeCookieMessage().click();
+		ensurePageLoaded();
+		
+		generalPage.clickCloseCookieMessage(false);
 
 		homePage.linkEvents().click();
 		log.info("Clicked on the Anlässe link");
@@ -121,11 +124,15 @@ public class accountTypeNewCustomer<inherits> extends BasicVariables {
 		log.info("Clicked on the Jetzt bezhalen for payment confirmation");
 		Assert.assertEquals("Glückwunsch! Gute Wahl getroffen", generalPage.textOrderConfirmation().getText());
 		log.info("Order is placed successfully");
+		
+		log.info("*** Finished Test: newCustomerPaypalPaymentMethodTest");
 	}
 
 	@Test
 	public void newCustomerSEPADirectDebitMethodTest() throws InterruptedException
 	{
+		log.info("*** Starting Test: newCustomerSEPADirectDebitMethodTest");
+		
 		//Creating the Objects below to access the functions
 		HomePage homePage = new HomePage(driver);
 		GeneralPage generalPage = new GeneralPage(driver);
@@ -135,8 +142,9 @@ public class accountTypeNewCustomer<inherits> extends BasicVariables {
 		AddressAndPaymentMethodPage addressAndPaymentPage = new AddressAndPaymentMethodPage(driver);
 		OrderOverviewPage orderOverviewPage = new OrderOverviewPage(driver);
 
-		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
-		generalPage.closeCookieMessage().click();
+		ensurePageLoaded();
+		
+		generalPage.clickCloseCookieMessage(false);
 
 		homePage.linkEvents().click();
 		log.info("Clicked on the Anlässe link");
@@ -205,11 +213,15 @@ public class accountTypeNewCustomer<inherits> extends BasicVariables {
 		log.info("Clicked on Kaufen button");
 		Assert.assertEquals("Glückwunsch! Gute Wahl getroffen", generalPage.textOrderConfirmation().getText());
 		log.info("Order is placed successfully");
+		
+		log.info("*** Finished Test: newCustomerSEPADirectDebitMethodTest");
 	}
 
 	@Test
 	public void newCustomerCreditCardMethodTest() throws InterruptedException
 	{
+		log.info("*** Starting Test: newCustomerCreditCardMethodTest");
+		
 		//Creating the Objects below to access the functions
 		HomePage homePage = new HomePage(driver);
 		GeneralPage generalPage = new GeneralPage(driver);
@@ -219,8 +231,9 @@ public class accountTypeNewCustomer<inherits> extends BasicVariables {
 		AddressAndPaymentMethodPage addressAndPaymentPage = new AddressAndPaymentMethodPage(driver);
 		OrderOverviewPage orderOverviewPage = new OrderOverviewPage(driver);
 
-		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
-		generalPage.closeCookieMessage().click();
+		ensurePageLoaded();
+		
+		generalPage.clickCloseCookieMessage(false);
 
 		homePage.linkProducts().click();
 		log.info("Clicked on the Produkte link");
@@ -293,11 +306,15 @@ public class accountTypeNewCustomer<inherits> extends BasicVariables {
 		log.info("Clicked on the Weiter button on teh Credit Card page");
 		Assert.assertEquals("Glückwunsch! Gute Wahl getroffen", generalPage.textOrderConfirmation().getText());
 		log.info("Order is placed successfully");
+	
+		log.info("*** Finished Test: newCustomerCreditCardMethodTest");
 	}
 
 	@Test
 	public void newCustomerInvoiceMethodTest() throws InterruptedException
 	{
+		log.info("*** Starting Test: newCustomerInvoiceMethodTest");
+		
 		//Creating the Objects below to access the functions
 		HomePage homePage = new HomePage(driver);
 		GeneralPage generalPage = new GeneralPage(driver);
@@ -307,8 +324,9 @@ public class accountTypeNewCustomer<inherits> extends BasicVariables {
 		AddressAndPaymentMethodPage addressAndPaymentPage = new AddressAndPaymentMethodPage(driver);
 		OrderOverviewPage orderOverviewPage = new OrderOverviewPage(driver);
 
-		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
-		generalPage.closeCookieMessage().click();
+		ensurePageLoaded();
+		
+		generalPage.clickCloseCookieMessage(false);
 		homePage.linkTopseller().click();
 		log.info("Clicked on the Topseller link");
 		generalPage.linkFirstItem().click();
@@ -368,6 +386,8 @@ public class accountTypeNewCustomer<inherits> extends BasicVariables {
 		log.info("Clicked on Kaufen button");
 		Assert.assertEquals("Glückwunsch! Gute Wahl getroffen", generalPage.textOrderConfirmation().getText());
 		log.info("Order is placed successfully");
+		
+		log.info("*** Finished Test: newCustomerInvoiceMethodTest");
 	}
 
 	@AfterMethod

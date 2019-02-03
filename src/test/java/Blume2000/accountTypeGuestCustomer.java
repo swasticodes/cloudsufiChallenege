@@ -34,13 +34,15 @@ public class accountTypeGuestCustomer<inherits> extends BasicVariables {
 	{
 		log.info("Driver is initializing");
 		driver = initializeDriver();
-		log.info("Opening the URL"+(prop.getProperty("URL")));
+		log.info("Opening the URL "+(prop.getProperty("URL")));
 		driver.get(prop.getProperty("URL"));
 	}
 
 	@Test
 	public void guestCustomerCreditCardMethodTest() throws InterruptedException
 	{
+		log.info("*** Starting Test: guestCustomerCreditCardMethodTest");
+
 		//Creating the Objects below to access the functions
 		HomePage homePage = new HomePage(driver);
 		GeneralPage generalPage = new GeneralPage(driver);
@@ -51,7 +53,7 @@ public class accountTypeGuestCustomer<inherits> extends BasicVariables {
 		GreetingCardPage greetingCardPage = new GreetingCardPage(driver);
 		GiftsPage giftsPage = new GiftsPage(driver);
 
-		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+		ensurePageLoaded();
 
 		homePage.linkProducts().click();
 		Assert.assertTrue(true, "Clicked on the Produkte link");
@@ -129,11 +131,15 @@ public class accountTypeGuestCustomer<inherits> extends BasicVariables {
 		log.info("Clicked on the Weiter button on teh Credit Card page");
 		Assert.assertEquals("Glückwunsch! Gute Wahl getroffen", generalPage.textOrderConfirmation().getText());
 		log.info("Order is placed successfully");
+		
+		log.info("*** Finished Test: guestCustomerCreditCardMethodTest");
 	}
 
 	@Test
 	public void guestCustomerPaypalMethodTest() throws InterruptedException
 	{
+		log.info("*** Starting Test: guestCustomerPaypalMethodTest");
+		
 		//Creating the Objects below to access the functions
 		HomePage homePage = new HomePage(driver);
 		GeneralPage generalPage = new GeneralPage(driver);
@@ -146,7 +152,7 @@ public class accountTypeGuestCustomer<inherits> extends BasicVariables {
 		PayPalPage payPalPage = new PayPalPage(driver);
 		AddressAndPaymentMethodPage addressAndPaymentMethodPage = new AddressAndPaymentMethodPage(driver);
 
-		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+		ensurePageLoaded();
 
 		homePage.linkProducts().click();
 		log.info("Clicked on the Produkte link");
@@ -225,11 +231,15 @@ public class accountTypeGuestCustomer<inherits> extends BasicVariables {
 		log.info("Clicked on the Jetzt bezhalen for payment confirmation");
 		Assert.assertEquals("Glückwunsch! Gute Wahl getroffen", generalPage.textOrderConfirmation().getText());
 		log.info("Order is placed successfully");
+		
+		log.info("*** Finished Test: guestCustomerPaypalMethodTest");
 	}
 
 	@Test
 	public void guestCustomerInvoiceMethodTest() throws InterruptedException
 	{
+		log.info("*** Starting Test: guestCustomerInvoiceMethodTest");
+		
 		//Creating the Objects below to access the functions
 		HomePage homePage = new HomePage(driver);
 		GeneralPage generalPage = new GeneralPage(driver);
@@ -242,7 +252,7 @@ public class accountTypeGuestCustomer<inherits> extends BasicVariables {
 		PayPalPage payPalPage = new PayPalPage(driver);
 		AddressAndPaymentMethodPage addressAndPaymentMethodPage = new AddressAndPaymentMethodPage(driver);
 
-		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+		ensurePageLoaded();
 
 		homePage.linkProducts().click();
 		log.info("Clicked on the Produkte link");
@@ -310,6 +320,8 @@ public class accountTypeGuestCustomer<inherits> extends BasicVariables {
 		log.info("Clicked on Kaufen button");
 		Assert.assertEquals("Glückwunsch! Gute Wahl getroffen", generalPage.textOrderConfirmation().getText());
 		log.info("Order is placed successfully");
+	
+		log.info("*** Finished Test: guestCustomerInvoiceMethodTest");
 	}
 
 	@AfterMethod

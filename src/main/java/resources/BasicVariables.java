@@ -111,4 +111,18 @@ public class BasicVariables {
 		//Make the path below relative
 		FileUtils.copyFile(src, new File(System.getProperty("user.dir")+"\\src\\test\\Screenshots\\"+ result + System.currentTimeMillis()+"_ss.png"));
 	}
+	
+	public void ensurePageLoaded() {
+		int secsToWait = 20;
+		String initialWait = prop.getProperty("initialWaitInSecs");
+		if (initialWait != null && !initialWait.isEmpty()) {
+			try {
+				secsToWait = Integer.parseInt("initialWait");
+			} catch(NumberFormatException ex) {
+				secsToWait = 20;
+			}
+		}
+		
+		driver.manage().timeouts().implicitlyWait(secsToWait, TimeUnit.SECONDS);
+	}
 }

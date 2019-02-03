@@ -1,10 +1,12 @@
 package pageObjects;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.testng.Assert;
 
 public class GeneralPage 
 {
@@ -35,10 +37,26 @@ public class GeneralPage
 		//Comment the above code and Uncomment the code below in case using Page object instead of Page factory
 		//return driver.findElement(link_Login);
 	}
+	
 	public WebElement closeCookieMessage()
 	{
 		return btn_Close_Cookie_Msg;
 	}
+	
+
+	public void clickCloseCookieMessage(boolean notFoundIsError)
+	{
+		try {
+			closeCookieMessage().click();
+			System.out.println("PASSED : Clicked the closed cookie message"); 
+		} catch(NoSuchElementException ex) {
+			if (notFoundIsError) {
+				Assert.assertTrue(false, "Could not clicked on the close cookie message. " + ex.getMessage());
+			}
+			//throw ex;
+		}
+	}
+
 	public WebElement textOrderConfirmation()
 	{
 		return text_Order_Confirmation;
