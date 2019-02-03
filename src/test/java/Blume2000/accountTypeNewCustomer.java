@@ -114,13 +114,9 @@ public class accountTypeNewCustomer<inherits> extends BasicVariables {
 		log.info("Clicked on Weiter zur Übersicht button");
 		orderOverviewPage.buttonToBuy().click();
 		log.info("Clicked on Kaufen button");
-		payPalPage.textFieldEmail().clear();
-		payPalPage.textFieldEmail().sendKeys(payPalPage.payPalEMail());
-		log.info("Entered the PayPal Email address as "+payPalPage.payPalEMail());
-		payPalPage.textFieldPassword().sendKeys(payPalPage.payPalPassword());
-		log.info("Entered the PayPal Password as "+payPalPage.payPalPassword());
-		payPalPage.buttonPaypalLogin().click();
-		log.info("Clicked on the login button on Paypal page");
+
+		payPalPage.PayPalLogin();
+
 		payPalPage.buttonPaypalPaymentConfirmation().click();
 		log.info("Clicked on the Jetzt bezhalen for payment confirmation");
 		Assert.assertEquals("Glückwunsch! Gute Wahl getroffen", generalPage.textOrderConfirmation().getText());

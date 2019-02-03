@@ -1,18 +1,25 @@
 package pageObjects;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import resources.BasicVariables;
+
 public class PayPalPage
 {
 	public WebDriver driver;
 
+	public static Logger log = LogManager.getLogger(BasicVariables.class.getName());
+
 	@FindBy (xpath="//*[@id=\"email\"]") WebElement textField_Paypal_Email;
 	@FindBy (xpath="//*[@id=\"btnNext\"]") WebElement btn_Paypal_Page_Continue;
-	@FindBy (xpath="//*[@id=\"password\"]") WebElement btn_Paypal_Page_Paassword;
+	@FindBy (xpath="//*[@id=\"password\"]") WebElement btn_Paypal_Page_Password;
 	@FindBy (xpath="//*[@id=\"btnLogin\"]") WebElement btn_Paypal_Login;
 	@FindBy (xpath="//*[@id=\"confirmButtonTop\"]") WebElement btn_Confirm_Paypal_Payment;
 	String payPalEMail = "tulpe@blume2000.de";
@@ -40,7 +47,7 @@ public class PayPalPage
 	}
 	public WebElement textFieldPassword()
 	{
-		return btn_Paypal_Page_Paassword;
+		return btn_Paypal_Page_Password;
 	}
 	public String payPalEMail()
 	{
@@ -57,5 +64,36 @@ public class PayPalPage
 	public WebElement buttonPaypalPaymentConfirmation()
 	{
 		return btn_Confirm_Paypal_Payment;
+	}
+
+	public boolean isPasswordFieldDisplayed()
+	{
+		try {
+			return textFieldPassword().isDisplayed();	
+		} catch(NoSuchElementException ex) {
+			return false;
+		}
+	}
+	
+	public boolean PayPalLogin()
+	{
+		textFieldEmail().clear();
+		textFieldEmail().sendKeys(payPalEMail());
+		log.info("Entered the PayPal Email address as "+ payPalEMail());
+		
+		if (isPasswordFieldDisplayed()) {
+			textFieldPassword().sendKeys(payPalPassword());
+		    log.info("Entered the PayPal Password as <CENSORED>");
+		    buttonPaypalLogin().click();
+		    log.info("Clicked on the login button on Paypal page");
+		} else {
+			buttonPaypalPageContinue().click();
+			textFieldPassword().sendKeys(payPalPassword());
+		    log.info("Entered the PayPal Password as <CENSORED>");
+		    buttonPaypalLogin().click();
+		    log.info("Clicked on the login button on Paypal page");
+		}
+		
+		return true;
 	}
 }
