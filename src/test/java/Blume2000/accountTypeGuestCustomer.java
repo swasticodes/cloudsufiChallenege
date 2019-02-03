@@ -129,6 +129,7 @@ public class accountTypeGuestCustomer<inherits> extends BasicVariables {
 		log.info("Entered Credit Card Expiry Year as "+addressAndPaymentPage.creditCardExpiryYear());
 		addressAndPaymentPage.creditCardContinueButton().click();
 		log.info("Clicked on the Weiter button on the Credit Card page");
+		driver.switchTo().defaultContent();
 		Assert.assertEquals("Glückwunsch! Gute Wahl getroffen", generalPage.textOrderConfirmation().getText());
 		log.info("Order is placed successfully");
 		
