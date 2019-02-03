@@ -116,8 +116,9 @@ public class accountTypeNewCustomer<inherits> extends BasicVariables {
 		log.info("Clicked on Kaufen button");
 
 		payPalPage.PayPalLogin();
-
+		driver.switchTo().defaultContent();
 		payPalPage.buttonPaypalPaymentConfirmation().click();
+		driver.switchTo().defaultContent();
 		log.info("Clicked on the Jetzt bezhalen for payment confirmation");
 		Assert.assertEquals("Glückwunsch! Gute Wahl getroffen", generalPage.textOrderConfirmation().getText());
 		log.info("Order is placed successfully");
