@@ -27,7 +27,7 @@ import resources.BasicVariables;
 
 public class accountTypeGuestCustomer<inherits> extends BasicVariables {
 	//Use the line below to enable logging in your test cases
-	public static Logger log = LogManager.getLogger(BasicVariables.class.getName());
+	public static Logger log = LogManager.getLogger(accountTypeGuestCustomer.class.getName());
 
 	@BeforeMethod
 	public void openBrowser() throws IOException
@@ -128,7 +128,7 @@ public class accountTypeGuestCustomer<inherits> extends BasicVariables {
 		addressAndPaymentPage.dropDownCreditCardExpiryYear().sendKeys(addressAndPaymentPage.creditCardExpiryYear());
 		log.info("Entered Credit Card Expiry Year as "+addressAndPaymentPage.creditCardExpiryYear());
 		addressAndPaymentPage.creditCardContinueButton().click();
-		log.info("Clicked on the Weiter button on teh Credit Card page");
+		log.info("Clicked on the Weiter button on the Credit Card page");
 		Assert.assertEquals("Glückwunsch! Gute Wahl getroffen", generalPage.textOrderConfirmation().getText());
 		log.info("Order is placed successfully");
 		
@@ -177,22 +177,22 @@ public class accountTypeGuestCustomer<inherits> extends BasicVariables {
 		log.info("Selected Premium Delivery radio button");
 		Thread.sleep(1000);
 		deliveryPage.continueToGreetingCard().click();
-		log.info("Clicked on Weiter zur Grukarte button");
+		log.info("Clicked on Weiter 'zur Grusskarte button'");
 		Thread.sleep(1000);
 		greetingCardPage.linkGreetingCardFirstItem().click();
 		log.info("Selected the first greeting card");
 		greetingCardPage.textboxGreetingCardText().sendKeys("test message");
 		log.info("Entered the greeting card text");
 		greetingCardPage.buttonContinueToGifts().click();
-		log.info("Clicked on the button Weiter zu Geschenke");
+		log.info("Clicked on the button 'Weiter zu Geschenke'");
 		giftsPage.linkGiftsFirstItem().click();
 		log.info("Selected the first Gift Item");
 		giftsPage.linkGiftsSecondItem().click();
 		log.info("Selected the second Gift Item");
 		giftsPage.buttonDirectlyToCashRegister().click();
-		log.info("Clicked on the button Direkt zur Kasse");
+		log.info("Clicked on the button 'Direkt zur Kasse'");
 		registerationPage.buttonOrderAsGuest().click();
-		log.info("Clicked on the button Als Gast bestellen");
+		log.info("Clicked on the button 'Als Gast bestellen'");
 		//Creating a random email id to register user
 		String emailId = RandomStringUtils.randomAlphabetic(8);
 		registerationPage.registrationEmail().sendKeys(emailId+"@testemail.com");
@@ -215,20 +215,20 @@ public class accountTypeGuestCustomer<inherits> extends BasicVariables {
 		addressAndPaymentMethodPage.radioButtonPayPal().click();
 		log.info("Clicking PayPal radio button");
 		registerationPage.continueToOverview().click();
-		log.info("Clicked on Weiter zur bersicht button");
+		log.info("Clicked on 'Weiter zur Uebersicht' button");
 		orderOverviewPage.buttonToBuy().click();
-		log.info("Clicked on Kaufen button");
+		log.info("Clicked on 'Kaufen' button");
 		payPalPage.textFieldEmail().clear();
 		payPalPage.textFieldEmail().sendKeys(payPalPage.payPalEMail());
 		log.info("Entered the PayPal Email address as "+payPalPage.payPalEMail());
 		payPalPage.buttonPaypalPageContinue().click();
-		log.info("Clicked on the Weiter button to move to the Password field");
+		log.info("Clicked on the 'Weiter' button to move to the Password field");
 		payPalPage.textFieldPassword().sendKeys(payPalPage.payPalPassword());
-		log.info("Entered the PayPal Password as "+payPalPage.payPalPassword());
+		log.info("Entered the PayPal Password as <CENSORED>");
 		payPalPage.buttonPaypalLogin().click();
 		log.info("Clicked on the login button on Paypal page");
 		payPalPage.buttonPaypalPaymentConfirmation().click();
-		log.info("Clicked on the Jetzt bezhalen for payment confirmation");
+		log.info("Clicked on the 'Jetzt bezahlen' button for payment confirmation");
 		Assert.assertEquals("Glückwunsch! Gute Wahl getroffen", generalPage.textOrderConfirmation().getText());
 		log.info("Order is placed successfully");
 		

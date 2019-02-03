@@ -28,7 +28,7 @@ import resources.BasicVariables;
 
 public class accountTypeNewCustomer<inherits> extends BasicVariables {
 	//Use the line below to enable logging in your test cases
-	public static Logger log = LogManager.getLogger(BasicVariables.class.getName());
+	public static Logger log = LogManager.getLogger(accountTypeNewCustomer.class.getName());
 	
 	@BeforeMethod
 	public void openBrowser() throws IOException
@@ -300,7 +300,8 @@ public class accountTypeNewCustomer<inherits> extends BasicVariables {
 		addressAndPaymentPage.dropDownCreditCardExpiryYear().sendKeys(addressAndPaymentPage.creditCardExpiryYear());
 		log.info("Entered Credit Card Expiry Year as "+addressAndPaymentPage.creditCardExpiryYear());
 		addressAndPaymentPage.creditCardContinueButton().click();
-		log.info("Clicked on the Weiter button on teh Credit Card page");
+		log.info("Clicked on the Weiter button on the Credit Card page");
+		driver.switchTo().defaultContent();
 		Assert.assertEquals("Glückwunsch! Gute Wahl getroffen", generalPage.textOrderConfirmation().getText());
 		log.info("Order is placed successfully");
 	
