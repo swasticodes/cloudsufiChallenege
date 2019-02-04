@@ -130,7 +130,7 @@ public class accountTypeGuestCustomer<inherits> extends BasicVariables {
 		addressAndPaymentPage.creditCardContinueButton().click();
 		log.info("Clicked on the Weiter button on the Credit Card page");
 		driver.switchTo().defaultContent();
-		Assert.assertEquals("Gl¸ckwunsch! Gute Wahl getroffen", generalPage.textOrderConfirmation().getText());
+		Assert.assertEquals("Gl√ºckwunsch! Gute Wahl getroffen", generalPage.textOrderConfirmation().getText());
 		log.info("Order is placed successfully");
 		
 		log.info("*** Finished Test: guestCustomerCreditCardMethodTest");
@@ -158,9 +158,9 @@ public class accountTypeGuestCustomer<inherits> extends BasicVariables {
 		homePage.linkProducts().click();
 		log.info("Clicked on the Produkte link");
 		homePage.linkBouquets().click();
-		log.info("Clicked on the Blumenstr‰uﬂe link");
+		log.info("Clicked on the Blumenstr√§u√üe link");
 		bouquetsPage.linkBouquetsSecondItem().click();
-		log.info("Selecting the first item on Blumenstr‰uﬂe page");
+		log.info("Selecting the first item on Blumenstr√§u√üe page");
 
 		generalPage.buttonSelectedItemNext().click();
 		log.info("Clicked on the Next button after selecting item");
@@ -219,6 +219,10 @@ public class accountTypeGuestCustomer<inherits> extends BasicVariables {
 		log.info("Clicked on 'Weiter zur Uebersicht' button");
 		orderOverviewPage.buttonToBuy().click();
 		log.info("Clicked on 'Kaufen' button");
+		
+		
+		payPalPage.PayPalLogin();
+		/*
 		payPalPage.textFieldEmail().clear();
 		payPalPage.textFieldEmail().sendKeys(payPalPage.payPalEMail());
 		log.info("Entered the PayPal Email address as "+payPalPage.payPalEMail());
@@ -228,11 +232,13 @@ public class accountTypeGuestCustomer<inherits> extends BasicVariables {
 		log.info("Entered the PayPal Password as <CENSORED>");
 		payPalPage.buttonPaypalLogin().click();
 		log.info("Clicked on the login button on Paypal page");
+		*/
+		
 		driver.switchTo().defaultContent();
 		payPalPage.buttonPaypalPaymentConfirmation().click();
 		driver.switchTo().defaultContent();
 		log.info("Clicked on the 'Jetzt bezahlen' button for payment confirmation");
-		Assert.assertEquals("Gl¸ckwunsch! Gute Wahl getroffen", generalPage.textOrderConfirmation().getText());
+		Assert.assertEquals("Gl√ºckwunsch! Gute Wahl getroffen", generalPage.textOrderConfirmation().getText());
 		log.info("Order is placed successfully");
 		
 		log.info("*** Finished Test: guestCustomerPaypalMethodTest");
@@ -316,10 +322,10 @@ public class accountTypeGuestCustomer<inherits> extends BasicVariables {
 		addressAndPaymentMethodPage.radioButtonInvoice().click();
 		log.info("Selected the payment method as Invoice by clicking radio button Rechnung");
 		registerationPage.continueToOverview().click();
-		log.info("Clicked on Weiter zur ‹bersicht button");
+		log.info("Clicked on Weiter zur √úbersicht button");
 		orderOverviewPage.buttonToBuy().click();
 		log.info("Clicked on Kaufen button");
-		Assert.assertEquals("Gl¸ckwunsch! Gute Wahl getroffen", generalPage.textOrderConfirmation().getText());
+		Assert.assertEquals("Gl√ºckwunsch! Gute Wahl getroffen", generalPage.textOrderConfirmation().getText());
 		log.info("Order is placed successfully");
 	
 		log.info("*** Finished Test: guestCustomerInvoiceMethodTest");
@@ -408,16 +414,16 @@ public class accountTypeGuestCustomer<inherits> extends BasicVariables {
 		addressAndPaymentMethodPage.chkBoxSEPADirectDebit().click();
 		log.info("Checked the Direct debit checkbox");
 		addressAndPaymentMethodPage.checkBox_UseCouponCode().click();
-		log.info("Clicked on the 'Gutscheincode einlˆsen' checkbox");
+		log.info("Clicked on the 'Gutscheincode einl√∂sen' checkbox");
 		addressAndPaymentMethodPage.textField_VoucherCode().sendKeys(addressAndPaymentMethodPage.voucherCode());
 		log.info("Entered the Voucher code as -> " + addressAndPaymentMethodPage.voucherCode());
 		addressAndPaymentMethodPage.buttonSubmitVoucherCode().click();
-		log.info("Clicked on 'Gutscheincode einlˆsen' button");
+		log.info("Clicked on 'Gutscheincode einl√∂sen' button");
 		registerationPage.continueToOverview().click();
-		log.info("Clicked on Weiter zur ‹bersicht button");
+		log.info("Clicked on Weiter zur √úbersicht button");
 		orderOverviewPage.buttonToBuy().click();
 		log.info("Clicked on Kaufen button");
-		Assert.assertEquals("Gl¸ckwunsch! Gute Wahl getroffen", generalPage.textOrderConfirmation().getText());
+		Assert.assertEquals("Gl√ºckwunsch! Gute Wahl getroffen", generalPage.textOrderConfirmation().getText());
 		log.info("Order is placed successfully");
 
 		log.info("*** Finished Test: guestCustomerSEPADebitCardMethodTest");
