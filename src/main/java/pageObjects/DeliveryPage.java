@@ -13,8 +13,8 @@ public class DeliveryPage
 	@FindBy (xpath="//*[@id=\"deliveryPostcode\"]") WebElement textField_DeliveryPostalCode;
 	@FindBy (xpath="//*[@id=\"deliveryPostcodeSubmit\"]") WebElement btn_Next_PostalCode;
 	@FindBy (xpath="//td[contains(@class, \"active day\")]/following-sibling::td[1]") WebElement date_NextDay;
-	@FindBy (xpath="//*[contains(text(), 'Weiter zur Gruﬂkarte')]") WebElement btn_Continue_To_GreeatingCard;
-	@FindBy (xpath="//*[contains(text(), 'Weiter ohne Gruﬂkarte')]") WebElement btn_Continue_Without_GreetingCard;
+	@FindBy (xpath="//*[contains(text(), 'Weiter zur Gru√ükarte')]") WebElement btn_Continue_To_GreeatingCard;
+	@FindBy (xpath="//*[contains(text(), 'Weiter ohne Gru√ükarte')]") WebElement btn_Continue_Without_GreetingCard;
 	@FindBy (xpath="//*[contains(text(), 'Weiter ohne Geschenke')]") WebElement btn_Continue_Without_Gifts;
 	//Comment the above code and uncomment the code below in case of using Page Object model instead of Page Factory Model
 	//By link_Login = By.linkText("Anmelden");

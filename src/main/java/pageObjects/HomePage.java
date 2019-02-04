@@ -14,11 +14,11 @@ public class HomePage
 	public WebDriver driver;
 	
 	@FindBy (linkText="Anmelden") WebElement link_Login;
-	@FindBy (linkText="Anl‰sse") WebElement link_Events;
+	@FindBy (linkText="Anl√§sse") WebElement link_Events;
 	@FindBy (linkText="Geburtstag") WebElement link_Birthday;
-	@FindBy (linkText="Dankeschˆn") WebElement link_ThankYou;
+	@FindBy (linkText="Dankesch√∂n") WebElement link_ThankYou;
 	@FindBy (linkText="Produkte") WebElement link_Products;
-	@FindBy (linkText="Blumenstr‰uﬂe") WebElement link_Bouquets;
+	@FindBy (linkText="Blumenstr√§u√üe") WebElement link_Bouquets;
 	@FindBy (linkText="Topseller") WebElement link_Topseller;
 	@FindBy (linkText="Pflanzen") WebElement link_Plants;
 	//Comment the above code and uncomment the code below in case of using Page Object model instead of Page Factory Model

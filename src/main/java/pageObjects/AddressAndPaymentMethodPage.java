@@ -23,7 +23,7 @@ public class AddressAndPaymentMethodPage
 	@FindBy (name="SubmitToNext") WebElement btn_CreditCard_Continue;
 	@FindBy (xpath="//span[contains(text(),'Rechnung')]") WebElement radioButton_Invoice;
 	@FindBy (xpath="//span[contains(text(),'PayPal')]") WebElement radioButton_PayPal;
-	@FindBy (xpath="//span[contains(text(),'Gutscheincode einlösen')]") WebElement chkBox_UseCouponCode;
+	@FindBy (xpath="//span[contains(text(),'Gutscheincode einlÃ¶sen')]") WebElement chkBox_UseCouponCode;
 	@FindBy (name="voucherCode") WebElement textField_VoucherCode;
 	@FindBy (id="voucherCodeSubmit") WebElement btn_SubmitVoucherCode;
 
