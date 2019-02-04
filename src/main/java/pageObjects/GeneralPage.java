@@ -51,7 +51,7 @@ public class GeneralPage
 			System.out.println("PASSED : Clicked the closed cookie message"); 
 		} catch(NoSuchElementException ex) {
 			if (notFoundIsError) {
-				Assert.assertTrue(false, "Could not clicked on the close cookie message. " + ex.getMessage());
+				Assert.assertTrue(false, "Could not click on the close cookie message. " + ex.getMessage());
 			}
 			//throw ex;
 		}
