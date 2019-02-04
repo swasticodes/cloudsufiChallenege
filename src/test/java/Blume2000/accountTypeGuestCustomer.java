@@ -251,8 +251,6 @@ public class accountTypeGuestCustomer<inherits> extends BasicVariables {
 		OrderOverviewPage orderOverviewPage = new OrderOverviewPage(driver);
 		GreetingCardPage greetingCardPage = new GreetingCardPage(driver);
 		GiftsPage giftsPage = new GiftsPage(driver);
-		BouquetsPage bouquetsPage = new BouquetsPage(driver);
-		PayPalPage payPalPage = new PayPalPage(driver);
 		AddressAndPaymentMethodPage addressAndPaymentMethodPage = new AddressAndPaymentMethodPage(driver);
 
 		ensurePageLoaded();
