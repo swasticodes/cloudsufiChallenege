@@ -18,7 +18,7 @@ public class HomePage
 	@FindBy (linkText="Geburtstag") WebElement link_Birthday;
 	@FindBy (linkText="Dankeschön") WebElement link_ThankYou;
 	@FindBy (linkText="Produkte") WebElement link_Products;
-	@FindBy (linkText="Blumensträuße") WebElement link_Bouquets;
+	@FindBy (xpath = "//a[contains(text(),'Blumensträuße')]") WebElement link_Bouquets;
 	@FindBy (linkText="Topseller") WebElement link_Topseller;
 	@FindBy (linkText="Pflanzen") WebElement link_Plants;
 	//Comment the above code and uncomment the code below in case of using Page Object model instead of Page Factory Model
