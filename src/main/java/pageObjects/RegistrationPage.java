@@ -24,6 +24,12 @@ public class RegistrationPage
 	@FindBy (xpath="//*[contains(text(),'Liefer- und Rechungsanschrift sind identisch')]") WebElement chkBox_SameDeliveryAndInvoiceAddress;
 	@FindBy (xpath="//*[contains(text(), 'Weiter zur Übersicht')]") WebElement btn_Continue_To_Overview;
 	@FindBy (xpath="//button[contains(text(), 'Als Gast bestellen')]") WebElement btn_Order_As_Guest;
+	@FindBy (xpath="//button[contains(text(),'Einloggen')]") WebElement btn_Login;
+	@FindBy (id="loginEmail") WebElement textField_LoginEmail;
+	@FindBy (id="loginPassword") WebElement textField_LoginPassword;
+
+	String registeredUserEmail = "development@blume2000.de";
+	String registeredUserPassword = "development";
 	//Comment the above code and uncomment the code below in case of using Page Object model instead of Page Factory Model
 	//By link_Login = By.linkText("Anmelden");
 
@@ -92,6 +98,26 @@ public class RegistrationPage
 	public WebElement buttonOrderAsGuest()
 	{
 		return btn_Order_As_Guest;
+	}
+	public WebElement buttonLogin()
+	{
+		return btn_Login;
+	}
+	public WebElement textFieldEmail()
+	{
+		return textField_LoginEmail;
+	}
+	public WebElement textFieldPassword()
+	{
+		return textField_LoginPassword;
+	}
+	public String registeredUserEmail()
+	{
+		return registeredUserEmail;
+	}
+	public String registeredUserPassword()
+	{
+		return registeredUserPassword;
 	}
 
 }
