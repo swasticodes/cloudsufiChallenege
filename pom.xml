@@ -8,6 +8,7 @@
   <name>Blume2000Automation</name>
   <url>http://maven.apache.org</url>
  <build>
+
    <resources>
         <resource>
             <directory>src/main/java/resources</directory>
@@ -73,5 +74,8 @@
     <version>2.8.2</version>
   </dependency>
   </dependencies>
+  <properties>
+  	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
 </project>
 
