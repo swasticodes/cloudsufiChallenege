@@ -10,7 +10,7 @@ public class AddressAndPaymentMethodPage
 {
 	public WebDriver driver;
 
-	@FindBy (xpath="//*[@id=\"shippingAndPaymentForm\"]/section[4]/div/div[2]/div[1]/ul/li[3]/a/div/div[1]/label/span[1]") WebElement radioButton_DebitCard_Payment;
+	@FindBy (xpath="//span[contains(text(),'Bankeinzug/Lastschrift')]") WebElement radioButton_DebitCard_Payment;
 	@FindBy (xpath="//*[@id=\"debitCardHolder\"]") WebElement textField_AccountHolder;
 	@FindBy (xpath="//*[@id=\"debitIBAN\"]") WebElement textField_IBAN_Number;
 	@FindBy (xpath="//*[@id=\"debitBIC\"]") WebElement textField_BIC_Number;
@@ -23,12 +23,16 @@ public class AddressAndPaymentMethodPage
 	@FindBy (name="SubmitToNext") WebElement btn_CreditCard_Continue;
 	@FindBy (xpath="//span[contains(text(),'Rechnung')]") WebElement radioButton_Invoice;
 	@FindBy (xpath="//span[contains(text(),'PayPal')]") WebElement radioButton_PayPal;
+	@FindBy (xpath="//span[contains(text(),'Gutscheincode einlösen')]") WebElement chkBox_UseCouponCode;
+	@FindBy (name="voucherCode") WebElement textField_VoucherCode;
+	@FindBy (id="voucherCodeSubmit") WebElement btn_SubmitVoucherCode;
 
 	String SEPAAccountHolder = "Tester";
 	String IBANNumber = "DE12500105170648489890";
 	String CreditCardNumber = "9030100052000000"; //(Visa 9010100052000004, 12/2022, 123) (Amex 9070100052000001, 12/2018, 123)
 	String CreditCardExpiryMonth = "12";
 	String CreditCardExpiryYear = "2022";
+	String VoucherCodeAllItems = "TESTFUERSUSI";
 	//Comment the above code and uncomment the code below in case of using Page Object model instead of Page Factory Model
 	//By link_Login = By.linkText("Anmelden");
 
@@ -113,5 +117,21 @@ public class AddressAndPaymentMethodPage
 	public WebElement radioButtonPayPal()
 	{
 		return radioButton_PayPal;
+	}
+	public WebElement checkBox_UseCouponCode()
+	{
+		return chkBox_UseCouponCode;
+	}
+	public WebElement textField_VoucherCode()
+	{
+		return textField_VoucherCode;
+	}
+	public String voucherCode()
+	{
+		return VoucherCodeAllItems;
+	}
+	public WebElement buttonSubmitVoucherCode()
+	{
+		return btn_SubmitVoucherCode;
 	}
 }
