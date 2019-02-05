@@ -219,15 +219,9 @@ public class accountTypeGuestCustomer<inherits> extends BasicVariables {
 		log.info("Clicked on 'Weiter zur Uebersicht' button");
 		orderOverviewPage.buttonToBuy().click();
 		log.info("Clicked on 'Kaufen' button");
-		payPalPage.textFieldEmail().clear();
-		payPalPage.textFieldEmail().sendKeys(payPalPage.payPalEMail());
-		log.info("Entered the PayPal Email address as "+payPalPage.payPalEMail());
-		payPalPage.buttonPaypalPageContinue().click();
-		log.info("Clicked on the 'Weiter' button to move to the Password field");
-		payPalPage.textFieldPassword().sendKeys(payPalPage.payPalPassword());
-		log.info("Entered the PayPal Password as <CENSORED>");
-		payPalPage.buttonPaypalLogin().click();
-		log.info("Clicked on the login button on Paypal page");
+
+		payPalPage.buttonPaypalLogin();
+
 		driver.switchTo().defaultContent();
 		payPalPage.buttonPaypalPaymentConfirmation().click();
 		driver.switchTo().defaultContent();
