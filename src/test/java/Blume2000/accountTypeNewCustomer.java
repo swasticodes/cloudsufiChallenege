@@ -58,7 +58,7 @@ public class accountTypeNewCustomer<inherits> extends BasicVariables {
 		generalPage.clickCloseCookieMessage(false);
 
 		homePage.linkEvents().click();
-		log.info("Clicked on the Anl√§sse link");
+		log.info("Clicked on the Anl‰sse link");
 		homePage.linkBirthday().click();
 		log.info("Clicked on the Geburtstag link");
 		birthdayPage.linkBirthdayFirstItem().click();
@@ -76,10 +76,10 @@ public class accountTypeNewCustomer<inherits> extends BasicVariables {
 		log.info("Selecting the next day to active day for delivery");
 		Thread.sleep(1000);
 		deliveryPage.continueToGreetingCard().click();
-		log.info("Clicked on Weiter zur Gru√ükarte button");
+		log.info("Clicked on Weiter zur Gruﬂkarte button");
 		Thread.sleep(1000);
 		deliveryPage.continueWithoutGreetingCard().click();
-		log.info("Clicked on Weiter ohne Gru√ükarte button");
+		log.info("Clicked on Weiter ohne Gruﬂkarte button");
 		Thread.sleep(1000);
 		deliveryPage.continueWithoutGifts().click();
 		log.info("Clicked on Weiter ohne Geschenke button");
@@ -101,8 +101,8 @@ public class accountTypeNewCustomer<inherits> extends BasicVariables {
 		log.info("For registeration entered first name as TestFirst");
 		registerationPage.registrationLastName().sendKeys("TestLast");
 		log.info("For registeration entered last name as TestLast");
-		registerationPage.registrationStreet().sendKeys("√úberseering");
-		log.info("For registeration entered street name as √úberseering");
+		registerationPage.registrationStreet().sendKeys("‹berseering");
+		log.info("For registeration entered street name as ‹berseering");
 		registerationPage.registrationStreetNumber().sendKeys("33");
 		log.info("For registeration entered street number as 33");
 		registerationPage.registrationCity().sendKeys("Hamburg");
@@ -111,7 +111,7 @@ public class accountTypeNewCustomer<inherits> extends BasicVariables {
 		registerationPage.copyDeliveryAndInvoiceAddress().click();
 		log.info("Checking the checkbox so that delivery and invoice address are same");
 		registerationPage.continueToOverview().click();
-		log.info("Clicked on Weiter zur √úbersicht button");
+		log.info("Clicked on Weiter zur ‹bersicht button");
 		orderOverviewPage.buttonToBuy().click();
 		log.info("Clicked on Kaufen button");
 
@@ -120,7 +120,7 @@ public class accountTypeNewCustomer<inherits> extends BasicVariables {
 		payPalPage.buttonPaypalPaymentConfirmation().click();
 		driver.switchTo().defaultContent();
 		log.info("Clicked on the Jetzt bezhalen for payment confirmation");
-		Assert.assertEquals("Gl√ºckwunsch! Gute Wahl getroffen", generalPage.textOrderConfirmation().getText());
+		Assert.assertEquals("Gl¸ckwunsch! Gute Wahl getroffen", generalPage.textOrderConfirmation().getText());
 		log.info("Order is placed successfully");
 		
 		log.info("*** Finished Test: newCustomerPaypalPaymentMethodTest");
@@ -145,11 +145,11 @@ public class accountTypeNewCustomer<inherits> extends BasicVariables {
 		generalPage.clickCloseCookieMessage(false);
 
 		homePage.linkEvents().click();
-		log.info("Clicked on the Anl√§sse link");
+		log.info("Clicked on the Anl‰sse link");
 		homePage.linkThankYou().click();
-		log.info("Clicked on the Dankesch√∂n link");
+		log.info("Clicked on the Dankeschˆn link");
 		generalPage.linkFirstItem().click();
-		log.info("Selecting the first item on Dankesch√∂n page");
+		log.info("Selecting the first item on Dankeschˆn page");
 		generalPage.buttonSelectedItemNext().click();
 		log.info("Clicked on the Next button after selecting item");
 		Thread.sleep(1000);
@@ -163,10 +163,10 @@ public class accountTypeNewCustomer<inherits> extends BasicVariables {
 		log.info("Selecting the next day to active day for delivery");
 		Thread.sleep(1000);
 		deliveryPage.continueToGreetingCard().click();
-		log.info("Clicked on Weiter zur Gru√ükarte button");
+		log.info("Clicked on Weiter zur Gruﬂkarte button");
 		Thread.sleep(1000);
 		deliveryPage.continueWithoutGreetingCard().click();
-		log.info("Clicked on Weiter ohne Gru√ükarte button");
+		log.info("Clicked on Weiter ohne Gruﬂkarte button");
 		Thread.sleep(1000);
 		deliveryPage.continueWithoutGifts().click();
 		log.info("Clicked on Weiter ohne Geschenke button");
@@ -188,8 +188,8 @@ public class accountTypeNewCustomer<inherits> extends BasicVariables {
 		log.info("For registeration entered first name as TestFirst");
 		registerationPage.registrationLastName().sendKeys("TestLast");
 		log.info("For registeration entered last name as TestLast");
-		registerationPage.registrationStreet().sendKeys("√úberseering");
-		log.info("For registeration entered street name as √úberseering");
+		registerationPage.registrationStreet().sendKeys("‹berseering");
+		log.info("For registeration entered street name as ‹berseering");
 		registerationPage.registrationStreetNumber().sendKeys("33");
 		log.info("For registeration entered street number as 33");
 		registerationPage.registrationCity().sendKeys("Hamburg");
@@ -206,10 +206,10 @@ public class accountTypeNewCustomer<inherits> extends BasicVariables {
 		addressAndPaymentPage.chkBoxSEPADirectDebit().click();
 		log.info("Checked the Direct debit checkbox");
 		registerationPage.continueToOverview().click();
-		log.info("Clicked on Weiter zur √úbersicht button");
+		log.info("Clicked on Weiter zur ‹bersicht button");
 		orderOverviewPage.buttonToBuy().click();
 		log.info("Clicked on Kaufen button");
-		Assert.assertEquals("Gl√ºckwunsch! Gute Wahl getroffen", generalPage.textOrderConfirmation().getText());
+		Assert.assertEquals("Gl¸ckwunsch! Gute Wahl getroffen", generalPage.textOrderConfirmation().getText());
 		log.info("Order is placed successfully");
 		
 		log.info("*** Finished Test: newCustomerSEPADirectDebitMethodTest");
@@ -236,9 +236,9 @@ public class accountTypeNewCustomer<inherits> extends BasicVariables {
 		homePage.linkProducts().click();
 		log.info("Clicked on the Produkte link");
 		homePage.linkBouquets().click();
-		log.info("Clicked on the Blumenstr√§u√üe link");
+		log.info("Clicked on the Blumenstr‰uﬂe link");
 		generalPage.linkFirstItem().click();
-		log.info("Selecting the first item on Blumenstr√§u√üe page");
+		log.info("Selecting the first item on Blumenstr‰uﬂe page");
 		generalPage.buttonSelectedItemNext().click();
 		log.info("Clicked on the Next button after selecting item");
 		Thread.sleep(1000);
@@ -252,10 +252,10 @@ public class accountTypeNewCustomer<inherits> extends BasicVariables {
 		log.info("Selecting the next day to active day for delivery");
 		Thread.sleep(1000);
 		deliveryPage.continueToGreetingCard().click();
-		log.info("Clicked on Weiter zur Gru√ükarte button");
+		log.info("Clicked on Weiter zur Gruﬂkarte button");
 		Thread.sleep(1000);
 		deliveryPage.continueWithoutGreetingCard().click();
-		log.info("Clicked on Weiter ohne Gru√ükarte button");
+		log.info("Clicked on Weiter ohne Gruﬂkarte button");
 		Thread.sleep(1000);
 		deliveryPage.continueWithoutGifts().click();
 		log.info("Clicked on Weiter ohne Geschenke button");
@@ -277,8 +277,8 @@ public class accountTypeNewCustomer<inherits> extends BasicVariables {
 		log.info("For registeration entered first name as TestFirst");
 		registerationPage.registrationLastName().sendKeys("TestLast");
 		log.info("For registeration entered last name as TestLast");
-		registerationPage.registrationStreet().sendKeys("√úberseering");
-		log.info("For registeration entered street name as √úberseering");
+		registerationPage.registrationStreet().sendKeys("‹berseering");
+		log.info("For registeration entered street name as ‹berseering");
 		registerationPage.registrationStreetNumber().sendKeys("33");
 		log.info("For registeration entered street number as 33");
 		registerationPage.registrationCity().sendKeys("Hamburg");
@@ -289,7 +289,7 @@ public class accountTypeNewCustomer<inherits> extends BasicVariables {
 		addressAndPaymentPage.radioButtonCreditCard().click();
 		log.info("Selected the payment method as Credit Card by clicking radio button Kreditkarte");
 		registerationPage.continueToOverview().click();
-		log.info("Clicked on Weiter zur √úbersicht button");
+		log.info("Clicked on Weiter zur ‹bersicht button");
 		orderOverviewPage.buttonToBuy().click();
 		log.info("Clicked on Kaufen button");
 		driver.switchTo().frame(0);
@@ -303,7 +303,7 @@ public class accountTypeNewCustomer<inherits> extends BasicVariables {
 		addressAndPaymentPage.creditCardContinueButton().click();
 		log.info("Clicked on the Weiter button on the Credit Card page");
 		driver.switchTo().defaultContent();
-		Assert.assertEquals("Gl√ºckwunsch! Gute Wahl getroffen", generalPage.textOrderConfirmation().getText());
+		Assert.assertEquals("Gl¸ckwunsch! Gute Wahl getroffen", generalPage.textOrderConfirmation().getText());
 		log.info("Order is placed successfully");
 	
 		log.info("*** Finished Test: newCustomerCreditCardMethodTest");
@@ -329,7 +329,7 @@ public class accountTypeNewCustomer<inherits> extends BasicVariables {
 		homePage.linkTopseller().click();
 		log.info("Clicked on the Topseller link");
 		generalPage.linkFirstItem().click();
-		log.info("Selecting the first item on Blumenstr√§u√üe page");
+		log.info("Selecting the first item on Blumenstr‰uﬂe page");
 		generalPage.buttonSelectedItemNext().click();
 		log.info("Clicked on the Next button after selecting item");
 		Thread.sleep(1000);
@@ -343,10 +343,10 @@ public class accountTypeNewCustomer<inherits> extends BasicVariables {
 		log.info("Selecting the next day to active day for delivery");
 		Thread.sleep(1000);
 		deliveryPage.continueToGreetingCard().click();
-		log.info("Clicked on Weiter zur Gru√ükarte button");
+		log.info("Clicked on Weiter zur Gruﬂkarte button");
 		Thread.sleep(1000);
 		deliveryPage.continueWithoutGreetingCard().click();
-		log.info("Clicked on Weiter ohne Gru√ükarte button");
+		log.info("Clicked on Weiter ohne Gruﬂkarte button");
 		Thread.sleep(1000);
 		deliveryPage.continueWithoutGifts().click();
 		log.info("Clicked on Weiter ohne Geschenke button");
@@ -368,8 +368,8 @@ public class accountTypeNewCustomer<inherits> extends BasicVariables {
 		log.info("For registeration entered first name as TestFirst");
 		registerationPage.registrationLastName().sendKeys("TestLast");
 		log.info("For registeration entered last name as TestLast");
-		registerationPage.registrationStreet().sendKeys("√úberseering");
-		log.info("For registeration entered street name as √úberseering");
+		registerationPage.registrationStreet().sendKeys("‹berseering");
+		log.info("For registeration entered street name as ‹berseering");
 		registerationPage.registrationStreetNumber().sendKeys("33");
 		log.info("For registeration entered street number as 33");
 		registerationPage.registrationCity().sendKeys("Hamburg");
@@ -380,10 +380,10 @@ public class accountTypeNewCustomer<inherits> extends BasicVariables {
 		addressAndPaymentPage.radioButtonInvoice().click();
 		log.info("Selected the payment method as Invoice by clicking radio button Rechnung");
 		registerationPage.continueToOverview().click();
-		log.info("Clicked on Weiter zur √úbersicht button");
+		log.info("Clicked on Weiter zur ‹bersicht button");
 		orderOverviewPage.buttonToBuy().click();
 		log.info("Clicked on Kaufen button");
-		Assert.assertEquals("Gl√ºckwunsch! Gute Wahl getroffen", generalPage.textOrderConfirmation().getText());
+		Assert.assertEquals("Gl¸ckwunsch! Gute Wahl getroffen", generalPage.textOrderConfirmation().getText());
 		log.info("Order is placed successfully");
 		
 		log.info("*** Finished Test: newCustomerInvoiceMethodTest");
