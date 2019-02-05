@@ -22,7 +22,7 @@ public class RegistrationPage
 	@FindBy (id="shippingCity") WebElement textField_Shipping_City;
 	@FindBy (id="shippingCountry") WebElement textField_Shipping_Country;
 	@FindBy (xpath="//*[contains(text(),'Liefer- und Rechungsanschrift sind identisch')]") WebElement chkBox_SameDeliveryAndInvoiceAddress;
-	@FindBy (xpath="//*[contains(text(), 'Weiter zur Ãœbersicht')]") WebElement btn_Continue_To_Overview;
+	@FindBy (xpath="//*[contains(text(), 'Weiter zur Übersicht')]") WebElement btn_Continue_To_Overview;
 	@FindBy (xpath="//button[contains(text(), 'Als Gast bestellen')]") WebElement btn_Order_As_Guest;
 	@FindBy (xpath="//button[contains(text(),'Einloggen')]") WebElement btn_Login;
 	@FindBy (id="loginEmail") WebElement textField_LoginEmail;
