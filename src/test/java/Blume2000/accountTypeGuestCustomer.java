@@ -220,7 +220,7 @@ public class accountTypeGuestCustomer<inherits> extends BasicVariables {
 		orderOverviewPage.buttonToBuy().click();
 		log.info("Clicked on 'Kaufen' button");
 
-		payPalPage.buttonPaypalLogin();
+		payPalPage.PayPalLogin();
 
 		driver.switchTo().defaultContent();
 		payPalPage.buttonPaypalPaymentConfirmation().click();
