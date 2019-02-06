@@ -15,4 +15,9 @@
 		<class name= "Blume2000.accountTypeGuestCustomer"/>
     </classes>
     </test>
+    <test name="Existing User Tests">
+    <classes>
+		<class name= "Blume2000.accountTypeExistingCustomer"/>
+    </classes>
+    </test>
 </suite> <!-- Suite -->
