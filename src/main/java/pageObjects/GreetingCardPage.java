@@ -12,7 +12,7 @@ public class GreetingCardPage
 	
 	@FindBy (xpath="//*[contains(@class,'greeting-card-list d-flex flex-wrap justify-content-around')]/div") WebElement link_GreetingCrad_First_Item;
 	@FindBy (xpath="//*[@id=\"greetingTextForm\"]") WebElement textBox_GreetingText;
-	@FindBy (xpath="//*[@id=\"submitGreetingCard\"]") WebElement btn_Continue_To_Gifts;
+	@FindBy (xpath="//button[@id=\"submitGreetingCard\"]") WebElement btn_Continue_To_Gifts;
 	//Comment the above code and uncomment the code below in case of using Page Object model instead of Page Factory Model
 	//By link_Login = By.linkText("Anmelden");
 	
