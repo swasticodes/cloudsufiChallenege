@@ -225,6 +225,7 @@ public class accountTypeExistingCustomer<inherits> extends BasicVariables {
 			log.info("No need for logging out.");
 		}
 		driver.quit();
+		log.info("---------------Cleaned Up The Setup--------------");
 	}
 
 	@AfterTest

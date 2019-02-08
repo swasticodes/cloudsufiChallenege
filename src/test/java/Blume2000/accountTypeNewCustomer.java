@@ -413,6 +413,7 @@ public class accountTypeNewCustomer<inherits> extends BasicVariables {
 	{
 		//releasing the memory
 		driver = null;
+		log.info("---------------Cleaned Up The Setup--------------");
 	}
 
 }

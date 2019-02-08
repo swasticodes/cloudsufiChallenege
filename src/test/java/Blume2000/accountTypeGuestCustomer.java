@@ -423,6 +423,7 @@ public class accountTypeGuestCustomer<inherits> extends BasicVariables {
 		driver.quit();
 		//releasing the memory
 		driver = null;
+		log.info("---------------Cleaned Up The Setup--------------");
 	}
 
 }
