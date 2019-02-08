@@ -14,6 +14,7 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxProfile;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
@@ -88,7 +89,9 @@ public class BasicVariables {
 		else if (browserName.equals("firefox"))
 		{
 			 System.setProperty("webdriver.gecko.driver", System.getProperty("user.dir")+"\\src\\main\\java\\resources\\geckodriver.exe");
-			 driver = new FirefoxDriver();
+			 FirefoxProfile profile = new FirefoxProfile();
+			 profile.setPreference("devtools.console.stdout.content", true);
+			 driver = new FirefoxDriver(profile);
 			//execute in firefox browser
 		}
 		else if (browserName.equals("IE"))
