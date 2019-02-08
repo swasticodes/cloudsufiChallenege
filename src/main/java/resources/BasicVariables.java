@@ -82,7 +82,6 @@ public class BasicVariables {
 		if(browserName.equals("chrome"))
 		{
 			System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir")+"\\src\\main\\java\\resources\\chromedriver.exe");
-			//System.setProperty("webdriver.chrome.driver", System.getProperty("C:\\Users\\Comp-7\\Desktop\\chromedriver.exe"));
 			driver = new ChromeDriver();
 			//execute in chrome driver
 		}
