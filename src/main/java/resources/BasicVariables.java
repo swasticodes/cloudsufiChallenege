@@ -101,7 +101,10 @@ public class BasicVariables {
 		else if (browserName.equals("IE"))
 		{
 			System.setProperty("webdriver.ie.driver",System.getProperty("user.dir")+"\\src\\main\\java\\resources\\IEDriverServer.exe");
-			driver = new InternetExplorerDriver();
+			DesiredCapabilities capabilities = DesiredCapabilities.internetExplorer();
+			capabilities.setCapability(InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS, true);
+			capabilities.setCapability("requireWindowFocus", true);
+			driver = new InternetExplorerDriver(capabilities);
 			//execute in IE browser
 		}
 		else if (browserName.equals("mobile"))
