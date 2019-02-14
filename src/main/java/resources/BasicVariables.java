@@ -57,11 +57,12 @@ public class BasicVariables {
 	{
 		String browserName=prop.getProperty("browser");
 		DesiredCapabilities capabilities = null;
-		LoggingPreferences logPrefs = new LoggingPreferences();
-		logPrefs.enable(LogType.PERFORMANCE, Level.ALL);
 		if(browserName.equals("chrome"))
 		{
+			LoggingPreferences logPrefs = new LoggingPreferences();
+			logPrefs.enable(LogType.PERFORMANCE, Level.ALL);
 			capabilities = DesiredCapabilities.chrome();
+			capabilities.setCapability(CapabilityType.LOGGING_PREFS, logPrefs);
 		}
 		else if (browserName.equals("firefox"))
 		{
@@ -84,7 +85,6 @@ public class BasicVariables {
 		}
 		
 		try {
-			capabilities.setCapability(CapabilityType.LOGGING_PREFS, logPrefs);
 			driver = new RemoteWebDriver(new URL(remoteHost), capabilities);
 		} catch(MalformedURLException ex) {
 			throw new IOException("Could not open remote host");
