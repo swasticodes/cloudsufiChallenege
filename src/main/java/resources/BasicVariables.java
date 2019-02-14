@@ -23,6 +23,8 @@ import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.logging.LogEntries;
 import org.openqa.selenium.logging.LogEntry;
 import org.openqa.selenium.logging.LogType;
+import org.openqa.selenium.logging.LoggingPreferences;
+import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
@@ -54,21 +56,27 @@ public class BasicVariables {
 	{
 		String browserName=prop.getProperty("browser");
 		DesiredCapabilities capabilities = null;
+		LoggingPreferences logPrefs = new LoggingPreferences();
+		logPrefs.enable(LogType.PERFORMANCE, Level.ALL);
 		if(browserName.equals("chrome"))
 		{
 			capabilities = DesiredCapabilities.chrome();
+			capabilities.setCapability(CapabilityType.LOGGING_PREFS, logPrefs);
 		}
 		else if (browserName.equals("firefox"))
 		{
 			capabilities = DesiredCapabilities.firefox();
+			capabilities.setCapability(CapabilityType.LOGGING_PREFS, logPrefs);
 		}
 		else if (browserName.equals("IE"))
 		{
 			capabilities = DesiredCapabilities.internetExplorer();
+			capabilities.setCapability(CapabilityType.LOGGING_PREFS, logPrefs);
 		}
 		else if (browserName.equals("edge"))
 		{
 			capabilities = DesiredCapabilities.edge();
+			capabilities.setCapability(CapabilityType.LOGGING_PREFS, logPrefs);
 		}
 		else
 		{
