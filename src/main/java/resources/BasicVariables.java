@@ -67,6 +67,9 @@ public class BasicVariables {
 		else if (browserName.equals("firefox"))
 		{
 			capabilities = DesiredCapabilities.firefox();
+			FirefoxProfile profile = new FirefoxProfile();
+			profile.setPreference("devtools.console.stdout.content", true);
+			capabilities.setCapability(FirefoxDriver.PROFILE, profile);
 		}
 		else if (browserName.equals("IE"))
 		{
