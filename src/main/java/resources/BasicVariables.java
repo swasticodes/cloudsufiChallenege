@@ -5,6 +5,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.sql.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
@@ -19,6 +20,9 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxProfile;
 import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.logging.LogEntries;
+import org.openqa.selenium.logging.LogEntry;
+import org.openqa.selenium.logging.LogType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
@@ -148,4 +152,12 @@ public class BasicVariables {
 		
 		driver.manage().timeouts().implicitlyWait(secsToWait, TimeUnit.SECONDS);
 	}
+	 public void logBrowserConsoleLogs() {
+	        System.out.println("================== BROWSER LOGS =======================");
+	        LogEntries logEntries = driver.manage().logs().get(LogType.BROWSER);
+	        for (LogEntry entry : logEntries) {
+	            System.out.println(new Date(entry.getTimestamp()) + " " + entry.getLevel() + " " + entry.getMessage());
+	        }
+	        System.out.println("===============END OF BROWSER LOGS======================");
+	    }
 }
