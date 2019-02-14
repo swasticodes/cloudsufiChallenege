@@ -10,6 +10,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
+import java.util.logging.Level;
 
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
@@ -61,22 +62,18 @@ public class BasicVariables {
 		if(browserName.equals("chrome"))
 		{
 			capabilities = DesiredCapabilities.chrome();
-			capabilities.setCapability(CapabilityType.LOGGING_PREFS, logPrefs);
 		}
 		else if (browserName.equals("firefox"))
 		{
 			capabilities = DesiredCapabilities.firefox();
-			capabilities.setCapability(CapabilityType.LOGGING_PREFS, logPrefs);
 		}
 		else if (browserName.equals("IE"))
 		{
 			capabilities = DesiredCapabilities.internetExplorer();
-			capabilities.setCapability(CapabilityType.LOGGING_PREFS, logPrefs);
 		}
 		else if (browserName.equals("edge"))
 		{
 			capabilities = DesiredCapabilities.edge();
-			capabilities.setCapability(CapabilityType.LOGGING_PREFS, logPrefs);
 		}
 		else
 		{
@@ -85,6 +82,7 @@ public class BasicVariables {
 		}
 		
 		try {
+			capabilities.setCapability(CapabilityType.LOGGING_PREFS, logPrefs);
 			driver = new RemoteWebDriver(new URL(remoteHost), capabilities);
 		} catch(MalformedURLException ex) {
 			throw new IOException("Could not open remote host");
