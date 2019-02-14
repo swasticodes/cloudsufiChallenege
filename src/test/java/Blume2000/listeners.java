@@ -34,7 +34,7 @@ public class listeners implements ITestListener{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		bv.logBrowserConsoleLogs();
+		//bv.logBrowserConsoleLogs();
 	}
 
 	public void onTestSkipped(ITestResult arg0) {
