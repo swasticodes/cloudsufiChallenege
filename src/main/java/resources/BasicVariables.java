@@ -164,11 +164,13 @@ public class BasicVariables {
 		driver.manage().timeouts().implicitlyWait(secsToWait, TimeUnit.SECONDS);
 	}
 	 public void logBrowserConsoleLogs() {
-	        System.out.println("================== BROWSER LOGS =======================");
-	        LogEntries logEntries = driver.manage().logs().get(LogType.BROWSER);
-	        for (LogEntry entry : logEntries) {
-	            System.out.println(new Date(entry.getTimestamp()) + " " + entry.getLevel() + " " + entry.getMessage());
+		 String browserName=prop.getProperty("browser");
+		 if (browserName.equals("chrome"))
+	     System.out.println("================== BROWSER LOGS =======================");
+	     LogEntries logEntries = driver.manage().logs().get(LogType.BROWSER);
+	     for (LogEntry entry : logEntries) {
+	          System.out.println(new Date(entry.getTimestamp()) + " " + entry.getLevel() + " " + entry.getMessage());
 	        }
-	        System.out.println("===============END OF BROWSER LOGS======================");
+	     System.out.println("===============END OF BROWSER LOGS======================");
 	    }
 }
