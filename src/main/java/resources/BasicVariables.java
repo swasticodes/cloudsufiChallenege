@@ -163,13 +163,16 @@ public class BasicVariables {
 		
 		driver.manage().timeouts().implicitlyWait(secsToWait, TimeUnit.SECONDS);
 	}
-	 public void logBrowserConsoleLogs() {
-		 	String browserName=prop.getProperty("browser");
-		 	if (browserName.equals("chrome")) {
-	        System.out.println("================== BROWSER LOGS =======================");
-	        LogEntries logEntries = driver.manage().logs().get(LogType.BROWSER);
-	        for (LogEntry entry : logEntries) {
-	            System.out.println(new Date(entry.getTimestamp()) + " " + entry.getLevel() + " " + entry.getMessage());
+	 public void logBrowserConsoleLogs() throws IOException {
+		 prop= new Properties();
+		 FileInputStream fis=new FileInputStream(System.getProperty("user.dir")+"\\src\\main\\java\\resources\\data.properties");
+		 prop.load(fis);
+		 String browserName=prop.getProperty("browser");
+		 if (browserName.equals("chrome")) {
+	     System.out.println("================== BROWSER LOGS =======================");
+	     LogEntries logEntries = driver.manage().logs().get(LogType.BROWSER);
+	     for (LogEntry entry : logEntries) {
+	    	 System.out.println(new Date(entry.getTimestamp()) + " " + entry.getLevel() + " " + entry.getMessage());
 	        }
 	        System.out.println("===============END OF BROWSER LOGS======================");
 		 	}

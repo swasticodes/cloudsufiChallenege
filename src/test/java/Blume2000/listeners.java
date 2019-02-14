@@ -30,11 +30,11 @@ public class listeners implements ITestListener{
 	public void onTestFailure(ITestResult result) {
 		try {
 			bv.takeScreenshot(result.getName());
+			bv.logBrowserConsoleLogs();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		//bv.logBrowserConsoleLogs();
 	}
 
 	public void onTestSkipped(ITestResult arg0) {
