@@ -70,6 +70,8 @@ public class BasicVariables {
 		else if (browserName.equals("IE"))
 		{
 			capabilities = DesiredCapabilities.internetExplorer();
+			capabilities.setCapability(InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS, true);
+			capabilities.setCapability("requireWindowFocus", true);
 		}
 		else if (browserName.equals("edge"))
 		{
