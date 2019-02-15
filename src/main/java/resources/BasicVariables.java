@@ -81,6 +81,17 @@ public class BasicVariables {
 		{
 			capabilities = DesiredCapabilities.edge();
 		}
+		else if (browserName.equals("mobile"))
+		{
+			capabilities = DesiredCapabilities.chrome();
+			System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir")+"\\src\\main\\java\\resources\\chromedriver.exe");
+			Map<String, String> mobileEmulation = new HashMap<String, String>();
+			mobileEmulation.put("deviceName", "Nexus 5");
+
+			ChromeOptions chromeOptions = new ChromeOptions();
+			chromeOptions.setExperimentalOption("mobileEmulation", mobileEmulation);
+			capabilities.setCapability(ChromeOptions.CAPABILITY, chromeOptions);
+		}
 		else
 		{
 			//Print Message that invalid driver is selected
