@@ -389,6 +389,92 @@ public class accountTypeNewCustomer<inherits> extends BasicVariables {
 		log.info("*** Finished Test: newCustomerInvoiceMethodTest");
 	}
 
+	@Test
+	public void newCustomerRatePayMethodTest() throws InterruptedException
+	{
+		log.info("*** Starting Test: newCustomerRatePayMethodTest");
+
+		//Creating the Objects below to access the functions
+		HomePage homePage = new HomePage(driver);
+		GeneralPage generalPage = new GeneralPage(driver);
+		DeliveryPage deliveryPage = new DeliveryPage(driver);
+		LoginPage loginPage = new LoginPage(driver);
+		RegistrationPage registerationPage = new RegistrationPage(driver);
+		AddressAndPaymentMethodPage addressAndPaymentPage = new AddressAndPaymentMethodPage(driver);
+		OrderOverviewPage orderOverviewPage = new OrderOverviewPage(driver);
+
+		ensurePageLoaded();
+
+		generalPage.clickCloseCookieMessage(false);
+		homePage.linkProducts().click();
+		log.info("Clicked on the Produkte link");
+		homePage.linkPlants().click();
+		log.info("Clicked on the Pflanzen link");
+		generalPage.linkFirstItem().click();
+		log.info("Selecting the first item on Pflanzen page");
+		generalPage.buttonSelectedItemNext().click();
+		log.info("Clicked on the Next button after selecting item");
+		Thread.sleep(1000);
+		deliveryPage.textFieldDeliveryPostalCode().sendKeys("49536");
+		log.info("Entered the delivery postal code 49536");
+		deliveryPage.buttonNextPostalCode().click();
+		log.info("Clicked the next button after entering Postal Code");
+		deliveryPage.dayActiveDay().click();
+		log.info("Selecting the active day for delivery");
+		Thread.sleep(1000);
+		deliveryPage.continueToGreetingCard().click();
+		log.info("Clicked on Weiter zur Grußkarte button");
+		Thread.sleep(1000);
+		deliveryPage.continueWithoutGreetingCard().click();
+		log.info("Clicked on Weiter ohne Grußkarte button");
+		Thread.sleep(1000);
+		deliveryPage.continueWithoutGifts().click();
+		log.info("Clicked on Weiter ohne Geschenke button");
+		//scrolling the register button into view so that it is not hidden behind the confirmation for cookie message
+		((JavascriptExecutor) driver).executeScript("window.scrollBy(0,120)");
+		loginPage.buttonRegister().click();
+		log.info("Clicked on the Register Button");
+		//Creating a random email id to register user
+		String emailId = RandomStringUtils.randomAlphabetic(8);
+		registerationPage.registrationEmail().sendKeys(emailId+"@testemail.com");
+		log.info("For registeration entered email id "+ emailId);
+		registerationPage.registrationPassword().sendKeys("123456");
+		log.info("For registeration entered password as 123456");
+		registerationPage.registrationConfrimPassword().sendKeys("123456");
+		log.info("For registeration confirmed password as 123456");
+		registerationPage.registrationSalutation().click();
+		log.info("For registration selected salutation as Herr");
+		registerationPage.registrationFirstName().sendKeys("Han");
+		log.info("For registeration entered first name as Han");
+		registerationPage.registrationLastName().sendKeys("Solo");
+		log.info("For registeration entered last name as Solo");
+		registerationPage.registrationStreet().sendKeys("Sienebrink");
+		log.info("For registeration entered street name as Sienebrink");
+		registerationPage.registrationStreetNumber().sendKeys("7");
+		log.info("For registeration entered street number as 7");
+		registerationPage.registrationCity().sendKeys("Lienen");
+		log.info("For registeration entered city as Lienen");
+		registerationPage.copyDeliveryAndInvoiceAddress().click();
+		log.info("Checking the checkbox so that delivery and invoice address are same");
+		addressAndPaymentPage.radioButtonRatepay().click();
+		log.info("Selected the payment method as Ratepay by clicking radio button Ratepay Rechnung");
+		addressAndPaymentPage.dropdownBirthDate().sendKeys(addressAndPaymentPage.ratepayBirthDate());
+		addressAndPaymentPage.dropdownBirthMonth().sendKeys(addressAndPaymentPage.ratepayBirthMonth());
+		addressAndPaymentPage.dropdownBirthYear().sendKeys(addressAndPaymentPage.ratepayBirthYear());
+		addressAndPaymentPage.textFieldRatepayTelephoneNumber().sendKeys(addressAndPaymentPage.ratepayTelephoneNumber());
+		Thread.sleep(1000);
+		addressAndPaymentPage.checkBoxInvoiceConsentDeclaration().click();
+		log.info("Checked the Consent Declaration checkbox");
+		registerationPage.continueToOverview().click();
+		log.info("Clicked on Weiter zur Übersicht button");
+		orderOverviewPage.buttonToBuy().click();
+		log.info("Clicked on Kaufen button");
+		Assert.assertEquals("Glückwunsch! Gute Wahl getroffen", generalPage.textOrderConfirmation().getText());
+		log.info("Order is placed successfully");
+
+		log.info("*** Finished Test: newCustomerRatePayMethodTest");
+	}
+
 	@AfterMethod
 	public void logout()
 	{

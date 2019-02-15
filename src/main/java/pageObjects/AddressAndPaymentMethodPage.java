@@ -21,11 +21,16 @@ public class AddressAndPaymentMethodPage
 	@FindBy (xpath="//*[@id=\"sfpCardExpiryYear\"]") WebElement dropDown_CreditCard_ExpiryYear;
 	@FindBy (xpath="//*[@id=\"sfpCardNumber\"]") WebElement textField_CreditCardNumber;
 	@FindBy (name="SubmitToNext") WebElement btn_CreditCard_Continue;
-	@FindBy (xpath="//span[contains(text(),'Rechnung')]") WebElement radioButton_Invoice;
+	@FindBy (xpath="//span[contains(text(),'Ratepay Rechnung')]") WebElement radioButton_Ratepay;
 	@FindBy (xpath="//span[contains(text(),'PayPal')]") WebElement radioButton_PayPal;
 	@FindBy (xpath="//span[contains(text(),'Gutscheincode einlösen')]") WebElement chkBox_UseCouponCode;
 	@FindBy (name="voucherCode") WebElement textField_VoucherCode;
 	@FindBy (id="voucherCodeSubmit") WebElement btn_SubmitVoucherCode;
+	@FindBy (xpath="//span[contains(text(),'Abwicklung des Rechnungskaufs')]") WebElement chkBox_InvoiceConsentDeclaration;
+	@FindBy (id="invoiceBirthDay") WebElement dropdown_BirthDate;
+	@FindBy (id="invoiceBirthMonth") WebElement dropdown_BirthMonth;
+	@FindBy (id="invoiceBirthYear") WebElement dropdown_BirthYear;
+	@FindBy (id="invoicePhone") WebElement textField_RatepayTelephoneNumber;
 
 	String SEPAAccountHolder = "Tester";
 	String IBANNumber = "DE12500105170648489890";
@@ -33,6 +38,10 @@ public class AddressAndPaymentMethodPage
 	String CreditCardExpiryMonth = "12";
 	String CreditCardExpiryYear = "2022";
 	String VoucherCodeAllItems = "TESTFUERSUSI";
+	String RatePayBirtDate = "27";
+	String RatePayBirtMonth = "Mai";
+	String RatePayBirtYear = "1956";
+	String RatepayTelephoneNumber = "054837527";
 	//Comment the above code and uncomment the code below in case of using Page Object model instead of Page Factory Model
 	//By link_Login = By.linkText("Anmelden");
 
@@ -110,9 +119,9 @@ public class AddressAndPaymentMethodPage
 	{
 		return btn_CreditCard_Continue;
 	}
-	public WebElement radioButtonInvoice()
+	public WebElement radioButtonRatepay()
 	{
-		return radioButton_Invoice;
+		return radioButton_Ratepay;
 	}
 	public WebElement radioButtonPayPal()
 	{
@@ -134,4 +143,41 @@ public class AddressAndPaymentMethodPage
 	{
 		return btn_SubmitVoucherCode;
 	}
+	public WebElement checkBoxInvoiceConsentDeclaration()
+	{
+		return chkBox_InvoiceConsentDeclaration;
+	}
+	public WebElement dropdownBirthDate()
+	{
+		return dropdown_BirthDate;
+	}
+	public WebElement dropdownBirthMonth()
+	{
+		return dropdown_BirthMonth;
+	}
+	public WebElement dropdownBirthYear()
+	{
+		return dropdown_BirthYear;
+	}
+	public WebElement textFieldRatepayTelephoneNumber()
+	{
+		return textField_RatepayTelephoneNumber;
+	}
+	public String ratepayBirthDate()
+	{
+		return RatePayBirtDate;
+	}
+	public String ratepayBirthMonth()
+	{
+		return RatePayBirtMonth;
+	}
+	public String ratepayBirthYear()
+	{
+		return RatePayBirtYear;
+	}
+	public String ratepayTelephoneNumber()
+	{
+		return RatepayTelephoneNumber;
+	}
+
 }
