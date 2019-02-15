@@ -72,8 +72,8 @@ public class accountTypeNewCustomer<inherits> extends BasicVariables {
 		log.info("Entered the delivery postal code 22297");
 		deliveryPage.buttonNextPostalCode().click();
 		log.info("Clicked the next button after entering Postal Code");
-		deliveryPage.dayNextDay().click();
-		log.info("Selecting the next day to active day for delivery");
+		deliveryPage.dayActiveDay().click();
+		log.info("Selecting the active day for delivery");
 		Thread.sleep(1000);
 		deliveryPage.continueToGreetingCard().click();
 		log.info("Clicked on Weiter zur Gruﬂkarte button");
@@ -159,8 +159,8 @@ public class accountTypeNewCustomer<inherits> extends BasicVariables {
 		log.info("Entered the delivery postal code 22297");
 		deliveryPage.buttonNextPostalCode().click();
 		log.info("Clicked the next button after entering Postal Code");
-		deliveryPage.dayNextDay().click();
-		log.info("Selecting the next day to active day for delivery");
+		deliveryPage.dayActiveDay().click();
+		log.info("Selecting the active day for delivery");
 		Thread.sleep(1000);
 		deliveryPage.continueToGreetingCard().click();
 		log.info("Clicked on Weiter zur Gruﬂkarte button");
@@ -248,8 +248,8 @@ public class accountTypeNewCustomer<inherits> extends BasicVariables {
 		log.info("Entered the delivery postal code 22297");
 		deliveryPage.buttonNextPostalCode().click();
 		log.info("Clicked the next button after entering Postal Code");
-		deliveryPage.dayNextDay().click();
-		log.info("Selecting the next day to active day for delivery");
+		deliveryPage.dayActiveDay().click();
+		log.info("Selecting the active day for delivery");
 		Thread.sleep(1000);
 		deliveryPage.continueToGreetingCard().click();
 		log.info("Clicked on Weiter zur Gruﬂkarte button");
@@ -339,8 +339,8 @@ public class accountTypeNewCustomer<inherits> extends BasicVariables {
 		log.info("Entered the delivery postal code 22297");
 		deliveryPage.buttonNextPostalCode().click();
 		log.info("Clicked the next button after entering Postal Code");
-		deliveryPage.dayNextDay().click();
-		log.info("Selecting the next day to active day for delivery");
+		deliveryPage.dayActiveDay().click();
+		log.info("Selecting the active day for delivery");
 		Thread.sleep(1000);
 		deliveryPage.continueToGreetingCard().click();
 		log.info("Clicked on Weiter zur Gruﬂkarte button");
