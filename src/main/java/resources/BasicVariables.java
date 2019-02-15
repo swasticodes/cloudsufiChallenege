@@ -109,11 +109,16 @@ public class BasicVariables {
 	public WebDriver initializeDirectWebDriver() throws IOException
 	{
 		String browserName=prop.getProperty("browser");
+		DesiredCapabilities capabilities = null;
 		System.out.println("The browser used for the test is "+browserName);
 		if(browserName.equals("chrome"))
 		{
 			System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir")+"\\src\\main\\java\\resources\\chromedriver.exe");
-			driver = new ChromeDriver();
+			capabilities = DesiredCapabilities.chrome();
+			LoggingPreferences logPrefs = new LoggingPreferences();
+			logPrefs.enable(LogType.PERFORMANCE, Level.ALL);
+			capabilities.setCapability(CapabilityType.LOGGING_PREFS, logPrefs);
+			driver = new ChromeDriver(capabilities);
 			//execute in chrome driver
 		}
 		else if (browserName.equals("firefox"))
