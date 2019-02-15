@@ -12,7 +12,7 @@ public class DeliveryPage
 	
 	@FindBy (xpath="//*[@id=\"deliveryPostcode\"]") WebElement textField_DeliveryPostalCode;
 	@FindBy (xpath="//*[@id=\"deliveryPostcodeSubmit\"]") WebElement btn_Next_PostalCode;
-	@FindBy (xpath="//td[contains(@class, \"active day\")]/following-sibling::td[1]") WebElement date_NextDay;
+	@FindBy (xpath="//td[contains(@class, \"active day\")]") WebElement date_ActiveDay;
 	@FindBy (xpath="//*[contains(text(), 'Weiter zur Gruﬂkarte')]") WebElement btn_Continue_To_GreeatingCard;
 	@FindBy (xpath="//*[contains(text(), 'Weiter ohne Gruﬂkarte')]") WebElement btn_Continue_Without_GreetingCard;
 	@FindBy (xpath="//*[contains(text(), 'Weiter ohne Geschenke')]") WebElement btn_Continue_Without_Gifts;
@@ -34,9 +34,9 @@ public class DeliveryPage
 	{
 		return btn_Next_PostalCode;
 	}
-	public WebElement dayNextDay()
+	public WebElement dayActiveDay()
 	{
-		return date_NextDay;
+		return date_ActiveDay;
 	}
 	public WebElement continueToGreetingCard()
 	{
