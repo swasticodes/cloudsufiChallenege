@@ -76,6 +76,7 @@ public class BasicVariables {
 			capabilities = DesiredCapabilities.internetExplorer();
 			capabilities.setCapability(InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS, true);
 			capabilities.setCapability("requireWindowFocus", true);
+			capabilities.setCapability("ignoreZoomSetting", true);
 		}
 		else if (browserName.equals("edge"))
 		{
@@ -135,6 +136,7 @@ public class BasicVariables {
 			capabilities = DesiredCapabilities.internetExplorer();
 			capabilities.setCapability(InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS, true);
 			capabilities.setCapability("requireWindowFocus", true);
+			capabilities.setCapability("ignoreZoomSetting", true);
 			driver = new InternetExplorerDriver(capabilities);
 			//execute in IE browser
 		}
