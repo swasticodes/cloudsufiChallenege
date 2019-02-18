@@ -13,6 +13,8 @@ public class GreetingCardPage
 	@FindBy (xpath="//*[contains(@class,'greeting-card-list d-flex flex-wrap justify-content-around')]/div") WebElement link_GreetingCrad_First_Item;
 	@FindBy (xpath="//*[@id=\"greetingTextForm\"]") WebElement textBox_GreetingText;
 	@FindBy (xpath="//button[@id=\"submitGreetingCard\"]") WebElement btn_Continue_To_Gifts;
+	@FindBy (name="checkout.grusskarte.liebe") WebElement tab_Love;
+	@FindBy (xpath="(//*[contains(@class,'card-body')])[4]") WebElement tabLove_SecondItem;
 	//Comment the above code and uncomment the code below in case of using Page Object model instead of Page Factory Model
 	//By link_Login = By.linkText("Anmelden");
 	
@@ -37,6 +39,14 @@ public class GreetingCardPage
 	public WebElement buttonContinueToGifts()
 	{
 		return btn_Continue_To_Gifts;
+	}
+	public WebElement tabLove()
+	{
+		return tab_Love;
+	}
+	public WebElement tabLoveSecondItem()
+	{
+		return tabLove_SecondItem;
 	}
 
 }
