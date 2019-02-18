@@ -221,10 +221,10 @@ public class accountTypeExistingCustomer<inherits> extends BasicVariables {
 
 		homePage.linkProducts().click();
 		log.info("Clicked on the Produkte link");
-		homePage.linkPlants().click();
-		log.info("Clicked on the Pflanzen link");
-		generalPage.linkFirstItem().click();
-		log.info("Selecting the First item on Pflanzen page");
+		homePage.linkBouquets().click();
+		log.info("Clicked on the Blumenstr‰uﬂe link");
+		generalPage.linkSecondItem().click();
+		log.info("Selecting the Second item on Blumenstr‰uﬂe page");
 		generalPage.buttonSelectedItemNext().click();
 		log.info("Clicked on the Next button after selecting item");
 		Thread.sleep(1000);
@@ -237,8 +237,10 @@ public class accountTypeExistingCustomer<inherits> extends BasicVariables {
 		Thread.sleep(1000);
 		deliveryPage.continueToGreetingCard().click();
 		log.info("Clicked on Weiter zur Gruﬂkarte button");
-		greetingCardPage.linkGreetingCardFirstItem().click();
-		log.info("Selected the first greeting card");
+		greetingCardPage.tabLove().click();
+		log.info("Clicked on Liebe tab");
+		greetingCardPage.tabLoveSecondItem().click();
+		log.info("Selected the Second greeting card on Liebe tab");
 		greetingCardPage.textboxGreetingCardText().sendKeys("test message");
 		log.info("Entered the greeting card text");
 		greetingCardPage.buttonContinueToGifts().click();
