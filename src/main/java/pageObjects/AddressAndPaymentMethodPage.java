@@ -31,6 +31,7 @@ public class AddressAndPaymentMethodPage
 	@FindBy (id="invoiceBirthMonth") WebElement dropdown_BirthMonth;
 	@FindBy (id="invoiceBirthYear") WebElement dropdown_BirthYear;
 	@FindBy (id="invoicePhone") WebElement textField_RatepayTelephoneNumber;
+	@FindBy (xpath="//span[.//text()= 'Rechnung']")  WebElement radioButton_Invoice;
 
 	String SEPAAccountHolder = "Tester";
 	String IBANNumber = "DE12500105170648489890";
@@ -178,6 +179,10 @@ public class AddressAndPaymentMethodPage
 	public String ratepayTelephoneNumber()
 	{
 		return RatepayTelephoneNumber;
+	}
+	public WebElement radioButtonInvoice()
+	{
+		return radioButton_Invoice;
 	}
 
 }
