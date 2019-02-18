@@ -232,7 +232,7 @@ public class accountTypeGuestCustomer<inherits> extends BasicVariables {
 		log.info("*** Finished Test: guestCustomerPaypalMethodTest");
 	}
 
-	@Test
+	@Test(enabled=false)
 	public void guestCustomerInvoiceMethodTest() throws InterruptedException
 	{
 		log.info("*** Starting Test: guestCustomerInvoiceMethodTest");
