@@ -208,6 +208,86 @@ public class accountTypeExistingCustomer<inherits> extends BasicVariables {
 		log.info("*** Finished Test: existingCustomerInvoiceMethodTest");
 	}
 
+	@Test
+	public void existingCustomerRatePayMethodTest() throws InterruptedException
+	{
+		log.info("*** Starting Test: existingCustomerRatePayMethodTest");
+
+		//Creating the Objects below to access the functions
+		HomePage homePage = new HomePage(driver);
+		GeneralPage generalPage = new GeneralPage(driver);
+		DeliveryPage deliveryPage = new DeliveryPage(driver);
+		RegistrationPage registerationPage = new RegistrationPage(driver);
+		AddressAndPaymentMethodPage addressAndPaymentPage = new AddressAndPaymentMethodPage(driver);
+		OrderOverviewPage orderOverviewPage = new OrderOverviewPage(driver);
+		GreetingCardPage greetingCardPage = new GreetingCardPage(driver);
+		GiftsPage giftsPage = new GiftsPage(driver);
+
+		ensurePageLoaded();
+
+		generalPage.clickCloseCookieMessage(false);
+
+		homePage.linkProducts().click();
+		log.info("Clicked on the Produkte link");
+		homePage.linkPlants().click();
+		log.info("Clicked on the Pflanzen link");
+		generalPage.linkFirstItem().click();
+		log.info("Selecting the First item on Pflanzen page");
+		generalPage.buttonSelectedItemNext().click();
+		log.info("Clicked on the Next button after selecting item");
+		Thread.sleep(1000);
+		deliveryPage.textFieldDeliveryPostalCode().sendKeys("49536");
+		log.info("Entered the delivery postal code 49536");
+		deliveryPage.buttonNextPostalCode().click();
+		log.info("Clicked the next button after entering Postal Code");
+		deliveryPage.dayActiveDay().click();
+		log.info("Selecting the active day for delivery");
+		Thread.sleep(1000);
+		deliveryPage.continueToGreetingCard().click();
+		log.info("Clicked on Weiter zur Grußkarte button");
+		greetingCardPage.linkGreetingCardFirstItem().click();
+		log.info("Selected the first greeting card");
+		greetingCardPage.textboxGreetingCardText().sendKeys("test message");
+		log.info("Entered the greeting card text");
+		greetingCardPage.buttonContinueToGifts().click();
+		log.info("Clicked on the button Weiter zu Geschenke");
+		giftsPage.linkGiftsFirstItem().click();
+		log.info("Selected the first Gift Item");
+		giftsPage.buttonDirectlyToCashRegister().click();
+		log.info("Clicked on the button Direkt zur Kasse");
+		registerationPage.textFieldEmail().sendKeys(registerationPage.registeredUserEmail());
+		log.info("Entered the email id as-> " + registerationPage.registeredUserEmail());
+		registerationPage.textFieldPassword().sendKeys(registerationPage.registeredUserPassword());
+		log.info("Entered the password as-> <CENSORED>");
+		registerationPage.buttonLogin().click();
+		log.info("Clicked on the 'Einloggen' button");
+		registerationPage.registrationSalutation().click();
+		log.info("For registration selected salutation as Herr");
+		registerationPage.registrationFirstName().sendKeys("Han");
+		log.info("For registeration entered first name as Han");
+		registerationPage.registrationLastName().sendKeys("Solo");
+		log.info("For registeration entered last name as Solo");
+		registerationPage.registrationStreet().sendKeys("Sienebrink");
+		log.info("For registeration entered street name as Sienebrink");
+		registerationPage.registrationStreetNumber().sendKeys("7");
+		log.info("For registeration entered street number as 7");
+		registerationPage.registrationCity().sendKeys("Lienen");
+		log.info("For registeration entered city as Lienen");
+		addressAndPaymentPage.radioButtonRatepay().click();
+		log.info("Selected the payment method as Ratepay by clicking radio button Ratepay Rechnung");
+		Thread.sleep(1000);
+		addressAndPaymentPage.checkBoxInvoiceConsentDeclaration().click();
+		log.info("Checked the Consent Declaration checkbox");
+		registerationPage.continueToOverview().click();
+		log.info("Clicked on Weiter zur Übersicht button");
+		orderOverviewPage.buttonToBuy().click();
+		log.info("Clicked on Kaufen button");
+		Assert.assertEquals("Glückwunsch! Gute Wahl getroffen", generalPage.textOrderConfirmation().getText());
+		log.info("Order is placed successfully");
+
+		log.info("*** Finished Test: existingCustomerRatePayMethodTest");
+	}
+
 	@AfterMethod
 	public void logout()
 	{
