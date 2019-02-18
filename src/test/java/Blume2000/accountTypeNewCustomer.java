@@ -475,6 +475,93 @@ public class accountTypeNewCustomer<inherits> extends BasicVariables {
 		log.info("*** Finished Test: newCustomerRatePayMethodTest");
 	}
 
+	@Test
+	public void newCustomerSEPADirectDebitMethodTestTopSellerProduct() throws InterruptedException
+	{
+		log.info("*** Starting Test: newCustomerSEPADirectDebitMethodTestTopSellerProduct");
+
+		//Creating the Objects below to access the functions
+		HomePage homePage = new HomePage(driver);
+		GeneralPage generalPage = new GeneralPage(driver);
+		DeliveryPage deliveryPage = new DeliveryPage(driver);
+		LoginPage loginPage = new LoginPage(driver);
+		RegistrationPage registerationPage = new RegistrationPage(driver);
+		AddressAndPaymentMethodPage addressAndPaymentPage = new AddressAndPaymentMethodPage(driver);
+		OrderOverviewPage orderOverviewPage = new OrderOverviewPage(driver);
+
+		ensurePageLoaded();
+
+		generalPage.clickCloseCookieMessage(false);
+
+		homePage.linkTopseller().click();
+		log.info("Clicked on the Topseller link");
+		generalPage.linkSecondItem().click();
+		log.info("Selecting the Second item on Topseller page");
+		generalPage.buttonSelectedItemNext().click();
+		log.info("Clicked on the Next button after selecting item");
+		Thread.sleep(1000);
+		deliveryPage.textFieldDeliveryPostalCode().sendKeys("22");
+		deliveryPage.textFieldDeliveryPostalCode().sendKeys("2");
+		deliveryPage.textFieldDeliveryPostalCode().sendKeys("97");
+		log.info("Entered the delivery postal code 22297");
+		deliveryPage.buttonNextPostalCode().click();
+		log.info("Clicked the next button after entering Postal Code");
+		deliveryPage.dayActiveDay().click();
+		log.info("Selecting the active day for delivery");
+		Thread.sleep(1000);
+		deliveryPage.continueToGreetingCard().click();
+		log.info("Clicked on Weiter zur Grußkarte button");
+		Thread.sleep(1000);
+		deliveryPage.continueWithoutGreetingCard().click();
+		log.info("Clicked on Weiter ohne Grußkarte button");
+		Thread.sleep(1000);
+		deliveryPage.continueWithoutGifts().click();
+		log.info("Clicked on Weiter ohne Geschenke button");
+		//scrolling the register button into view so that it is not hidden behind the confirmation for cookie message
+		((JavascriptExecutor) driver).executeScript("window.scrollBy(0,120)");
+		loginPage.buttonRegister().click();
+		log.info("Clicked on the Register Button");
+		//Creating a random email id to register user
+		String emailId = RandomStringUtils.randomAlphabetic(8);
+		registerationPage.registrationEmail().sendKeys(emailId+"@testemail.com");
+		log.info("For registeration entered email id "+ emailId);
+		registerationPage.registrationPassword().sendKeys("123456");
+		log.info("For registeration entered password as 123456");
+		registerationPage.registrationConfrimPassword().sendKeys("123456");
+		log.info("For registeration confirmed password as 123456");
+		registerationPage.registrationSalutation().click();
+		log.info("For registration selected salutation as Herr");
+		registerationPage.registrationFirstName().sendKeys("TestFirst");
+		log.info("For registeration entered first name as TestFirst");
+		registerationPage.registrationLastName().sendKeys("TestLast");
+		log.info("For registeration entered last name as TestLast");
+		registerationPage.registrationStreet().sendKeys("Überseering");
+		log.info("For registeration entered street name as Überseering");
+		registerationPage.registrationStreetNumber().sendKeys("33");
+		log.info("For registeration entered street number as 33");
+		registerationPage.registrationCity().sendKeys("Hamburg");
+		log.info("For registeration entered city as Hamburg");
+		((JavascriptExecutor) driver).executeScript("window.scrollBy(0,-180)");
+		registerationPage.copyDeliveryAndInvoiceAddress().click();
+		log.info("Checking the checkbox so that delivery and invoice address are same");
+		addressAndPaymentPage.radioButtonDebitCard().click();
+		log.info("Selected the Bankeinzug/Lastschrift (Debit Card)radio button");
+		addressAndPaymentPage.textFieldAccountHolder().sendKeys(addressAndPaymentPage.accountHolderName());
+		log.info("Entered the account holder name as "+ addressAndPaymentPage.accountHolderName());
+		addressAndPaymentPage.textFieldIBANNumber().sendKeys(addressAndPaymentPage.ibanNumber());
+		log.info("Entered the INAN number as "+ addressAndPaymentPage.ibanNumber());
+		addressAndPaymentPage.chkBoxSEPADirectDebit().click();
+		log.info("Checked the Direct debit checkbox");
+		registerationPage.continueToOverview().click();
+		log.info("Clicked on Weiter zur Übersicht button");
+		orderOverviewPage.buttonToBuy().click();
+		log.info("Clicked on Kaufen button");
+		Assert.assertEquals("Glückwunsch! Gute Wahl getroffen", generalPage.textOrderConfirmation().getText());
+		log.info("Order is placed successfully");
+
+		log.info("*** Finished Test: newCustomerSEPADirectDebitMethodTestTopSellerProduct");
+	}
+
 	@AfterMethod
 	public void logout()
 	{
