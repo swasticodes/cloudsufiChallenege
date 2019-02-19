@@ -310,6 +310,12 @@ public class accountTypeGuestCustomer<inherits> extends BasicVariables {
 		log.info("Checking the checkbox so that delivery and invoice address are same");
 		addressAndPaymentMethodPage.radioButtonInvoice().click();
 		log.info("Selected the payment method as Invoice by clicking radio button Rechnung");
+		addressAndPaymentMethodPage.checkBox_UseCouponCode().click();
+		log.info("Clicked on the 'Gutscheincode einlösen' checkbox");
+		addressAndPaymentMethodPage.textField_VoucherCode().sendKeys(addressAndPaymentMethodPage.voucherCode());
+		log.info("Entered the Voucher code as -> " + addressAndPaymentMethodPage.voucherCode());
+		addressAndPaymentMethodPage.buttonSubmitVoucherCode().click();
+		log.info("Clicked on 'Gutscheincode einlösen' button");
 		registerationPage.continueToOverview().click();
 		log.info("Clicked on Weiter zur Übersicht button");
 		orderOverviewPage.buttonToBuy().click();
