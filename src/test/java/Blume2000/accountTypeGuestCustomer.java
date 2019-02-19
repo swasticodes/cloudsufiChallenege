@@ -14,6 +14,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import pageObjects.HomePage;
+import pageObjects.LoginPage;
 import pageObjects.OrderOverviewPage;
 import pageObjects.PayPalPage;
 import pageObjects.RegistrationPage;
@@ -415,6 +416,107 @@ public class accountTypeGuestCustomer<inherits> extends BasicVariables {
 		log.info("Order is placed successfully");
 
 		log.info("*** Finished Test: guestCustomerSEPADebitCardMethodTest");
+	}
+
+	@Test
+	public void guestCustomerRatePayMethodTest() throws InterruptedException
+	{
+		log.info("*** Starting Test: guestCustomerRatePayMethodTest");
+
+		//Creating the Objects below to access the functions
+		HomePage homePage = new HomePage(driver);
+		GeneralPage generalPage = new GeneralPage(driver);
+		DeliveryPage deliveryPage = new DeliveryPage(driver);
+		RegistrationPage registerationPage = new RegistrationPage(driver);
+		AddressAndPaymentMethodPage addressAndPaymentPage = new AddressAndPaymentMethodPage(driver);
+		OrderOverviewPage orderOverviewPage = new OrderOverviewPage(driver);
+		GreetingCardPage greetingCardPage = new GreetingCardPage(driver);
+		GiftsPage giftsPage = new GiftsPage(driver);
+
+		ensurePageLoaded();
+
+		generalPage.clickCloseCookieMessage(false);
+		homePage.linkEvents().click();
+		log.info("Clicked on the Anlässe link");
+		homePage.linkBirthday().click();
+		log.info("Clicked on the Geburtstag link");
+		generalPage.linkFirstItem().click();
+		log.info("Selecting the first item on Geburtstag page");
+		generalPage.buttonSelectedItemNext().click();
+		log.info("Clicked on the Next button after selecting item");
+		Thread.sleep(1000);
+		deliveryPage.textFieldDeliveryPostalCode().sendKeys("49536");
+		log.info("Entered the delivery postal code 49536");
+		deliveryPage.buttonNextPostalCode().click();
+		log.info("Clicked the next button after entering Postal Code");
+		deliveryPage.dayActiveDay().click();
+		log.info("Selecting the active day for delivery");
+		generalPage.radioButtonPremiumDelivery().click();
+		log.info("Selected Premium Delivery radio button");
+		Thread.sleep(1000);
+		deliveryPage.continueToGreetingCard().click();
+		log.info("Clicked on Weiter zur Grußkarte button");
+		Thread.sleep(1000);
+		greetingCardPage.linkGreetingCardFirstItem().click();
+		log.info("Selected the first greeting card");
+		greetingCardPage.textboxGreetingCardText().sendKeys("test message");
+		log.info("Entered the greeting card text");
+		greetingCardPage.buttonContinueToGifts().click();
+		log.info("Clicked on the button Weiter zu Geschenke");
+		giftsPage.linkGiftsFirstItem().click();
+		log.info("Selected the first Gift Item");
+		giftsPage.linkGiftsSecondItem().click();
+		log.info("Selected the second Gift Item");
+		giftsPage.buttonDirectlyToCashRegister().click();
+		log.info("Clicked on the button Direkt zur Kasse");
+		log.info("Clicked on Weiter ohne Geschenke button");
+		registerationPage.buttonOrderAsGuest().click();
+		log.info("Clicked on the button Als Gast bestellen");
+		//Creating a random email id to register user
+		String emailId = RandomStringUtils.randomAlphabetic(8);
+		registerationPage.registrationEmail().sendKeys(emailId+"@testemail.com");
+		log.info("For registeration entered email id "+ emailId);
+		registerationPage.registrationSalutation().click();
+		log.info("For registration selected salutation as Herr");
+		registerationPage.registrationFirstName().sendKeys("Han");
+		log.info("For registeration entered first name as Han");
+		registerationPage.registrationLastName().sendKeys("Solo");
+		log.info("For registeration entered last name as Solo");
+		registerationPage.registrationStreet().sendKeys("Sienebrink");
+		log.info("For registeration entered street name as Sienebrink");
+		registerationPage.registrationStreetNumber().sendKeys("7");
+		log.info("For registeration entered street number as 7");
+		registerationPage.registrationCity().sendKeys("Lienen");
+		log.info("For registeration entered city as Lienen");
+		registerationPage.copyDeliveryAndInvoiceAddress().click();
+		log.info("Checking the checkbox so that delivery and invoice address are same");
+		addressAndPaymentPage.radioButtonRatepay().click();
+		log.info("Selected the payment method as Ratepay by clicking radio button Ratepay Rechnung");
+		addressAndPaymentPage.dropdownBirthDate().sendKeys(addressAndPaymentPage.ratepayBirthDate());
+		log.info("Entered the birth day");
+		addressAndPaymentPage.dropdownBirthMonth().sendKeys(addressAndPaymentPage.ratepayBirthMonth());
+		log.info("Entered the birth month");
+		addressAndPaymentPage.dropdownBirthYear().sendKeys(addressAndPaymentPage.ratepayBirthYear());
+		log.info("Entered the birth year");
+		addressAndPaymentPage.textFieldRatepayTelephoneNumber().sendKeys(addressAndPaymentPage.ratepayTelephoneNumber());
+		log.info("Entered the telephone number");
+		Thread.sleep(1000);
+		addressAndPaymentPage.checkBoxInvoiceConsentDeclaration().click();
+		log.info("Checked the Consent Declaration checkbox");
+		addressAndPaymentPage.checkBox_UseCouponCode().click();
+		log.info("Clicked on the 'Gutscheincode einlösen' checkbox");
+		addressAndPaymentPage.textField_VoucherCode().sendKeys(addressAndPaymentPage.voucherCode());
+		log.info("Entered the Voucher code as -> " + addressAndPaymentPage.voucherCode());
+		addressAndPaymentPage.buttonSubmitVoucherCode().click();
+		log.info("Clicked on 'Gutscheincode einlösen' button");
+		registerationPage.continueToOverview().click();
+		log.info("Clicked on Weiter zur Übersicht button");
+		orderOverviewPage.buttonToBuy().click();
+		log.info("Clicked on Kaufen button");
+		Assert.assertEquals("Glückwunsch! Gute Wahl getroffen", generalPage.textOrderConfirmation().getText());
+		log.info("Order is placed successfully");
+
+		log.info("*** Finished Test: guestCustomerRatePayMethodTest");
 	}
 
 	@AfterMethod
