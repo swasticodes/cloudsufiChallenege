@@ -427,10 +427,7 @@ public class accountTypeExistingCustomer<inherits> extends BasicVariables {
 		greetingCardsPage.textboxGreetingCardText().sendKeys("test message");
 		log.info("Entered the greeting card text as test message");
 		greetingCardsPage.buttonContinueToGifts().click();
-		log.info("Clicked on the button 'Weiter zu Geschenke'");
-		giftsPage.linkGiftsFirstItem().click();
-		log.info("Selected the first Git item");
-		giftsPage.buttonDirectlyToCashRegister().click();
+		//The product does not have a gift item that can be selected with it, therefore moving to Kasse
 		log.info("Clicked on the button 'Direkt zur Kasse'");
 		loginPage.buttonRegister().click();
 		log.info("Clicked on the Register Button");
