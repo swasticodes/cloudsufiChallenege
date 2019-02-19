@@ -93,6 +93,10 @@ public class BasicVariables {
 			chromeOptions.setExperimentalOption("mobileEmulation", mobileEmulation);
 			capabilities.setCapability(ChromeOptions.CAPABILITY, chromeOptions);
 		}
+		else if (browserName.equals("safari"))
+		{
+			capabilities = DesiredCapabilities.safari();			
+		}
 		else
 		{
 			//Print Message that invalid driver is selected
