@@ -476,7 +476,6 @@ public class accountTypeExistingCustomer<inherits> extends BasicVariables {
 	}
 
 	@Test
-	@Test(enabled=true)
 	public void existingCustomerPaypalMethodTopsellerTest() throws InterruptedException
 	{
 		log.info("*** Starting Test: existingCustomerPaypalMethodTopsellerTest");
