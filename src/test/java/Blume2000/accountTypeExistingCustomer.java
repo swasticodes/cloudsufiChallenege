@@ -82,9 +82,9 @@ public class accountTypeExistingCustomer<inherits> extends BasicVariables {
 		log.info("Entered the greeting card text");
 		greetingCardPage.buttonContinueToGifts().click();
 		log.info("Clicked on the button Weiter zu Geschenke");
-		giftsPage.linkGiftsFirstItem().click();
+		giftsPage.linkGiftsPageFirstItem().click();
 		log.info("Selected the first Gift Item");
-		giftsPage.linkGiftsSecondItem().click();
+		giftsPage.linkGiftsPageSecondItem().click();
 		log.info("Selected the second Gift Item");
 		giftsPage.buttonDirectlyToCashRegister().click();
 		log.info("Clicked on the button Direkt zur Kasse");
@@ -172,7 +172,7 @@ public class accountTypeExistingCustomer<inherits> extends BasicVariables {
 		log.info("Entered the greeting card text");
 		greetingCardPage.buttonContinueToGifts().click();
 		log.info("Clicked on the button Weiter zu Geschenke");
-		giftsPage.linkGiftsFirstItem().click();
+		giftsPage.linkGiftsPageFirstItem().click();
 		log.info("Selected the first Gift Item");
 		giftsPage.buttonDirectlyToCashRegister().click();
 		log.info("Clicked on the button Direkt zur Kasse");
@@ -251,7 +251,7 @@ public class accountTypeExistingCustomer<inherits> extends BasicVariables {
 		log.info("Entered the greeting card text");
 		greetingCardPage.buttonContinueToGifts().click();
 		log.info("Clicked on the button Weiter zu Geschenke");
-		giftsPage.linkGiftsFirstItem().click();
+		giftsPage.linkGiftsPageFirstItem().click();
 		log.info("Selected the first Gift Item");
 		giftsPage.buttonDirectlyToCashRegister().click();
 		log.info("Clicked on the button Direkt zur Kasse");
@@ -335,9 +335,9 @@ public class accountTypeExistingCustomer<inherits> extends BasicVariables {
 		log.info("Entered the greeting card text");
 		greetingCardPage.buttonContinueToGifts().click();
 		log.info("Clicked on the button 'Weiter zu Geschenke'");
-		giftsPage.linkGiftsFirstItem().click();
+		giftsPage.linkGiftsPageFirstItem().click();
 		log.info("Selected the first Gift Item");
-		giftsPage.linkGiftsSecondItem().click();
+		giftsPage.linkGiftsPageSecondItem().click();
 		log.info("Selected the second Gift Item");
 		giftsPage.buttonDirectlyToCashRegister().click();
 		log.info("Clicked on the button 'Direkt zur Kasse'");
@@ -515,9 +515,9 @@ public class accountTypeExistingCustomer<inherits> extends BasicVariables {
 		log.info("Entered the greeting card text");
 		greetingCardPage.buttonContinueToGifts().click();
 		log.info("Clicked on the button 'Weiter zu Geschenke'");
-		giftsPage.linkGiftsFirstItem().click();
+		giftsPage.linkGiftsPageFirstItem().click();
 		log.info("Selected the first Gift Item");
-		giftsPage.linkGiftsSecondItem().click();
+		giftsPage.linkGiftsPageSecondItem().click();
 		log.info("Selected the second Gift Item");
 		giftsPage.buttonDirectlyToCashRegister().click();
 		log.info("Clicked on the button 'Direkt zur Kasse'");

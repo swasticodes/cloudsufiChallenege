@@ -25,6 +25,7 @@ import pageObjects.DeliveryPage;
 import pageObjects.GeburtstagPage;
 import pageObjects.GeneralPage;
 import pageObjects.GiftsPage;
+import pageObjects.GiftsSetsPage;
 import pageObjects.GreetingCardPage;
 import resources.BasicVariables;
 
@@ -610,7 +611,7 @@ public class accountTypeNewCustomer<inherits> extends BasicVariables {
 		Thread.sleep(1000);
 		greetingsCardPage.buttonContinueToGifts().click();
 		log.info("Clicked on the button Weiter zu Geschenke");
-		giftsPage.linkGiftsFirstItem().click();
+		giftsPage.linkGiftsPageFirstItem().click();
 		log.info("Selected the first gift item");
 		giftsPage.buttonDirectlyToCashRegister().click();
 		log.info("Clicke on the button Direkt zur Kasse");
@@ -712,7 +713,7 @@ public class accountTypeNewCustomer<inherits> extends BasicVariables {
 		Thread.sleep(1000);
 		greetingsCardPage.buttonContinueToGifts().click();
 		log.info("Clicked on the button Weiter zu Geschenke");
-		giftsPage.linkGiftsFirstItem().click();
+		giftsPage.linkGiftsPageFirstItem().click();
 		log.info("Selected the first gift item");
 		giftsPage.buttonDirectlyToCashRegister().click();
 		log.info("Clicke on the button Direkt zur Kasse");
@@ -819,7 +820,7 @@ public class accountTypeNewCustomer<inherits> extends BasicVariables {
 		Thread.sleep(1000);
 		greetingsCardPage.buttonContinueToGifts().click();
 		log.info("Clicked on the button Weiter zu Geschenke");
-		giftsPage.linkGiftsFirstItem().click();
+		giftsPage.linkGiftsPageFirstItem().click();
 		log.info("Selected the first gift item");
 		giftsPage.buttonDirectlyToCashRegister().click();
 		log.info("Clicked on the button Direkt zur Kasse");
