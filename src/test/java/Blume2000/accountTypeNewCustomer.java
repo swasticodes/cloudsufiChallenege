@@ -924,7 +924,6 @@ public class accountTypeNewCustomer<inherits> extends BasicVariables {
 		generalPage.radioButtonPremiumDelivery().click();
 		log.info("Selected Premium Delivery radio button");
 		Thread.sleep(1000);
-		Thread.sleep(1000);
 		deliveryPage.continueToGreetingCard().click();
 		log.info("Clicked on Weiter zur Gruﬂkarte button");
 		Thread.sleep(1000);
@@ -1018,8 +1017,6 @@ public class accountTypeNewCustomer<inherits> extends BasicVariables {
 		RegistrationPage registerationPage = new RegistrationPage(driver);
 		AddressAndPaymentMethodPage addressAndPaymentPage = new AddressAndPaymentMethodPage(driver);
 		OrderOverviewPage orderOverviewPage = new OrderOverviewPage(driver);
-		GiftsPage giftsPage = new GiftsPage(driver);
-		GiftsSetsPage giftsSetsPage = new GiftsSetsPage(driver);
 		GreetingCardPage greetingsCardPage = new GreetingCardPage(driver);
 
 		ensurePageLoaded();
