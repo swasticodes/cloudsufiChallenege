@@ -10,8 +10,8 @@ public class GiftsPage
 {
 	public WebDriver driver;
 	
-	@FindBy (xpath="//*[contains(@class, 'gift-list d-flex flex-wrap justify-content-around')]/div[1]") WebElement link_GreetingCard_First_Item;
-	@FindBy (xpath="//*[contains(@class, 'gift-list d-flex flex-wrap justify-content-around')]/div[2]") WebElement link_GreetingCard_Second_Item;
+	@FindBy (xpath="//*[contains(@class, 'gift-list d-flex flex-wrap justify-content-around')]/div[1]") WebElement link_GiftsPage_FirstItem;
+	@FindBy (xpath="//*[contains(@class, 'gift-list d-flex flex-wrap justify-content-around')]/div[2]") WebElement link_GiftsPage_SecondItem;
 	@FindBy (xpath="//*[@id=\"submitGift\"]") WebElement btn_Directly_To_Cash_Register;
 	//Comment the above code and uncomment the code below in case of using Page Object model instead of Page Factory Model
 	//By link_Login = By.linkText("Anmelden");
@@ -23,16 +23,16 @@ public class GiftsPage
 		PageFactory.initElements(driver, this);
 	}
 
-	public WebElement linkGiftsFirstItem()
+	public WebElement linkGiftsPageFirstItem()
 	{
 		//Use the code below in case of using Page Factory Model
-		return link_GreetingCard_First_Item;
+		return link_GiftsPage_FirstItem;
 		//Comment the above code and Uncomment the code below in case using Page object instead of Page factory
 		//return driver.findElement(link_Login);
 	}
-	public WebElement linkGiftsSecondItem()
+	public WebElement linkGiftsPageSecondItem()
 	{
-		return link_GreetingCard_Second_Item;
+		return link_GiftsPage_SecondItem;
 	}
 	public WebElement buttonDirectlyToCashRegister()
 	{
