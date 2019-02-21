@@ -883,6 +883,128 @@ public class accountTypeNewCustomer<inherits> extends BasicVariables {
 		log.info("*** Finished Test: newCustomerSEPADirectDebitMethodTestWithGiftCard");
 	}
 
+	@Test
+	public void newCustomerCreditCardMethodTestWithGiftCard() throws InterruptedException
+	{
+		log.info("*** Starting Test: newCustomerCreditCardMethodTestWithGiftCard");
+
+		//Creating the Objects below to access the functions
+		HomePage homePage = new HomePage(driver);
+		GeneralPage generalPage = new GeneralPage(driver);
+		DeliveryPage deliveryPage = new DeliveryPage(driver);
+		LoginPage loginPage = new LoginPage(driver);
+		RegistrationPage registerationPage = new RegistrationPage(driver);
+		AddressAndPaymentMethodPage addressAndPaymentPage = new AddressAndPaymentMethodPage(driver);
+		OrderOverviewPage orderOverviewPage = new OrderOverviewPage(driver);
+		GreetingCardPage greetingsCardPage = new GreetingCardPage(driver);
+		GiftsPage giftsPage = new GiftsPage(driver);
+		GiftsSetsPage giftsSetsPage = new GiftsSetsPage(driver);
+
+		ensurePageLoaded();
+
+		generalPage.clickCloseCookieMessage(false);
+
+		homePage.linkProducts().click();
+		log.info("Clicked on the Produkte link");
+		homePage.linkGiftSets().click();
+		log.info("Clicked on the link Geschenksets");
+		giftsSetsPage.linkGiftsSetsSecondItem().click();
+		log.info("Selecting the Second item on Geschenksets page");
+		generalPage.buttonSelectedItemNext().click();
+		log.info("Clicked on the Next button after selecting item");
+		Thread.sleep(1000);
+		deliveryPage.textFieldDeliveryPostalCode().sendKeys("22297");
+		log.info("Entered the delivery postal code 22297");
+		deliveryPage.buttonNextPostalCode().click();
+		log.info("Clicked the next button after entering Postal Code");
+		deliveryPage.dayActiveDay().click();
+		log.info("Selecting the active day for delivery");
+		Thread.sleep(1000);
+		generalPage.radioButtonPremiumDelivery().click();
+		log.info("Selected Premium Delivery radio button");
+		Thread.sleep(1000);
+		Thread.sleep(1000);
+		deliveryPage.continueToGreetingCard().click();
+		log.info("Clicked on Weiter zur Grußkarte button");
+		Thread.sleep(1000);
+		greetingsCardPage.linkGreetingCardFirstItem().click();
+		log.info("Selected the first greeting card");
+		Thread.sleep(1000);
+		greetingsCardPage.buttonContinueToGifts().click();
+		log.info("Clicked on the button Weiter zu Geschenke");
+		giftsPage.linkGiftsPageFirstItem().click();
+		log.info("Selected the first gift item");
+		giftsPage.buttonDirectlyToCashRegister().click();
+		log.info("Clicked on the button Direkt zur Kasse");
+		//scrolling the register button into view so that it is not hidden behind the confirmation for cookie message
+		((JavascriptExecutor) driver).executeScript("window.scrollBy(0,120)");
+		loginPage.buttonRegister().click();
+		log.info("Clicked on the Register Button");
+		//Creating a random email id to register user
+		String emailId = RandomStringUtils.randomAlphabetic(8);
+		registerationPage.registrationEmail().sendKeys(emailId+"@testemail.com");
+		log.info("For registeration entered email id "+ emailId);
+		registerationPage.registrationPassword().sendKeys("123456");
+		log.info("For registeration entered password as 123456");
+		registerationPage.registrationConfrimPassword().sendKeys("123456");
+		log.info("For registeration confirmed password as 123456");
+		registerationPage.registrationSalutation().click();
+		log.info("For registration selected salutation as Herr");
+		registerationPage.registrationFirstName().sendKeys("TestFirst");
+		log.info("For registeration entered first name as TestFirst");
+		registerationPage.registrationLastName().sendKeys("TestLast");
+		log.info("For registeration entered last name as TestLast");
+		registerationPage.registrationStreet().sendKeys("Überseering");
+		log.info("For registeration entered street name as Überseering");
+		registerationPage.registrationStreetNumber().sendKeys("33");
+		log.info("For registeration entered street number as 33");
+		registerationPage.registrationCity().sendKeys("Hamburg");
+		log.info("For registeration entered city as Hamburg");
+		((JavascriptExecutor) driver).executeScript("window.scrollBy(0,-180)");
+		registerationPage.copyDeliveryAndInvoiceAddress().click();
+		log.info("Checking the checkbox so that delivery and invoice address are same");
+		Thread.sleep(1000);
+		addressAndPaymentPage.chkBoxUseGiftCard().click();
+		log.info("Checked the checkbox Geschenkkarte einlösen for using a gift card");
+		addressAndPaymentPage.textFieldGiftCardNumber().sendKeys(addressAndPaymentPage.giftCardNumber());
+		log.info("Entered the gift card number");
+		addressAndPaymentPage.textFieldGiftCardPin().sendKeys(addressAndPaymentPage.giftCardpin());
+		log.info("Entered the gift card pin");
+		addressAndPaymentPage.buttonRedeemGiftCard().click();
+		log.info("Clicked button Geschenkkarte einlösen for redeeming gift card");
+		Assert.assertTrue(addressAndPaymentPage.textBoxGiftCardSuccessMessage().isDisplayed(),"The Gift Card Was not applied successfully. Check for balance of the gift card.");
+		log.info("Verified Gift Card applied success message");
+		if(addressAndPaymentPage.textBoxGiftCardPayableAmount().getText()!="0,00 €") {
+			addressAndPaymentPage.radioButtonCreditCard().click();
+			log.info("Selected the payment method as Credit Card by clicking radio button Kreditkarte");
+			registerationPage.continueToOverview().click();
+			log.info("Clicked on Weiter zur Übersicht button");
+			orderOverviewPage.buttonToBuy().click();
+			log.info("Clicked on Kaufen button");
+			driver.switchTo().frame(0);
+			log.info("Switched Frame so that credit card details can be entered");
+			addressAndPaymentPage.textFieldCreditCardNumber().sendKeys(addressAndPaymentPage.creditCardNumber());
+			log.info("Entering the credit card number as "+addressAndPaymentPage.creditCardNumber());
+			addressAndPaymentPage.dropDownCreditCardExpiryMonth().sendKeys(addressAndPaymentPage.creditCardExpiryMonth());
+			log.info("Entered Credit Card Expiry Month as "+addressAndPaymentPage.creditCardExpiryMonth());
+			addressAndPaymentPage.dropDownCreditCardExpiryYear().sendKeys(addressAndPaymentPage.creditCardExpiryYear());
+			log.info("Entered Credit Card Expiry Year as "+addressAndPaymentPage.creditCardExpiryYear());
+			addressAndPaymentPage.creditCardContinueButton().click();
+			log.info("Clicked on the Weiter button on the Credit Card page");
+			driver.switchTo().defaultContent();
+		}else {
+			registerationPage.continueToOverview().click();
+			log.info("Clicked on Weiter zur Übersicht button");
+			orderOverviewPage.buttonToBuy().click();
+			log.info("Clicked on Kaufen button");
+		}
+		Assert.assertEquals("Glückwunsch! Gute Wahl getroffen", generalPage.textOrderConfirmation().getText());
+		log.info("Order is placed successfully");
+
+		log.info("*** Finished Test: newCustomerCreditCardMethodTestWithGiftCard");
+	}
+
+
 
 	@AfterMethod
 	public void logout()
