@@ -24,6 +24,8 @@ import pageObjects.AddressAndPaymentMethodPage;
 import pageObjects.DeliveryPage;
 import pageObjects.GeburtstagPage;
 import pageObjects.GeneralPage;
+import pageObjects.GiftsPage;
+import pageObjects.GreetingCardPage;
 import resources.BasicVariables;
 
 public class accountTypeNewCustomer<inherits> extends BasicVariables {
@@ -561,6 +563,326 @@ public class accountTypeNewCustomer<inherits> extends BasicVariables {
 
 		log.info("*** Finished Test: newCustomerSEPADirectDebitMethodTestTopSellerProduct");
 	}
+
+	@Test(enabled=false)
+	public void newCustomerInvoiceMethodTestWithGiftCard() throws InterruptedException
+	{
+		log.info("*** Starting Test: newCustomerInvoiceMethodTestWithGiftCard");
+
+		//Creating the Objects below to access the functions
+		HomePage homePage = new HomePage(driver);
+		GeneralPage generalPage = new GeneralPage(driver);
+		DeliveryPage deliveryPage = new DeliveryPage(driver);
+		LoginPage loginPage = new LoginPage(driver);
+		RegistrationPage registerationPage = new RegistrationPage(driver);
+		AddressAndPaymentMethodPage addressAndPaymentPage = new AddressAndPaymentMethodPage(driver);
+		OrderOverviewPage orderOverviewPage = new OrderOverviewPage(driver);
+		GreetingCardPage greetingsCardPage = new GreetingCardPage(driver);
+		GiftsPage giftsPage = new GiftsPage(driver);
+
+		ensurePageLoaded();
+
+		generalPage.clickCloseCookieMessage(false);
+		homePage.linkEvents().click();
+		log.info("Clicked on the Anlässe link");
+		homePage.linkBirthday().click();
+		log.info("Clicked on the Geburtstag link");
+		generalPage.linkSecondItem().click();
+		log.info("Selecting the Second item on Geburtstag page");
+		generalPage.buttonSelectedItemNext().click();
+		log.info("Clicked on the Next button after selecting item");
+		Thread.sleep(1000);
+		deliveryPage.textFieldDeliveryPostalCode().sendKeys("22297");
+		log.info("Entered the delivery postal code 22297");
+		deliveryPage.buttonNextPostalCode().click();
+		log.info("Clicked the next button after entering Postal Code");
+		deliveryPage.dayActiveDay().click();
+		log.info("Selecting the active day for delivery");
+		Thread.sleep(1000);
+		generalPage.radioButtonPremiumDelivery().click();
+		log.info("Selected Premium Delivery radio button");
+		Thread.sleep(1000);
+		deliveryPage.continueToGreetingCard().click();
+		log.info("Clicked on Weiter zur Grußkarte button");
+		Thread.sleep(1000);
+		greetingsCardPage.linkGreetingCardFirstItem().click();
+		log.info("Selected the first greeting card");
+		Thread.sleep(1000);
+		greetingsCardPage.buttonContinueToGifts().click();
+		log.info("Clicked on the button Weiter zu Geschenke");
+		giftsPage.linkGiftsFirstItem().click();
+		log.info("Selected the first gift item");
+		giftsPage.buttonDirectlyToCashRegister().click();
+		log.info("Clicke on the button Direkt zur Kasse");
+		//scrolling the register button into view so that it is not hidden behind the confirmation for cookie message
+		((JavascriptExecutor) driver).executeScript("window.scrollBy(0,120)");
+		loginPage.buttonRegister().click();
+		log.info("Clicked on the Register Button");
+		//Creating a random email id to register user
+		String emailId = RandomStringUtils.randomAlphabetic(8);
+		registerationPage.registrationEmail().sendKeys(emailId+"@testemail.com");
+		log.info("For registeration entered email id "+ emailId);
+		registerationPage.registrationPassword().sendKeys("123456");
+		log.info("For registeration entered password as 123456");
+		registerationPage.registrationConfrimPassword().sendKeys("123456");
+		log.info("For registeration confirmed password as 123456");
+		registerationPage.registrationSalutation().click();
+		log.info("For registration selected salutation as Herr");
+		registerationPage.registrationFirstName().sendKeys("TestFirst");
+		log.info("For registeration entered first name as TestFirst");
+		registerationPage.registrationLastName().sendKeys("TestLast");
+		log.info("For registeration entered last name as TestLast");
+		registerationPage.registrationStreet().sendKeys("Überseering");
+		log.info("For registeration entered street name as Überseering");
+		registerationPage.registrationStreetNumber().sendKeys("33");
+		log.info("For registeration entered street number as 33");
+		registerationPage.registrationCity().sendKeys("Hamburg");
+		log.info("For registeration entered city as Hamburg");
+		registerationPage.copyDeliveryAndInvoiceAddress().click();
+		log.info("Checking the checkbox so that delivery and invoice address are same");
+		addressAndPaymentPage.chkBoxUseGiftCard().click();
+		log.info("Checked the checkbox Geschenkkarte einlösen for using a gift card");
+		addressAndPaymentPage.textFieldGiftCardNumber().sendKeys(addressAndPaymentPage.giftCardNumber());
+		log.info("Entered the gift card number");
+		addressAndPaymentPage.textFieldGiftCardPin().sendKeys(addressAndPaymentPage.giftCardpin());
+		log.info("Entered the gift card pin");
+		addressAndPaymentPage.buttonRedeemGiftCard().click();
+		log.info("Clicked button Geschenkkarte einlösen for redeeming gift card");
+		Assert.assertTrue(addressAndPaymentPage.textBoxGiftCardSuccessMessage().isDisplayed(),"The Gift Card Was not applied successfully. Check for balance of the gift card.");
+		log.info("Verified Gift Card applied success message");
+		if(addressAndPaymentPage.textBoxGiftCardPayableAmount().getText()!="0,00 €") {
+			addressAndPaymentPage.radioButtonInvoice().click();
+			log.info("Selected the payment method as Invoice by clicking radio button Rechnung");
+		}
+		registerationPage.continueToOverview().click();
+		log.info("Clicked on Weiter zur Übersicht button");
+		orderOverviewPage.buttonToBuy().click();
+		log.info("Clicked on Kaufen button");
+		Assert.assertEquals("Glückwunsch! Gute Wahl getroffen", generalPage.textOrderConfirmation().getText());
+		log.info("Order is placed successfully");
+
+		log.info("*** Finished Test: newCustomerInvoiceMethodTestWithGiftCard");
+	}
+
+	@Test
+	public void newCustomerPaypalPaymentMethodTestWithGiftCard() throws InterruptedException, IOException
+	{
+		log.info("*** Starting Test: newCustomerPaypalPaymentMethodTestWithGiftCard");
+
+		//Creating the Objects below to access the functions
+		HomePage homePage = new HomePage(driver);
+		GeneralPage generalPage = new GeneralPage(driver);
+		DeliveryPage deliveryPage = new DeliveryPage(driver);
+		LoginPage loginPage = new LoginPage(driver);
+		RegistrationPage registerationPage = new RegistrationPage(driver);
+		OrderOverviewPage orderOverviewPage = new OrderOverviewPage(driver);
+		PayPalPage payPalPage = new PayPalPage(driver);
+		GreetingCardPage greetingsCardPage = new GreetingCardPage(driver);
+		GiftsPage giftsPage = new GiftsPage(driver);
+		AddressAndPaymentMethodPage addressAndPaymentPage = new AddressAndPaymentMethodPage(driver);
+
+		ensurePageLoaded();
+
+		generalPage.clickCloseCookieMessage(false);
+
+		homePage.linkProducts().click();
+		log.info("Clicked on the Produkte link");
+		homePage.linkBouquets().click();
+		log.info("Clicked on the Blumensträuße link");
+		generalPage.linkSecondItem().click();
+		log.info("Selecting the Second item on Blumensträuße page");
+		generalPage.buttonSelectedItemNext().click();
+		log.info("Clicked on the Next button after selecting item");
+		Thread.sleep(1000);
+		deliveryPage.textFieldDeliveryPostalCode().sendKeys("22297");
+		log.info("Entered the delivery postal code 22297");
+		deliveryPage.buttonNextPostalCode().click();
+		log.info("Clicked the next button after entering Postal Code");
+		deliveryPage.dayActiveDay().click();
+		log.info("Selecting the active day for delivery");
+		Thread.sleep(1000);
+		generalPage.radioButtonPremiumDelivery().click();
+		log.info("Selected Premium Delivery radio button");
+		Thread.sleep(1000);
+		deliveryPage.continueToGreetingCard().click();
+		log.info("Clicked on Weiter zur Grußkarte button");
+		Thread.sleep(1000);
+		greetingsCardPage.linkGreetingCardFirstItem().click();
+		log.info("Selected the first greeting card");
+		Thread.sleep(1000);
+		greetingsCardPage.buttonContinueToGifts().click();
+		log.info("Clicked on the button Weiter zu Geschenke");
+		giftsPage.linkGiftsFirstItem().click();
+		log.info("Selected the first gift item");
+		giftsPage.buttonDirectlyToCashRegister().click();
+		log.info("Clicke on the button Direkt zur Kasse");
+		//scrolling the register button into view so that it is not hidden behind the confirmation for cookie message
+		((JavascriptExecutor) driver).executeScript("window.scrollBy(0,120)");
+		loginPage.buttonRegister().click();
+		log.info("Clicked on the Register Button");
+		//Creating a random email id to register user
+		String emailId = RandomStringUtils.randomAlphabetic(8);
+		registerationPage.registrationEmail().sendKeys(emailId+"@testemail.com");
+		log.info("For registeration entered email id "+ emailId);
+		registerationPage.registrationPassword().sendKeys("123456");
+		log.info("For registeration entered password as 123456");
+		registerationPage.registrationConfrimPassword().sendKeys("123456");
+		log.info("For registeration confirmed password as 123456");
+		registerationPage.registrationSalutation().click();
+		log.info("For registration selected salutation as Herr");
+		registerationPage.registrationFirstName().sendKeys("TestFirst");
+		log.info("For registeration entered first name as TestFirst");
+		registerationPage.registrationLastName().sendKeys("TestLast");
+		log.info("For registeration entered last name as TestLast");
+		registerationPage.registrationStreet().sendKeys("Überseering");
+		log.info("For registeration entered street name as Überseering");
+		registerationPage.registrationStreetNumber().sendKeys("33");
+		log.info("For registeration entered street number as 33");
+		registerationPage.registrationCity().sendKeys("Hamburg");
+		log.info("For registeration entered city as Hamburg");
+		((JavascriptExecutor) driver).executeScript("window.scrollBy(0,-180)");
+		registerationPage.copyDeliveryAndInvoiceAddress().click();
+		log.info("Checking the checkbox so that delivery and invoice address are same");
+		Thread.sleep(1000);
+		addressAndPaymentPage.chkBoxUseGiftCard().click();
+		log.info("Checked the checkbox Geschenkkarte einlösen for using a gift card");
+		addressAndPaymentPage.textFieldGiftCardNumber().sendKeys(addressAndPaymentPage.giftCardNumber());
+		log.info("Entered the gift card number");
+		addressAndPaymentPage.textFieldGiftCardPin().sendKeys(addressAndPaymentPage.giftCardpin());
+		log.info("Entered the gift card pin");
+		addressAndPaymentPage.buttonRedeemGiftCard().click();
+		log.info("Clicked button Geschenkkarte einlösen for redeeming gift card");
+		Assert.assertTrue(addressAndPaymentPage.textBoxGiftCardSuccessMessage().isDisplayed(),"The Gift Card Was not applied successfully. Check for balance of the gift card.");
+		log.info("Verified Gift Card applied success message");
+		registerationPage.continueToOverview().click();
+		log.info("Clicked on Weiter zur Übersicht button");
+		orderOverviewPage.buttonToBuy().click();
+		log.info("Clicked on Kaufen button");
+		//Only Go inside when after applying gift card some balance is payable
+		if(payPalPage.textFieldEmail().isDisplayed()) {
+			payPalPage.PayPalLogin();
+			driver.switchTo().defaultContent();
+			payPalPage.buttonPaypalPaymentConfirmation().click();
+			driver.switchTo().defaultContent();
+			log.info("Clicked on the Jetzt bezhalen for payment confirmation");
+		}
+		Assert.assertEquals("Glückwunsch! Gute Wahl getroffen", generalPage.textOrderConfirmation().getText());
+		log.info("Order is placed successfully");
+
+		log.info("*** Finished Test: newCustomerPaypalPaymentMethodTestWithGiftCard");
+	}
+
+	@Test
+	public void newCustomerSEPADirectDebitMethodTestWithGiftCard() throws InterruptedException
+	{
+		log.info("*** Starting Test: newCustomerSEPADirectDebitMethodTestWithGiftCard");
+
+		//Creating the Objects below to access the functions
+		HomePage homePage = new HomePage(driver);
+		GeneralPage generalPage = new GeneralPage(driver);
+		DeliveryPage deliveryPage = new DeliveryPage(driver);
+		LoginPage loginPage = new LoginPage(driver);
+		RegistrationPage registerationPage = new RegistrationPage(driver);
+		AddressAndPaymentMethodPage addressAndPaymentPage = new AddressAndPaymentMethodPage(driver);
+		OrderOverviewPage orderOverviewPage = new OrderOverviewPage(driver);
+		GreetingCardPage greetingsCardPage = new GreetingCardPage(driver);
+		GiftsPage giftsPage = new GiftsPage(driver);
+
+		ensurePageLoaded();
+
+		generalPage.clickCloseCookieMessage(false);
+
+		homePage.linkProducts().click();
+		log.info("Clicked on the Produkte link");
+		homePage.linkPlants().click();
+		log.info("Clicked on the Pflanzen link");
+		generalPage.linkFirstItem().click();
+		log.info("Selecting the first item on Pflanzen page");
+		generalPage.buttonSelectedItemNext().click();
+		log.info("Clicked on the Next button after selecting item");
+		Thread.sleep(1000);
+		deliveryPage.textFieldDeliveryPostalCode().sendKeys("22297");
+		log.info("Entered the delivery postal code 22297");
+		deliveryPage.buttonNextPostalCode().click();
+		log.info("Clicked the next button after entering Postal Code");
+		deliveryPage.dayActiveDay().click();
+		log.info("Selecting the active day for delivery");
+		Thread.sleep(1000);
+		generalPage.radioButtonPremiumDelivery().click();
+		log.info("Selected Premium Delivery radio button");
+		Thread.sleep(1000);
+		deliveryPage.continueToGreetingCard().click();
+		log.info("Clicked on Weiter zur Grußkarte button");
+		Thread.sleep(1000);
+		greetingsCardPage.linkGreetingCardFirstItem().click();
+		log.info("Selected the first greeting card");
+		Thread.sleep(1000);
+		greetingsCardPage.buttonContinueToGifts().click();
+		log.info("Clicked on the button Weiter zu Geschenke");
+		giftsPage.linkGiftsFirstItem().click();
+		log.info("Selected the first gift item");
+		giftsPage.buttonDirectlyToCashRegister().click();
+		log.info("Clicked on the button Direkt zur Kasse");
+		//scrolling the register button into view so that it is not hidden behind the confirmation for cookie message
+		((JavascriptExecutor) driver).executeScript("window.scrollBy(0,120)");
+		loginPage.buttonRegister().click();
+		log.info("Clicked on the Register Button");
+		//Creating a random email id to register user
+		String emailId = RandomStringUtils.randomAlphabetic(8);
+		registerationPage.registrationEmail().sendKeys(emailId+"@testemail.com");
+		log.info("For registeration entered email id "+ emailId);
+		registerationPage.registrationPassword().sendKeys("123456");
+		log.info("For registeration entered password as 123456");
+		registerationPage.registrationConfrimPassword().sendKeys("123456");
+		log.info("For registeration confirmed password as 123456");
+		registerationPage.registrationSalutation().click();
+		log.info("For registration selected salutation as Herr");
+		registerationPage.registrationFirstName().sendKeys("TestFirst");
+		log.info("For registeration entered first name as TestFirst");
+		registerationPage.registrationLastName().sendKeys("TestLast");
+		log.info("For registeration entered last name as TestLast");
+		registerationPage.registrationStreet().sendKeys("Überseering");
+		log.info("For registeration entered street name as Überseering");
+		registerationPage.registrationStreetNumber().sendKeys("33");
+		log.info("For registeration entered street number as 33");
+		registerationPage.registrationCity().sendKeys("Hamburg");
+		log.info("For registeration entered city as Hamburg");
+		((JavascriptExecutor) driver).executeScript("window.scrollBy(0,-180)");
+		registerationPage.copyDeliveryAndInvoiceAddress().click();
+		log.info("Checking the checkbox so that delivery and invoice address are same");
+		Thread.sleep(1000);
+		addressAndPaymentPage.chkBoxUseGiftCard().click();
+		log.info("Checked the checkbox Geschenkkarte einlösen for using a gift card");
+		addressAndPaymentPage.textFieldGiftCardNumber().sendKeys(addressAndPaymentPage.giftCardNumber());
+		log.info("Entered the gift card number");
+		addressAndPaymentPage.textFieldGiftCardPin().sendKeys(addressAndPaymentPage.giftCardpin());
+		log.info("Entered the gift card pin");
+		addressAndPaymentPage.buttonRedeemGiftCard().click();
+		log.info("Clicked button Geschenkkarte einlösen for redeeming gift card");
+		Assert.assertTrue(addressAndPaymentPage.textBoxGiftCardSuccessMessage().isDisplayed(),"The Gift Card Was not applied successfully. Check for balance of the gift card.");
+		log.info("Verified Gift Card applied success message");
+		if(addressAndPaymentPage.textBoxGiftCardPayableAmount().getText()!="0,00 €") {
+			//scrolling the Debit Card checkbox into view
+			((JavascriptExecutor) driver).executeScript("window.scrollBy(0,-120)");
+			addressAndPaymentPage.radioButtonDebitCard().click();
+			log.info("Selected the Bankeinzug/Lastschrift (Debit Card)radio button");
+			addressAndPaymentPage.textFieldAccountHolder().sendKeys(addressAndPaymentPage.accountHolderName());
+			log.info("Entered the account holder name as "+ addressAndPaymentPage.accountHolderName());
+			addressAndPaymentPage.textFieldIBANNumber().sendKeys(addressAndPaymentPage.ibanNumber());
+			log.info("Entered the INAN number as "+ addressAndPaymentPage.ibanNumber());
+			addressAndPaymentPage.chkBoxSEPADirectDebit().click();
+			log.info("Checked the Direct debit checkbox");
+		}
+		registerationPage.continueToOverview().click();
+		log.info("Clicked on Weiter zur Übersicht button");
+		orderOverviewPage.buttonToBuy().click();
+		log.info("Clicked on Kaufen button");
+		Assert.assertEquals("Glückwunsch! Gute Wahl getroffen", generalPage.textOrderConfirmation().getText());
+		log.info("Order is placed successfully");
+
+		log.info("*** Finished Test: newCustomerSEPADirectDebitMethodTestWithGiftCard");
+	}
+
 
 	@AfterMethod
 	public void logout()

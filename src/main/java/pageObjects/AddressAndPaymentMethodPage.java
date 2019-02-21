@@ -32,6 +32,12 @@ public class AddressAndPaymentMethodPage
 	@FindBy (id="invoiceBirthYear") WebElement dropdown_BirthYear;
 	@FindBy (id="invoicePhone") WebElement textField_RatepayTelephoneNumber;
 	@FindBy (xpath="//span[.//text()= 'Rechnung']")  WebElement radioButton_Invoice;
+	@FindBy (xpath="//span[contains(text(),'Geschenkkarte einlösen')]") WebElement chkBox_UseGiftCard;
+	@FindBy (id="giftCardNumber") WebElement textField_GiftCardNumber;
+	@FindBy (id="giftCardPin") WebElement textField_GiftCardPin;
+	@FindBy (id="giftCardSubmit") WebElement btn_RedeemGiftCard;
+	@FindBy (id="giftCardSuccessMessage") WebElement textBox_GiftCardSuccessMessage;
+	@FindBy (xpath="//*[@id='giftCardSuccessMessage']/div[2]/div[2]") WebElement textBox_GiftCardRemainingAmout;
 
 	String SEPAAccountHolder = "Tester";
 	String IBANNumber = "DE12500105170648489890";
@@ -43,6 +49,8 @@ public class AddressAndPaymentMethodPage
 	String RatePayBirtMonth = "Mai";
 	String RatePayBirtYear = "1956";
 	String RatepayTelephoneNumber = "054837527";
+	String GiftCardNumber = "2000365328296387";//2000365328296387(6164),2000480173588590(8972)
+	String GiftCardPin = "6164";
 	//Comment the above code and uncomment the code below in case of using Page Object model instead of Page Factory Model
 	//By link_Login = By.linkText("Anmelden");
 
@@ -183,6 +191,38 @@ public class AddressAndPaymentMethodPage
 	public WebElement radioButtonInvoice()
 	{
 		return radioButton_Invoice;
+	}
+	public WebElement chkBoxUseGiftCard()
+	{
+		return chkBox_UseGiftCard;
+	}
+	public WebElement textFieldGiftCardNumber()
+	{
+		return textField_GiftCardNumber;
+	}
+	public WebElement textFieldGiftCardPin()
+	{
+		return textField_GiftCardPin;
+	}
+	public WebElement buttonRedeemGiftCard()
+	{
+		return btn_RedeemGiftCard;
+	}
+	public String giftCardNumber()
+	{
+		return GiftCardNumber;
+	}
+	public String giftCardpin()
+	{
+		return GiftCardPin;
+	}
+	public WebElement textBoxGiftCardSuccessMessage()
+	{
+		return textBox_GiftCardSuccessMessage;
+	}
+	public WebElement textBoxGiftCardPayableAmount()
+	{
+		return textBox_GiftCardRemainingAmout;
 	}
 
 }
