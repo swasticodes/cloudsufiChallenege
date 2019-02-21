@@ -1124,7 +1124,6 @@ public class accountTypeNewCustomer<inherits> extends BasicVariables {
 		OrderOverviewPage orderOverviewPage = new OrderOverviewPage(driver);
 		GreetingCardPage greetingsCardPage = new GreetingCardPage(driver);
 		GiftsPage giftsPage = new GiftsPage(driver);
-		GiftsSetsPage giftsSetsPage = new GiftsSetsPage(driver);
 
 		ensurePageLoaded();
 
