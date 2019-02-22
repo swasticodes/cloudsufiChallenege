@@ -764,6 +764,108 @@ public class accountTypeExistingCustomer<inherits> extends BasicVariables {
 		log.info("*** Finished Test: existingCustomerPreLoginSEPADirectDebitMethodTest");
 	}
 
+	@Test
+	public void existingCustomerPreLoginRatePayMethodTest() throws InterruptedException
+	{
+		log.info("*** Starting Test: existingCustomerPreLoginRatePayMethodTest");
+
+		//Creating the Objects below to access the functions
+		HomePage homePage = new HomePage(driver);
+		GeneralPage generalPage = new GeneralPage(driver);
+		DeliveryPage deliveryPage = new DeliveryPage(driver);
+		RegistrationPage registerationPage = new RegistrationPage(driver);
+		AddressAndPaymentMethodPage addressAndPaymentPage = new AddressAndPaymentMethodPage(driver);
+		OrderOverviewPage orderOverviewPage = new OrderOverviewPage(driver);
+		GreetingCardPage greetingCardsPage = new GreetingCardPage(driver);
+		GiftsPage giftsPage = new GiftsPage(driver);
+
+		ensurePageLoaded();
+
+		generalPage.clickCloseCookieMessage(false);
+
+		homePage.linkLogin().click();
+		log.info("Clicked on the Anmelden link for logging in");
+		registerationPage.textFieldEmail().sendKeys(registerationPage.registeredUserEmail());
+		log.info("Entered the email id as-> " + registerationPage.registeredUserEmail());
+		registerationPage.textFieldPassword().sendKeys(registerationPage.registeredUserPassword());
+		log.info("Entered the password as-> <CENSORED>");
+		registerationPage.buttonLogin().click();
+		log.info("Clicked on the 'Einloggen' button");
+		homePage.linkTopseller().click();
+		log.info("Clicked on the 'Topseller' button");
+		generalPage.linkSecondItem().click();
+		log.info("Selected the Second item on the Topseller page");
+		generalPage.buttonSelectedItemNext().click();
+		log.info("Clicked on the Next button after selecting item");
+		Thread.sleep(1000);
+		deliveryPage.textFieldDeliveryPostalCode().sendKeys("22297");
+		log.info("Entered the delivery postal code 22297");
+		deliveryPage.buttonNextPostalCode().click();
+		log.info("Clicked the next button after entering Postal Code");
+		Thread.sleep(1000);
+		deliveryPage.dayActiveDay().click();
+		log.info("Selecting the active day for delivery");
+		Thread.sleep(1000);
+		deliveryPage.continueToGreetingCard().click();
+		log.info("Clicked on Weiter zur Grußkarte button");
+		Thread.sleep(1000);
+		greetingCardsPage.linkGreetingCardFirstItem().click();
+		log.info("Selected the first Greeting Card on the the page");
+		Thread.sleep(1000);
+		greetingCardsPage.dropdownSelectGreetingTextTemplate().click();
+		log.info("Opened the Grußtextvorlage auswählen dropdown");
+		Thread.sleep(1000);
+		greetingCardsPage.greetingCardTemplateLove().click();
+		log.info("Selectd Liebe from the dropdown");
+		Thread.sleep(1000);
+		greetingCardsPage.buttonContinueToGifts().click();
+		log.info("Clicked on the button 'Weiter zu Geschenke'");
+		Thread.sleep(1000);
+		giftsPage.linkGiftsPageFirstItem().click();
+		log.info("Selected the first gift item");
+		giftsPage.linkGiftsPageSecondItem().click();
+		log.info("Selected the Second gift item");
+		Thread.sleep(1000);
+		giftsPage.buttonDirectlyToCashRegister().click();
+		log.info("Clicked on the button 'Direkt zur Kasse'");
+		Thread.sleep(1000);
+		registerationPage.registrationSalutation().click();
+		log.info("For registration selected salutation as Herr");
+		registerationPage.registrationFirstName().sendKeys("Han");
+		log.info("For registeration entered first name as Han");
+		registerationPage.registrationLastName().sendKeys("Solo");
+		log.info("For registeration entered last name as Solo");
+		registerationPage.registrationStreet().sendKeys("Sienebrink");
+		log.info("For registeration entered street name as Sienebrink");
+		registerationPage.registrationStreetNumber().sendKeys("7");
+		log.info("For registeration entered street number as 7");
+		registerationPage.registrationCity().sendKeys("Lienen");
+		log.info("For registeration entered city as Lienen");
+		addressAndPaymentPage.checkBox_UseCouponCode().click();
+		log.info("Clicked on the 'Gutscheincode einlösen' checkbox");
+		addressAndPaymentPage.textField_VoucherCode().sendKeys(addressAndPaymentPage.voucherCode());
+		log.info("Entered the Voucher code as -> " + addressAndPaymentPage.voucherCode());
+		addressAndPaymentPage.buttonSubmitVoucherCode().click();
+		log.info("Clicked on 'Gutscheincode einlösen' button");
+		Thread.sleep(1000);
+		Assert.assertTrue(addressAndPaymentPage.textBoxVoucherCodeSuccess().isDisplayed(), "The Voucher code was not applied successfully. Please check the balance.");
+		//scrolling so that the debit card checkbox is not hidden behind the top banner
+		((JavascriptExecutor) driver).executeScript("window.scrollBy(0,-450)");
+		addressAndPaymentPage.radioButtonRatepay().click();
+		log.info("Selected the payment method as Ratepay by clicking radio button Ratepay Rechnung");
+		Thread.sleep(1000);
+		addressAndPaymentPage.checkBoxInvoiceConsentDeclaration().click();
+		log.info("Checked the Consent Declaration checkbox");
+		registerationPage.continueToOverview().click();
+		log.info("Clicked on Weiter zur Übersicht button");
+		orderOverviewPage.buttonToBuy().click();
+		log.info("Clicked on Kaufen button");
+		Assert.assertEquals("Glückwunsch! Gute Wahl getroffen", generalPage.textOrderConfirmation().getText());
+		log.info("Order is placed successfully");
+
+		log.info("*** Finished Test: existingCustomerPreLoginRatePayMethodTest");
+	}
+
 	@AfterMethod
 	public void logout()
 	{
