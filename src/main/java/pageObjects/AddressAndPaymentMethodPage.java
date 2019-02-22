@@ -49,7 +49,7 @@ public class AddressAndPaymentMethodPage
 	String RatePayBirtMonth = "Mai";
 	String RatePayBirtYear = "1956";
 	String RatepayTelephoneNumber = "054837527";
-	String GiftCardNumber = "2000365328296387";//2000365328296387(6164),2000480173588590(8972)
+	String GiftCardNumber = "2000365328296387";//2000365328296387(6164),2000480173588590(8972), 2000468883528648(4735), 
 	String GiftCardPin = "6164";
 	//Comment the above code and uncomment the code below in case of using Page Object model instead of Page Factory Model
 	//By link_Login = By.linkText("Anmelden");
