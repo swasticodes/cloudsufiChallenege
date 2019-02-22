@@ -780,15 +780,15 @@ public class accountTypeExistingCustomer<inherits> extends BasicVariables {
 		} catch(NoSuchElementException ex) {
 			log.info("No need for logging out.");
 		}
-		driver.quit();
-		log.info("---------------Cleaned Up The Setup--------------");
 	}
 
 	@AfterTest
 	public void closeBrowser()
 	{
+		driver.quit();
 		//releasing the memory
 		driver = null;
+		log.info("---------------Cleaned Up The Setup--------------");
 	}
 
 }
