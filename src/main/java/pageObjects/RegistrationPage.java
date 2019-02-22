@@ -27,6 +27,7 @@ public class RegistrationPage
 	@FindBy (xpath="//button[contains(text(),'Einloggen')]") WebElement btn_Login;
 	@FindBy (id="loginEmail") WebElement textField_LoginEmail;
 	@FindBy (id="loginPassword") WebElement textField_LoginPassword;
+	@FindBy (xpath="(//span[contains(text(),'Herr')])[1]") WebElement radioButton_tchibo_Herr_Salutation;
 
 	String registeredUserEmail = "development@blume2000.de";
 	String registeredUserPassword = "development";
@@ -118,6 +119,10 @@ public class RegistrationPage
 	public String registeredUserPassword()
 	{
 		return registeredUserPassword;
+	}
+	public WebElement tchiboSalutationHerr()
+	{
+		return radioButton_tchibo_Herr_Salutation;
 	}
 
 }
