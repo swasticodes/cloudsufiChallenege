@@ -38,6 +38,7 @@ public class AddressAndPaymentMethodPage
 	@FindBy (id="giftCardSubmit") WebElement btn_RedeemGiftCard;
 	@FindBy (id="giftCardSuccessMessage") WebElement textBox_GiftCardSuccessMessage;
 	@FindBy (xpath="//*[@id='giftCardSuccessMessage']/div[2]/div[2]") WebElement textBox_GiftCardRemainingAmout;
+	@FindBy (id="voucherSuccessMessage") WebElement textBox_VoucherCodeSuccessMessage;
 
 	String SEPAAccountHolder = "Tester";
 	String IBANNumber = "DE12500105170648489890";
@@ -223,6 +224,10 @@ public class AddressAndPaymentMethodPage
 	public WebElement textBoxGiftCardPayableAmount()
 	{
 		return textBox_GiftCardRemainingAmout;
+	}
+	public WebElement textBoxVoucherCodeSuccess()
+	{
+		return textBox_VoucherCodeSuccessMessage;
 	}
 
 }

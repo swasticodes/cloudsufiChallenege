@@ -23,6 +23,7 @@ public class HomePage
 	@FindBy (linkText="Pflanzen") WebElement link_Plants;
 	@FindBy (linkText="Geschenksets") WebElement link_GiftSets;
 	@FindBy (linkText="Torten & Geschenke") WebElement link_PiesAndGifts;
+	@FindBy (linkText="Gute Besserung") WebElement link_GetWell;
 	//Comment the above code and uncomment the code below in case of using Page Object model instead of Page Factory Model
 	//By link_Login = By.linkText("Anmelden");
 	
@@ -87,6 +88,10 @@ public class HomePage
 	public WebElement linkPiesAndGifts()
 	{
 		return link_PiesAndGifts;
+	}
+	public WebElement linkGetWell()
+	{
+		return link_GetWell;
 	}
 
 }
