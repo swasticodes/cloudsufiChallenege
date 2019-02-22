@@ -21,6 +21,7 @@ public class GreetingCardPage
 	@FindBy (xpath="(//*[contains(text(),'Direkt zur Kasse')])[4]") WebElement btn_DirectlyToCashRegister;
 	@FindBy (id="dropdownMenuButton") WebElement dropDown_GreetingTextTemplate;
 	@FindBy (xpath="//*[@id='greetingDropDown']/li[1]") WebElement dropdown_MenuOption_ThankYou;
+	@FindBy (xpath="//*[@id='greetingDropDown']/li[2]") WebElement dropdown_MenuOption_Love;
 	//Comment the above code and uncomment the code below in case of using Page Object model instead of Page Factory Model
 	//By link_Login = By.linkText("Anmelden");
 	
@@ -77,5 +78,9 @@ public class GreetingCardPage
 	public WebElement greetingCardTemplateThankYou()
 	{
 		return dropdown_MenuOption_ThankYou;
+	}
+	public WebElement greetingCardTemplateLove()
+	{
+		return dropdown_MenuOption_Love;
 	}
 }
