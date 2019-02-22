@@ -475,7 +475,6 @@ public class accountTypeGuestCustomer<inherits> extends BasicVariables {
 		log.info("Selected the second Gift Item");
 		giftsPage.buttonDirectlyToCashRegister().click();
 		log.info("Clicked on the button Direkt zur Kasse");
-		log.info("Clicked on Weiter ohne Geschenke button");
 		registerationPage.buttonOrderAsGuest().click();
 		log.info("Clicked on the button Als Gast bestellen");
 		//Creating a random email id to register user
