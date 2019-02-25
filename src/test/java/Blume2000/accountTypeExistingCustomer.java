@@ -961,6 +961,101 @@ public class accountTypeExistingCustomer<inherits> extends BasicVariables {
 		log.info("*** Finished Test: existingCustomerPreLoginCreditCardMethodTest");
 	}
 
+	@Test
+	public void existingCustomerPreLoginGiftSetsCreditCardMethodTest() throws InterruptedException
+	{
+		log.info("*** Starting Test: existingCustomerPreLoginGiftSetsCreditCardMethodTest");
+
+		//Creating the Objects below to access the functions
+		HomePage homePage = new HomePage(driver);
+		GeneralPage generalPage = new GeneralPage(driver);
+		DeliveryPage deliveryPage = new DeliveryPage(driver);
+		RegistrationPage registerationPage = new RegistrationPage(driver);
+		AddressAndPaymentMethodPage addressAndPaymentPage = new AddressAndPaymentMethodPage(driver);
+		OrderOverviewPage orderOverviewPage = new OrderOverviewPage(driver);
+		GreetingCardPage greetingCardPage = new GreetingCardPage(driver);
+		GiftsPage giftsPage = new GiftsPage(driver);
+		GiftsSetsPage giftsSetsPage = new GiftsSetsPage(driver);
+
+		ensurePageLoaded();
+		generalPage.clickCloseCookieMessage(false);
+
+		homePage.linkLogin().click();
+		log.info("Clicked on the Anmelden link for logging in");
+		registerationPage.textFieldEmail().sendKeys(registerationPage.registeredUserEmail());
+		log.info("Entered the email id as-> " + registerationPage.registeredUserEmail());
+		registerationPage.textFieldPassword().sendKeys(registerationPage.registeredUserPassword());
+		log.info("Entered the password as-> <CENSORED>");
+		registerationPage.buttonLogin().click();
+		log.info("Clicked on the 'Einloggen' button");
+		homePage.linkProducts().click();
+		log.info("Clicked on the Produkte link");
+		homePage.linkGiftSets().click();
+		log.info("Clicked on the Geschenksets link");
+		giftsSetsPage.linkGiftsSetsFirstItem().click();
+		log.info("Selecting the First item on Geschenksets page");
+		generalPage.buttonSelectedItemNext().click();
+		log.info("Clicked on the Next button after selecting item");
+		Thread.sleep(1000);
+		deliveryPage.textFieldDeliveryPostalCode().sendKeys("22297");
+		log.info("Entered the delivery postal code 22297");
+		deliveryPage.buttonNextPostalCode().click();
+		log.info("Clicked the next button after entering Postal Code");
+		Thread.sleep(1000);
+		deliveryPage.dayActiveDay().click();
+		log.info("Selecting the active day for delivery");
+		Thread.sleep(1000);
+		deliveryPage.continueToGreetingCard().click();
+		log.info("Clicked on Weiter zur Grußkarte button");
+		greetingCardPage.tabThankYou().click();
+		log.info("Clicked on the Dankeschön tab on Greetings Card page");
+		Thread.sleep(1000);
+		greetingCardPage.linkGreetingCardFirstItem().click();
+		log.info("Selected the First greeting card on Dankeschön tab");
+		Thread.sleep(1000);
+		greetingCardPage.buttonContinueToGifts().click();
+		log.info("Clicked on the button Weiter zu Geschenke");
+		giftsPage.linkGiftsPageFirstItem().click();
+		log.info("Selected the first Gift Item");
+		giftsPage.linkGiftsPageSecondItem().click();
+		log.info("Selected the second Gift Item");
+		giftsPage.buttonDirectlyToCashRegister().click();
+		log.info("Clicked on the button Direkt zur Kasse");
+		registerationPage.registrationSalutation().click();
+		log.info("For registration selected salutation as Herr");
+		registerationPage.registrationFirstName().sendKeys("TestFirst");
+		log.info("For registeration entered first name as TestFirst");
+		registerationPage.registrationLastName().sendKeys("TestLast");
+		log.info("For registeration entered last name as TestLast");
+		registerationPage.registrationStreet().sendKeys("Überseering");
+		log.info("For registeration entered street name as Überseering");
+		registerationPage.registrationStreetNumber().sendKeys("33");
+		log.info("For registeration entered street number as 33");
+		registerationPage.registrationCity().sendKeys("Hamburg");
+		log.info("For registeration entered city as Hamburg");
+		addressAndPaymentPage.radioButtonCreditCard().click();
+		log.info("Selected the payment method as Credit Card by clicking radio button Kreditkarte");
+		registerationPage.continueToOverview().click();
+		log.info("Clicked on Weiter zur Übersicht button");
+		orderOverviewPage.buttonToBuy().click();
+		log.info("Clicked on Kaufen button");
+		driver.switchTo().frame(0);
+		log.info("Switched Frame so that credit card details can be entered");
+		addressAndPaymentPage.textFieldCreditCardNumber().sendKeys(addressAndPaymentPage.creditCardNumber());
+		log.info("Entering the credit card number as "+addressAndPaymentPage.creditCardNumber());
+		addressAndPaymentPage.dropDownCreditCardExpiryMonth().sendKeys(addressAndPaymentPage.creditCardExpiryMonth());
+		log.info("Entered Credit Card Expiry Month as "+addressAndPaymentPage.creditCardExpiryMonth());
+		addressAndPaymentPage.dropDownCreditCardExpiryYear().sendKeys(addressAndPaymentPage.creditCardExpiryYear());
+		log.info("Entered Credit Card Expiry Year as "+addressAndPaymentPage.creditCardExpiryYear());
+		addressAndPaymentPage.creditCardContinueButton().click();
+		log.info("Clicked on the Weiter button on the Credit Card page");
+		driver.switchTo().defaultContent();
+		Assert.assertEquals("Glückwunsch! Gute Wahl getroffen", generalPage.textOrderConfirmation().getText());
+		log.info("Order is placed successfully");
+
+		log.info("*** Finished Test: existingCustomerPreLoginGiftSetsCreditCardMethodTest");
+	}
+
 	@AfterMethod
 	public void logout()
 	{
