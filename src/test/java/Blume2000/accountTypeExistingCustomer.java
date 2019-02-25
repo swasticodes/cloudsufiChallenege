@@ -950,6 +950,8 @@ public class accountTypeExistingCustomer<inherits> extends BasicVariables {
 		log.info("Clicked on 'Gutscheincode einlösen' button");
 		Thread.sleep(1000);
 		Assert.assertTrue(addressAndPaymentPage.textBoxVoucherCodeSuccess().isDisplayed(), "The Voucher code was not applied successfully. Please check the balance.");
+		//scrolling so that the Paypal checkbox is not hidden behind the top banner
+		((JavascriptExecutor) driver).executeScript("window.scrollBy(0,-450)");
 		addressAndPaymentPage.radioButtonCreditCard().click();
 		log.info("Selected the payment method as Credit Card by clicking radio button Kreditkarte");
 		registerationPage.continueToOverview().click();
