@@ -14,7 +14,7 @@ public class GreetingCardPage
 	@FindBy (xpath="//*[@id=\"greetingTextForm\"]") WebElement textBox_GreetingText;
 	@FindBy (xpath="//button[@id=\"submitGreetingCard\"]") WebElement btn_Continue_To_Gifts;
 	@FindBy (name="checkout.grusskarte.liebe") WebElement tab_Love;
-	@FindBy (xpath="(//*[contains(@class,'card-body')])[4]") WebElement tabLove_SecondItem;
+	@FindBy (xpath="(//*[contains(@class,'card-body')])[6]") WebElement tabLove_SecondItem;
 	@FindBy (xpath="//*[contains(@class,'greeting-card-list d-flex flex-wrap justify-content-around')]/div[7]") WebElement link_LoveGreetingCard_SecondItem;
 	@FindBy (xpath="(//a[contains(text(),'Dankeschön')])[3]") WebElement tab_ThankYou;
 	@FindBy (xpath="(//*[contains(@class,'greeting-card-list d-flex flex-wrap justify-content-around')]/div)[3]") WebElement link_ThankYoGreetingCard_SecondItem;
