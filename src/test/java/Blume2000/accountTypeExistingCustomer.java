@@ -17,6 +17,7 @@ import pageObjects.HomePage;
 import pageObjects.LoginPage;
 import pageObjects.OrderOverviewPage;
 import pageObjects.PayPalPage;
+import pageObjects.PiesAndGiftsPage;
 import pageObjects.RegistrationPage;
 import pageObjects.AddressAndPaymentMethodPage;
 import pageObjects.DeliveryPage;
