@@ -842,21 +842,24 @@ public class accountTypeExistingCustomer<inherits> extends BasicVariables {
 		log.info("For registeration entered street number as 7");
 		registerationPage.registrationCity().sendKeys("Lienen");
 		log.info("For registeration entered city as Lienen");
-		addressAndPaymentPage.checkBox_UseCouponCode().click();
-		log.info("Clicked on the 'Gutscheincode einlösen' checkbox");
-		addressAndPaymentPage.textField_VoucherCode().sendKeys(addressAndPaymentPage.voucherCode());
-		log.info("Entered the Voucher code as -> " + addressAndPaymentPage.voucherCode());
-		addressAndPaymentPage.buttonSubmitVoucherCode().click();
-		log.info("Clicked on 'Gutscheincode einlösen' button");
-		Thread.sleep(1000);
-		Assert.assertTrue(addressAndPaymentPage.textBoxVoucherCodeSuccess().isDisplayed(), "The Voucher code was not applied successfully. Please check the balance.");
-		//scrolling so that the debit card checkbox is not hidden behind the top banner
-		((JavascriptExecutor) driver).executeScript("window.scrollBy(0,-450)");
-		addressAndPaymentPage.radioButtonRatepay().click();
-		log.info("Selected the payment method as Ratepay by clicking radio button Ratepay Rechnung");
-		Thread.sleep(1000);
-		addressAndPaymentPage.checkBoxInvoiceConsentDeclaration().click();
-		log.info("Checked the Consent Declaration checkbox");
+		addressAndPaymentPage.chkBoxUseGiftCard().click();
+		log.info("Checked the checkbox Geschenkkarte einlösen for using a gift card");
+		addressAndPaymentPage.textFieldGiftCardNumber().sendKeys(addressAndPaymentPage.giftCardNumber());
+		log.info("Entered the gift card number");
+		addressAndPaymentPage.textFieldGiftCardPin().sendKeys(addressAndPaymentPage.giftCardpin());
+		log.info("Entered the gift card pin");
+		addressAndPaymentPage.buttonRedeemGiftCard().click();
+		log.info("Clicked button Geschenkkarte einlösen for redeeming gift card");
+		Assert.assertTrue(addressAndPaymentPage.textBoxGiftCardSuccessMessage().isDisplayed(),"The Gift Card Was not applied successfully. Check for balance of the gift card.");
+		log.info("Verified Gift Card applied success message");
+		if(addressAndPaymentPage.textBoxGiftCardPayableAmount().getText()!="0,00 €") {
+			((JavascriptExecutor) driver).executeScript("window.scrollBy(0,-450)");
+			addressAndPaymentPage.radioButtonRatepay().click();
+			log.info("Selected the payment method as Ratepay by clicking radio button Ratepay Rechnung");
+			Thread.sleep(1000);
+			addressAndPaymentPage.checkBoxInvoiceConsentDeclaration().click();
+			log.info("Checked the Consent Declaration checkbox");
+		}
 		registerationPage.continueToOverview().click();
 		log.info("Clicked on Weiter zur Übersicht button");
 		orderOverviewPage.buttonToBuy().click();
@@ -939,6 +942,14 @@ public class accountTypeExistingCustomer<inherits> extends BasicVariables {
 		log.info("For registeration entered street number as 33");
 		registerationPage.registrationCity().sendKeys("Hamburg");
 		log.info("For registeration entered city as Hamburg");
+		addressAndPaymentPage.checkBox_UseCouponCode().click();
+		log.info("Clicked on the 'Gutscheincode einlösen' checkbox");
+		addressAndPaymentPage.textField_VoucherCode().sendKeys(addressAndPaymentPage.voucherCode());
+		log.info("Entered the Voucher code as -> " + addressAndPaymentPage.voucherCode());
+		addressAndPaymentPage.buttonSubmitVoucherCode().click();
+		log.info("Clicked on 'Gutscheincode einlösen' button");
+		Thread.sleep(1000);
+		Assert.assertTrue(addressAndPaymentPage.textBoxVoucherCodeSuccess().isDisplayed(), "The Voucher code was not applied successfully. Please check the balance.");
 		addressAndPaymentPage.radioButtonCreditCard().click();
 		log.info("Selected the payment method as Credit Card by clicking radio button Kreditkarte");
 		registerationPage.continueToOverview().click();
@@ -1034,8 +1045,20 @@ public class accountTypeExistingCustomer<inherits> extends BasicVariables {
 		log.info("For registeration entered street number as 33");
 		registerationPage.registrationCity().sendKeys("Hamburg");
 		log.info("For registeration entered city as Hamburg");
-		addressAndPaymentPage.radioButtonCreditCard().click();
-		log.info("Selected the payment method as Credit Card by clicking radio button Kreditkarte");
+		addressAndPaymentPage.chkBoxUseGiftCard().click();
+		log.info("Checked the checkbox Geschenkkarte einlösen for using a gift card");
+		addressAndPaymentPage.textFieldGiftCardNumber().sendKeys(addressAndPaymentPage.giftCardNumber());
+		log.info("Entered the gift card number");
+		addressAndPaymentPage.textFieldGiftCardPin().sendKeys(addressAndPaymentPage.giftCardpin());
+		log.info("Entered the gift card pin");
+		addressAndPaymentPage.buttonRedeemGiftCard().click();
+		log.info("Clicked button Geschenkkarte einlösen for redeeming gift card");
+		Assert.assertTrue(addressAndPaymentPage.textBoxGiftCardSuccessMessage().isDisplayed(),"The Gift Card Was not applied successfully. Check for balance of the gift card.");
+		log.info("Verified Gift Card applied success message");
+		if(addressAndPaymentPage.textBoxGiftCardPayableAmount().getText()!="0,00 €") {
+			addressAndPaymentPage.radioButtonCreditCard().click();
+			log.info("Selected the payment method as Credit Card by clicking radio button Kreditkarte");
+		}
 		registerationPage.continueToOverview().click();
 		log.info("Clicked on Weiter zur Übersicht button");
 		orderOverviewPage.buttonToBuy().click();
@@ -1122,6 +1145,14 @@ public class accountTypeExistingCustomer<inherits> extends BasicVariables {
 		log.info("For registeration entered street number as 33");
 		registerationPage.registrationCity().sendKeys("Hamburg");
 		log.info("For registeration entered city as Hamburg");
+		addressAndPaymentPage.checkBox_UseCouponCode().click();
+		log.info("Clicked on the 'Gutscheincode einlösen' checkbox");
+		addressAndPaymentPage.textField_VoucherCode().sendKeys(addressAndPaymentPage.voucherCode());
+		log.info("Entered the Voucher code as -> " + addressAndPaymentPage.voucherCode());
+		addressAndPaymentPage.buttonSubmitVoucherCode().click();
+		log.info("Clicked on 'Gutscheincode einlösen' button");
+		Thread.sleep(1000);
+		Assert.assertTrue(addressAndPaymentPage.textBoxVoucherCodeSuccess().isDisplayed(), "The Voucher code was not applied successfully. Please check the balance.");
 		addressAndPaymentPage.radioButtonInvoice().click();
 		log.info("Selected the payment method as Invoice by clicking radio button Rechnung");
 		registerationPage.continueToOverview().click();
