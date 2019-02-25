@@ -11,6 +11,7 @@ public class GiftsSetsPage
 	public WebDriver driver;
 
 	@FindBy (xpath="//*[contains(@class,'container-list')]/div[3]/div[3]/div/div[1]/div[2]/div[2]") WebElement link_SecondItem;
+	@FindBy (xpath="//*[contains(@class,'container-list')]/div[3]/div[3]/div/div[1]/div[2]/div[1]") WebElement link_FirstItem;
 	//Comment the above code and uncomment the code below in case of using Page Object model instead of Page Factory Model
 	//By link_Login = By.linkText("Anmelden");
 
@@ -27,5 +28,9 @@ public class GiftsSetsPage
 		return link_SecondItem;
 		//Comment the above code and Uncomment the code below in case using Page object instead of Page factory
 		//return driver.findElement(link_Login);
+	}
+	public WebElement linkGiftsSetsFirstItem()
+	{
+		return link_FirstItem;
 	}
 }
