@@ -22,6 +22,7 @@ public class GreetingCardPage
 	@FindBy (id="dropdownMenuButton") WebElement dropDown_GreetingTextTemplate;
 	@FindBy (xpath="//*[@id='greetingDropDown']/li[1]") WebElement dropdown_MenuOption_ThankYou;
 	@FindBy (xpath="//*[@id='greetingDropDown']/li[2]") WebElement dropdown_MenuOption_Love;
+	@FindBy (xpath="//*[contains(@class,'greeting-text-form-error error-char')]") WebElement textBox_GreetingCardTextError;
 	//Comment the above code and uncomment the code below in case of using Page Object model instead of Page Factory Model
 	//By link_Login = By.linkText("Anmelden");
 	
@@ -82,5 +83,9 @@ public class GreetingCardPage
 	public WebElement greetingCardTemplateLove()
 	{
 		return dropdown_MenuOption_Love;
+	}
+	public WebElement textboxGreetingCardTextCharError()
+	{
+		return textBox_GreetingCardTextError;
 	}
 }
