@@ -56,9 +56,8 @@ public class accountTypeGuestCustomer<inherits> extends BasicVariables {
 
 		ensurePageLoaded();
 
-		homePage.linkProducts().click();
-		Assert.assertTrue(true, "Clicked on the Produkte link");
-		log.info("Clicked on the Produkte link");
+		homePage.linkEvents().click();
+		log.info("Clicked on the Anlässe link");
 		homePage.linkBirthday().click();
 		log.info("Clicked on the Geburtstag link");
 		generalPage.linkFirstItem().click();
