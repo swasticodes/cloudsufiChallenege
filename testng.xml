@@ -20,4 +20,9 @@
 		<class name= "Blume2000.accountTypeExistingCustomer"/>
     </classes>
     </test>
+    <test name="Tchibo web Tests">
+    <classes>
+		<class name= "Blume2000.tchiboWebTests"/>
+    </classes>
+    </test>
 </suite> <!-- Suite -->
