@@ -170,22 +170,26 @@ public class accountTypeGuestCustomer<inherits> extends BasicVariables {
 
 		ensurePageLoaded();
 
+		String browserName=prop.getProperty("browser");
+		if(browserName.equalsIgnoreCase("mobile")) {
+			homePage.mobileHamburgerMenu().click();
+		}
 		homePage.linkProducts().click();
 		log.info("Clicked on the Produkte link");
 		homePage.linkBouquets().click();
 		log.info("Clicked on the Blumensträuße link");
 		bouquetsPage.linkBouquetsSecondItem().click();
 		log.info("Selecting the first item on Blumensträuße page");
-
 		generalPage.buttonSelectedItemNext().click();
 		log.info("Clicked on the Next button after selecting item");
 		Thread.sleep(1000);
-		deliveryPage.textFieldDeliveryPostalCode().sendKeys("22");
-		deliveryPage.textFieldDeliveryPostalCode().sendKeys("2");
-		deliveryPage.textFieldDeliveryPostalCode().sendKeys("97");
+		deliveryPage.textFieldDeliveryPostalCode().sendKeys("22297");
 		log.info("Entered the delivery postal code 22297");
-		deliveryPage.buttonNextPostalCode().click();
-		log.info("Clicked the next button after entering Postal Code");
+		if(!browserName.equalsIgnoreCase("mobile")) {
+			deliveryPage.buttonNextPostalCode().click();
+			log.info("Clicked the next button after entering Postal Code");
+		}
+		Thread.sleep(2000);
 		deliveryPage.dayActiveDay().click();
 		log.info("Selecting the active day for delivery");
 		Thread.sleep(1000);
@@ -197,6 +201,10 @@ public class accountTypeGuestCustomer<inherits> extends BasicVariables {
 		Thread.sleep(1000);
 		greetingCardPage.linkGreetingCardFirstItem().click();
 		log.info("Selected the first greeting card");
+		if(browserName.equalsIgnoreCase("mobile")) {
+			greetingCardPage.mobileButtonEditGreetingText().click();
+			log.info("Clicked on Gruß bearbeiten button for enetring text");
+		}
 		greetingCardPage.textboxGreetingCardText().sendKeys("test message");
 		log.info("Entered the greeting card text");
 		greetingCardPage.buttonContinueToGifts().click();
@@ -228,6 +236,17 @@ public class accountTypeGuestCustomer<inherits> extends BasicVariables {
 		//((JavascriptExecutor) driver).executeScript("window.scrollBy(0,-180)");
 		registerationPage.copyDeliveryAndInvoiceAddress().click();
 		log.info("Checking the checkbox so that delivery and invoice address are same");
+		addressAndPaymentMethodPage.checkBox_UseCouponCode().click();
+		log.info("Clicked on the 'Gutscheincode einlösen' checkbox");
+		addressAndPaymentMethodPage.textField_VoucherCode().sendKeys(addressAndPaymentMethodPage.voucherCode());
+		log.info("Entered the Voucher code as -> " + addressAndPaymentMethodPage.voucherCode());
+		addressAndPaymentMethodPage.buttonSubmitVoucherCode().click();
+		log.info("Clicked on 'Gutscheincode einlösen' button");
+		Thread.sleep(2000);
+		Assert.assertTrue(addressAndPaymentMethodPage.textBoxVoucherCodeSuccess().isDisplayed(), "The Voucher code was not applied successfully. Please check the balance.");
+		//Scrolling the paypal button into view
+		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", registerationPage.copyDeliveryAndInvoiceAddress());
+		Thread.sleep(500);
 		addressAndPaymentMethodPage.radioButtonPayPal().click();
 		log.info("Clicking PayPal radio button");
 		registerationPage.continueToOverview().click();
@@ -241,7 +260,11 @@ public class accountTypeGuestCustomer<inherits> extends BasicVariables {
 		payPalPage.buttonPaypalPaymentConfirmation().click();
 		driver.switchTo().defaultContent();
 		log.info("Clicked on the 'Jetzt bezahlen' button for payment confirmation");
+		if(browserName.equalsIgnoreCase("mobile")) {
+			Assert.assertTrue(generalPage.textOrderConfirmation().getText().contains("Glückwunsch"));
+		}else {
 		Assert.assertEquals("Glückwunsch! Gute Wahl getroffen", generalPage.textOrderConfirmation().getText());
+		}
 		log.info("Order is placed successfully");
 		
 		log.info("*** Finished Test: guestCustomerPaypalMethodTest");
