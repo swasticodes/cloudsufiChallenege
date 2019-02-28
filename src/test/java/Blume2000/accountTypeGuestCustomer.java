@@ -65,9 +65,7 @@ public class accountTypeGuestCustomer<inherits> extends BasicVariables {
 		generalPage.buttonSelectedItemNext().click();
 		log.info("Clicked on the Next button after selecting item");
 		Thread.sleep(1000);
-		deliveryPage.textFieldDeliveryPostalCode().sendKeys("22");
-		deliveryPage.textFieldDeliveryPostalCode().sendKeys("2");
-		deliveryPage.textFieldDeliveryPostalCode().sendKeys("97");
+		deliveryPage.textFieldDeliveryPostalCode().sendKeys("22297");
 		log.info("Entered the delivery postal code 22297");
 		if(!browserName.equalsIgnoreCase("mobile")) {
 			deliveryPage.buttonNextPostalCode().click();
