@@ -15,7 +15,6 @@ import pageObjects.OrderOverviewPage;
 import pageObjects.PayPalPage;
 import pageObjects.RegistrationPage;
 import pageObjects.AddressAndPaymentMethodPage;
-import pageObjects.BouquetsPage;
 import pageObjects.DeliveryPage;
 import pageObjects.GeneralPage;
 import pageObjects.GiftsPage;
@@ -56,12 +55,10 @@ public class accountTypeGuestCustomer<inherits> extends BasicVariables {
 		if(browserName.equalsIgnoreCase("mobile")) {
 			homePage.mobileHamburgerMenu().click();
 		}
-		homePage.linkEvents().click();
-		log.info("Clicked on the Anlässe link");
-		homePage.linkBirthday().click();
-		log.info("Clicked on the Geburtstag link");
+		homePage.linkTopseller().click();
+		log.info("Clicked on the Topseller link");
 		generalPage.linkFirstItem().click();
-		log.info("Selecting the first item on Geburtstag page");
+		log.info("Selected the first item on the Topseller page");
 		generalPage.buttonSelectedItemNext().click();
 		log.info("Clicked on the Next button after selecting item");
 		Thread.sleep(1000);
@@ -115,9 +112,18 @@ public class accountTypeGuestCustomer<inherits> extends BasicVariables {
 		log.info("For registeration entered street number as 33");
 		registerationPage.registrationCity().sendKeys("Hamburg");
 		log.info("For registeration entered city as Hamburg");
-		((JavascriptExecutor) driver).executeScript("window.scrollBy(0,-180)");
 		registerationPage.copyDeliveryAndInvoiceAddress().click();
 		log.info("Checking the checkbox so that delivery and invoice address are same");
+		addressAndPaymentPage.checkBox_UseCouponCode().click();
+		log.info("Clicked on the 'Gutscheincode einlösen' checkbox");
+		addressAndPaymentPage.textField_VoucherCode().sendKeys(addressAndPaymentPage.voucherCode());
+		log.info("Entered the Voucher code as -> " + addressAndPaymentPage.voucherCode());
+		addressAndPaymentPage.buttonSubmitVoucherCode().click();
+		log.info("Clicked on 'Gutscheincode einlösen' button");
+		Thread.sleep(2000);
+		Assert.assertTrue(addressAndPaymentPage.textBoxVoucherCodeSuccess().isDisplayed(), "The Voucher code was not applied successfully.");
+		//Scrolling the Kreditkarte radio button into view
+		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", registerationPage.copyDeliveryAndInvoiceAddress());
 		addressAndPaymentPage.radioButtonCreditCard().click();
 		log.info("Selected the payment method as Credit Card by clicking radio button Kreditkarte");
 		registerationPage.continueToOverview().click();
@@ -162,7 +168,6 @@ public class accountTypeGuestCustomer<inherits> extends BasicVariables {
 		OrderOverviewPage orderOverviewPage = new OrderOverviewPage(driver);
 		GreetingCardPage greetingCardPage = new GreetingCardPage(driver);
 		GiftsPage giftsPage = new GiftsPage(driver);
-		BouquetsPage bouquetsPage = new BouquetsPage(driver);
 		PayPalPage payPalPage = new PayPalPage(driver);
 		AddressAndPaymentMethodPage addressAndPaymentMethodPage = new AddressAndPaymentMethodPage(driver);
 
@@ -175,9 +180,9 @@ public class accountTypeGuestCustomer<inherits> extends BasicVariables {
 		homePage.linkProducts().click();
 		log.info("Clicked on the Produkte link");
 		homePage.linkBouquets().click();
-		log.info("Clicked on the Blumensträuße link");
-		bouquetsPage.linkBouquetsSecondItem().click();
-		log.info("Selecting the first item on Blumensträuße page");
+		log.info("Clicked on the Blumensträusse link");
+		generalPage.linkFirstItem().click();
+		log.info("Selecting the first item on Blumensträusse page");
 		generalPage.buttonSelectedItemNext().click();
 		log.info("Clicked on the Next button after selecting item");
 		Thread.sleep(1000);
@@ -231,7 +236,6 @@ public class accountTypeGuestCustomer<inherits> extends BasicVariables {
 		log.info("For registeration entered street number as 33");
 		registerationPage.registrationCity().sendKeys("Hamburg");
 		log.info("For registeration entered city as Hamburg");
-		//((JavascriptExecutor) driver).executeScript("window.scrollBy(0,-180)");
 		registerationPage.copyDeliveryAndInvoiceAddress().click();
 		log.info("Checking the checkbox so that delivery and invoice address are same");
 		addressAndPaymentMethodPage.checkBox_UseCouponCode().click();
@@ -241,8 +245,8 @@ public class accountTypeGuestCustomer<inherits> extends BasicVariables {
 		addressAndPaymentMethodPage.buttonSubmitVoucherCode().click();
 		log.info("Clicked on 'Gutscheincode einlösen' button");
 		Thread.sleep(2000);
-		Assert.assertTrue(addressAndPaymentMethodPage.textBoxVoucherCodeSuccess().isDisplayed(), "The Voucher code was not applied successfully. Please check the balance.");
-		//Scrolling the paypal button into view
+		Assert.assertTrue(addressAndPaymentMethodPage.textBoxVoucherCodeSuccess().isDisplayed(), "The Voucher code was not applied successfully.");
+		//Scrolling the paypal radio button into view
 		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", registerationPage.copyDeliveryAndInvoiceAddress());
 		Thread.sleep(500);
 		addressAndPaymentMethodPage.radioButtonPayPal().click();
@@ -285,6 +289,10 @@ public class accountTypeGuestCustomer<inherits> extends BasicVariables {
 
 		ensurePageLoaded();
 
+		String browserName=prop.getProperty("browser");
+		if(browserName.equalsIgnoreCase("mobile")) {
+			homePage.mobileHamburgerMenu().click();
+		}
 		homePage.linkProducts().click();
 		log.info("Clicked on the Produkte link");
 		homePage.linkTopseller().click();
