@@ -507,8 +507,12 @@ public class accountTypeGuestCustomer<inherits> extends BasicVariables {
 		GiftsPage giftsPage = new GiftsPage(driver);
 
 		ensurePageLoaded();
-
 		generalPage.clickCloseCookieMessage(false);
+
+		String browserName=prop.getProperty("browser");
+		if(browserName.equalsIgnoreCase("mobile")) {
+			homePage.mobileHamburgerMenu().click();
+		}
 		homePage.linkEvents().click();
 		log.info("Clicked on the Anlässe link");
 		homePage.linkBirthday().click();
@@ -520,8 +524,11 @@ public class accountTypeGuestCustomer<inherits> extends BasicVariables {
 		Thread.sleep(1000);
 		deliveryPage.textFieldDeliveryPostalCode().sendKeys("49536");
 		log.info("Entered the delivery postal code 49536");
-		deliveryPage.buttonNextPostalCode().click();
-		log.info("Clicked the next button after entering Postal Code");
+		if(!browserName.equalsIgnoreCase("mobile")) {
+			deliveryPage.buttonNextPostalCode().click();
+			log.info("Clicked the next button after entering Postal Code");
+		}
+		Thread.sleep(1000);
 		deliveryPage.dayActiveDay().click();
 		log.info("Selecting the active day for delivery");
 		generalPage.radioButtonPremiumDelivery().click();
@@ -532,6 +539,10 @@ public class accountTypeGuestCustomer<inherits> extends BasicVariables {
 		Thread.sleep(1000);
 		greetingCardPage.linkGreetingCardFirstItem().click();
 		log.info("Selected the first greeting card");
+		if(browserName.equalsIgnoreCase("mobile")) {
+			greetingCardPage.mobileButtonEditGreetingText().click();
+			log.info("Clicked on Gruß bearbeiten button for enetring text");
+		}
 		greetingCardPage.textboxGreetingCardText().sendKeys("test message");
 		log.info("Entered the greeting card text");
 		greetingCardPage.buttonContinueToGifts().click();
@@ -581,105 +592,124 @@ public class accountTypeGuestCustomer<inherits> extends BasicVariables {
 		log.info("Entered the Voucher code as -> " + addressAndPaymentPage.voucherCode());
 		addressAndPaymentPage.buttonSubmitVoucherCode().click();
 		log.info("Clicked on 'Gutscheincode einlösen' button");
+		Thread.sleep(2000);
+		Assert.assertTrue(addressAndPaymentPage.textBoxVoucherCodeSuccess().isDisplayed(), "The Voucher code was not applied successfully.");
 		registerationPage.continueToOverview().click();
 		log.info("Clicked on Weiter zur Übersicht button");
 		orderOverviewPage.buttonToBuy().click();
 		log.info("Clicked on Kaufen button");
+		if(browserName.equalsIgnoreCase("mobile")) {
+			Assert.assertTrue(generalPage.textOrderConfirmation().getText().contains("Glückwunsch"));
+		}else {
 		Assert.assertEquals("Glückwunsch! Gute Wahl getroffen", generalPage.textOrderConfirmation().getText());
+		}
 		log.info("Order is placed successfully");
 
 		log.info("*** Finished Test: guestCustomerRatePayMethodTest");
 	}
 
 	@Test(enabled=false)
-	public void guestCustomerInvoiceMethodThankYouTest() throws InterruptedException
+	public void guestCustomerInvoiceMethodTopsellerTest() throws InterruptedException
 	{
-		log.info("*** Starting Test: guestCustomerInvoiceMethodThankYouTest");
+		log.info("*** Starting Test: guestCustomerInvoiceMethodTopsellerTest");
 
 		//Creating the Objects below to access the functions
-		HomePage homePage = new HomePage(driver);
-		GeneralPage generalPage = new GeneralPage(driver);
-		DeliveryPage deliveryPage = new DeliveryPage(driver);
-		RegistrationPage registerationPage = new RegistrationPage(driver);
-		OrderOverviewPage orderOverviewPage = new OrderOverviewPage(driver);
-		GreetingCardPage greetingCardPage = new GreetingCardPage(driver);
-		GiftsPage giftsPage = new GiftsPage(driver);
-		AddressAndPaymentMethodPage addressAndPaymentMethodPage = new AddressAndPaymentMethodPage(driver);
+				HomePage homePage = new HomePage(driver);
+				GeneralPage generalPage = new GeneralPage(driver);
+				DeliveryPage deliveryPage = new DeliveryPage(driver);
+				RegistrationPage registerationPage = new RegistrationPage(driver);
+				OrderOverviewPage orderOverviewPage = new OrderOverviewPage(driver);
+				GreetingCardPage greetingCardPage = new GreetingCardPage(driver);
+				GiftsPage giftsPage = new GiftsPage(driver);
+				AddressAndPaymentMethodPage addressAndPaymentMethodPage = new AddressAndPaymentMethodPage(driver);
 
-		ensurePageLoaded();
+				ensurePageLoaded();
 
-		homePage.linkEvents().click();
-		log.info("Clicked on the Anlässe link on the home page");
-		homePage.linkThankYou().click();
-		log.info("Clicked on the Dankeschön link in the menu");
-		generalPage.linkFirstItem().click();
-		log.info("Selected the first item on the Dankeschön page");
+				String browserName=prop.getProperty("browser");
+				if(browserName.equalsIgnoreCase("mobile")) {
+					homePage.mobileHamburgerMenu().click();
+				}
+				homePage.linkTopseller().click();
+				log.info("Clicked on the Topseller link");
+				generalPage.linkSecondItem().click();
+				log.info("Selected the Second item on the Topseller page");
+				generalPage.buttonSelectedItemNext().click();
+				log.info("Clicked on the Next button after selecting item");
+				Thread.sleep(1000);
+				deliveryPage.textFieldDeliveryPostalCode().sendKeys("22297");
+				log.info("Entered the delivery postal code 22297");
+				if(!browserName.equalsIgnoreCase("mobile")) {
+					deliveryPage.buttonNextPostalCode().click();
+					log.info("Clicked the next button after entering Postal Code");
+				}
+				Thread.sleep(1000);
+				deliveryPage.dayActiveDay().click();
+				log.info("Selecting the active day for delivery");
+				Thread.sleep(1000);
+				generalPage.radioButtonPremiumDelivery().click();
+				log.info("Selected Premium Delivery radio button");
+				Thread.sleep(1000);
+				deliveryPage.continueToGreetingCard().click();
+				log.info("Clicked on Weiter zur Grukarte button");
+				Thread.sleep(1000);
+				greetingCardPage.linkGreetingCardFirstItem().click();
+				log.info("Selected the first greeting card");
+				if(browserName.equalsIgnoreCase("mobile")) {
+					greetingCardPage.mobileButtonEditGreetingText().click();
+					log.info("Clicked on Gruß bearbeiten button for enetring text");
+				}
+				greetingCardPage.textboxGreetingCardText().sendKeys("test message");
+				log.info("Entered the greeting card text");
+				greetingCardPage.buttonContinueToGifts().click();
+				log.info("Clicked on the button Weiter zu Geschenke");
+				giftsPage.linkGiftsPageFirstItem().click();
+				log.info("Selected the first Gift Item");
+				giftsPage.linkGiftsPageSecondItem().click();
+				log.info("Selected the second Gift Item");
+				giftsPage.buttonDirectlyToCashRegister().click();
+				log.info("Clicked on the button Direkt zur Kasse");
+				registerationPage.buttonOrderAsGuest().click();
+				log.info("Clicked on the button Als Gast bestellen");
+				//Creating a random email id to register user
+				String emailId = RandomStringUtils.randomAlphabetic(8);
+				registerationPage.registrationEmail().sendKeys(emailId+"@testemail.com");
+				log.info("For registeration entered email id "+ emailId);
+				registerationPage.registrationSalutation().click();
+				log.info("For registration selected salutation as Herr");
+				registerationPage.registrationFirstName().sendKeys("TestFirst");
+				log.info("For registeration entered first name as TestFirst");
+				registerationPage.registrationLastName().sendKeys("TestLast");
+				log.info("For registeration entered last name as TestLast");
+				registerationPage.registrationStreet().sendKeys("berseering");
+				log.info("For registeration entered street name as berseering");
+				registerationPage.registrationStreetNumber().sendKeys("33");
+				log.info("For registeration entered street number as 33");
+				registerationPage.registrationCity().sendKeys("Hamburg");
+				log.info("For registeration entered city as Hamburg");
+				registerationPage.copyDeliveryAndInvoiceAddress().click();
+				log.info("Checking the checkbox so that delivery and invoice address are same");
+				addressAndPaymentMethodPage.radioButtonInvoice().click();
+				log.info("Selected the payment method as Invoice by clicking radio button Rechnung");
+				addressAndPaymentMethodPage.checkBox_UseCouponCode().click();
+				log.info("Clicked on the 'Gutscheincode einlösen' checkbox");
+				addressAndPaymentMethodPage.textField_VoucherCode().sendKeys(addressAndPaymentMethodPage.voucherCode());
+				log.info("Entered the Voucher code as -> " + addressAndPaymentMethodPage.voucherCode());
+				addressAndPaymentMethodPage.buttonSubmitVoucherCode().click();
+				log.info("Clicked on 'Gutscheincode einlösen' button");
+				Thread.sleep(2000);
+				Assert.assertTrue(addressAndPaymentMethodPage.textBoxVoucherCodeSuccess().isDisplayed(), "The Voucher code was not applied successfully.");
+				registerationPage.continueToOverview().click();
+				log.info("Clicked on Weiter zur Übersicht button");
+				orderOverviewPage.buttonToBuy().click();
+				log.info("Clicked on Kaufen button");
+				if(browserName.equalsIgnoreCase("mobile")) {
+					Assert.assertTrue(generalPage.textOrderConfirmation().getText().contains("Glückwunsch"));
+				}else {
+				Assert.assertEquals("Glückwunsch! Gute Wahl getroffen", generalPage.textOrderConfirmation().getText());
+				}
+				log.info("Order is placed successfully");
 
-		generalPage.buttonSelectedItemNext().click();
-		log.info("Clicked on the Next button after selecting item");
-		Thread.sleep(1000);
-		deliveryPage.textFieldDeliveryPostalCode().sendKeys("22297");
-		log.info("Entered the delivery postal code 22297");
-		deliveryPage.buttonNextPostalCode().click();
-		log.info("Clicked the next button after entering Postal Code");
-		deliveryPage.dayActiveDay().click();
-		log.info("Selecting the active day for delivery");
-		Thread.sleep(1000);
-		generalPage.radioButtonPremiumDelivery().click();
-		log.info("Selected Premium Delivery radio button");
-		Thread.sleep(1000);
-		deliveryPage.continueToGreetingCard().click();
-		log.info("Clicked on Weiter zur Grukarte button");
-		Thread.sleep(1000);
-		greetingCardPage.linkGreetingCardFirstItem().click();
-		log.info("Selected the first greeting card");
-		greetingCardPage.textboxGreetingCardText().sendKeys("test message");
-		log.info("Entered the greeting card text");
-		greetingCardPage.buttonContinueToGifts().click();
-		log.info("Clicked on the button Weiter zu Geschenke");
-		giftsPage.linkGiftsPageFirstItem().click();
-		log.info("Selected the first Gift Item");
-		giftsPage.linkGiftsPageSecondItem().click();
-		log.info("Selected the second Gift Item");
-		giftsPage.buttonDirectlyToCashRegister().click();
-		log.info("Clicked on the button Direkt zur Kasse");
-		registerationPage.buttonOrderAsGuest().click();
-		log.info("Clicked on the button Als Gast bestellen");
-		//Creating a random email id to register user
-		String emailId = RandomStringUtils.randomAlphabetic(8);
-		registerationPage.registrationEmail().sendKeys(emailId+"@testemail.com");
-		log.info("For registeration entered email id "+ emailId);
-		registerationPage.registrationSalutation().click();
-		log.info("For registration selected salutation as Herr");
-		registerationPage.registrationFirstName().sendKeys("TestFirst");
-		log.info("For registeration entered first name as TestFirst");
-		registerationPage.registrationLastName().sendKeys("TestLast");
-		log.info("For registeration entered last name as TestLast");
-		registerationPage.registrationStreet().sendKeys("berseering");
-		log.info("For registeration entered street name as berseering");
-		registerationPage.registrationStreetNumber().sendKeys("33");
-		log.info("For registeration entered street number as 33");
-		registerationPage.registrationCity().sendKeys("Hamburg");
-		log.info("For registeration entered city as Hamburg");
-		//((JavascriptExecutor) driver).executeScript("window.scrollBy(0,-180)");
-		registerationPage.copyDeliveryAndInvoiceAddress().click();
-		log.info("Checking the checkbox so that delivery and invoice address are same");
-		addressAndPaymentMethodPage.radioButtonInvoice().click();
-		log.info("Selected the payment method as Invoice by clicking radio button Rechnung");
-		addressAndPaymentMethodPage.checkBox_UseCouponCode().click();
-		log.info("Clicked on the 'Gutscheincode einlösen' checkbox");
-		addressAndPaymentMethodPage.textField_VoucherCode().sendKeys(addressAndPaymentMethodPage.voucherCode());
-		log.info("Entered the Voucher code as -> " + addressAndPaymentMethodPage.voucherCode());
-		addressAndPaymentMethodPage.buttonSubmitVoucherCode().click();
-		log.info("Clicked on 'Gutscheincode einlösen' button");
-		registerationPage.continueToOverview().click();
-		log.info("Clicked on Weiter zur Übersicht button");
-		orderOverviewPage.buttonToBuy().click();
-		log.info("Clicked on Kaufen button");
-		Assert.assertEquals("Glückwunsch! Gute Wahl getroffen", generalPage.textOrderConfirmation().getText());
-		log.info("Order is placed successfully");
-
-		log.info("*** Finished Test: guestCustomerInvoiceMethodThankYouTest");
+		log.info("*** Finished Test: guestCustomerInvoiceMethodTopsellerTest");
 	}
 
 	@AfterMethod
