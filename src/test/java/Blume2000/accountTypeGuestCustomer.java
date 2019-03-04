@@ -354,7 +354,6 @@ public class accountTypeGuestCustomer<inherits> extends BasicVariables {
 		log.info("For registeration entered street number as 33");
 		registerationPage.registrationCity().sendKeys("Hamburg");
 		log.info("For registeration entered city as Hamburg");
-		//((JavascriptExecutor) driver).executeScript("window.scrollBy(0,-180)");
 		registerationPage.copyDeliveryAndInvoiceAddress().click();
 		log.info("Checking the checkbox so that delivery and invoice address are same");
 		addressAndPaymentMethodPage.radioButtonInvoice().click();
