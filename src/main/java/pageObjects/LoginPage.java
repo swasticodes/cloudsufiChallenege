@@ -13,6 +13,7 @@ public class LoginPage
 	@FindBy (xpath="//*[@id=\"loginPassword\"]") WebElement textField_Password;
 	@FindBy (css="#loginForm > div.row > div.col-12.heading > h2") WebElement text_ExistingCustomer;
 	@FindBy (xpath="//*[contains(text(), 'Registrieren')]") WebElement btn_Register;
+	@FindBy (xpath="(//*[contains(text(), 'Registrieren')])[2]") WebElement btn_Mobile_Register; 
 	
 	public LoginPage(WebDriver driver) 
 	{
@@ -34,5 +35,9 @@ public class LoginPage
 	public WebElement buttonRegister()
 	{
 		return btn_Register;
+	}
+	public WebElement buttonMobileRegister()
+	{
+		return btn_Mobile_Register;
 	}
 }
