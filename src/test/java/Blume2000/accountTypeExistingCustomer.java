@@ -56,22 +56,28 @@ public class accountTypeExistingCustomer<inherits> extends BasicVariables {
 		GiftsPage giftsPage = new GiftsPage(driver);
 
 		ensurePageLoaded();
-
 		generalPage.clickCloseCookieMessage(false);
 
-		homePage.linkProducts().click();
-		log.info("Clicked on the Produkte link");
-		homePage.linkBouquets().click();
-		log.info("Clicked on the Blumensträuße link");
-		generalPage.linkFirstItem().click();
-		log.info("Selecting the first item on Blumensträuße page");
+		String browserName=prop.getProperty("browser");
+		if(browserName.equalsIgnoreCase("mobile")) {
+			homePage.mobileHamburgerMenu().click();
+		}
+		homePage.linkEvents().click();
+		log.info("Clicked on the Anlässe link");
+		homePage.linkBirthday().click();
+		log.info("Clicked on the Geburtstag link");
+		generalPage.linkSecondItem().click();
+		log.info("Selecting the Second item on Geburtstag page");
 		generalPage.buttonSelectedItemNext().click();
 		log.info("Clicked on the Next button after selecting item");
 		Thread.sleep(1000);
 		deliveryPage.textFieldDeliveryPostalCode().sendKeys("22297");
 		log.info("Entered the delivery postal code 22297");
-		deliveryPage.buttonNextPostalCode().click();
-		log.info("Clicked the next button after entering Postal Code");
+		if(!browserName.equalsIgnoreCase("mobile")) {
+			deliveryPage.buttonNextPostalCode().click();
+			log.info("Clicked the next button after entering Postal Code");
+		}
+		Thread.sleep(1000);
 		deliveryPage.dayActiveDay().click();
 		log.info("Selecting the active day for delivery");
 		Thread.sleep(1000);
@@ -79,14 +85,29 @@ public class accountTypeExistingCustomer<inherits> extends BasicVariables {
 		log.info("Clicked on Weiter zur Grußkarte button");
 		greetingCardPage.linkGreetingCardFirstItem().click();
 		log.info("Selected the first greeting card");
-		greetingCardPage.textboxGreetingCardText().sendKeys("test message");
-		log.info("Entered the greeting card text");
+		if(browserName.equalsIgnoreCase("mobile")) {
+			greetingCardPage.mobileButtonEditGreetingText().click();
+			log.info("Clicked on Gruß bearbeiten button for enetring text");
+		}
+		Thread.sleep(1000);
+		if(browserName.equalsIgnoreCase("mobile")) {
+			greetingCardPage.mobileDropdownSelectGreetingTextTemplate().click();
+		}else {
+			greetingCardPage.dropdownSelectGreetingTextTemplate().click();
+		}
+		log.info("Opened the Grußtextvorlage auswählen dropdown");
+		Thread.sleep(1000);
+		if(browserName.equalsIgnoreCase("mobile")) {
+			greetingCardPage.mobileGreetingCardTemplateThankYou().click();
+		}else {
+			greetingCardPage.greetingCardTemplateThankYou().click();
+		}
+		log.info("Selectd Dankeschön from the dropdown");
+		Thread.sleep(1000);
 		greetingCardPage.buttonContinueToGifts().click();
 		log.info("Clicked on the button Weiter zu Geschenke");
 		giftsPage.linkGiftsPageFirstItem().click();
 		log.info("Selected the first Gift Item");
-		giftsPage.linkGiftsPageSecondItem().click();
-		log.info("Selected the second Gift Item");
 		giftsPage.buttonDirectlyToCashRegister().click();
 		log.info("Clicked on the button Direkt zur Kasse");
 		registerationPage.textFieldEmail().sendKeys(registerationPage.registeredUserEmail());
@@ -121,10 +142,18 @@ public class accountTypeExistingCustomer<inherits> extends BasicVariables {
 		log.info("Entered Credit Card Expiry Month as "+addressAndPaymentPage.creditCardExpiryMonth());
 		addressAndPaymentPage.dropDownCreditCardExpiryYear().sendKeys(addressAndPaymentPage.creditCardExpiryYear());
 		log.info("Entered Credit Card Expiry Year as "+addressAndPaymentPage.creditCardExpiryYear());
+		if(browserName.equalsIgnoreCase("mobile")) {
+			((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", addressAndPaymentPage.creditCardContinueButton());
+			Thread.sleep(500);
+		}
 		addressAndPaymentPage.creditCardContinueButton().click();
 		log.info("Clicked on the Weiter button on the Credit Card page");
 		driver.switchTo().defaultContent();
+		if(browserName.equalsIgnoreCase("mobile")) {
+			Assert.assertTrue(generalPage.textOrderConfirmation().getText().contains("Glückwunsch"));
+		}else {
 		Assert.assertEquals("Glückwunsch! Gute Wahl getroffen", generalPage.textOrderConfirmation().getText());
+		}
 		log.info("Order is placed successfully");
 
 		log.info("*** Finished Test: existingCustomerCreditCardMethodTest");
