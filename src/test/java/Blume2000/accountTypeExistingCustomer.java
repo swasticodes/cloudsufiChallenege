@@ -323,7 +323,7 @@ public class accountTypeExistingCustomer<inherits> extends BasicVariables {
 		if(browserName.equalsIgnoreCase("mobile")) {
 			greetingCardPage.mobileGreetingCardTemplateLove().click();
 		}else {
-			greetingCardPage.greetingCardTemplateThankYou().click();
+			greetingCardPage.greetingCardTemplateLove().click();
 		}
 		log.info("Selectd Liebe from the dropdown");
 		Thread.sleep(1000);
