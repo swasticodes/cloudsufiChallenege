@@ -452,8 +452,12 @@ public class accountTypeNewCustomer<inherits> extends BasicVariables {
 		OrderOverviewPage orderOverviewPage = new OrderOverviewPage(driver);
 
 		ensurePageLoaded();
-
 		generalPage.clickCloseCookieMessage(false);
+
+		String browserName=prop.getProperty("browser");
+		if(browserName.equalsIgnoreCase("mobile")) {
+			homePage.mobileHamburgerMenu().click();
+		}
 		homePage.linkProducts().click();
 		log.info("Clicked on the Produkte link");
 		homePage.linkPlants().click();
@@ -465,8 +469,11 @@ public class accountTypeNewCustomer<inherits> extends BasicVariables {
 		Thread.sleep(1000);
 		deliveryPage.textFieldDeliveryPostalCode().sendKeys("49536");
 		log.info("Entered the delivery postal code 49536");
-		deliveryPage.buttonNextPostalCode().click();
-		log.info("Clicked the next button after entering Postal Code");
+		if(!browserName.equalsIgnoreCase("mobile")) {
+			deliveryPage.buttonNextPostalCode().click();
+			log.info("Clicked the next button after entering Postal Code");
+		}
+		Thread.sleep(1000);
 		deliveryPage.dayActiveDay().click();
 		log.info("Selecting the active day for delivery");
 		Thread.sleep(1000);
@@ -478,9 +485,11 @@ public class accountTypeNewCustomer<inherits> extends BasicVariables {
 		Thread.sleep(1000);
 		deliveryPage.continueWithoutGifts().click();
 		log.info("Clicked on Weiter ohne Geschenke button");
-		//scrolling the register button into view so that it is not hidden behind the confirmation for cookie message
-		((JavascriptExecutor) driver).executeScript("window.scrollBy(0,120)");
-		loginPage.buttonRegister().click();
+		if(browserName.equalsIgnoreCase("mobile")) {
+			loginPage.buttonMobileRegister().click();
+		}else {
+			loginPage.buttonRegister().click();
+		}
 		log.info("Clicked on the Register Button");
 		//Creating a random email id to register user
 		String emailId = RandomStringUtils.randomAlphabetic(8);
@@ -507,9 +516,13 @@ public class accountTypeNewCustomer<inherits> extends BasicVariables {
 		addressAndPaymentPage.radioButtonRatepay().click();
 		log.info("Selected the payment method as Ratepay by clicking radio button Ratepay Rechnung");
 		addressAndPaymentPage.dropdownBirthDate().sendKeys(addressAndPaymentPage.ratepayBirthDate());
+		log.info("Entered the Birth date");
 		addressAndPaymentPage.dropdownBirthMonth().sendKeys(addressAndPaymentPage.ratepayBirthMonth());
+		log.info("Entered the Birth month");
 		addressAndPaymentPage.dropdownBirthYear().sendKeys(addressAndPaymentPage.ratepayBirthYear());
+		log.info("Entered the Birth Year");
 		addressAndPaymentPage.textFieldRatepayTelephoneNumber().sendKeys(addressAndPaymentPage.ratepayTelephoneNumber());
+		log.info("Entered the Telephone number");
 		Thread.sleep(1000);
 		addressAndPaymentPage.checkBoxInvoiceConsentDeclaration().click();
 		log.info("Checked the Consent Declaration checkbox");
@@ -517,7 +530,11 @@ public class accountTypeNewCustomer<inherits> extends BasicVariables {
 		log.info("Clicked on Weiter zur Übersicht button");
 		orderOverviewPage.buttonToBuy().click();
 		log.info("Clicked on Kaufen button");
+		if(browserName.equalsIgnoreCase("mobile")) {
+			Assert.assertTrue(generalPage.textOrderConfirmation().getText().contains("Glückwunsch"));
+		}else {
 		Assert.assertEquals("Glückwunsch! Gute Wahl getroffen", generalPage.textOrderConfirmation().getText());
+		}
 		log.info("Order is placed successfully");
 
 		log.info("*** Finished Test: newCustomerRatePayMethodTest");
