@@ -175,9 +175,12 @@ public class accountTypeExistingCustomer<inherits> extends BasicVariables {
 		GiftsPage giftsPage = new GiftsPage(driver);
 
 		ensurePageLoaded();
-
 		generalPage.clickCloseCookieMessage(false);
 
+		String browserName=prop.getProperty("browser");
+		if(browserName.equalsIgnoreCase("mobile")) {
+			homePage.mobileHamburgerMenu().click();
+		}
 		homePage.linkProducts().click();
 		log.info("Clicked on the Produkte link");
 		homePage.linkPlants().click();
@@ -189,8 +192,11 @@ public class accountTypeExistingCustomer<inherits> extends BasicVariables {
 		Thread.sleep(1000);
 		deliveryPage.textFieldDeliveryPostalCode().sendKeys("22297");
 		log.info("Entered the delivery postal code 22297");
-		deliveryPage.buttonNextPostalCode().click();
-		log.info("Clicked the next button after entering Postal Code");
+		if(!browserName.equalsIgnoreCase("mobile")) {
+			deliveryPage.buttonNextPostalCode().click();
+			log.info("Clicked the next button after entering Postal Code");
+		}
+		Thread.sleep(1000);
 		deliveryPage.dayActiveDay().click();
 		log.info("Selecting the active day for delivery");
 		Thread.sleep(1000);
@@ -198,8 +204,25 @@ public class accountTypeExistingCustomer<inherits> extends BasicVariables {
 		log.info("Clicked on Weiter zur Grußkarte button");
 		greetingCardPage.linkGreetingCardFirstItem().click();
 		log.info("Selected the first greeting card");
-		greetingCardPage.textboxGreetingCardText().sendKeys("test message");
-		log.info("Entered the greeting card text");
+		if(browserName.equalsIgnoreCase("mobile")) {
+			greetingCardPage.mobileButtonEditGreetingText().click();
+			log.info("Clicked on Gruß bearbeiten button for enetring text");
+		}
+		Thread.sleep(1000);
+		if(browserName.equalsIgnoreCase("mobile")) {
+			greetingCardPage.mobileDropdownSelectGreetingTextTemplate().click();
+		}else {
+			greetingCardPage.dropdownSelectGreetingTextTemplate().click();
+		}
+		log.info("Opened the Grußtextvorlage auswählen dropdown");
+		Thread.sleep(1000);
+		if(browserName.equalsIgnoreCase("mobile")) {
+			greetingCardPage.mobileGreetingCardTemplateThankYou().click();
+		}else {
+			greetingCardPage.greetingCardTemplateThankYou().click();
+		}
+		log.info("Selectd Dankeschön from the dropdown");
+		Thread.sleep(1000);
 		greetingCardPage.buttonContinueToGifts().click();
 		log.info("Clicked on the button Weiter zu Geschenke");
 		giftsPage.linkGiftsPageFirstItem().click();
@@ -230,7 +253,11 @@ public class accountTypeExistingCustomer<inherits> extends BasicVariables {
 		log.info("Clicked on Weiter zur Übersicht button");
 		orderOverviewPage.buttonToBuy().click();
 		log.info("Clicked on Kaufen button");
+		if(browserName.equalsIgnoreCase("mobile")) {
+			Assert.assertTrue(generalPage.textOrderConfirmation().getText().contains("Glückwunsch"));
+		}else {
 		Assert.assertEquals("Glückwunsch! Gute Wahl getroffen", generalPage.textOrderConfirmation().getText());
+		}
 		log.info("Order is placed successfully");
 
 		log.info("*** Finished Test: existingCustomerInvoiceMethodTest");
