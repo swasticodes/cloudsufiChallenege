@@ -27,6 +27,7 @@ public class GreetingCardPage
 	@FindBy (xpath="//*[contains(text(),\"Gruﬂ bearbeiten\")]") WebElement mobile_Btn_EditGreeting;
 	@FindBy (xpath="(//button[contains(text(),'Gruﬂtextvorlage ausw‰hlen')])[1]") WebElement mobile_DropDown_GreetingTextTemplate;
 	@FindBy (xpath="//*[contains(@class,'modal select-list-modal show')]/div/div/div[2]/ul/li[1]") WebElement mobile_Dropdown_MenuOption_ThankYou;
+	@FindBy (xpath="//*[contains(@class,'modal select-list-modal show')]/div/div/div[2]/ul/li[2]") WebElement mobile_Dropdown_MenuOption_Love;
 	//Comment the above code and uncomment the code below in case of using Page Object model instead of Page Factory Model
 	//By link_Login = By.linkText("Anmelden");
 	
@@ -103,5 +104,9 @@ public class GreetingCardPage
 	public WebElement mobileGreetingCardTemplateThankYou()
 	{
 		return mobile_Dropdown_MenuOption_ThankYou;
+	}
+	public WebElement mobileGreetingCardTemplateLove()
+	{
+		return mobile_Dropdown_MenuOption_Love;
 	}
 }
