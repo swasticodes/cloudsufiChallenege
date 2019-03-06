@@ -449,8 +449,6 @@ public class accountTypeExistingCustomer<inherits> extends BasicVariables {
 		log.info("Clicked on the button 'Weiter zu Geschenke'");
 		giftsPage.linkGiftsPageFirstItem().click();
 		log.info("Selected the first Gift Item");
-		giftsPage.linkGiftsPageSecondItem().click();
-		log.info("Selected the second Gift Item");
 		giftsPage.buttonDirectlyToCashRegister().click();
 		log.info("Clicked on the button 'Direkt zur Kasse'");
 		registerationPage.textFieldEmail().sendKeys(registerationPage.registeredUserEmail());
