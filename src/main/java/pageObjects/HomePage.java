@@ -25,6 +25,8 @@ public class HomePage
 	@FindBy (linkText="Torten & Geschenke") WebElement link_PiesAndGifts;
 	@FindBy (linkText="Gute Besserung") WebElement link_GetWell;
 	@FindBy (linkText="Liebe Grüße") WebElement link_BestRegards;
+	//-----------------------------------MOBILE-------------------------------------------------
+	@FindBy (xpath="(//*[contains(@class,'icon-profile')])[1]") WebElement mobile_Link_Login;
 	@FindBy (xpath="//span[contains(@class,'icon-menu')]") WebElement mobile_HamburgerMenu;
 	//Comment the above code and uncomment the code below in case of using Page Object model instead of Page Factory Model
 	//By link_Login = By.linkText("Anmelden");
@@ -102,6 +104,10 @@ public class HomePage
 	public WebElement mobileHamburgerMenu()
 	{
 		return mobile_HamburgerMenu;
+	}
+	public WebElement mobileLinkLogin()
+	{
+		return mobile_Link_Login;
 	}
 
 }
