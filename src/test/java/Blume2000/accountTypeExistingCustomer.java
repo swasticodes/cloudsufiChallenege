@@ -1304,7 +1304,13 @@ public class accountTypeExistingCustomer<inherits> extends BasicVariables {
 		ensurePageLoaded();
 		generalPage.clickCloseCookieMessage(false);
 
-		homePage.linkLogin().click();
+		String browserName=prop.getProperty("browser");
+		if(browserName.equalsIgnoreCase("mobile")) {
+			homePage.mobileLinkLogin().click();
+		}
+		else {
+			homePage.linkLogin().click();
+		}
 		log.info("Clicked on the Anmelden link for logging in");
 		registerationPage.textFieldEmail().sendKeys(registerationPage.registeredUserEmail());
 		log.info("Entered the email id as-> " + registerationPage.registeredUserEmail());
@@ -1312,6 +1318,9 @@ public class accountTypeExistingCustomer<inherits> extends BasicVariables {
 		log.info("Entered the password as-> <CENSORED>");
 		registerationPage.buttonLogin().click();
 		log.info("Clicked on the 'Einloggen' button");
+		if(browserName.equalsIgnoreCase("mobile")) {
+			homePage.mobileHamburgerMenu().click();
+		}
 		homePage.linkProducts().click();
 		log.info("Clicked on the Produkte link");
 		homePage.linkPiesAndGifts().click();
@@ -1323,19 +1332,38 @@ public class accountTypeExistingCustomer<inherits> extends BasicVariables {
 		Thread.sleep(1000);
 		deliveryPage.textFieldDeliveryPostalCode().sendKeys("22297");
 		log.info("Entered the delivery postal code 22297");
-		deliveryPage.buttonNextPostalCode().click();
-		log.info("Clicked the next button after entering Postal Code");
+		if(!browserName.equalsIgnoreCase("mobile")) {
+			deliveryPage.buttonNextPostalCode().click();
+			log.info("Clicked the next button after entering Postal Code");
+		}
 		Thread.sleep(1000);
 		deliveryPage.dayActiveDay().click();
 		log.info("Selecting the active day for delivery");
 		Thread.sleep(1000);
 		deliveryPage.continueToGreetingCard().click();
 		log.info("Clicked on Weiter zur Grußkarte button");
-		greetingCardPage.tabThankYou().click();
-		log.info("Clicked on the Dankeschön tab on Greetings Card page");
 		Thread.sleep(1000);
 		greetingCardPage.linkGreetingCardFirstItem().click();
 		log.info("Selected the First greeting card on Dankeschön tab");
+		Thread.sleep(1000);
+		if(browserName.equalsIgnoreCase("mobile")) {
+			greetingCardPage.mobileButtonEditGreetingText().click();
+			log.info("Clicked on Gruß bearbeiten button for enetring text");
+		}
+		Thread.sleep(1000);
+		if(browserName.equalsIgnoreCase("mobile")) {
+			greetingCardPage.mobileDropdownSelectGreetingTextTemplate().click();
+		}else {
+			greetingCardPage.dropdownSelectGreetingTextTemplate().click();
+		}
+		log.info("Opened the Grußtextvorlage auswählen dropdown");
+		Thread.sleep(1000);
+		if(browserName.equalsIgnoreCase("mobile")) {
+			greetingCardPage.mobileGreetingCardTemplateLove().click();
+		}else {
+			greetingCardPage.greetingCardTemplateLove().click();
+		}
+		log.info("Selectd Liebe from the dropdown");
 		Thread.sleep(1000);
 		greetingCardPage.buttonGreetingCardsPageDirectlyToCashRegister().click();
 		log.info("Clicked on the button Direkt zur Kasse");
@@ -1351,21 +1379,25 @@ public class accountTypeExistingCustomer<inherits> extends BasicVariables {
 		log.info("For registeration entered street number as 33");
 		registerationPage.registrationCity().sendKeys("Hamburg");
 		log.info("For registeration entered city as Hamburg");
+		addressAndPaymentPage.radioButtonInvoice().click();
+		log.info("Selected the payment method as Invoice by clicking radio button Rechnung");
 		addressAndPaymentPage.checkBox_UseCouponCode().click();
 		log.info("Clicked on the 'Gutscheincode einlösen' checkbox");
 		addressAndPaymentPage.textField_VoucherCode().sendKeys(addressAndPaymentPage.voucherCode());
 		log.info("Entered the Voucher code as -> " + addressAndPaymentPage.voucherCode());
 		addressAndPaymentPage.buttonSubmitVoucherCode().click();
 		log.info("Clicked on 'Gutscheincode einlösen' button");
-		Thread.sleep(1000);
-		Assert.assertTrue(addressAndPaymentPage.textBoxVoucherCodeSuccess().isDisplayed(), "The Voucher code was not applied successfully. Please check the balance.");
-		addressAndPaymentPage.radioButtonInvoice().click();
-		log.info("Selected the payment method as Invoice by clicking radio button Rechnung");
+		Thread.sleep(2000);
+		Assert.assertTrue(addressAndPaymentPage.textBoxVoucherCodeSuccess().isDisplayed(), "The Voucher code was not applied successfully.");
 		registerationPage.continueToOverview().click();
 		log.info("Clicked on Weiter zur Übersicht button");
 		orderOverviewPage.buttonToBuy().click();
 		log.info("Clicked on Kaufen button");
+		if(browserName.equalsIgnoreCase("mobile")) {
+			Assert.assertTrue(generalPage.textOrderConfirmation().getText().contains("Glückwunsch"));
+		}else {
 		Assert.assertEquals("Glückwunsch! Gute Wahl getroffen", generalPage.textOrderConfirmation().getText());
+		}
 		log.info("Order is placed successfully");
 
 		log.info("*** Finished Test: existingCustomerPreLoginInvoiceMethodTest");
