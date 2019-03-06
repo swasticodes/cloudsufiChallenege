@@ -860,10 +860,15 @@ public class accountTypeExistingCustomer<inherits> extends BasicVariables {
 		GreetingCardPage greetingCardsPage = new GreetingCardPage(driver);
 
 		ensurePageLoaded();
-
 		generalPage.clickCloseCookieMessage(false);
 
-		homePage.linkLogin().click();
+		String browserName=prop.getProperty("browser");
+		if(browserName.equalsIgnoreCase("mobile")) {
+			homePage.mobileLinkLogin().click();
+		}
+		else {
+			homePage.linkLogin().click();
+		}
 		log.info("Clicked on the Anmelden link for logging in");
 		registerationPage.textFieldEmail().sendKeys(registerationPage.registeredUserEmail());
 		log.info("Entered the email id as-> " + registerationPage.registeredUserEmail());
@@ -871,8 +876,11 @@ public class accountTypeExistingCustomer<inherits> extends BasicVariables {
 		log.info("Entered the password as-> <CENSORED>");
 		registerationPage.buttonLogin().click();
 		log.info("Clicked on the 'Einloggen' button");
-		homePage.linkProducts().click();
-		log.info("Clicked on the Produkte link");
+		if(browserName.equalsIgnoreCase("mobile")) {
+			homePage.mobileHamburgerMenu().click();
+		}
+		homePage.linkEvents().click();
+		log.info("Clicked on the Anlässe link");
 		homePage.linkGetWell().click();
 		log.info("Clicked on the Gute Besserung link");
 		generalPage.linkFirstItem().click();
@@ -882,8 +890,10 @@ public class accountTypeExistingCustomer<inherits> extends BasicVariables {
 		Thread.sleep(1000);
 		deliveryPage.textFieldDeliveryPostalCode().sendKeys("22297");
 		log.info("Entered the delivery postal code 22297");
-		deliveryPage.buttonNextPostalCode().click();
-		log.info("Clicked the next button after entering Postal Code");
+		if(!browserName.equalsIgnoreCase("mobile")) {
+			deliveryPage.buttonNextPostalCode().click();
+			log.info("Clicked the next button after entering Postal Code");
+		}
 		Thread.sleep(1000);
 		deliveryPage.dayActiveDay().click();
 		log.info("Selecting the active day for delivery");
@@ -894,11 +904,25 @@ public class accountTypeExistingCustomer<inherits> extends BasicVariables {
 		greetingCardsPage.linkGreetingCardFirstItem().click();
 		log.info("Selected the first Greeting Card on the the page");
 		Thread.sleep(1000);
-		greetingCardsPage.dropdownSelectGreetingTextTemplate().click();
+		if(browserName.equalsIgnoreCase("mobile")) {
+			greetingCardsPage.mobileButtonEditGreetingText().click();
+			log.info("Clicked on Gruß bearbeiten button for enetring text");
+		}
+		Thread.sleep(1000);
+		if(browserName.equalsIgnoreCase("mobile")) {
+			greetingCardsPage.mobileDropdownSelectGreetingTextTemplate().click();
+		}else {
+			greetingCardsPage.dropdownSelectGreetingTextTemplate().click();
+		}
 		log.info("Opened the Grußtextvorlage auswählen dropdown");
 		Thread.sleep(1000);
-		greetingCardsPage.greetingCardTemplateThankYou().click();
+		if(browserName.equalsIgnoreCase("mobile")) {
+			greetingCardsPage.mobileGreetingCardTemplateThankYou().click();
+		}else {
+			greetingCardsPage.greetingCardTemplateThankYou().click();
+		}
 		log.info("Selectd Dankeschön from the dropdown");
+		Thread.sleep(1000);
 		greetingCardsPage.buttonContinueToGifts().click();
 		log.info("Clicked on the button 'Weiter zu Geschenke'");
 		deliveryPage.continueWithoutGifts().click();
@@ -915,29 +939,31 @@ public class accountTypeExistingCustomer<inherits> extends BasicVariables {
 		log.info("For registeration entered street number as 33");
 		registerationPage.registrationCity().sendKeys("Hamburg");
 		log.info("For registeration entered city as Hamburg");
+		addressAndPaymentPage.radioButtonDebitCard().click();
+		log.info("Selected the Bankeinzug/Lastschrift (Debit Card)radio button");
+		addressAndPaymentPage.textFieldAccountHolder().sendKeys(addressAndPaymentPage.accountHolderName());
+		log.info("Entered the account holder name as "+ addressAndPaymentPage.accountHolderName());
+		addressAndPaymentPage.textFieldIBANNumber().sendKeys(addressAndPaymentPage.ibanNumber());
+		log.info("Entered the IBAN number as "+ addressAndPaymentPage.ibanNumber());
+		addressAndPaymentPage.chkBoxSEPADirectDebit().click();
+		log.info("Checked the Direct debit checkbox");
 		addressAndPaymentPage.checkBox_UseCouponCode().click();
 		log.info("Clicked on the 'Gutscheincode einlösen' checkbox");
 		addressAndPaymentPage.textField_VoucherCode().sendKeys(addressAndPaymentPage.voucherCode());
 		log.info("Entered the Voucher code as -> " + addressAndPaymentPage.voucherCode());
 		addressAndPaymentPage.buttonSubmitVoucherCode().click();
 		log.info("Clicked on 'Gutscheincode einlösen' button");
-		Thread.sleep(1000);
-		Assert.assertTrue(addressAndPaymentPage.textBoxVoucherCodeSuccess().isDisplayed(), "The Voucher code was not applied successfully. Please check the balance.");
-		//scrolling so that the debit card checkbox is not hidden behind the top banner
-		((JavascriptExecutor) driver).executeScript("window.scrollBy(0,-350)");
-		addressAndPaymentPage.radioButtonDebitCard().click();
-		log.info("Selected the Bankeinzug/Lastschrift (Debit Card)radio button");
-		addressAndPaymentPage.textFieldAccountHolder().sendKeys(addressAndPaymentPage.accountHolderName());
-		log.info("Entered the account holder name as "+ addressAndPaymentPage.accountHolderName());
-		addressAndPaymentPage.textFieldIBANNumber().sendKeys(addressAndPaymentPage.ibanNumber());
-		log.info("Entered the INAN number as "+ addressAndPaymentPage.ibanNumber());
-		addressAndPaymentPage.chkBoxSEPADirectDebit().click();
-		log.info("Checked the Direct debit checkbox");
+		Thread.sleep(2000);
+		Assert.assertTrue(addressAndPaymentPage.textBoxVoucherCodeSuccess().isDisplayed(), "The Voucher code was not applied successfully.");
 		registerationPage.continueToOverview().click();
 		log.info("Clicked on Weiter zur Übersicht button");
 		orderOverviewPage.buttonToBuy().click();
 		log.info("Clicked on Kaufen button");
+		if(browserName.equalsIgnoreCase("mobile")) {
+			Assert.assertTrue(generalPage.textOrderConfirmation().getText().contains("Glückwunsch"));
+		}else {
 		Assert.assertEquals("Glückwunsch! Gute Wahl getroffen", generalPage.textOrderConfirmation().getText());
+		}
 		log.info("Order is placed successfully");
 
 		log.info("*** Finished Test: existingCustomerPreLoginSEPADirectDebitMethodTest");
