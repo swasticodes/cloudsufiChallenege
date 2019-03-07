@@ -1233,7 +1233,13 @@ public class accountTypeExistingCustomer<inherits> extends BasicVariables {
 		ensurePageLoaded();
 		generalPage.clickCloseCookieMessage(false);
 
-		homePage.linkLogin().click();
+		String browserName=prop.getProperty("browser");
+		if(browserName.equalsIgnoreCase("mobile")) {
+			homePage.mobileLinkLogin().click();
+		}
+		else {
+			homePage.linkLogin().click();
+		}
 		log.info("Clicked on the Anmelden link for logging in");
 		registerationPage.textFieldEmail().sendKeys(registerationPage.registeredUserEmail());
 		log.info("Entered the email id as-> " + registerationPage.registeredUserEmail());
@@ -1241,6 +1247,10 @@ public class accountTypeExistingCustomer<inherits> extends BasicVariables {
 		log.info("Entered the password as-> <CENSORED>");
 		registerationPage.buttonLogin().click();
 		log.info("Clicked on the 'Einloggen' button");
+		Thread.sleep(1000);
+		if(browserName.equalsIgnoreCase("mobile")) {
+			homePage.mobileHamburgerMenu().click();
+		}
 		homePage.linkProducts().click();
 		log.info("Clicked on the Produkte link");
 		homePage.linkGiftSets().click();
@@ -1252,19 +1262,37 @@ public class accountTypeExistingCustomer<inherits> extends BasicVariables {
 		Thread.sleep(1000);
 		deliveryPage.textFieldDeliveryPostalCode().sendKeys("22297");
 		log.info("Entered the delivery postal code 22297");
-		deliveryPage.buttonNextPostalCode().click();
-		log.info("Clicked the next button after entering Postal Code");
+		if(!browserName.equalsIgnoreCase("mobile")) {
+			deliveryPage.buttonNextPostalCode().click();
+			log.info("Clicked the next button after entering Postal Code");
+		}
 		Thread.sleep(1000);
 		deliveryPage.dayActiveDay().click();
 		log.info("Selecting the active day for delivery");
 		Thread.sleep(1000);
 		deliveryPage.continueToGreetingCard().click();
 		log.info("Clicked on Weiter zur Grußkarte button");
-		greetingCardPage.tabThankYou().click();
-		log.info("Clicked on the Dankeschön tab on Greetings Card page");
-		Thread.sleep(1000);
 		greetingCardPage.linkGreetingCardFirstItem().click();
-		log.info("Selected the First greeting card on Dankeschön tab");
+		log.info("Selected the first Greeting Card on the the page");
+		Thread.sleep(1000);
+		if(browserName.equalsIgnoreCase("mobile")) {
+			greetingCardPage.mobileButtonEditGreetingText().click();
+			log.info("Clicked on Gruß bearbeiten button for enetring text");
+		}
+		Thread.sleep(1000);
+		if(browserName.equalsIgnoreCase("mobile")) {
+			greetingCardPage.mobileDropdownSelectGreetingTextTemplate().click();
+		}else {
+			greetingCardPage.dropdownSelectGreetingTextTemplate().click();
+		}
+		log.info("Opened the Grußtextvorlage auswählen dropdown");
+		Thread.sleep(1000);
+		if(browserName.equalsIgnoreCase("mobile")) {
+			greetingCardPage.mobileGreetingCardTemplateThankYou().click();
+		}else {
+			greetingCardPage.greetingCardTemplateThankYou().click();
+		}
+		log.info("Selectd Dankeschön from the dropdown");
 		Thread.sleep(1000);
 		greetingCardPage.buttonContinueToGifts().click();
 		log.info("Clicked on the button Weiter zu Geschenke");
@@ -1297,6 +1325,10 @@ public class accountTypeExistingCustomer<inherits> extends BasicVariables {
 		Assert.assertTrue(addressAndPaymentPage.textBoxGiftCardSuccessMessage().isDisplayed(),"The Gift Card Was not applied successfully. Check for balance of the gift card.");
 		log.info("Verified Gift Card applied success message");
 		if(addressAndPaymentPage.textBoxGiftCardPayableAmount().getText()!="0,00 €") {
+			if(browserName.equalsIgnoreCase("mobile")) {
+				//Scrolling the Kreditkarte radio button into view
+				((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", registerationPage.registrationCountry());
+			}
 			addressAndPaymentPage.radioButtonCreditCard().click();
 			log.info("Selected the payment method as Credit Card by clicking radio button Kreditkarte");
 		}
@@ -1312,10 +1344,18 @@ public class accountTypeExistingCustomer<inherits> extends BasicVariables {
 		log.info("Entered Credit Card Expiry Month as "+addressAndPaymentPage.creditCardExpiryMonth());
 		addressAndPaymentPage.dropDownCreditCardExpiryYear().sendKeys(addressAndPaymentPage.creditCardExpiryYear());
 		log.info("Entered Credit Card Expiry Year as "+addressAndPaymentPage.creditCardExpiryYear());
+		if(browserName.equalsIgnoreCase("mobile")) {
+			((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", addressAndPaymentPage.creditCardContinueButton());
+			Thread.sleep(500);
+		}
 		addressAndPaymentPage.creditCardContinueButton().click();
 		log.info("Clicked on the Weiter button on the Credit Card page");
 		driver.switchTo().defaultContent();
+		if(browserName.equalsIgnoreCase("mobile")) {
+			Assert.assertTrue(generalPage.textOrderConfirmation().getText().contains("Glückwunsch"));
+		}else {
 		Assert.assertEquals("Glückwunsch! Gute Wahl getroffen", generalPage.textOrderConfirmation().getText());
+		}
 		log.info("Order is placed successfully");
 
 		log.info("*** Finished Test: existingCustomerPreLoginGiftSetsCreditCardMethodTest");
