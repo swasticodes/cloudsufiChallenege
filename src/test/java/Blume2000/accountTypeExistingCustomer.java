@@ -985,10 +985,15 @@ public class accountTypeExistingCustomer<inherits> extends BasicVariables {
 		GiftsPage giftsPage = new GiftsPage(driver);
 
 		ensurePageLoaded();
-
 		generalPage.clickCloseCookieMessage(false);
 
-		homePage.linkLogin().click();
+		String browserName=prop.getProperty("browser");
+		if(browserName.equalsIgnoreCase("mobile")) {
+			homePage.mobileLinkLogin().click();
+		}
+		else {
+			homePage.linkLogin().click();
+		}
 		log.info("Clicked on the Anmelden link for logging in");
 		registerationPage.textFieldEmail().sendKeys(registerationPage.registeredUserEmail());
 		log.info("Entered the email id as-> " + registerationPage.registeredUserEmail());
@@ -996,6 +1001,9 @@ public class accountTypeExistingCustomer<inherits> extends BasicVariables {
 		log.info("Entered the password as-> <CENSORED>");
 		registerationPage.buttonLogin().click();
 		log.info("Clicked on the 'Einloggen' button");
+		if(browserName.equalsIgnoreCase("mobile")) {
+			homePage.mobileHamburgerMenu().click();
+		}
 		homePage.linkTopseller().click();
 		log.info("Clicked on the 'Topseller' button");
 		generalPage.linkSecondItem().click();
@@ -1005,8 +1013,10 @@ public class accountTypeExistingCustomer<inherits> extends BasicVariables {
 		Thread.sleep(1000);
 		deliveryPage.textFieldDeliveryPostalCode().sendKeys("22297");
 		log.info("Entered the delivery postal code 22297");
-		deliveryPage.buttonNextPostalCode().click();
-		log.info("Clicked the next button after entering Postal Code");
+		if(!browserName.equalsIgnoreCase("mobile")) {
+			deliveryPage.buttonNextPostalCode().click();
+			log.info("Clicked the next button after entering Postal Code");
+		}
 		Thread.sleep(1000);
 		deliveryPage.dayActiveDay().click();
 		log.info("Selecting the active day for delivery");
@@ -1015,12 +1025,24 @@ public class accountTypeExistingCustomer<inherits> extends BasicVariables {
 		log.info("Clicked on Weiter zur Grußkarte button");
 		Thread.sleep(1000);
 		greetingCardsPage.linkGreetingCardFirstItem().click();
-		log.info("Selected the first Greeting Card on the the page");
+		log.info("Selected the first greeting card");
+		if(browserName.equalsIgnoreCase("mobile")) {
+			greetingCardsPage.mobileButtonEditGreetingText().click();
+			log.info("Clicked on Gruß bearbeiten button for enetring text");
+		}
 		Thread.sleep(1000);
-		greetingCardsPage.dropdownSelectGreetingTextTemplate().click();
+		if(browserName.equalsIgnoreCase("mobile")) {
+			greetingCardsPage.mobileDropdownSelectGreetingTextTemplate().click();
+		}else {
+			greetingCardsPage.dropdownSelectGreetingTextTemplate().click();
+		}
 		log.info("Opened the Grußtextvorlage auswählen dropdown");
 		Thread.sleep(1000);
-		greetingCardsPage.greetingCardTemplateLove().click();
+		if(browserName.equalsIgnoreCase("mobile")) {
+			greetingCardsPage.mobileGreetingCardTemplateLove().click();
+		}else {
+			greetingCardsPage.greetingCardTemplateLove().click();
+		}
 		log.info("Selectd Liebe from the dropdown");
 		Thread.sleep(1000);
 		greetingCardsPage.buttonContinueToGifts().click();
@@ -1068,7 +1090,11 @@ public class accountTypeExistingCustomer<inherits> extends BasicVariables {
 		log.info("Clicked on Weiter zur Übersicht button");
 		orderOverviewPage.buttonToBuy().click();
 		log.info("Clicked on Kaufen button");
+		if(browserName.equalsIgnoreCase("mobile")) {
+			Assert.assertTrue(generalPage.textOrderConfirmation().getText().contains("Glückwunsch"));
+		}else {
 		Assert.assertEquals("Glückwunsch! Gute Wahl getroffen", generalPage.textOrderConfirmation().getText());
+		}
 		log.info("Order is placed successfully");
 
 		log.info("*** Finished Test: existingCustomerPreLoginRatePayMethodTest");
