@@ -25,6 +25,7 @@ public class GreetingCardPage
 	@FindBy (xpath="//*[contains(@class,'greeting-text-form-error error-char')]") WebElement textBox_GreetingCardTextError;
 //------------------------------------------MOBILE------------------------------------------------------------	
 	@FindBy (xpath="//*[contains(text(),\"Gruﬂ bearbeiten\")]") WebElement mobile_Btn_EditGreeting;
+	@FindBy (xpath="//*[contains(text(),'Weiter ohne Gruﬂtext')]") WebElement mobile_Btn_ContinueWithoutGreetingCardText;
 	@FindBy (xpath="(//button[contains(text(),'Gruﬂtextvorlage ausw‰hlen')])[1]") WebElement mobile_DropDown_GreetingTextTemplate;
 	@FindBy (xpath="//*[contains(@class,'modal select-list-modal show')]/div/div/div[2]/ul/li[1]") WebElement mobile_Dropdown_MenuOption_ThankYou;
 	@FindBy (xpath="//*[contains(@class,'modal select-list-modal show')]/div/div/div[2]/ul/li[2]") WebElement mobile_Dropdown_MenuOption_Love;
@@ -108,5 +109,9 @@ public class GreetingCardPage
 	public WebElement mobileGreetingCardTemplateLove()
 	{
 		return mobile_Dropdown_MenuOption_Love;
+	}
+	public WebElement mobileButtonContinueWithoutGreetingCardText()
+	{
+		return mobile_Btn_ContinueWithoutGreetingCardText;
 	}
 }
