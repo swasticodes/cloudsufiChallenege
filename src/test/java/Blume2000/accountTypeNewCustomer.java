@@ -771,9 +771,12 @@ public class accountTypeNewCustomer<inherits> extends BasicVariables {
 		AddressAndPaymentMethodPage addressAndPaymentPage = new AddressAndPaymentMethodPage(driver);
 
 		ensurePageLoaded();
-
 		generalPage.clickCloseCookieMessage(false);
 
+		String browserName=prop.getProperty("browser");
+		if(browserName.equalsIgnoreCase("mobile")) {
+			homePage.mobileHamburgerMenu().click();
+		}
 		homePage.linkProducts().click();
 		log.info("Clicked on the Produkte link");
 		homePage.linkBouquets().click();
@@ -785,8 +788,11 @@ public class accountTypeNewCustomer<inherits> extends BasicVariables {
 		Thread.sleep(1000);
 		deliveryPage.textFieldDeliveryPostalCode().sendKeys("22297");
 		log.info("Entered the delivery postal code 22297");
-		deliveryPage.buttonNextPostalCode().click();
-		log.info("Clicked the next button after entering Postal Code");
+		if(!browserName.equalsIgnoreCase("mobile")) {
+			deliveryPage.buttonNextPostalCode().click();
+			log.info("Clicked the next button after entering Postal Code");
+		}
+		Thread.sleep(1000);
 		deliveryPage.dayActiveDay().click();
 		log.info("Selecting the active day for delivery");
 		Thread.sleep(1000);
@@ -799,15 +805,21 @@ public class accountTypeNewCustomer<inherits> extends BasicVariables {
 		greetingsCardPage.linkGreetingCardFirstItem().click();
 		log.info("Selected the first greeting card");
 		Thread.sleep(1000);
-		greetingsCardPage.buttonContinueToGifts().click();
+		if(browserName.equalsIgnoreCase("mobile")) {
+			greetingsCardPage.mobileButtonContinueWithoutGreetingCardText().click();
+		}else {
+			greetingsCardPage.buttonContinueToGifts().click();
+		}
 		log.info("Clicked on the button Weiter zu Geschenke");
 		giftsPage.linkGiftsPageFirstItem().click();
 		log.info("Selected the first gift item");
 		giftsPage.buttonDirectlyToCashRegister().click();
 		log.info("Clicke on the button Direkt zur Kasse");
-		//scrolling the register button into view so that it is not hidden behind the confirmation for cookie message
-		((JavascriptExecutor) driver).executeScript("window.scrollBy(0,120)");
-		loginPage.buttonRegister().click();
+		if(browserName.equalsIgnoreCase("mobile")) {
+			loginPage.buttonMobileRegister().click();
+		}else {
+			loginPage.buttonRegister().click();
+		}
 		log.info("Clicked on the Register Button");
 		//Creating a random email id to register user
 		String emailId = RandomStringUtils.randomAlphabetic(8);
@@ -855,7 +867,11 @@ public class accountTypeNewCustomer<inherits> extends BasicVariables {
 			driver.switchTo().defaultContent();
 			log.info("Clicked on the Jetzt bezhalen for payment confirmation");
 		}
+		if(browserName.equalsIgnoreCase("mobile")) {
+			Assert.assertTrue(generalPage.textOrderConfirmation().getText().contains("Glückwunsch"));
+		}else {
 		Assert.assertEquals("Glückwunsch! Gute Wahl getroffen", generalPage.textOrderConfirmation().getText());
+		}
 		log.info("Order is placed successfully");
 
 		log.info("*** Finished Test: newCustomerPaypalPaymentMethodTestWithGiftCard");
@@ -1331,7 +1347,7 @@ public class accountTypeNewCustomer<inherits> extends BasicVariables {
 		} catch(NoSuchElementException ex) {
 			log.info("No need for logging out.");
 		}
-		//driver.quit();
+		driver.quit();
 	}
 	
 	@AfterTest
