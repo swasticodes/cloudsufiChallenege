@@ -1124,6 +1124,10 @@ public class accountTypeNewCustomer<inherits> extends BasicVariables {
 			log.info("Entered Credit Card Expiry Month as "+addressAndPaymentPage.creditCardExpiryMonth());
 			addressAndPaymentPage.dropDownCreditCardExpiryYear().sendKeys(addressAndPaymentPage.creditCardExpiryYear());
 			log.info("Entered Credit Card Expiry Year as "+addressAndPaymentPage.creditCardExpiryYear());
+			if(browserName.equalsIgnoreCase("mobile")) {
+				((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", addressAndPaymentPage.creditCardContinueButton());
+				Thread.sleep(500);
+			}
 			addressAndPaymentPage.creditCardContinueButton().click();
 			log.info("Clicked on the Weiter button on the Credit Card page");
 			driver.switchTo().defaultContent();
