@@ -980,7 +980,8 @@ public class accountTypeNewCustomer<inherits> extends BasicVariables {
 		log.info("Verified Gift Card applied success message");
 		if(addressAndPaymentPage.textBoxGiftCardPayableAmount().getText()!="0,00 €") {
 			//scrolling the Debit Card checkbox into view
-			((JavascriptExecutor) driver).executeScript("window.scrollBy(0,-120)");
+			((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", registerationPage.copyDeliveryAndInvoiceAddress());
+			Thread.sleep(500);
 			addressAndPaymentPage.radioButtonDebitCard().click();
 			log.info("Selected the Bankeinzug/Lastschrift (Debit Card)radio button");
 			addressAndPaymentPage.textFieldAccountHolder().sendKeys(addressAndPaymentPage.accountHolderName());
