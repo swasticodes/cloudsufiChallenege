@@ -28,6 +28,7 @@ import org.openqa.selenium.logging.LoggingPreferences;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
+import org.openqa.selenium.safari.SafariDriver;
 
 public class BasicVariables {
 	public static WebDriver driver;
@@ -114,6 +115,7 @@ public class BasicVariables {
 	public WebDriver initializeDirectWebDriver() throws IOException
 	{
 		String browserName=prop.getProperty("browser");
+		String MacNodeIp = prop.getProperty("NodeIP");
 		DesiredCapabilities capabilities = null;
 		System.out.println("The browser used for the test is "+browserName);
 		if(browserName.equals("chrome"))
@@ -155,6 +157,11 @@ public class BasicVariables {
 
 			driver = new ChromeDriver(chromeOptions);
 			//execute in mobile browser
+		}
+		else if (browserName.equals("safari"))
+		{
+			capabilities = DesiredCapabilities.safari();
+			driver = new RemoteWebDriver(new URL(MacNodeIp),capabilities);
 		}
 		else
 		{
