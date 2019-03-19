@@ -753,7 +753,7 @@ public class accountTypeNewCustomer<inherits> extends BasicVariables {
 		log.info("*** Finished Test: newCustomerInvoiceMethodTestWithGiftCard");
 	}
 
-	@Test
+	@Test(enabled=false)
 	public void newCustomerPaypalPaymentMethodTestWithGiftCard() throws InterruptedException, IOException
 	{
 		log.info("*** Starting Test: newCustomerPaypalPaymentMethodTestWithGiftCard");
@@ -877,7 +877,7 @@ public class accountTypeNewCustomer<inherits> extends BasicVariables {
 		log.info("*** Finished Test: newCustomerPaypalPaymentMethodTestWithGiftCard");
 	}
 
-	@Test
+	@Test(enabled=false)
 	public void newCustomerSEPADirectDebitMethodTestWithGiftCard() throws InterruptedException
 	{
 		log.info("*** Starting Test: newCustomerSEPADirectDebitMethodTestWithGiftCard");
@@ -1005,7 +1005,7 @@ public class accountTypeNewCustomer<inherits> extends BasicVariables {
 		log.info("*** Finished Test: newCustomerSEPADirectDebitMethodTestWithGiftCard");
 	}
 
-	@Test
+	@Test(enabled=false)
 	public void newCustomerCreditCardMethodTestWithGiftCard() throws InterruptedException
 	{
 		log.info("*** Starting Test: newCustomerCreditCardMethodTestWithGiftCard");
@@ -1147,7 +1147,7 @@ public class accountTypeNewCustomer<inherits> extends BasicVariables {
 		log.info("*** Finished Test: newCustomerCreditCardMethodTestWithGiftCard");
 	}
 
-	@Test
+	@Test(enabled=false)
 	public void newCustomerRatePayMethodTestWithGiftCard() throws InterruptedException
 	{
 		log.info("*** Starting Test: newCustomerRatePayMethodTestWithGiftCard");
@@ -1271,7 +1271,7 @@ public class accountTypeNewCustomer<inherits> extends BasicVariables {
 		log.info("*** Finished Test: newCustomerRatePayMethodTestWithGiftCard");
 	}
 
-	@Test
+	@Test(enabled=false)
 	public void newCustomerCreditCardMethodTestWithGiftCardTopseller() throws InterruptedException
 	{
 		log.info("*** Starting Test: newCustomerCreditCardMethodTestWithGiftCardTopseller");
