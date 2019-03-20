@@ -1411,28 +1411,10 @@ public class accountTypeNewCustomer<inherits> extends BasicVariables {
 	@AfterMethod
 	public void logout()
 	{
-		GeneralPage generalPage = new GeneralPage(driver);
-		//Logging out if the user is signed in before starting the next test
-		try {
-			if (generalPage.linkMyAccount().isDisplayed())
-			{
-				generalPage.linkMyAccount().click();
-				log.info("Clicked on the Mein Konto link for logging out");
-				generalPage.linkLogout().click();
-				log.info("Clicked on the Abmelden link for logging out");
-			}
-		} catch(NoSuchElementException ex) {
-			log.info("No need for logging out.");
-		}
 		driver.quit();
-	}
-	
-	@AfterTest
-	public void closeBrowser()
-	{
+		log.info("--------------- Closed The Browser --------------");
 		//releasing the memory
 		driver = null;
 		log.info("---------------Cleaned Up The Setup--------------");
 	}
-
 }
