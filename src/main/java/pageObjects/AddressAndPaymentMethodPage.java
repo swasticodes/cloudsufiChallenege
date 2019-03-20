@@ -6,9 +6,12 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import resources.BasicVariables;
+
 public class AddressAndPaymentMethodPage
 {
 	public WebDriver driver;
+	BasicVariables bv = new BasicVariables();
 
 	@FindBy (xpath="//span[contains(text(),'Bankeinzug/Lastschrift')]") WebElement radioButton_DebitCard_Payment;
 	@FindBy (xpath="//*[@id=\"debitCardHolder\"]") WebElement textField_AccountHolder;
@@ -71,6 +74,7 @@ public class AddressAndPaymentMethodPage
 	}
 	public WebElement textFieldAccountHolder()
 	{
+		bv.safariWaitWorkaround();
 		return textField_AccountHolder;
 	}
 	public WebElement textFieldIBANNumber()

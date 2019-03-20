@@ -5,9 +5,12 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import resources.BasicVariables;
+
 public class LoginPage 
 {
 	public WebDriver driver;
+	BasicVariables bv = new BasicVariables();
 	
 	@FindBy (xpath="//*[@id=\"loginEmail\"]") WebElement textField_Email;
 	@FindBy (xpath="//*[@id=\"loginPassword\"]") WebElement textField_Password;
@@ -34,6 +37,7 @@ public class LoginPage
 	}
 	public WebElement buttonRegister()
 	{
+		bv.safariWaitWorkaround();
 		return btn_Register;
 	}
 	public WebElement buttonMobileRegister()

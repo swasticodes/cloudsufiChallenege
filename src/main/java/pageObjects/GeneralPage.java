@@ -8,9 +8,12 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 
+import resources.BasicVariables;
+
 public class GeneralPage 
 {
 	public WebDriver driver;
+	BasicVariables bv = new BasicVariables();
 	
 	@FindBy (xpath="//*[@id=\"openDeliveryBtn\"]") WebElement btn_SelectedItem_Next;
 	@FindBy (xpath="//*[@id='cookieNote']/div/button") WebElement btn_Close_Cookie_Msg;
@@ -33,6 +36,7 @@ public class GeneralPage
 	public WebElement buttonSelectedItemNext()
 	{
 		//Use the code below in case of using Page Factory Model
+		bv.safariWaitWorkaround();
 		return btn_SelectedItem_Next;
 		//Comment the above code and Uncomment the code below in case using Page object instead of Page factory
 		//return driver.findElement(link_Login);
@@ -59,6 +63,7 @@ public class GeneralPage
 
 	public WebElement textOrderConfirmation()
 	{
+		bv.safariWaitWorkaround();
 		return text_Order_Confirmation;
 	}
 	public WebElement linkFirstItem()
@@ -79,7 +84,7 @@ public class GeneralPage
 	}
 	public WebElement linkSecondItem()
 	{
+		bv.safariWaitWorkaround();
 		return link_Second_Item;
 	}
-
 }

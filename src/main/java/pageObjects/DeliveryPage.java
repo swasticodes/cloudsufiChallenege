@@ -6,9 +6,12 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import resources.BasicVariables;
+
 public class DeliveryPage 
 {
 	public WebDriver driver;
+	BasicVariables bv = new BasicVariables();
 	
 	@FindBy (xpath="//*[@id=\"deliveryPostcode\"]") WebElement textField_DeliveryPostalCode;
 	@FindBy (xpath="//*[@id=\"deliveryPostcodeSubmit\"]") WebElement btn_Next_PostalCode;
@@ -44,11 +47,11 @@ public class DeliveryPage
 	}
 	public WebElement continueWithoutGreetingCard()
 	{
+		bv.safariWaitWorkaround();
 		return btn_Continue_Without_GreetingCard;
 	}
 	public WebElement continueWithoutGifts()
 	{
 		return btn_Continue_Without_Gifts;
 	}
-
 }
