@@ -63,6 +63,12 @@ public class GeneralPage
 
 	public WebElement textOrderConfirmation()
 	{
+		try {
+			Thread.sleep(2000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		bv.safariWaitWorkaround();
 		return text_Order_Confirmation;
 	}
