@@ -2,6 +2,7 @@ package resources;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -215,4 +216,13 @@ public class BasicVariables {
 				e.printStackTrace();
 			}
 	 }
+	 public void safariOrderConfirmLongWait() throws IOException
+	 {
+			 try {
+					Thread.sleep(20000);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+	}
 }
