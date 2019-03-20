@@ -65,7 +65,6 @@ public class PayPalPage
 	{
 		return btn_Confirm_Paypal_Payment;
 	}
-
 	public boolean isPasswordFieldDisplayed()
 	{
 		try {
@@ -93,7 +92,6 @@ public class PayPalPage
 		    buttonPaypalLogin().click();
 		    log.info("Clicked on the login button on Paypal page");
 		}
-		
 		return true;
 	}
 }
