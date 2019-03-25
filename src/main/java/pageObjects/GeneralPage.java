@@ -74,6 +74,7 @@ public class GeneralPage
 	}
 	public WebElement linkFirstItem()
 	{
+		bv.safariWaitWorkaround();
 		return link_First_Item;
 	}
 	public WebElement linkMyAccount()

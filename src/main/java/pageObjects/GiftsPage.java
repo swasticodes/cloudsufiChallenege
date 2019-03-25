@@ -6,9 +6,12 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import resources.BasicVariables;
+
 public class GiftsPage 
 {
 	public WebDriver driver;
+	BasicVariables bv = new BasicVariables();
 	
 	@FindBy (xpath="//*[contains(@class, 'gift-list d-flex flex-wrap justify-content-around')]/div[1]") WebElement link_GiftsPage_FirstItem;
 	@FindBy (xpath="//*[contains(@class, 'gift-list d-flex flex-wrap justify-content-around')]/div[2]") WebElement link_GiftsPage_SecondItem;
@@ -26,6 +29,7 @@ public class GiftsPage
 	public WebElement linkGiftsPageFirstItem()
 	{
 		//Use the code below in case of using Page Factory Model
+		bv.safariWaitWorkaround();
 		return link_GiftsPage_FirstItem;
 		//Comment the above code and Uncomment the code below in case using Page object instead of Page factory
 		//return driver.findElement(link_Login);

@@ -63,6 +63,7 @@ public class RegistrationPage
 	}
 	public WebElement registrationSalutation()
 	{
+		bv.safariWaitWorkaround();
 		return radioButton_Herr_Salutation;
 	}
 	public WebElement registrationFirstName()
@@ -111,6 +112,7 @@ public class RegistrationPage
 	}
 	public WebElement textFieldEmail()
 	{
+		bv.safariWaitWorkaround();
 		return textField_LoginEmail;
 	}
 	public WebElement textFieldPassword()

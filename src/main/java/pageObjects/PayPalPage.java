@@ -14,6 +14,7 @@ import resources.BasicVariables;
 public class PayPalPage
 {
 	public WebDriver driver;
+	BasicVariables bv = new BasicVariables();
 
 	public static Logger log = LogManager.getLogger(BasicVariables.class.getName());
 
@@ -63,6 +64,7 @@ public class PayPalPage
 	}
 	public WebElement buttonPaypalPaymentConfirmation()
 	{
+		bv.safariWaitWorkaround();
 		return btn_Confirm_Paypal_Payment;
 	}
 	public boolean isPasswordFieldDisplayed()

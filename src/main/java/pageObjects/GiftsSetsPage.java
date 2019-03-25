@@ -6,9 +6,12 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import resources.BasicVariables;
+
 public class GiftsSetsPage
 {
 	public WebDriver driver;
+	BasicVariables bv = new BasicVariables();
 
 	@FindBy (xpath="//*[contains(@class,'container-list')]/div[3]/div[3]/div/div[1]/div[2]/div[2]") WebElement link_SecondItem;
 	@FindBy (xpath="//*[contains(@class,'container-list')]/div[3]/div[3]/div/div[1]/div[2]/div[1]") WebElement link_FirstItem;
@@ -25,6 +28,7 @@ public class GiftsSetsPage
 	public WebElement linkGiftsSetsSecondItem()
 	{
 		//Use the code below in case of using Page Factory Model
+		bv.safariWaitWorkaround();
 		return link_SecondItem;
 		//Comment the above code and Uncomment the code below in case using Page object instead of Page factory
 		//return driver.findElement(link_Login);
