@@ -49,7 +49,6 @@ public class accountTypeNewCustomer<inherits> extends BasicVariables {
 		//Creating the Objects below to access the functions
 		HomePage homePage = new HomePage(driver);
 		GeneralPage generalPage = new GeneralPage(driver);
-		GeburtstagPage birthdayPage = new GeburtstagPage(driver);
 		DeliveryPage deliveryPage = new DeliveryPage(driver);
 		LoginPage loginPage = new LoginPage(driver);
 		RegistrationPage registerationPage = new RegistrationPage(driver);
@@ -67,7 +66,7 @@ public class accountTypeNewCustomer<inherits> extends BasicVariables {
 		log.info("Clicked on the Anlässe link");
 		homePage.linkBirthday().click();
 		log.info("Clicked on the Geburtstag link");
-		birthdayPage.linkBirthdayFirstItem().click();
+		generalPage.linkFirstItem().click();
 		log.info("Selecting the first item on the birtday page");
 		generalPage.buttonSelectedItemNext().click();
 		log.info("Clicked on the Next button after selecting item");
