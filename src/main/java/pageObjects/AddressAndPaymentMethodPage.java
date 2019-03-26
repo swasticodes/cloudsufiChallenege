@@ -211,6 +211,7 @@ public class AddressAndPaymentMethodPage
 	}
 	public WebElement buttonRedeemGiftCard()
 	{
+		bv.safariWaitWorkaround();
 		return btn_RedeemGiftCard;
 	}
 	public String giftCardNumber()
@@ -223,6 +224,8 @@ public class AddressAndPaymentMethodPage
 	}
 	public WebElement textBoxGiftCardSuccessMessage()
 	{
+		bv.safariWaitWorkaround();
+		bv.safariWaitWorkaround();
 		return textBox_GiftCardSuccessMessage;
 	}
 	public WebElement textBoxGiftCardPayableAmount()
@@ -231,6 +234,7 @@ public class AddressAndPaymentMethodPage
 	}
 	public WebElement textBoxVoucherCodeSuccess()
 	{
+		bv.safariWaitWorkaround();
 		return textBox_VoucherCodeSuccessMessage;
 	}
 

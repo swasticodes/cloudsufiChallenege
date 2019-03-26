@@ -52,6 +52,7 @@ public class GreetingCardPage
 	}
 	public WebElement textboxGreetingCardText()
 	{
+		bv.safariWaitWorkaround();
 		return textBox_GreetingText;
 	}
 	public WebElement buttonContinueToGifts()
@@ -84,6 +85,7 @@ public class GreetingCardPage
 	}
 	public WebElement dropdownSelectGreetingTextTemplate()
 	{
+		bv.safariWaitWorkaround();
 		return dropDown_GreetingTextTemplate;
 	}
 	public WebElement greetingCardTemplateThankYou()

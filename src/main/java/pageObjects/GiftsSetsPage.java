@@ -35,6 +35,7 @@ public class GiftsSetsPage
 	}
 	public WebElement linkGiftsSetsFirstItem()
 	{
+		bv.safariWaitWorkaround();
 		return link_FirstItem;
 	}
 }

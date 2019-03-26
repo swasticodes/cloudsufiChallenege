@@ -52,6 +52,7 @@ public class DeliveryPage
 	}
 	public WebElement continueWithoutGifts()
 	{
+		bv.safariWaitWorkaround();
 		return btn_Continue_Without_Gifts;
 	}
 }

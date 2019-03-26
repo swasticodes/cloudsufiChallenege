@@ -6,9 +6,12 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import resources.BasicVariables;
+
 public class PiesAndGiftsPage
 {
 	public WebDriver driver;
+	BasicVariables bv = new BasicVariables(); 
 
 	@FindBy (xpath="//*[contains(@class,'container-list')]/div[3]/div[2]/div/div/div[2]/div[1]") WebElement link_FirstItem;
 	//Comment the above code and uncomment the code below in case of using Page Object model instead of Page Factory Model
@@ -22,6 +25,7 @@ public class PiesAndGiftsPage
 	}
 	public WebElement linkPiesAndGiftsFirstItem()
 	{
+		bv.safariWaitWorkaround();
 		return link_FirstItem;
 	}
 }

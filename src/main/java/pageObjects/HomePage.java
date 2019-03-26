@@ -9,9 +9,12 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 
+import resources.BasicVariables;
+
 public class HomePage 
 {
 	public WebDriver driver;
+	BasicVariables bv = new BasicVariables();
 	
 	@FindBy (linkText="Anmelden") WebElement link_Login;
 	@FindBy (linkText="Anlässe") WebElement link_Events;
@@ -47,6 +50,8 @@ public class HomePage
 	}
 	public WebElement linkEvents()
 	{
+		bv.safariWaitWorkaround();
+		bv.safariWaitWorkaround();
 		return link_Events;
 	}
 	public WebElement linkBirthday()
@@ -60,6 +65,8 @@ public class HomePage
 	
 	public WebElement linkProducts()
 	{
+		bv.safariWaitWorkaround();
+		bv.safariWaitWorkaround();
 		return link_Products;
 	}
 	
@@ -87,14 +94,18 @@ public class HomePage
 	}
 	public WebElement linkGiftSets()
 	{
+		bv.safariWaitWorkaround();
+		bv.safariWaitWorkaround();
 		return link_GiftSets;
 	}
 	public WebElement linkPiesAndGifts()
 	{
+		bv.safariWaitWorkaround();
 		return link_PiesAndGifts;
 	}
 	public WebElement linkGetWell()
 	{
+		bv.safariWaitWorkaround();
 		return link_GetWell;
 	}
 	public WebElement linkBestRegards()

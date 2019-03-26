@@ -36,10 +36,12 @@ public class GiftsPage
 	}
 	public WebElement linkGiftsPageSecondItem()
 	{
+		bv.safariWaitWorkaround();
 		return link_GiftsPage_SecondItem;
 	}
 	public WebElement buttonDirectlyToCashRegister()
 	{
+		bv.safariWaitWorkaround();
 		return btn_Directly_To_Cash_Register;
 	}
 

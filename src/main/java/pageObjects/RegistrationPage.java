@@ -104,10 +104,12 @@ public class RegistrationPage
 	}
 	public WebElement buttonOrderAsGuest()
 	{
+		bv.safariWaitWorkaround();
 		return btn_Order_As_Guest;
 	}
 	public WebElement buttonLogin()
 	{
+		bv.safariWaitWorkaround();
 		return btn_Login;
 	}
 	public WebElement textFieldEmail()
