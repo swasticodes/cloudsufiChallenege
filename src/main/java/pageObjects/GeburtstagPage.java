@@ -21,7 +21,7 @@ public class GeburtstagPage
 	{
 		this.driver = driver;
 		//Comment the code below in case using Page object instead of Page Factory 
-		//PageFactory.initElements(driver, this);
+		PageFactory.initElements(driver, this);
 	}
 
 	public WebElement linkBirthdayFirstItem()
