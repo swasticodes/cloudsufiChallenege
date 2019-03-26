@@ -149,11 +149,7 @@ public class accountTypeExistingCustomer<inherits> extends BasicVariables {
 		addressAndPaymentPage.creditCardContinueButton().click();
 		log.info("Clicked on the Weiter button on the Credit Card page");
 		driver.switchTo().defaultContent();
-		if(browserName.equalsIgnoreCase("mobile")) {
-			Assert.assertTrue(generalPage.textOrderConfirmation().getText().contains("Glückwunsch"));
-		}else {
-		Assert.assertEquals("Glückwunsch! Gute Wahl getroffen", generalPage.textOrderConfirmation().getText());
-		}
+		Assert.assertTrue(generalPage.textOrderConfirmation().getText().contains("Glückwunsch"));
 		log.info("Order is placed successfully");
 
 		log.info("*** Finished Test: existingCustomerCreditCardMethodTest");
@@ -253,11 +249,7 @@ public class accountTypeExistingCustomer<inherits> extends BasicVariables {
 		log.info("Clicked on Weiter zur Übersicht button");
 		orderOverviewPage.buttonToBuy().click();
 		log.info("Clicked on Kaufen button");
-		if(browserName.equalsIgnoreCase("mobile")) {
-			Assert.assertTrue(generalPage.textOrderConfirmation().getText().contains("Glückwunsch"));
-		}else {
-		Assert.assertEquals("Glückwunsch! Gute Wahl getroffen", generalPage.textOrderConfirmation().getText());
-		}
+		Assert.assertTrue(generalPage.textOrderConfirmation().getText().contains("Glückwunsch"));
 		log.info("Order is placed successfully");
 
 		log.info("*** Finished Test: existingCustomerInvoiceMethodTest");
@@ -368,11 +360,7 @@ public class accountTypeExistingCustomer<inherits> extends BasicVariables {
 		log.info("Clicked on Weiter zur Übersicht button");
 		orderOverviewPage.buttonToBuy().click();
 		log.info("Clicked on Kaufen button");
-		if(browserName.equalsIgnoreCase("mobile")) {
-			Assert.assertTrue(generalPage.textOrderConfirmation().getText().contains("Glückwunsch"));
-		}else {
-		Assert.assertEquals("Glückwunsch! Gute Wahl getroffen", generalPage.textOrderConfirmation().getText());
-		}
+		Assert.assertTrue(generalPage.textOrderConfirmation().getText().contains("Glückwunsch"));
 		log.info("Order is placed successfully");
 
 		log.info("*** Finished Test: existingCustomerRatePayMethodTest");
@@ -482,11 +470,7 @@ public class accountTypeExistingCustomer<inherits> extends BasicVariables {
 		payPalPage.buttonPaypalPaymentConfirmation().click();
 		driver.switchTo().defaultContent();
 		log.info("Clicked on the 'Jetzt bezahlen' button for payment confirmation");
-		if(browserName.equalsIgnoreCase("mobile")) {
-			Assert.assertTrue(generalPage.textOrderConfirmation().getText().contains("Glückwunsch"));
-		}else {
-		Assert.assertEquals("Glückwunsch! Gute Wahl getroffen", generalPage.textOrderConfirmation().getText());
-		}
+		Assert.assertTrue(generalPage.textOrderConfirmation().getText().contains("Glückwunsch"));
 		log.info("Order is placed successfully");
 
 		log.info("*** Finished Test: existingCustomerPaypalMethodTest");
@@ -589,11 +573,7 @@ public class accountTypeExistingCustomer<inherits> extends BasicVariables {
 		log.info("Clicked on Weiter zur Übersicht button");
 		orderOverviewPage.buttonToBuy().click();
 		log.info("Clicked on Kaufen button");
-		if(browserName.equalsIgnoreCase("mobile")) {
-			Assert.assertTrue(generalPage.textOrderConfirmation().getText().contains("Glückwunsch"));
-		}else {
-		Assert.assertEquals("Glückwunsch! Gute Wahl getroffen", generalPage.textOrderConfirmation().getText());
-		}
+		Assert.assertTrue(generalPage.textOrderConfirmation().getText().contains("Glückwunsch"));
 		log.info("Order is placed successfully");
 
 		log.info("*** Finished Test: existingCustomerSEPADirectDebitMethodTest");
@@ -700,11 +680,7 @@ public class accountTypeExistingCustomer<inherits> extends BasicVariables {
 		payPalPage.buttonPaypalPaymentConfirmation().click();
 		driver.switchTo().defaultContent();
 		log.info("Clicked on the 'Jetzt bezahlen' button for payment confirmation");
-		if(browserName.equalsIgnoreCase("mobile")) {
-			Assert.assertTrue(generalPage.textOrderConfirmation().getText().contains("Glückwunsch"));
-		}else {
-		Assert.assertEquals("Glückwunsch! Gute Wahl getroffen", generalPage.textOrderConfirmation().getText());
-		}
+		Assert.assertTrue(generalPage.textOrderConfirmation().getText().contains("Glückwunsch"));
 		log.info("Order is placed successfully");
 
 		log.info("*** Finished Test: existingCustomerPaypalMethodTopsellerTest");
@@ -835,11 +811,7 @@ public class accountTypeExistingCustomer<inherits> extends BasicVariables {
 		payPalPage.buttonPaypalPaymentConfirmation().click();
 		driver.switchTo().defaultContent();
 		log.info("Clicked on the 'Jetzt bezahlen' button for payment confirmation");
-		if(browserName.equalsIgnoreCase("mobile")) {
-			Assert.assertTrue(generalPage.textOrderConfirmation().getText().contains("Glückwunsch"));
-		}else {
-		Assert.assertEquals("Glückwunsch! Gute Wahl getroffen", generalPage.textOrderConfirmation().getText());
-		}
+		Assert.assertTrue(generalPage.textOrderConfirmation().getText().contains("Glückwunsch"));
 		log.info("Order is placed successfully");
 
 		log.info("*** Finished Test: existingCustomerPreLoginPaypalMethodTest");
@@ -959,11 +931,7 @@ public class accountTypeExistingCustomer<inherits> extends BasicVariables {
 		log.info("Clicked on Weiter zur Übersicht button");
 		orderOverviewPage.buttonToBuy().click();
 		log.info("Clicked on Kaufen button");
-		if(browserName.equalsIgnoreCase("mobile")) {
-			Assert.assertTrue(generalPage.textOrderConfirmation().getText().contains("Glückwunsch"));
-		}else {
-		Assert.assertEquals("Glückwunsch! Gute Wahl getroffen", generalPage.textOrderConfirmation().getText());
-		}
+		Assert.assertTrue(generalPage.textOrderConfirmation().getText().contains("Glückwunsch"));
 		log.info("Order is placed successfully");
 
 		log.info("*** Finished Test: existingCustomerPreLoginSEPADirectDebitMethodTest");
@@ -1090,11 +1058,7 @@ public class accountTypeExistingCustomer<inherits> extends BasicVariables {
 		log.info("Clicked on Weiter zur Übersicht button");
 		orderOverviewPage.buttonToBuy().click();
 		log.info("Clicked on Kaufen button");
-		if(browserName.equalsIgnoreCase("mobile")) {
-			Assert.assertTrue(generalPage.textOrderConfirmation().getText().contains("Glückwunsch"));
-		}else {
-		Assert.assertEquals("Glückwunsch! Gute Wahl getroffen", generalPage.textOrderConfirmation().getText());
-		}
+		Assert.assertTrue(generalPage.textOrderConfirmation().getText().contains("Glückwunsch"));
 		log.info("Order is placed successfully");
 
 		log.info("*** Finished Test: existingCustomerPreLoginRatePayMethodTest");
@@ -1230,11 +1194,7 @@ public class accountTypeExistingCustomer<inherits> extends BasicVariables {
 		addressAndPaymentPage.creditCardContinueButton().click();
 		log.info("Clicked on the Weiter button on the Credit Card page");
 		driver.switchTo().defaultContent();
-		if(browserName.equalsIgnoreCase("mobile")) {
-			Assert.assertTrue(generalPage.textOrderConfirmation().getText().contains("Glückwunsch"));
-		}else {
-		Assert.assertEquals("Glückwunsch! Gute Wahl getroffen", generalPage.textOrderConfirmation().getText());
-		}
+		Assert.assertTrue(generalPage.textOrderConfirmation().getText().contains("Glückwunsch"));
 		log.info("Order is placed successfully");
 
 		log.info("*** Finished Test: existingCustomerPreLoginCreditCardMethodTest");
@@ -1377,11 +1337,7 @@ public class accountTypeExistingCustomer<inherits> extends BasicVariables {
 		addressAndPaymentPage.creditCardContinueButton().click();
 		log.info("Clicked on the Weiter button on the Credit Card page");
 		driver.switchTo().defaultContent();
-		if(browserName.equalsIgnoreCase("mobile")) {
-			Assert.assertTrue(generalPage.textOrderConfirmation().getText().contains("Glückwunsch"));
-		}else {
-		Assert.assertEquals("Glückwunsch! Gute Wahl getroffen", generalPage.textOrderConfirmation().getText());
-		}
+		Assert.assertTrue(generalPage.textOrderConfirmation().getText().contains("Glückwunsch"));
 		log.info("Order is placed successfully");
 
 		log.info("*** Finished Test: existingCustomerPreLoginGiftSetsCreditCardMethodTest");
@@ -1494,11 +1450,7 @@ public class accountTypeExistingCustomer<inherits> extends BasicVariables {
 		log.info("Clicked on Weiter zur Übersicht button");
 		orderOverviewPage.buttonToBuy().click();
 		log.info("Clicked on Kaufen button");
-		if(browserName.equalsIgnoreCase("mobile")) {
-			Assert.assertTrue(generalPage.textOrderConfirmation().getText().contains("Glückwunsch"));
-		}else {
-		Assert.assertEquals("Glückwunsch! Gute Wahl getroffen", generalPage.textOrderConfirmation().getText());
-		}
+		Assert.assertTrue(generalPage.textOrderConfirmation().getText().contains("Glückwunsch"));
 		log.info("Order is placed successfully");
 
 		log.info("*** Finished Test: existingCustomerPreLoginInvoiceMethodTest");
