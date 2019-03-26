@@ -131,6 +131,7 @@ public class RegistrationPage
 	}
 	public WebElement tchiboSalutationHerr()
 	{
+		bv.safariWaitWorkaround();
 		return radioButton_tchibo_Herr_Salutation;
 	}
 	public WebElement textBoxIncorrectLoginMessage()

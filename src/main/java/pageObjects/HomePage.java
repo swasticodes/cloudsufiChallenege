@@ -56,6 +56,7 @@ public class HomePage
 	}
 	public WebElement linkBirthday()
 	{
+		bv.safariWaitWorkaround();
 		return link_Birthday;
 	}
 	public WebElement linkThankYou()
