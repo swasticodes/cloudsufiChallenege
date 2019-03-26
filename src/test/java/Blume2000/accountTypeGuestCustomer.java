@@ -7,6 +7,7 @@ import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.JavascriptExecutor;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -685,7 +686,7 @@ public class accountTypeGuestCustomer<inherits> extends BasicVariables {
 				Assert.assertTrue(generalPage.textOrderConfirmation().getText().contains("Glückwunsch"));
 				log.info("Order is placed successfully");
 
-		log.info("*** Finished Test: guestCustomerInvoiceMethodTopsellerTest");
+				log.info("*** Finished Test: guestCustomerInvoiceMethodTopsellerTest");
 	}
 
 	@AfterMethod
