@@ -692,8 +692,14 @@ public class accountTypeGuestCustomer<inherits> extends BasicVariables {
 	public void closeBrowser()
 	{
 		driver.quit();
-		//releasing the memory
+		log.info("---------------Closed The Browser--------------");
+	}
+
+	@AfterTest
+	public void releaseBrowserMemory()
+	{
 		driver = null;
+		//releasing the memory
 		log.info("---------------Cleaned Up The Setup--------------");
 	}
 

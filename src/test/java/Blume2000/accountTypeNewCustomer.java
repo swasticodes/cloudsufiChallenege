@@ -1388,12 +1388,17 @@ public class accountTypeNewCustomer<inherits> extends BasicVariables {
 
 
 	@AfterMethod
-	public void logout()
+	public void closeBrowser()
 	{
 		driver.quit();
-		log.info("--------------- Closed The Browser --------------");
-		//releasing the memory
+		log.info("---------------Closed The Browser--------------");
+	}
+
+	@AfterTest
+	public void releaseBrowserMemory()
+	{
 		driver = null;
+		//releasing the memory
 		log.info("---------------Cleaned Up The Setup--------------");
 	}
 }
