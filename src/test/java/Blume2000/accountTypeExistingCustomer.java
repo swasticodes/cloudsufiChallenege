@@ -566,7 +566,7 @@ public class accountTypeExistingCustomer<inherits> extends BasicVariables {
 		addressAndPaymentPage.textFieldAccountHolder().sendKeys(addressAndPaymentPage.accountHolderName());
 		log.info("Entered the account holder name as "+ addressAndPaymentPage.accountHolderName());
 		addressAndPaymentPage.textFieldIBANNumber().sendKeys(addressAndPaymentPage.ibanNumber());
-		log.info("Entered the INAN number as "+ addressAndPaymentPage.ibanNumber());
+		log.info("Entered the IBAN number as "+ addressAndPaymentPage.ibanNumber());
 		addressAndPaymentPage.chkBoxSEPADirectDebit().click();
 		log.info("Checked the Direct debit checkbox");
 		registerationPage.continueToOverview().click();
