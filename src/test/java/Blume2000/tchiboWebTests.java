@@ -120,11 +120,7 @@ public class tchiboWebTests<inherits> extends BasicVariables {
 		payPalPage.buttonPaypalPaymentConfirmation().click();
 		driver.switchTo().defaultContent();
 		log.info("Clicked on the Jetzt bezhalen for payment confirmation");
-		if(browserName.equalsIgnoreCase("mobile")) {
-			Assert.assertTrue(generalPage.textOrderConfirmation().getText().contains("Glückwunsch"));
-		}else {
-		Assert.assertEquals("Glückwunsch! Gute Wahl getroffen", generalPage.textOrderConfirmation().getText());
-		}
+		Assert.assertTrue(generalPage.textOrderConfirmation().getText().contains("Glückwunsch"));
 		log.info("Order is placed successfully");
 
 		log.info("*** Finished Test: tchiboGuestCustomerPaypalPaymentMethodTest");
@@ -200,48 +196,31 @@ public class tchiboWebTests<inherits> extends BasicVariables {
 		addressAndPaymentPage.textFieldAccountHolder().sendKeys(addressAndPaymentPage.accountHolderName());
 		log.info("Entered the account holder name as "+ addressAndPaymentPage.accountHolderName());
 		addressAndPaymentPage.textFieldIBANNumber().sendKeys(addressAndPaymentPage.ibanNumber());
-		log.info("Entered the INAN number as "+ addressAndPaymentPage.ibanNumber());
+		log.info("Entered the IBAN number as "+ addressAndPaymentPage.ibanNumber());
 		addressAndPaymentPage.chkBoxSEPADirectDebit().click();
 		log.info("Checked the Direct debit checkbox");
 		registerationPage.continueToOverview().click();
 		log.info("Clicked on Weiter zur Übersicht button");
 		orderOverviewPage.buttonToBuy().click();
 		log.info("Clicked on Kaufen button");
-		if(browserName.equalsIgnoreCase("mobile")) {
-			Assert.assertTrue(generalPage.textOrderConfirmation().getText().contains("Glückwunsch"));
-		}else {
-		Assert.assertEquals("Glückwunsch! Gute Wahl getroffen", generalPage.textOrderConfirmation().getText());
-		}
+		Assert.assertTrue(generalPage.textOrderConfirmation().getText().contains("Glückwunsch"));
 		log.info("Order is placed successfully");
 
 		log.info("*** Finished Test: tchiboExistingCustomerSEPADirectDebitMethodTest");
 	}
 
-
 	@AfterMethod
-	public void logout()
+	public void closeBrowser()
 	{
-		GeneralPage generalPage = new GeneralPage(driver);
-		//Logging out if the user is signed in before starting the next test
-		try {
-			if (generalPage.linkMyAccount().isDisplayed())
-			{
-				generalPage.linkMyAccount().click();
-				log.info("Clicked on the Mein Konto link for logging out");
-				generalPage.linkLogout().click();
-				log.info("Clicked on the Abmelden link for logging out");
-			}
-		} catch(NoSuchElementException ex) {
-			log.info("No need for logging out.");
-		}
 		driver.quit();
+		log.info("---------------Closed The Browser--------------");
 	}
 
 	@AfterTest
-	public void closeBrowser()
+	public void releaseBrowserMemory()
 	{
-		//releasing the memory
 		driver = null;
+		//releasing the memory
 		log.info("---------------Cleaned Up The Setup--------------");
 	}
 
