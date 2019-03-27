@@ -8,6 +8,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterTest;
@@ -500,7 +501,12 @@ public class accountTypeNewCustomer<inherits> extends BasicVariables {
 		log.info("Selected the payment method as Ratepay by clicking radio button Ratepay Rechnung");
 		addressAndPaymentPage.dropdownBirthDate().sendKeys(addressAndPaymentPage.ratepayBirthDate());
 		log.info("Entered the Birth date");
-		addressAndPaymentPage.dropdownBirthMonth().sendKeys(addressAndPaymentPage.ratepayBirthMonth());
+		if(browserName.equals("safari")) {
+			Select month = new Select(addressAndPaymentPage.dropdownBirthMonth());
+			month.selectByIndex(4);
+		}else {
+			addressAndPaymentPage.dropdownBirthMonth().sendKeys(addressAndPaymentPage.ratepayBirthMonth());
+		}
 		log.info("Entered the Birth month");
 		addressAndPaymentPage.dropdownBirthYear().sendKeys(addressAndPaymentPage.ratepayBirthYear());
 		log.info("Entered the Birth Year");
@@ -1222,7 +1228,12 @@ public class accountTypeNewCustomer<inherits> extends BasicVariables {
 			log.info("Selected the payment method as Ratepay by clicking radio button Ratepay Rechnung");
 			addressAndPaymentPage.dropdownBirthDate().sendKeys(addressAndPaymentPage.ratepayBirthDate());
 			log.info("Entered the birth date for Ratepay");
-			addressAndPaymentPage.dropdownBirthMonth().sendKeys(addressAndPaymentPage.ratepayBirthMonth());
+			if(browserName.equals("safari")) {
+				Select month = new Select(addressAndPaymentPage.dropdownBirthMonth());
+				month.selectByIndex(4);
+			}else {
+				addressAndPaymentPage.dropdownBirthMonth().sendKeys(addressAndPaymentPage.ratepayBirthMonth());
+			}
 			log.info("Entered the birth month for Ratepay");
 			addressAndPaymentPage.dropdownBirthYear().sendKeys(addressAndPaymentPage.ratepayBirthYear());
 			log.info("Entered the birth year for Ratepay");
