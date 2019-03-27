@@ -163,6 +163,7 @@ public class AddressAndPaymentMethodPage
 	}
 	public WebElement dropdownBirthDate()
 	{
+		bv.safariWaitWorkaround();
 		return dropdown_BirthDate;
 	}
 	public WebElement dropdownBirthMonth()
