@@ -562,7 +562,12 @@ public class accountTypeGuestCustomer<inherits> extends BasicVariables {
 		log.info("Selected the payment method as Ratepay by clicking radio button Ratepay Rechnung");
 		addressAndPaymentPage.dropdownBirthDate().sendKeys(addressAndPaymentPage.ratepayBirthDate());
 		log.info("Entered the birth day");
-		addressAndPaymentPage.dropdownBirthMonth().sendKeys(addressAndPaymentPage.ratepayBirthMonth());
+		if(browserName.equals("safari")) {
+			Select month = new Select(addressAndPaymentPage.dropdownBirthMonth());
+			month.selectByIndex(4);
+		}else {
+			addressAndPaymentPage.dropdownBirthMonth().sendKeys(addressAndPaymentPage.ratepayBirthMonth());
+		}
 		log.info("Entered the birth month");
 		addressAndPaymentPage.dropdownBirthYear().sendKeys(addressAndPaymentPage.ratepayBirthYear());
 		log.info("Entered the birth year");
