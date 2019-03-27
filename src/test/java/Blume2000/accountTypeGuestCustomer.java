@@ -138,7 +138,12 @@ public class accountTypeGuestCustomer<inherits> extends BasicVariables {
 		log.info("Entering the credit card number as "+addressAndPaymentPage.creditCardNumber());
 		addressAndPaymentPage.dropDownCreditCardExpiryMonth().sendKeys(addressAndPaymentPage.creditCardExpiryMonth());
 		log.info("Entered Credit Card Expiry Month as "+addressAndPaymentPage.creditCardExpiryMonth());
-		addressAndPaymentPage.dropDownCreditCardExpiryYear().sendKeys(addressAndPaymentPage.creditCardExpiryYear());
+		if(browserName.equals("safari")) {
+			Select month = new Select(addressAndPaymentPage.dropDownCreditCardExpiryYear());
+			month.selectByIndex(4);
+		}else {
+			addressAndPaymentPage.dropDownCreditCardExpiryYear().sendKeys(addressAndPaymentPage.creditCardExpiryYear());
+		}
 		log.info("Entered Credit Card Expiry Year as "+addressAndPaymentPage.creditCardExpiryYear());
 		if(browserName.equalsIgnoreCase("mobile")) {
 			((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", addressAndPaymentPage.creditCardContinueButton());
@@ -147,6 +152,9 @@ public class accountTypeGuestCustomer<inherits> extends BasicVariables {
 		addressAndPaymentPage.creditCardContinueButton().click();
 		log.info("Clicked on the Weiter button on the Credit Card page");
 		driver.switchTo().defaultContent();
+		if(browserName.equals("safari")) {
+			Thread.sleep(5000);
+		}
 		Assert.assertTrue(generalPage.textOrderConfirmation().getText().contains("Glückwunsch"));
 		log.info("Order is placed successfully");
 		

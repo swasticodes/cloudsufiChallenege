@@ -7,6 +7,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterTest;
@@ -140,7 +141,12 @@ public class accountTypeExistingCustomer<inherits> extends BasicVariables {
 		log.info("Entering the credit card number as "+addressAndPaymentPage.creditCardNumber());
 		addressAndPaymentPage.dropDownCreditCardExpiryMonth().sendKeys(addressAndPaymentPage.creditCardExpiryMonth());
 		log.info("Entered Credit Card Expiry Month as "+addressAndPaymentPage.creditCardExpiryMonth());
-		addressAndPaymentPage.dropDownCreditCardExpiryYear().sendKeys(addressAndPaymentPage.creditCardExpiryYear());
+		if(browserName.equals("safari")) {
+			Select month = new Select(addressAndPaymentPage.dropDownCreditCardExpiryYear());
+			month.selectByIndex(4);
+		}else {
+			addressAndPaymentPage.dropDownCreditCardExpiryYear().sendKeys(addressAndPaymentPage.creditCardExpiryYear());
+		}
 		log.info("Entered Credit Card Expiry Year as "+addressAndPaymentPage.creditCardExpiryYear());
 		if(browserName.equalsIgnoreCase("mobile")) {
 			((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", addressAndPaymentPage.creditCardContinueButton());
@@ -149,6 +155,9 @@ public class accountTypeExistingCustomer<inherits> extends BasicVariables {
 		addressAndPaymentPage.creditCardContinueButton().click();
 		log.info("Clicked on the Weiter button on the Credit Card page");
 		driver.switchTo().defaultContent();
+		if(browserName.equals("safari")) {
+			Thread.sleep(5000);
+		}
 		Assert.assertTrue(generalPage.textOrderConfirmation().getText().contains("Glückwunsch"));
 		log.info("Order is placed successfully");
 
@@ -1151,6 +1160,7 @@ public class accountTypeExistingCustomer<inherits> extends BasicVariables {
 		log.info("Selected the second Gift Item");
 		giftsPage.buttonDirectlyToCashRegister().click();
 		log.info("Clicked on the button Direkt zur Kasse");
+		Thread.sleep(1000);
 		registerationPage.registrationSalutation().click();
 		log.info("For registration selected salutation as Herr");
 		registerationPage.registrationFirstName().sendKeys("TestFirst");
@@ -1185,7 +1195,12 @@ public class accountTypeExistingCustomer<inherits> extends BasicVariables {
 		log.info("Entering the credit card number as "+addressAndPaymentPage.creditCardNumber());
 		addressAndPaymentPage.dropDownCreditCardExpiryMonth().sendKeys(addressAndPaymentPage.creditCardExpiryMonth());
 		log.info("Entered Credit Card Expiry Month as "+addressAndPaymentPage.creditCardExpiryMonth());
-		addressAndPaymentPage.dropDownCreditCardExpiryYear().sendKeys(addressAndPaymentPage.creditCardExpiryYear());
+		if(browserName.equals("safari")) {
+			Select month = new Select(addressAndPaymentPage.dropDownCreditCardExpiryYear());
+			month.selectByIndex(4);
+		}else {
+			addressAndPaymentPage.dropDownCreditCardExpiryYear().sendKeys(addressAndPaymentPage.creditCardExpiryYear());
+		}
 		log.info("Entered Credit Card Expiry Year as "+addressAndPaymentPage.creditCardExpiryYear());
 		if(browserName.equalsIgnoreCase("mobile")) {
 			((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", addressAndPaymentPage.creditCardContinueButton());
@@ -1194,6 +1209,9 @@ public class accountTypeExistingCustomer<inherits> extends BasicVariables {
 		addressAndPaymentPage.creditCardContinueButton().click();
 		log.info("Clicked on the Weiter button on the Credit Card page");
 		driver.switchTo().defaultContent();
+		if(browserName.equals("safari")) {
+			Thread.sleep(5000);
+		}
 		Assert.assertTrue(generalPage.textOrderConfirmation().getText().contains("Glückwunsch"));
 		log.info("Order is placed successfully");
 
