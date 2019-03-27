@@ -49,9 +49,9 @@ public class AddressAndPaymentMethodPage
 	String CreditCardExpiryMonth = "12";
 	String CreditCardExpiryYear = "2022";
 	String VoucherCodeAllItems = "TESTFUERSUSI";
-	String RatePayBirtDate = "27";
-	String RatePayBirtMonth = "Mai";
-	String RatePayBirtYear = "1956";
+	String RatePayBirthDate = "27";
+	String RatePayBirthMonth = "Mai";
+	String RatePayBirthYear = "1956";
 	String RatepayTelephoneNumber = "054837527";
 	String GiftCardNumber = "2000365328296387";//2000365328296387(6164),2000480173588590(8972), 2000468883528648(4735), 
 	String GiftCardPin = "6164";
@@ -179,15 +179,15 @@ public class AddressAndPaymentMethodPage
 	}
 	public String ratepayBirthDate()
 	{
-		return RatePayBirtDate;
+		return RatePayBirthDate;
 	}
 	public String ratepayBirthMonth()
 	{
-		return RatePayBirtMonth;
+		return RatePayBirthMonth;
 	}
 	public String ratepayBirthYear()
 	{
-		return RatePayBirtYear;
+		return RatePayBirthYear;
 	}
 	public String ratepayTelephoneNumber()
 	{
