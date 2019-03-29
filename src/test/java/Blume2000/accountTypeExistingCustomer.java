@@ -474,11 +474,20 @@ public class accountTypeExistingCustomer<inherits> extends BasicVariables {
 		log.info("Clicked on 'Kaufen' button");
 
 		payPalPage.PayPalLogin();
+		if(browserName.equals("safari")) {
+			Thread.sleep(18000);
+			driver.switchTo().frame(1);
+			payPalPage.PayPalLogin();
+			Thread.sleep(6000);
+		}
 
 		driver.switchTo().defaultContent();
 		payPalPage.buttonPaypalPaymentConfirmation().click();
 		driver.switchTo().defaultContent();
 		log.info("Clicked on the 'Jetzt bezahlen' button for payment confirmation");
+		if(browserName.equals("safari")) {
+			Thread.sleep(12000);
+		}
 		Assert.assertTrue(generalPage.textOrderConfirmation().getText().contains("Glückwunsch"));
 		log.info("Order is placed successfully");
 
@@ -684,10 +693,19 @@ public class accountTypeExistingCustomer<inherits> extends BasicVariables {
 		log.info("Clicked on 'Kaufen' button");
 
 		payPalPage.PayPalLogin();
+		if(browserName.equals("safari")) {
+			Thread.sleep(18000);
+			driver.switchTo().frame(1);
+			payPalPage.PayPalLogin();
+			Thread.sleep(6000);
+		}
 
 		driver.switchTo().defaultContent();
 		payPalPage.buttonPaypalPaymentConfirmation().click();
 		driver.switchTo().defaultContent();
+		if(browserName.equals("safari")) {
+			Thread.sleep(12000);
+		}
 		log.info("Clicked on the 'Jetzt bezahlen' button for payment confirmation");
 		Assert.assertTrue(generalPage.textOrderConfirmation().getText().contains("Glückwunsch"));
 		log.info("Order is placed successfully");
@@ -731,6 +749,10 @@ public class accountTypeExistingCustomer<inherits> extends BasicVariables {
 		if(browserName.equalsIgnoreCase("mobile")) {
 			homePage.mobileHamburgerMenu().click();
 		}
+		Thread.sleep(2000);
+		if(browserName.equals("safari")||!generalPage.linkMyAccount().isDisplayed()) {
+			Thread.sleep(3000);
+		}
 		homePage.linkTopseller().click();
 		log.info("Clicked on the Topseller link");
 		generalPage.linkFirstItem().click();
@@ -750,7 +772,7 @@ public class accountTypeExistingCustomer<inherits> extends BasicVariables {
 		Thread.sleep(1000);
 		deliveryPage.continueToGreetingCard().click();
 		log.info("Clicked on Weiter zur Grußkarte button");
-		Thread.sleep(1000);
+		Thread.sleep(2000);
 		greetingCardPage.linkGreetingCardFirstItem().click();
 		log.info("Selected the first Greeting Card on the the page");
 		Thread.sleep(1000);
@@ -783,7 +805,10 @@ public class accountTypeExistingCustomer<inherits> extends BasicVariables {
 		Thread.sleep(1000);
 		giftsPage.buttonDirectlyToCashRegister().click();
 		log.info("Clicked on the button 'Direkt zur Kasse'");
-		Thread.sleep(1000);
+		Thread.sleep(3000);
+		if(browserName.equals("safari")||!registerationPage.registrationSalutation().isDisplayed()) {
+			Thread.sleep(3000);
+		}
 		registerationPage.registrationSalutation().click();
 		log.info("For registration selected salutation as Herr");
 		registerationPage.registrationFirstName().sendKeys("TestFirst");
@@ -815,11 +840,20 @@ public class accountTypeExistingCustomer<inherits> extends BasicVariables {
 		log.info("Clicked on 'Kaufen' button");
 
 		payPalPage.PayPalLogin();
+		if(browserName.equals("safari")) {
+			Thread.sleep(18000);
+			driver.switchTo().frame(1);
+			payPalPage.PayPalLogin();
+			Thread.sleep(6000);
+		}
 
 		driver.switchTo().defaultContent();
 		payPalPage.buttonPaypalPaymentConfirmation().click();
 		driver.switchTo().defaultContent();
 		log.info("Clicked on the 'Jetzt bezahlen' button for payment confirmation");
+		if(browserName.equals("safari")) {
+			Thread.sleep(12000);
+		}
 		Assert.assertTrue(generalPage.textOrderConfirmation().getText().contains("Glückwunsch"));
 		log.info("Order is placed successfully");
 

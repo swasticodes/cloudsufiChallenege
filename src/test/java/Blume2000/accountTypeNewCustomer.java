@@ -126,10 +126,19 @@ public class accountTypeNewCustomer<inherits> extends BasicVariables {
 		log.info("Clicked on Kaufen button");
 
 		payPalPage.PayPalLogin();
+		if(browserName.equals("safari")) {
+			Thread.sleep(18000);
+			driver.switchTo().frame(1);
+			payPalPage.PayPalLogin();
+			Thread.sleep(6000);
+		}
 		driver.switchTo().defaultContent();
 		payPalPage.buttonPaypalPaymentConfirmation().click();
 		driver.switchTo().defaultContent();
 		log.info("Clicked on the Jetzt bezhalen for payment confirmation");
+		if(browserName.equals("safari")) {
+			Thread.sleep(12000);
+		}
 		Assert.assertTrue(generalPage.textOrderConfirmation().getText().contains("Glückwunsch"));
 		log.info("Order is placed successfully");
 		
