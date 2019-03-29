@@ -119,6 +119,7 @@ public class RegistrationPage
 	}
 	public WebElement textFieldPassword()
 	{
+		bv.safariWaitWorkaround();
 		return textField_LoginPassword;
 	}
 	public String registeredUserEmail()

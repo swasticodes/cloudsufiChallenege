@@ -87,6 +87,7 @@ public class HomePage
 	}
 	public WebElement linkTopseller()
 	{
+		bv.safariWaitWorkaround();
 		return link_Topseller;
 	}
 	public WebElement linkPlants()
