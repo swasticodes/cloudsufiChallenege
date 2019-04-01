@@ -438,7 +438,7 @@ public class accountTypeNewCustomer<inherits> extends BasicVariables {
 		log.info("*** Finished Test: newCustomerInvoiceMethodTest");
 	}
 
-	@Test
+	@Test(enabled=false)
 	public void newCustomerRatePayMethodTest() throws InterruptedException
 	{
 		log.info("*** Starting Test: newCustomerRatePayMethodTest");
