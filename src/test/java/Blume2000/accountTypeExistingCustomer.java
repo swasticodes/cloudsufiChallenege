@@ -164,7 +164,7 @@ public class accountTypeExistingCustomer<inherits> extends BasicVariables {
 		log.info("*** Finished Test: existingCustomerCreditCardMethodTest");
 	}
 
-	@Test(enabled=false)
+	@Test(enabled=true)
 	public void existingCustomerInvoiceMethodTest() throws InterruptedException
 	{
 		log.info("*** Starting Test: existingCustomerInvoiceMethodTest");
@@ -264,7 +264,7 @@ public class accountTypeExistingCustomer<inherits> extends BasicVariables {
 		log.info("*** Finished Test: existingCustomerInvoiceMethodTest");
 	}
 
-	@Test
+	@Test(enabled=false)
 	public void existingCustomerRatePayMethodTest() throws InterruptedException
 	{
 		log.info("*** Starting Test: existingCustomerRatePayMethodTest");
@@ -1395,7 +1395,7 @@ public class accountTypeExistingCustomer<inherits> extends BasicVariables {
 		log.info("*** Finished Test: existingCustomerPreLoginGiftSetsCreditCardMethodTest");
 	}
 
-	@Test(enabled=false)
+	@Test(enabled=true)
 	public void existingCustomerPreLoginInvoiceMethodTest() throws InterruptedException
 	{
 		log.info("*** Starting Test: existingCustomerPreLoginInvoiceMethodTest");
