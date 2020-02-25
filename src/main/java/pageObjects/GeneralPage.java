@@ -17,8 +17,8 @@ public class GeneralPage
 	
 	@FindBy (xpath="//*[@id=\"openDeliveryBtn\"]") WebElement btn_SelectedItem_Next;
 	@FindBy (xpath="//*[@id='cookieNote']/div/button") WebElement btn_Close_Cookie_Msg;
-	@FindBy (xpath="//*[contains(@class,'text-center xs-two-line')]") WebElement text_Order_Confirmation;
-	@FindBy (xpath="//*[contains(@class, \"widget-teaser-tile highlight-banner\")]/ancestor::div[1]/following-sibling::div/div[2]/div/div/div/div/div") WebElement link_First_Item;
+	@FindBy (xpath="//*[contains(@class,'text-center thx-headline')]") WebElement text_Order_Confirmation;
+	@FindBy (xpath="//*[contains(@class,\"container p-0 widget-product-highlight\")]/div[3]/div[3]") WebElement link_First_Item;
 	@FindBy (xpath="//*[contains(@class,'container-list')]/div[3]/div[2]/div/div/div[2]/div[2]") WebElement link_Second_Item;
 	@FindBy (xpath="//span[contains(text(),'Mein Konto')]") WebElement link_MyAccount;
 	@FindBy (xpath="//a[contains(text(),'Abmelden')]") WebElement link_Logout;

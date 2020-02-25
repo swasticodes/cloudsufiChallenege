@@ -13,7 +13,7 @@ public class GreetingCardPage
 	public WebDriver driver;
 	BasicVariables bv = new BasicVariables();
 	
-	@FindBy (xpath="//*[contains(@class,'greeting-card-list d-flex flex-wrap justify-content-around')]/div") WebElement link_GreetingCrad_First_Item;
+	@FindBy (xpath="//*[contains(@class,'card-list row p-0 m-0 ')]/div") WebElement link_GreetingCrad_First_Item;
 	@FindBy (xpath="//*[@id=\"greetingTextForm\"]") WebElement textBox_GreetingText;
 	@FindBy (xpath="//button[@id=\"submitGreetingCard\"]") WebElement btn_Continue_To_Gifts;
 	@FindBy (name="checkout.grusskarte.liebe") WebElement tab_Love;
@@ -26,6 +26,7 @@ public class GreetingCardPage
 	@FindBy (xpath="//*[@id='greetingDropDown']/li[1]") WebElement dropdown_MenuOption_ThankYou;
 	@FindBy (xpath="//*[@id='greetingDropDown']/li[2]") WebElement dropdown_MenuOption_Love;
 	@FindBy (xpath="//*[contains(@class,'greeting-text-form-error error-char')]") WebElement textBox_GreetingCardTextError;
+	@FindBy (xpath="//*[contains(text(),'Bestellen')]/parent::*") WebElement processStep_toOrder;
 //------------------------------------------MOBILE------------------------------------------------------------	
 	@FindBy (xpath="//*[contains(text(),\"Gruﬂ bearbeiten\")]") WebElement mobile_Btn_EditGreeting;
 	@FindBy (xpath="//*[contains(text(),'Weiter ohne Gruﬂtext')]") WebElement mobile_Btn_ContinueWithoutGreetingCardText;
@@ -119,5 +120,9 @@ public class GreetingCardPage
 	public WebElement mobileButtonContinueWithoutGreetingCardText()
 	{
 		return mobile_Btn_ContinueWithoutGreetingCardText;
+	}
+	public WebElement processStepToOrder()
+	{
+		return processStep_toOrder;
 	}
 }
