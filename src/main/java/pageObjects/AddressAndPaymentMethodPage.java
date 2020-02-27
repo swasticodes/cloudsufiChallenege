@@ -18,11 +18,11 @@ public class AddressAndPaymentMethodPage
 	@FindBy (xpath="//*[@id=\"debitIBAN\"]") WebElement textField_IBAN_Number;
 	@FindBy (xpath="//*[@id=\"debitBIC\"]") WebElement textField_BIC_Number;
 	@FindBy (xpath="//*[@id=\"debitBankName\"]") WebElement textField_Bank;
-	@FindBy (xpath="//*[@id=\"tab-debit\"]/div[2]/div[5]/label/span[1]") WebElement chkBox_SEPADirectDebit;
-	@FindBy (xpath="//span[contains(text(),'Kreditkarte')]") WebElement radioButton_CreditCard; ///html/body/div[2]/div[2]/form/footer/ul/li[3]/button
-	@FindBy (xpath="//*[@id=\"sfpCardExpiryMonth\"]") WebElement dropDown_CreditCard_ExpiryMonth;
-	@FindBy (xpath="//*[@id=\"sfpCardExpiryYear\"]") WebElement dropDown_CreditCard_ExpiryYear;
-	@FindBy (xpath="//*[@id=\"sfpCardNumber\"]") WebElement textField_CreditCardNumber;
+	@FindBy (xpath="//*[contains(text(),'SEPA-Lastschriftsmandat erteilen')]") WebElement chkBox_SEPADirectDebit;
+	@FindBy (xpath="//span[contains(text(),'Kreditkarte')]") WebElement radioButton_CreditCard;
+	@FindBy (xpath="//*[@id='expiration']") WebElement textField_CreditCard_ExpiryDate;
+	@FindBy (xpath="//*[@id='credit-card-number']") WebElement textField_CreditCardNumber;
+	@FindBy (xpath="//*[@id='cvv']") WebElement textField_cvvNumber;
 	@FindBy (name="SubmitToNext") WebElement btn_CreditCard_Continue;
 	@FindBy (xpath="//span[contains(text(),'Ratepay Rechnung')]") WebElement radioButton_Ratepay;
 	@FindBy (xpath="//span[contains(text(),'PayPal')]") WebElement radioButton_PayPal;
@@ -33,7 +33,7 @@ public class AddressAndPaymentMethodPage
 	@FindBy (id="invoiceBirthDay") WebElement dropdown_BirthDate;
 	@FindBy (id="invoiceBirthMonth") WebElement dropdown_BirthMonth;
 	@FindBy (id="invoiceBirthYear") WebElement dropdown_BirthYear;
-	@FindBy (id="invoicePhone") WebElement textField_RatepayTelephoneNumber;
+	@FindBy (xpath="/html/body/form/section[3]/div[2]/div[2]/div[2]/div/div[2]/div[2]/div[4]/div/input") WebElement textField_RatepayTelephoneNumber;
 	@FindBy (xpath="//span[.//text()= 'Rechnung']")  WebElement radioButton_Invoice;
 	@FindBy (xpath="//span[contains(text(),'Geschenkkarte einlösen')]") WebElement chkBox_UseGiftCard;
 	@FindBy (id="giftCardNumber") WebElement textField_GiftCardNumber;
@@ -45,14 +45,14 @@ public class AddressAndPaymentMethodPage
 
 	String SEPAAccountHolder = "Tester";
 	String IBANNumber = "DE12500105170648489890";
-	String CreditCardNumber = "9030100052000000"; //(Visa 9010100052000004, 12/2022, 123) (Amex 9070100052000001, 12/2018, 123)
-	String CreditCardExpiryMonth = "12";
-	String CreditCardExpiryYear = "2022";
-	String VoucherCodeAllItems = "TESTFUERSUSI";
+	String CreditCardNumber = "4111111111111111"; //(Visa 9010100052000004, 12/2022, 123) (Amex 9070100052000001, 12/2018, 123) (4111111111111111, 12/2022, 123)
+	String CreditCardExpiryDate = "12/2022";
+	String CreditCardCvvNumber = "123";
+	String VoucherCodeAllItems = "T8XY9XAQBJ";
 	String RatePayBirthDate = "27";
-	String RatePayBirthMonth = "Mai";
+	String RatePayBirthMonth = "Juni";
 	String RatePayBirthYear = "1956";
-	String RatepayTelephoneNumber = "054837527";
+	String RatepayTelephoneNumber = "01769499638";
 	String GiftCardNumber = "2000365328296387";//2000365328296387(6164),2000480173588590(8972), 2000468883528648(4735), 
 	String GiftCardPin = "6164";
 	//Comment the above code and uncomment the code below in case of using Page Object model instead of Page Factory Model
@@ -105,25 +105,25 @@ public class AddressAndPaymentMethodPage
 	{
 		return radioButton_CreditCard;
 	}
-	public String creditCardExpiryMonth()
+	public String creditCardExpiryDate()
 	{
-		return CreditCardExpiryMonth;
+		return CreditCardExpiryDate;
 	}
-	public String creditCardExpiryYear()
+	public String creditCardCvvNumber()
 	{
-		return CreditCardExpiryYear;
+		return CreditCardCvvNumber;
 	}
 	public String creditCardNumber()
 	{
 		return CreditCardNumber;
 	}
-	public WebElement dropDownCreditCardExpiryMonth()
+	public WebElement textFieldCreditcardExpiryDate()
 	{
-		return dropDown_CreditCard_ExpiryMonth;
+		return textField_CreditCard_ExpiryDate;
 	}
-	public WebElement dropDownCreditCardExpiryYear()
+	public WebElement textFieldCreditCardCvvNumber()
 	{
-		return dropDown_CreditCard_ExpiryYear;
+		return textField_cvvNumber;
 	}
 	public WebElement textFieldCreditCardNumber()
 	{

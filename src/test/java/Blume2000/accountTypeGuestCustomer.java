@@ -484,7 +484,6 @@ public class accountTypeGuestCustomer<inherits> extends BasicVariables {
 		AddressAndPaymentMethodPage addressAndPaymentPage = new AddressAndPaymentMethodPage(driver);
 		OrderOverviewPage orderOverviewPage = new OrderOverviewPage(driver);
 		GreetingCardPage greetingCardPage = new GreetingCardPage(driver);
-		GiftsPage giftsPage = new GiftsPage(driver);
 
 		ensurePageLoaded();
 		generalPage.clickCloseCookieMessage(false);
@@ -517,22 +516,8 @@ public class accountTypeGuestCustomer<inherits> extends BasicVariables {
 		deliveryPage.continueToGreetingCard().click();
 		log.info("Clicked on Weiter zur Gruﬂkarte button");
 		Thread.sleep(1000);
-		greetingCardPage.linkGreetingCardFirstItem().click();
-		log.info("Selected the first greeting card");
-		if(browserName.equalsIgnoreCase("mobile")) {
-			greetingCardPage.mobileButtonEditGreetingText().click();
-			log.info("Clicked on Gruﬂ bearbeiten button for enetring text");
-		}
-		greetingCardPage.textboxGreetingCardText().sendKeys("test message");
-		log.info("Entered the greeting card text");
-		greetingCardPage.buttonContinueToGifts().click();
-		log.info("Clicked on the button Weiter zu Geschenke");
-		giftsPage.linkGiftsPageFirstItem().click();
-		log.info("Selected the first Gift Item");
-		giftsPage.linkGiftsPageSecondItem().click();
-		log.info("Selected the second Gift Item");
-		giftsPage.buttonDirectlyToCashRegister().click();
-		log.info("Clicked on the button Direkt zur Kasse");
+		greetingCardPage.processStepToOrder().click();
+		log.info("Clicked on 'Bestellen' in the Order Progress bar");;
 		registerationPage.buttonOrderAsGuest().click();
 		log.info("Clicked on the button Als Gast bestellen");
 		//Creating a random email id to register user
