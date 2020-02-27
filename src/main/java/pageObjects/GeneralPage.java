@@ -23,6 +23,10 @@ public class GeneralPage
 	@FindBy (xpath="//span[contains(text(),'Mein Konto')]") WebElement link_MyAccount;
 	@FindBy (xpath="//a[contains(text(),'Abmelden')]") WebElement link_Logout;
 	@FindBy (xpath="//span[contains(text(),'Premium-Lieferung')]") WebElement radioBtn_PremiumDelivery;
+	@FindBy (xpath="//*[contains(@class,'icon-search')]") WebElement iconSearch;
+	@FindBy (xpath="(//*[@name='searchparam'])[1]") WebElement textField_Search;
+	@FindBy (xpath="(//*[contains(@class,'fa fa-search')])[2]") WebElement icon_StartSearch;
+	@FindBy (xpath="//*[contains(@class,'sec-img')]") WebElement first_Search_Result;
 	//Comment the above code and uncomment the code below in case of using Page Object model instead of Page Factory Model
 	//By link_Login = By.linkText("Anmelden");
 	
@@ -93,5 +97,12 @@ public class GeneralPage
 	{
 		bv.safariWaitWorkaround();
 		return link_Second_Item;
+	}
+	public void searchFor(String articleId)
+	{
+		iconSearch.click();
+		textField_Search.sendKeys(articleId);
+		icon_StartSearch.click();
+		first_Search_Result.click();
 	}
 }
