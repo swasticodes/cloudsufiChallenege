@@ -544,7 +544,6 @@ public class accountTypeExistingCustomer<inherits> extends BasicVariables {
 		RegistrationPage registerationPage = new RegistrationPage(driver);
 		OrderOverviewPage orderOverviewPage = new OrderOverviewPage(driver);
 		GreetingCardPage greetingCardPage = new GreetingCardPage(driver);
-		GiftsPage giftsPage = new GiftsPage(driver);
 		PayPalPage payPalPage = new PayPalPage(driver);
 		AddressAndPaymentMethodPage addressAndPaymentMethodPage = new AddressAndPaymentMethodPage(driver);
 
