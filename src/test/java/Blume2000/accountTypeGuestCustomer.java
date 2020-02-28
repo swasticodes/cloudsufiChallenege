@@ -223,7 +223,7 @@ public class accountTypeGuestCustomer<inherits> extends BasicVariables {
 		addressAndPaymentMethodPage.buttonSubmitVoucherCode().click();
 		log.info("Clicked on 'Gutscheincode einlösen' button");
 		Thread.sleep(2000);
-		//Assert.assertTrue(addressAndPaymentMethodPage.textBoxVoucherCodeSuccess().isDisplayed(), "The Voucher code was not applied successfully.");
+		Assert.assertTrue(addressAndPaymentMethodPage.textBoxVoucherCodeSuccess().isDisplayed(), "The Voucher code was not applied successfully.");
 		//Scrolling the paypal radio button into view
 		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", registerationPage.copyDeliveryAndInvoiceAddress());
 		Thread.sleep(500);
@@ -502,7 +502,7 @@ public class accountTypeGuestCustomer<inherits> extends BasicVariables {
 		log.info("Clicked on Weiter zur Grußkarte button");
 		Thread.sleep(1000);
 		greetingCardPage.processStepToOrder().click();
-		log.info("Clicked on 'Bestellen' in the Order Progress bar");;
+		log.info("Clicked on 'Bestellen' in the Order Progress bar");
 		registerationPage.buttonOrderAsGuest().click();
 		log.info("Clicked on the button Als Gast bestellen");
 		//Creating a random email id to register user
