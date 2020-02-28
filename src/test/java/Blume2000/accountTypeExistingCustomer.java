@@ -575,33 +575,8 @@ public class accountTypeExistingCustomer<inherits> extends BasicVariables {
 		deliveryPage.continueToGreetingCard().click();
 		log.info("Clicked on Weiter zur Grußkarte button");
 		Thread.sleep(1000);
-		greetingCardPage.linkGreetingCardFirstItem().click();
-		log.info("Selected the first greeting card");
-		if(browserName.equalsIgnoreCase("mobile")) {
-			greetingCardPage.mobileButtonEditGreetingText().click();
-			log.info("Clicked on Gruß bearbeiten button for enetring text");
-		}
-		Thread.sleep(1000);
-		if(browserName.equalsIgnoreCase("mobile")) {
-			greetingCardPage.mobileDropdownSelectGreetingTextTemplate().click();
-		}else {
-			greetingCardPage.dropdownSelectGreetingTextTemplate().click();
-		}
-		log.info("Opened the Grußtextvorlage auswählen dropdown");
-		Thread.sleep(1000);
-		if(browserName.equalsIgnoreCase("mobile")) {
-			greetingCardPage.mobileGreetingCardTemplateLove().click();
-		}else {
-			greetingCardPage.greetingCardTemplateLove().click();
-		}
-		log.info("Selectd Liebe from the dropdown");
-		Thread.sleep(1000);
-		greetingCardPage.buttonContinueToGifts().click();
-		log.info("Clicked on the button 'Weiter zu Geschenke'");
-		giftsPage.linkGiftsPageFirstItem().click();
-		log.info("Selected the first Gift Item");
-		giftsPage.buttonDirectlyToCashRegister().click();
-		log.info("Clicked on the button 'Direkt zur Kasse'");
+		greetingCardPage.processStepToOrder().click();
+		log.info("Clicked on 'Bestellen' in the Order Progress bar");
 		registerationPage.textFieldEmail().sendKeys(registerationPage.registeredUserEmail());
 		log.info("Entered the email id as-> " + registerationPage.registeredUserEmail());
 		registerationPage.textFieldPassword().sendKeys(registerationPage.registeredUserPassword());
@@ -620,28 +595,33 @@ public class accountTypeExistingCustomer<inherits> extends BasicVariables {
 		log.info("For registeration entered street number as 33");
 		registerationPage.registrationCity().sendKeys("Hamburg");
 		log.info("For registeration entered city as Hamburg");
+		//Saving window handle name so that it can be used in the last step
+		String parentHandle = driver.getWindowHandle();
 		addressAndPaymentMethodPage.radioButtonPayPal().click();
 		log.info("Clicking PayPal radio button");
 		registerationPage.continueToOverview().click();
 		log.info("Clicked on 'Weiter zur Uebersicht' button");
-		orderOverviewPage.buttonToBuy().click();
-		log.info("Clicked on 'Kaufen' button");
-
+		//Scrolling the 'Direkt zu Paypal' button into view
+		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", orderOverviewPage.textFieldShippingCost());
+		Thread.sleep(500);
+		orderOverviewPage.buttonDirectToPaypal().click();
+		log.info("Clcked on the button 'Direkt zur PayPal'");
 		payPalPage.PayPalLogin();
 		if(browserName.equals("safari")) {
-			Thread.sleep(18000);
+			Thread.sleep(20000);
 			driver.switchTo().frame(1);
 			payPalPage.PayPalLogin();
 			Thread.sleep(6000);
 		}
-
 		driver.switchTo().defaultContent();
 		payPalPage.buttonPaypalPaymentConfirmation().click();
+		log.info("Clicked on the 'Jetzt bezahlen' button for payment confirmation");
 		driver.switchTo().defaultContent();
 		if(browserName.equals("safari")) {
 			Thread.sleep(12000);
 		}
-		log.info("Clicked on the 'Jetzt bezahlen' button for payment confirmation");
+		//switching to the main window for verification
+		driver.switchTo().window(parentHandle);
 		Assert.assertTrue(generalPage.textOrderConfirmation().getText().contains("Glückwunsch"));
 		log.info("Order is placed successfully");
 
