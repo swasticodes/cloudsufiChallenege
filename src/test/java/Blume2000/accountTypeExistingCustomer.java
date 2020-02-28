@@ -54,7 +54,6 @@ public class accountTypeExistingCustomer<inherits> extends BasicVariables {
 		AddressAndPaymentMethodPage addressAndPaymentPage = new AddressAndPaymentMethodPage(driver);
 		OrderOverviewPage orderOverviewPage = new OrderOverviewPage(driver);
 		GreetingCardPage greetingCardPage = new GreetingCardPage(driver);
-		GiftsPage giftsPage = new GiftsPage(driver);
 
 		ensurePageLoaded();
 		generalPage.clickCloseCookieMessage(false);
@@ -84,33 +83,9 @@ public class accountTypeExistingCustomer<inherits> extends BasicVariables {
 		Thread.sleep(1000);
 		deliveryPage.continueToGreetingCard().click();
 		log.info("Clicked on Weiter zur Grußkarte button");
-		greetingCardPage.linkGreetingCardFirstItem().click();
-		log.info("Selected the first greeting card");
-		if(browserName.equalsIgnoreCase("mobile")) {
-			greetingCardPage.mobileButtonEditGreetingText().click();
-			log.info("Clicked on Gruß bearbeiten button for enetring text");
-		}
 		Thread.sleep(1000);
-		if(browserName.equalsIgnoreCase("mobile")) {
-			greetingCardPage.mobileDropdownSelectGreetingTextTemplate().click();
-		}else {
-			greetingCardPage.dropdownSelectGreetingTextTemplate().click();
-		}
-		log.info("Opened the Grußtextvorlage auswählen dropdown");
-		Thread.sleep(1000);
-		if(browserName.equalsIgnoreCase("mobile")) {
-			greetingCardPage.mobileGreetingCardTemplateThankYou().click();
-		}else {
-			greetingCardPage.greetingCardTemplateThankYou().click();
-		}
-		log.info("Selectd Dankeschön from the dropdown");
-		Thread.sleep(1000);
-		greetingCardPage.buttonContinueToGifts().click();
-		log.info("Clicked on the button Weiter zu Geschenke");
-		giftsPage.linkGiftsPageFirstItem().click();
-		log.info("Selected the first Gift Item");
-		giftsPage.buttonDirectlyToCashRegister().click();
-		log.info("Clicked on the button Direkt zur Kasse");
+		greetingCardPage.processStepToOrder().click();
+		log.info("Clicked on 'Bestellen' in the Order Progress bar");
 		registerationPage.textFieldEmail().sendKeys(registerationPage.registeredUserEmail());
 		log.info("Entered the email id as-> " + registerationPage.registeredUserEmail());
 		registerationPage.textFieldPassword().sendKeys(registerationPage.registeredUserPassword());
@@ -131,29 +106,31 @@ public class accountTypeExistingCustomer<inherits> extends BasicVariables {
 		log.info("For registeration entered city as Hamburg");
 		addressAndPaymentPage.radioButtonCreditCard().click();
 		log.info("Selected the payment method as Credit Card by clicking radio button Kreditkarte");
+		//switching to the frame for entering CC information
+		driver.switchTo().frame("braintree-hosted-field-number");
+		Thread.sleep(1000);
+		addressAndPaymentPage.textFieldCreditCardNumber().sendKeys(addressAndPaymentPage.creditCardNumber());
+		log.info("Enetered the Credit Card number");
+		driver.switchTo().parentFrame();
+		Thread.sleep(1000);
+		driver.switchTo().frame("braintree-hosted-field-expirationDate");
+		Thread.sleep(1000);
+		addressAndPaymentPage.textFieldCreditcardExpiryDate().sendKeys(addressAndPaymentPage.creditCardExpiryDate());
+		log.info("Enetered the Credit Card Expiry Date");
+		driver.switchTo().parentFrame();
+		driver.switchTo().frame("braintree-hosted-field-cvv");
+		addressAndPaymentPage.textFieldCreditCardCvvNumber().sendKeys(addressAndPaymentPage.creditCardCvvNumber());
+		log.info("Enetered the Credit Card CVV number");
+		driver.switchTo().defaultContent();
+		Thread.sleep(1000);
 		registerationPage.continueToOverview().click();
-		log.info("Clicked on Weiter zur Übersicht button");
+		log.info("Clicked on 'Weiter zur Übersicht' button");
 		orderOverviewPage.buttonToBuy().click();
 		log.info("Clicked on Kaufen button");
-		driver.switchTo().frame(0);
-		log.info("Switched Frame so that credit card details can be entered");
-		addressAndPaymentPage.textFieldCreditCardNumber().sendKeys(addressAndPaymentPage.creditCardNumber());
-		log.info("Entering the credit card number as "+addressAndPaymentPage.creditCardNumber());
-		addressAndPaymentPage.dropDownCreditCardExpiryMonth().sendKeys(addressAndPaymentPage.creditCardExpiryMonth());
-		log.info("Entered Credit Card Expiry Month as "+addressAndPaymentPage.creditCardExpiryMonth());
-		if(browserName.equals("safari")) {
-			Select month = new Select(addressAndPaymentPage.dropDownCreditCardExpiryYear());
-			month.selectByIndex(4);
-		}else {
-			addressAndPaymentPage.dropDownCreditCardExpiryYear().sendKeys(addressAndPaymentPage.creditCardExpiryYear());
-		}
-		log.info("Entered Credit Card Expiry Year as "+addressAndPaymentPage.creditCardExpiryYear());
 		if(browserName.equalsIgnoreCase("mobile")) {
 			((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", addressAndPaymentPage.creditCardContinueButton());
 			Thread.sleep(500);
 		}
-		addressAndPaymentPage.creditCardContinueButton().click();
-		log.info("Clicked on the Weiter button on the Credit Card page");
 		driver.switchTo().defaultContent();
 		if(browserName.equals("safari")) {
 			Thread.sleep(5000);
