@@ -641,7 +641,6 @@ public class accountTypeExistingCustomer<inherits> extends BasicVariables {
 		GreetingCardPage greetingCardPage = new GreetingCardPage(driver);
 		PayPalPage payPalPage = new PayPalPage(driver);
 		AddressAndPaymentMethodPage addressAndPaymentMethodPage = new AddressAndPaymentMethodPage(driver);
-		GiftsPage giftsPage = new GiftsPage(driver);
 
 		ensurePageLoaded();
 		generalPage.clickCloseCookieMessage(false);
@@ -680,45 +679,15 @@ public class accountTypeExistingCustomer<inherits> extends BasicVariables {
 			deliveryPage.buttonNextPostalCode().click();
 			log.info("Clicked the next button after entering Postal Code");
 		}
-		Thread.sleep(1000);
+		Thread.sleep(2000);
 		deliveryPage.dayActiveDay().click();
 		log.info("Selecting the active day for delivery");
 		Thread.sleep(1000);
 		deliveryPage.continueToGreetingCard().click();
 		log.info("Clicked on Weiter zur Grußkarte button");
-		Thread.sleep(2000);
-		greetingCardPage.linkGreetingCardFirstItem().click();
-		log.info("Selected the first Greeting Card on the the page");
 		Thread.sleep(1000);
-		if(browserName.equalsIgnoreCase("mobile")) {
-			greetingCardPage.mobileButtonEditGreetingText().click();
-			log.info("Clicked on Gruß bearbeiten button for enetring text");
-		}
-		Thread.sleep(1000);
-		if(browserName.equalsIgnoreCase("mobile")) {
-			greetingCardPage.mobileDropdownSelectGreetingTextTemplate().click();
-		}else {
-			greetingCardPage.dropdownSelectGreetingTextTemplate().click();
-		}
-		log.info("Opened the Grußtextvorlage auswählen dropdown");
-		Thread.sleep(1000);
-		if(browserName.equalsIgnoreCase("mobile")) {
-			greetingCardPage.mobileGreetingCardTemplateThankYou().click();
-		}else {
-			greetingCardPage.greetingCardTemplateThankYou().click();
-		}
-		log.info("Selectd Dankeschön from the dropdown");
-		Thread.sleep(1000);
-		greetingCardPage.buttonContinueToGifts().click();
-		log.info("Clicked on the button 'Weiter zu Geschenke'");
-		Thread.sleep(1000);
-		giftsPage.linkGiftsPageFirstItem().click();
-		log.info("Selected the first gift item");
-		giftsPage.linkGiftsPageSecondItem().click();
-		log.info("Selected the Second gift item");
-		Thread.sleep(1000);
-		giftsPage.buttonDirectlyToCashRegister().click();
-		log.info("Clicked on the button 'Direkt zur Kasse'");
+		greetingCardPage.processStepToOrder().click();
+		log.info("Clicked on 'Bestellen' in the Order Progress bar");
 		Thread.sleep(3000);
 		if(browserName.equals("safari")||!registerationPage.registrationSalutation().isDisplayed()) {
 			Thread.sleep(3000);
@@ -746,28 +715,33 @@ public class accountTypeExistingCustomer<inherits> extends BasicVariables {
 		//Scrolling the paypal radio button into view
 		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", registerationPage.registrationCountry());
 		Thread.sleep(500);
+		//Saving window handle name so that it can be used in the last step
+		String parentHandle = driver.getWindowHandle();
 		addressAndPaymentMethodPage.radioButtonPayPal().click();
 		log.info("Clicking PayPal radio button");
 		registerationPage.continueToOverview().click();
 		log.info("Clicked on 'Weiter zur Uebersicht' button");
-		orderOverviewPage.buttonToBuy().click();
-		log.info("Clicked on 'Kaufen' button");
-
+		//Scrolling the 'Direkt zu Paypal' button into view
+		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", orderOverviewPage.textFieldShippingCost());
+		Thread.sleep(500);
+		orderOverviewPage.buttonDirectToPaypal().click();
+		log.info("Clcked on the button 'Direkt zur PayPal'");
 		payPalPage.PayPalLogin();
 		if(browserName.equals("safari")) {
-			Thread.sleep(18000);
+			Thread.sleep(20000);
 			driver.switchTo().frame(1);
 			payPalPage.PayPalLogin();
 			Thread.sleep(6000);
 		}
-
 		driver.switchTo().defaultContent();
 		payPalPage.buttonPaypalPaymentConfirmation().click();
-		driver.switchTo().defaultContent();
 		log.info("Clicked on the 'Jetzt bezahlen' button for payment confirmation");
+		driver.switchTo().defaultContent();
 		if(browserName.equals("safari")) {
 			Thread.sleep(12000);
 		}
+		//switching to the main window for verification
+		driver.switchTo().window(parentHandle);
 		Assert.assertTrue(generalPage.textOrderConfirmation().getText().contains("Glückwunsch"));
 		log.info("Order is placed successfully");
 
