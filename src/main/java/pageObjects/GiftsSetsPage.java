@@ -13,7 +13,7 @@ public class GiftsSetsPage
 	public WebDriver driver;
 	BasicVariables bv = new BasicVariables();
 
-	@FindBy (xpath="//*[contains(@class,'container-list')]/div[3]/div[3]/div/div[1]/div[2]/div[2]") WebElement link_SecondItem;
+	@FindBy (xpath="//*[contains(@class,'container-list')]/div[3]/div[3]/div/div/div[3]/div[2]") WebElement link_SecondItem;
 	@FindBy (xpath="//*[contains(@class,'container-list')]/div[3]/div[3]/div/div[1]/div[2]/div[1]") WebElement link_FirstItem;
 	//Comment the above code and uncomment the code below in case of using Page Object model instead of Page Factory Model
 	//By link_Login = By.linkText("Anmelden");
