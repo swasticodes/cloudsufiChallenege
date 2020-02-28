@@ -267,6 +267,7 @@ public class accountTypeExistingCustomer<inherits> extends BasicVariables {
 		log.info("Clicked on the Produkte link");
 		homePage.linkBouquets().click();
 		log.info("Clicked on the Blumenstr‰uﬂe link");
+		Thread.sleep(1000);
 		generalPage.linkSecondItem().click();
 		log.info("Selecting the Second item on Blumenstr‰uﬂe page");
 		generalPage.buttonSelectedItemNext().click();
@@ -473,10 +474,10 @@ public class accountTypeExistingCustomer<inherits> extends BasicVariables {
 		}
 		homePage.linkProducts().click();
 		log.info("Clicked on the Produkte link");
-		homePage.linkPiesAndGifts().click();
-		log.info("Clicked on the Torten & Geschenke link");
+		homePage.linkBouquets().click();
+		log.info("Clicked on the Blumenstr‰uﬂe link");
 		generalPage.linkSecondItem().click();
-		log.info("Selecting the Second item on Torten & Geschenke page");
+		log.info("Selecting the Second item on Blumenstr‰uﬂe page");
 		generalPage.buttonSelectedItemNext().click();
 		log.info("Clicked on the Next button after selecting item");
 		Thread.sleep(1000);
@@ -493,30 +494,8 @@ public class accountTypeExistingCustomer<inherits> extends BasicVariables {
 		deliveryPage.continueToGreetingCard().click();
 		log.info("Clicked on Weiter zur Grukarte button");
 		Thread.sleep(1000);
-		greetingCardsPage.linkGreetingCardFirstItem().click();
-		log.info("Selected the first greeting card");
-		if(browserName.equalsIgnoreCase("mobile")) {
-			greetingCardsPage.mobileButtonEditGreetingText().click();
-			log.info("Clicked on Gruﬂ bearbeiten button for enetring text");
-		}
-		Thread.sleep(1000);
-		if(browserName.equalsIgnoreCase("mobile")) {
-			greetingCardsPage.mobileDropdownSelectGreetingTextTemplate().click();
-		}else {
-			greetingCardsPage.dropdownSelectGreetingTextTemplate().click();
-		}
-		log.info("Opened the Gruﬂtextvorlage ausw‰hlen dropdown");
-		Thread.sleep(1000);
-		if(browserName.equalsIgnoreCase("mobile")) {
-			greetingCardsPage.mobileGreetingCardTemplateThankYou().click();
-		}else {
-			greetingCardsPage.greetingCardTemplateThankYou().click();
-		}
-		log.info("Selectd Dankeschˆn from the dropdown");
-		Thread.sleep(1000);
-		greetingCardsPage.buttonContinueToGifts().click();
-		//The product does not have a gift item that can be selected with it, therefore moving to Kasse
-		log.info("Clicked on the button 'Direkt zur Kasse'");
+		greetingCardsPage.processStepToOrder().click();
+		log.info("Clicked on 'Bestellen' in the Order Progress bar");
 		registerationPage.textFieldEmail().sendKeys(registerationPage.registeredUserEmail());
 		log.info("Entered the email id as-> " + registerationPage.registeredUserEmail());
 		registerationPage.textFieldPassword().sendKeys(registerationPage.registeredUserPassword());
