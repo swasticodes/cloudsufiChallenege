@@ -173,39 +173,15 @@ public class accountTypeExistingCustomer<inherits> extends BasicVariables {
 			deliveryPage.buttonNextPostalCode().click();
 			log.info("Clicked the next button after entering Postal Code");
 		}
-		Thread.sleep(1000);
+		Thread.sleep(2000);
 		deliveryPage.dayActiveDay().click();
 		log.info("Selecting the active day for delivery");
 		Thread.sleep(1000);
 		deliveryPage.continueToGreetingCard().click();
 		log.info("Clicked on Weiter zur Gruﬂkarte button");
-		greetingCardPage.linkGreetingCardFirstItem().click();
-		log.info("Selected the first greeting card");
-		if(browserName.equalsIgnoreCase("mobile")) {
-			greetingCardPage.mobileButtonEditGreetingText().click();
-			log.info("Clicked on Gruﬂ bearbeiten button for enetring text");
-		}
 		Thread.sleep(1000);
-		if(browserName.equalsIgnoreCase("mobile")) {
-			greetingCardPage.mobileDropdownSelectGreetingTextTemplate().click();
-		}else {
-			greetingCardPage.dropdownSelectGreetingTextTemplate().click();
-		}
-		log.info("Opened the Gruﬂtextvorlage ausw‰hlen dropdown");
-		Thread.sleep(1000);
-		if(browserName.equalsIgnoreCase("mobile")) {
-			greetingCardPage.mobileGreetingCardTemplateThankYou().click();
-		}else {
-			greetingCardPage.greetingCardTemplateThankYou().click();
-		}
-		log.info("Selectd Dankeschˆn from the dropdown");
-		Thread.sleep(1000);
-		greetingCardPage.buttonContinueToGifts().click();
-		log.info("Clicked on the button Weiter zu Geschenke");
-		giftsPage.linkGiftsPageFirstItem().click();
-		log.info("Selected the first Gift Item");
-		giftsPage.buttonDirectlyToCashRegister().click();
-		log.info("Clicked on the button Direkt zur Kasse");
+		greetingCardPage.processStepToOrder().click();
+		log.info("Clicked on 'Bestellen' in the Order Progress bar");
 		registerationPage.textFieldEmail().sendKeys(registerationPage.registeredUserEmail());
 		log.info("Entered the email id as-> " + registerationPage.registeredUserEmail());
 		registerationPage.textFieldPassword().sendKeys(registerationPage.registeredUserPassword());
@@ -279,33 +255,9 @@ public class accountTypeExistingCustomer<inherits> extends BasicVariables {
 		Thread.sleep(1000);
 		deliveryPage.continueToGreetingCard().click();
 		log.info("Clicked on Weiter zur Gruﬂkarte button");
-		greetingCardPage.linkGreetingCardFirstItem().click();
-		log.info("Selected the first greeting card");
-		if(browserName.equalsIgnoreCase("mobile")) {
-			greetingCardPage.mobileButtonEditGreetingText().click();
-			log.info("Clicked on Gruﬂ bearbeiten button for enetring text");
-		}
 		Thread.sleep(1000);
-		if(browserName.equalsIgnoreCase("mobile")) {
-			greetingCardPage.mobileDropdownSelectGreetingTextTemplate().click();
-		}else {
-			greetingCardPage.dropdownSelectGreetingTextTemplate().click();
-		}
-		log.info("Opened the Gruﬂtextvorlage ausw‰hlen dropdown");
-		Thread.sleep(1000);
-		if(browserName.equalsIgnoreCase("mobile")) {
-			greetingCardPage.mobileGreetingCardTemplateLove().click();
-		}else {
-			greetingCardPage.greetingCardTemplateLove().click();
-		}
-		log.info("Selectd Liebe from the dropdown");
-		Thread.sleep(1000);
-		greetingCardPage.buttonContinueToGifts().click();
-		log.info("Clicked on the button Weiter zu Geschenke");
-		giftsPage.linkGiftsPageFirstItem().click();
-		log.info("Selected the first Gift Item");
-		giftsPage.buttonDirectlyToCashRegister().click();
-		log.info("Clicked on the button Direkt zur Kasse");
+		greetingCardPage.processStepToOrder().click();
+		log.info("Clicked on 'Bestellen' in the Order Progress bar");
 		registerationPage.textFieldEmail().sendKeys(registerationPage.registeredUserEmail());
 		log.info("Entered the email id as-> " + registerationPage.registeredUserEmail());
 		registerationPage.textFieldPassword().sendKeys(registerationPage.registeredUserPassword());
@@ -327,16 +279,21 @@ public class accountTypeExistingCustomer<inherits> extends BasicVariables {
 		addressAndPaymentPage.radioButtonRatepay().click();
 		log.info("Selected the payment method as Ratepay by clicking radio button Ratepay Rechnung");
 		addressAndPaymentPage.dropdownBirthDate().sendKeys(addressAndPaymentPage.ratepayBirthDate());
-		log.info("Entered the Birth date");
-		addressAndPaymentPage.dropdownBirthMonth().sendKeys(addressAndPaymentPage.ratepayBirthMonth());
-		log.info("Entered the Birth month");
+		log.info("Entered the birth day");
+		if(browserName.equals("safari")) {
+			Select month = new Select(addressAndPaymentPage.dropdownBirthMonth());
+			month.selectByIndex(4);
+		}else {
+			addressAndPaymentPage.dropdownBirthMonth().sendKeys(addressAndPaymentPage.ratepayBirthMonth());
+		}
+		log.info("Entered the birth month");
 		addressAndPaymentPage.dropdownBirthYear().sendKeys(addressAndPaymentPage.ratepayBirthYear());
-		log.info("Entered the Birth Year");
+		log.info("Entered the birth year");
 		addressAndPaymentPage.textFieldRatepayTelephoneNumber().sendKeys(addressAndPaymentPage.ratepayTelephoneNumber());
-		log.info("Entered the Telephone number");
+		log.info("Entered the telephone number");
 		Thread.sleep(1000);
 		addressAndPaymentPage.checkBoxInvoiceConsentDeclaration().click();
-		log.info("Checked the Consent Declaration checkbox");
+		log.info("Checked the Consent Declaration checkbox");;
 		registerationPage.continueToOverview().click();
 		log.info("Clicked on Weiter zur ‹bersicht button");
 		orderOverviewPage.buttonToBuy().click();
@@ -1123,7 +1080,7 @@ public class accountTypeExistingCustomer<inherits> extends BasicVariables {
 		log.info("Clicked on the Produkte link");
 		homePage.linkGiftSets().click();
 		log.info("Clicked on the Geschenksets link");
-		giftsSetsPage.linkGiftsSetsFirstItem().click();
+		generalPage.linkFirstItem().click();
 		log.info("Selecting the First item on Geschenksets page");
 		generalPage.buttonSelectedItemNext().click();
 		log.info("Clicked on the Next button after selecting item");
@@ -1134,42 +1091,14 @@ public class accountTypeExistingCustomer<inherits> extends BasicVariables {
 			deliveryPage.buttonNextPostalCode().click();
 			log.info("Clicked the next button after entering Postal Code");
 		}
-		Thread.sleep(1000);
+		Thread.sleep(2000);
 		deliveryPage.dayActiveDay().click();
 		log.info("Selecting the active day for delivery");
 		Thread.sleep(1000);
 		deliveryPage.continueToGreetingCard().click();
 		log.info("Clicked on Weiter zur Gruﬂkarte button");
-		greetingCardPage.linkGreetingCardFirstItem().click();
-		log.info("Selected the first Greeting Card on the the page");
-		Thread.sleep(1000);
-		if(browserName.equalsIgnoreCase("mobile")) {
-			greetingCardPage.mobileButtonEditGreetingText().click();
-			log.info("Clicked on Gruﬂ bearbeiten button for enetring text");
-		}
-		Thread.sleep(1000);
-		if(browserName.equalsIgnoreCase("mobile")) {
-			greetingCardPage.mobileDropdownSelectGreetingTextTemplate().click();
-		}else {
-			greetingCardPage.dropdownSelectGreetingTextTemplate().click();
-		}
-		log.info("Opened the Gruﬂtextvorlage ausw‰hlen dropdown");
-		Thread.sleep(1000);
-		if(browserName.equalsIgnoreCase("mobile")) {
-			greetingCardPage.mobileGreetingCardTemplateThankYou().click();
-		}else {
-			greetingCardPage.greetingCardTemplateThankYou().click();
-		}
-		log.info("Selectd Dankeschˆn from the dropdown");
-		Thread.sleep(1000);
-		greetingCardPage.buttonContinueToGifts().click();
-		log.info("Clicked on the button Weiter zu Geschenke");
-		giftsPage.linkGiftsPageFirstItem().click();
-		log.info("Selected the first Gift Item");
-		giftsPage.linkGiftsPageSecondItem().click();
-		log.info("Selected the second Gift Item");
-		giftsPage.buttonDirectlyToCashRegister().click();
-		log.info("Clicked on the button Direkt zur Kasse");
+		greetingCardPage.processStepToOrder().click();
+		log.info("Clicked on 'Bestellen' in the Order Progress bar");
 		registerationPage.registrationSalutation().click();
 		log.info("For registration selected salutation as Herr");
 		registerationPage.registrationFirstName().sendKeys("TestFirst");
@@ -1200,25 +1129,35 @@ public class accountTypeExistingCustomer<inherits> extends BasicVariables {
 			addressAndPaymentPage.radioButtonCreditCard().click();
 			log.info("Selected the payment method as Credit Card by clicking radio button Kreditkarte");
 		}
+		//switching to the frame for entering CC information
+		driver.switchTo().frame("braintree-hosted-field-number");
+		Thread.sleep(1000);
+		addressAndPaymentPage.textFieldCreditCardNumber().sendKeys(addressAndPaymentPage.creditCardNumber());
+		log.info("Enetered the Credit Card number");
+		driver.switchTo().parentFrame();
+		Thread.sleep(1000);
+		driver.switchTo().frame("braintree-hosted-field-expirationDate");
+		Thread.sleep(1000);
+		addressAndPaymentPage.textFieldCreditcardExpiryDate().sendKeys(addressAndPaymentPage.creditCardExpiryDate());
+		log.info("Enetered the Credit Card Expiry Date");
+		driver.switchTo().parentFrame();
+		driver.switchTo().frame("braintree-hosted-field-cvv");
+		addressAndPaymentPage.textFieldCreditCardCvvNumber().sendKeys(addressAndPaymentPage.creditCardCvvNumber());
+		log.info("Enetered the Credit Card CVV number");
+		driver.switchTo().defaultContent();
+		Thread.sleep(1000);
 		registerationPage.continueToOverview().click();
-		log.info("Clicked on Weiter zur ‹bersicht button");
+		log.info("Clicked on 'Weiter zur ‹bersicht' button");
 		orderOverviewPage.buttonToBuy().click();
 		log.info("Clicked on Kaufen button");
-		driver.switchTo().frame(0);
-		log.info("Switched Frame so that credit card details can be entered");
-		addressAndPaymentPage.textFieldCreditCardNumber().sendKeys(addressAndPaymentPage.creditCardNumber());
-		log.info("Entering the credit card number as "+addressAndPaymentPage.creditCardNumber());
-		addressAndPaymentPage.dropDownCreditCardExpiryMonth().sendKeys(addressAndPaymentPage.creditCardExpiryMonth());
-		log.info("Entered Credit Card Expiry Month as "+addressAndPaymentPage.creditCardExpiryMonth());
-		addressAndPaymentPage.dropDownCreditCardExpiryYear().sendKeys(addressAndPaymentPage.creditCardExpiryYear());
-		log.info("Entered Credit Card Expiry Year as "+addressAndPaymentPage.creditCardExpiryYear());
 		if(browserName.equalsIgnoreCase("mobile")) {
 			((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", addressAndPaymentPage.creditCardContinueButton());
 			Thread.sleep(500);
 		}
-		addressAndPaymentPage.creditCardContinueButton().click();
-		log.info("Clicked on the Weiter button on the Credit Card page");
 		driver.switchTo().defaultContent();
+		if(browserName.equals("safari")) {
+			Thread.sleep(5000);
+		}
 		Assert.assertTrue(generalPage.textOrderConfirmation().getText().contains("Gl¸ckwunsch"));
 		log.info("Order is placed successfully");
 
@@ -1261,10 +1200,10 @@ public class accountTypeExistingCustomer<inherits> extends BasicVariables {
 		}
 		homePage.linkProducts().click();
 		log.info("Clicked on the Produkte link");
-		homePage.linkPiesAndGifts().click();
-		log.info("Clicked on the Torten & Geschenke link");
-		piesAndGiftsPage.linkPiesAndGiftsFirstItem().click();
-		log.info("Selecting the First item on Torten & Geschenke page");
+		homePage.linkBouquets().click();
+		log.info("Clicked on the 'Blumenstr‰uﬂe' link");
+		generalPage.linkFirstItem().click();
+		log.info("Selecting the First item on 'Blumenstr‰uﬂe' page");
 		generalPage.buttonSelectedItemNext().click();
 		log.info("Clicked on the Next button after selecting item");
 		Thread.sleep(1000);
@@ -1274,37 +1213,15 @@ public class accountTypeExistingCustomer<inherits> extends BasicVariables {
 			deliveryPage.buttonNextPostalCode().click();
 			log.info("Clicked the next button after entering Postal Code");
 		}
-		Thread.sleep(1000);
+		Thread.sleep(2000);
 		deliveryPage.dayActiveDay().click();
 		log.info("Selecting the active day for delivery");
 		Thread.sleep(1000);
 		deliveryPage.continueToGreetingCard().click();
 		log.info("Clicked on Weiter zur Gruﬂkarte button");
 		Thread.sleep(1000);
-		greetingCardPage.linkGreetingCardFirstItem().click();
-		log.info("Selected the First greeting card on Dankeschˆn tab");
-		Thread.sleep(1000);
-		if(browserName.equalsIgnoreCase("mobile")) {
-			greetingCardPage.mobileButtonEditGreetingText().click();
-			log.info("Clicked on Gruﬂ bearbeiten button for enetring text");
-		}
-		Thread.sleep(1000);
-		if(browserName.equalsIgnoreCase("mobile")) {
-			greetingCardPage.mobileDropdownSelectGreetingTextTemplate().click();
-		}else {
-			greetingCardPage.dropdownSelectGreetingTextTemplate().click();
-		}
-		log.info("Opened the Gruﬂtextvorlage ausw‰hlen dropdown");
-		Thread.sleep(1000);
-		if(browserName.equalsIgnoreCase("mobile")) {
-			greetingCardPage.mobileGreetingCardTemplateLove().click();
-		}else {
-			greetingCardPage.greetingCardTemplateLove().click();
-		}
-		log.info("Selectd Liebe from the dropdown");
-		Thread.sleep(1000);
-		greetingCardPage.buttonGreetingCardsPageDirectlyToCashRegister().click();
-		log.info("Clicked on the button Direkt zur Kasse");
+		greetingCardPage.processStepToOrder().click();
+		log.info("Clicked on 'Bestellen' in the Order Progress bar");
 		registerationPage.registrationSalutation().click();
 		log.info("For registration selected salutation as Herr");
 		registerationPage.registrationFirstName().sendKeys("TestFirst");
