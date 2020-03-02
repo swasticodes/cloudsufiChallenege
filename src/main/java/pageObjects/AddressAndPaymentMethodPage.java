@@ -33,7 +33,7 @@ public class AddressAndPaymentMethodPage
 	@FindBy (id="invoiceBirthDay") WebElement dropdown_BirthDate;
 	@FindBy (id="invoiceBirthMonth") WebElement dropdown_BirthMonth;
 	@FindBy (id="invoiceBirthYear") WebElement dropdown_BirthYear;
-	@FindBy (xpath="/html/body/form/section[3]/div[2]/div[2]/div[2]/div/div[2]/div[2]/div[4]/div/input") WebElement textField_RatepayTelephoneNumber;
+	@FindBy (xpath="(//*[@id='invoicePhone'])[2]") WebElement textField_RatepayTelephoneNumber;
 	@FindBy (xpath="//span[.//text()= 'Rechnung']")  WebElement radioButton_Invoice;
 	@FindBy (xpath="//span[contains(text(),'Geschenkkarte einlösen')]") WebElement chkBox_UseGiftCard;
 	@FindBy (id="giftCardNumber") WebElement textField_GiftCardNumber;

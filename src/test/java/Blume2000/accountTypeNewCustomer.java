@@ -446,7 +446,7 @@ public class accountTypeNewCustomer<inherits> extends BasicVariables {
 		log.info("*** Finished Test: newCustomerInvoiceMethodTest");
 	}
 
-	@Test(enabled=false)
+	@Test(enabled=true)
 	public void newCustomerRatePayMethodTest() throws InterruptedException
 	{
 		log.info("*** Starting Test: newCustomerRatePayMethodTest");
@@ -459,6 +459,7 @@ public class accountTypeNewCustomer<inherits> extends BasicVariables {
 		RegistrationPage registerationPage = new RegistrationPage(driver);
 		AddressAndPaymentMethodPage addressAndPaymentPage = new AddressAndPaymentMethodPage(driver);
 		OrderOverviewPage orderOverviewPage = new OrderOverviewPage(driver);
+		GreetingCardPage greetingCardPage = new GreetingCardPage(driver);
 
 		ensurePageLoaded();
 		generalPage.clickCloseCookieMessage(false);
@@ -489,11 +490,8 @@ public class accountTypeNewCustomer<inherits> extends BasicVariables {
 		deliveryPage.continueToGreetingCard().click();
 		log.info("Clicked on Weiter zur Grußkarte button");
 		Thread.sleep(1000);
-		deliveryPage.continueWithoutGreetingCard().click();
-		log.info("Clicked on Weiter ohne Grußkarte button");
-		Thread.sleep(1000);
-		deliveryPage.continueWithoutGifts().click();
-		log.info("Clicked on Weiter ohne Geschenke button");
+		greetingCardPage.processStepToOrder().click();
+		log.info("Clicked on 'Bestellen' in the Order Progress bar");
 		if(browserName.equalsIgnoreCase("mobile")) {
 			loginPage.buttonMobileRegister().click();
 		}else {
@@ -544,12 +542,9 @@ public class accountTypeNewCustomer<inherits> extends BasicVariables {
 		log.info("Clicked on Weiter zur Übersicht button");
 		orderOverviewPage.buttonToBuy().click();
 		log.info("Clicked on Kaufen button");
-		if(browserName.equalsIgnoreCase("mobile")) {
-			Assert.assertTrue(generalPage.textOrderConfirmation().getText().contains("Glückwunsch"));
-		}else {
-		Assert.assertEquals("Glückwunsch! Gute Wahl getroffen", generalPage.textOrderConfirmation().getText());
-		}
+		Assert.assertTrue(generalPage.textOrderConfirmation().getText().contains("Glückwunsch"));
 		log.info("Order is placed successfully");
+
 
 		log.info("*** Finished Test: newCustomerRatePayMethodTest");
 	}
