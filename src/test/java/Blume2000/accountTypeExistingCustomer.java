@@ -2,11 +2,9 @@ package Blume2000;
 
 import java.io.IOException;
 
-import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
@@ -15,10 +13,8 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import pageObjects.HomePage;
-import pageObjects.LoginPage;
 import pageObjects.OrderOverviewPage;
 import pageObjects.PayPalPage;
-import pageObjects.PiesAndGiftsPage;
 import pageObjects.RegistrationPage;
 import pageObjects.AddressAndPaymentMethodPage;
 import pageObjects.DeliveryPage;
@@ -154,7 +150,6 @@ public class accountTypeExistingCustomer<inherits> extends BasicVariables {
 		AddressAndPaymentMethodPage addressAndPaymentPage = new AddressAndPaymentMethodPage(driver);
 		OrderOverviewPage orderOverviewPage = new OrderOverviewPage(driver);
 		GreetingCardPage greetingCardPage = new GreetingCardPage(driver);
-		GiftsPage giftsPage = new GiftsPage(driver);
 
 		ensurePageLoaded();
 		generalPage.clickCloseCookieMessage(false);
@@ -1102,8 +1097,6 @@ public class accountTypeExistingCustomer<inherits> extends BasicVariables {
 		AddressAndPaymentMethodPage addressAndPaymentPage = new AddressAndPaymentMethodPage(driver);
 		OrderOverviewPage orderOverviewPage = new OrderOverviewPage(driver);
 		GreetingCardPage greetingCardPage = new GreetingCardPage(driver);
-		GiftsPage giftsPage = new GiftsPage(driver);
-		GiftsSetsPage giftsSetsPage = new GiftsSetsPage(driver);
 
 		ensurePageLoaded();
 		generalPage.clickCloseCookieMessage(false);
@@ -1245,7 +1238,6 @@ public class accountTypeExistingCustomer<inherits> extends BasicVariables {
 		AddressAndPaymentMethodPage addressAndPaymentPage = new AddressAndPaymentMethodPage(driver);
 		OrderOverviewPage orderOverviewPage = new OrderOverviewPage(driver);
 		GreetingCardPage greetingCardPage = new GreetingCardPage(driver);
-		PiesAndGiftsPage piesAndGiftsPage = new PiesAndGiftsPage(driver);
 
 		ensurePageLoaded();
 		generalPage.clickCloseCookieMessage(false);
