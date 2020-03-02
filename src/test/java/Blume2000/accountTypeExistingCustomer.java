@@ -804,32 +804,8 @@ public class accountTypeExistingCustomer<inherits> extends BasicVariables {
 		deliveryPage.continueToGreetingCard().click();
 		log.info("Clicked on Weiter zur Gruﬂkarte button");
 		Thread.sleep(1000);
-		greetingCardsPage.linkGreetingCardFirstItem().click();
-		log.info("Selected the first Greeting Card on the the page");
-		Thread.sleep(1000);
-		if(browserName.equalsIgnoreCase("mobile")) {
-			greetingCardsPage.mobileButtonEditGreetingText().click();
-			log.info("Clicked on Gruﬂ bearbeiten button for enetring text");
-		}
-		Thread.sleep(1000);
-		if(browserName.equalsIgnoreCase("mobile")) {
-			greetingCardsPage.mobileDropdownSelectGreetingTextTemplate().click();
-		}else {
-			greetingCardsPage.dropdownSelectGreetingTextTemplate().click();
-		}
-		log.info("Opened the Gruﬂtextvorlage ausw‰hlen dropdown");
-		Thread.sleep(1000);
-		if(browserName.equalsIgnoreCase("mobile")) {
-			greetingCardsPage.mobileGreetingCardTemplateThankYou().click();
-		}else {
-			greetingCardsPage.greetingCardTemplateThankYou().click();
-		}
-		log.info("Selectd Dankeschˆn from the dropdown");
-		Thread.sleep(1000);
-		greetingCardsPage.buttonContinueToGifts().click();
-		log.info("Clicked on the button 'Weiter zu Geschenke'");
-		deliveryPage.continueWithoutGifts().click();
-		log.info("Clicked on Weiter ohne Geschenke button");
+		greetingCardsPage.processStepToOrder().click();
+		log.info("Clicked on 'Bestellen' in the Order Progress bar");
 		registerationPage.registrationSalutation().click();
 		log.info("For registration selected salutation as Herr");
 		registerationPage.registrationFirstName().sendKeys("TestFirst");
