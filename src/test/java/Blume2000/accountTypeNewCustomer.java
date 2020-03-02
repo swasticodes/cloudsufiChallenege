@@ -1261,7 +1261,6 @@ public class accountTypeNewCustomer<inherits> extends BasicVariables {
 		AddressAndPaymentMethodPage addressAndPaymentPage = new AddressAndPaymentMethodPage(driver);
 		OrderOverviewPage orderOverviewPage = new OrderOverviewPage(driver);
 		GreetingCardPage greetingsCardPage = new GreetingCardPage(driver);
-		GiftsPage giftsPage = new GiftsPage(driver);
 
 		ensurePageLoaded();
 		generalPage.clickCloseCookieMessage(false);
@@ -1283,7 +1282,7 @@ public class accountTypeNewCustomer<inherits> extends BasicVariables {
 			deliveryPage.buttonNextPostalCode().click();
 			log.info("Clicked the next button after entering Postal Code");
 		}
-		Thread.sleep(1000);
+		Thread.sleep(2000);
 		deliveryPage.dayActiveDay().click();
 		log.info("Selecting the active day for delivery");
 		Thread.sleep(1000);
@@ -1293,20 +1292,8 @@ public class accountTypeNewCustomer<inherits> extends BasicVariables {
 		deliveryPage.continueToGreetingCard().click();
 		log.info("Clicked on Weiter zur Gruﬂkarte button");
 		Thread.sleep(1000);
-		greetingsCardPage.linkGreetingCardFirstItem().click();
-		log.info("Selected the first greeting card");
-		Thread.sleep(1000);
-		if(browserName.equalsIgnoreCase("mobile")) {
-			greetingsCardPage.mobileButtonContinueWithoutGreetingCardText().click();
-		}else {
-			greetingsCardPage.buttonContinueToGifts().click();
-		}
-		log.info("Clicked on the button Weiter zu Geschenke");
-		Thread.sleep(1000);
-		giftsPage.linkGiftsPageFirstItem().click();
-		log.info("Selected the first gift item");
-		giftsPage.buttonDirectlyToCashRegister().click();
-		log.info("Clicked on the button Direkt zur Kasse");
+		greetingsCardPage.processStepToOrder().click();
+		log.info("Clicked on 'Bestellen' in the Order Progress bar");
 		if(browserName.equalsIgnoreCase("mobile")) {
 			loginPage.buttonMobileRegister().click();
 		}else {
