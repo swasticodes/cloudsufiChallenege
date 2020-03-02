@@ -1157,8 +1157,8 @@ public class accountTypeNewCustomer<inherits> extends BasicVariables {
 		log.info("Clicked on the Produkte link");
 		homePage.linkBouquets().click();
 		log.info("Clicked on the link 'Blumensträuße'");
-		generalPage.linkSecondItem().click();
-		log.info("Selecting the second item on 'Blumensträuße' page");
+		generalPage.linkFirstItem().click();
+		log.info("Selecting the first item on 'Blumensträuße' page");
 		generalPage.buttonSelectedItemNext().click();
 		log.info("Clicked on the Next button after selecting item");
 		Thread.sleep(1000);
@@ -1333,47 +1333,41 @@ public class accountTypeNewCustomer<inherits> extends BasicVariables {
 		log.info("Clicked button Geschenkkarte einlösen for redeeming gift card");
 		Assert.assertTrue(addressAndPaymentPage.textBoxGiftCardSuccessMessage().isDisplayed(),"The Gift Card Was not applied successfully. Check for balance of the gift card.");
 		log.info("Verified Gift Card applied success message");
-		if(addressAndPaymentPage.textBoxGiftCardPayableAmount().getText()!="0,00 €") {
-			//scrolling payment methods into view
-			((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", registerationPage.copyDeliveryAndInvoiceAddress());
-			Thread.sleep(500);
-			addressAndPaymentPage.radioButtonCreditCard().click();
-			log.info("Selected the payment method as Credit Card by clicking radio button Kreditkarte");
-			registerationPage.continueToOverview().click();
-			log.info("Clicked on Weiter zur Übersicht button");
-			orderOverviewPage.buttonToBuy().click();
-			log.info("Clicked on Kaufen button");
-			driver.switchTo().frame(0);
-			log.info("Switched Frame so that credit card details can be entered");
-			addressAndPaymentPage.textFieldCreditCardNumber().sendKeys(addressAndPaymentPage.creditCardNumber());
-			log.info("Entering the credit card number as "+addressAndPaymentPage.creditCardNumber());
-			addressAndPaymentPage.dropDownCreditCardExpiryMonth().sendKeys(addressAndPaymentPage.creditCardExpiryMonth());
-			log.info("Entered Credit Card Expiry Month as "+addressAndPaymentPage.creditCardExpiryMonth());
-			if(browserName.equals("safari")) {
-				Select month = new Select(addressAndPaymentPage.dropDownCreditCardExpiryYear());
-				month.selectByIndex(4);
-			}else {
-				addressAndPaymentPage.dropDownCreditCardExpiryYear().sendKeys(addressAndPaymentPage.creditCardExpiryYear());
-			}
-
-			log.info("Entered Credit Card Expiry Year as "+addressAndPaymentPage.creditCardExpiryYear());
-			if(browserName.equalsIgnoreCase("mobile")) {
-				((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", addressAndPaymentPage.creditCardContinueButton());
-				Thread.sleep(500);
-			}
-			addressAndPaymentPage.creditCardContinueButton().click();
-			log.info("Clicked on the Weiter button on the Credit Card page");
-			driver.switchTo().defaultContent();
-		}else {
-			registerationPage.continueToOverview().click();
-			log.info("Clicked on Weiter zur Übersicht button");
-			orderOverviewPage.buttonToBuy().click();
-			log.info("Clicked on Kaufen button");
+		Thread.sleep(1000);
+		//Scrolling the Kreditkarte radio button into view
+		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", registerationPage.copyDeliveryAndInvoiceAddress());
+		addressAndPaymentPage.radioButtonCreditCard().click();
+		log.info("Selected the payment method as Credit Card by clicking radio button Kreditkarte");
+		//switching to the frame for entering CC information
+		driver.switchTo().frame("braintree-hosted-field-number");
+		Thread.sleep(1000);
+		addressAndPaymentPage.textFieldCreditCardNumber().sendKeys(addressAndPaymentPage.creditCardNumber());
+		log.info("Enetered the Credit Card number");
+		driver.switchTo().parentFrame();
+		Thread.sleep(1000);
+		driver.switchTo().frame("braintree-hosted-field-expirationDate");
+		Thread.sleep(1000);
+		addressAndPaymentPage.textFieldCreditcardExpiryDate().sendKeys(addressAndPaymentPage.creditCardExpiryDate());
+		log.info("Enetered the Credit Card Expiry Date");
+		driver.switchTo().parentFrame();
+		driver.switchTo().frame("braintree-hosted-field-cvv");
+		addressAndPaymentPage.textFieldCreditCardCvvNumber().sendKeys(addressAndPaymentPage.creditCardCvvNumber());
+		log.info("Enetered the Credit Card CVV number");
+		driver.switchTo().defaultContent();
+		Thread.sleep(1000);
+		registerationPage.continueToOverview().click();
+		log.info("Clicked on 'Weiter zur Übersicht' button");
+		orderOverviewPage.buttonToBuy().click();
+		log.info("Clicked on Kaufen button");
+		if(browserName.equalsIgnoreCase("mobile")) {
+		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", addressAndPaymentPage.creditCardContinueButton());
+		Thread.sleep(500);
 		}
-		Assert.assertTrue(generalPage.textOrderConfirmation().getText().contains("Glückwunsch"));
+		driver.switchTo().defaultContent();
 		if(browserName.equals("safari")) {
 			Thread.sleep(5000);
 		}
+		Assert.assertTrue(generalPage.textOrderConfirmation().getText().contains("Glückwunsch"));
 		log.info("Order is placed successfully");
 
 		log.info("*** Finished Test: newCustomerCreditCardMethodTestWithGiftCardTopseller");
