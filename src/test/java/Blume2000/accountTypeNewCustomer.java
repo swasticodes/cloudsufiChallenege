@@ -55,6 +55,8 @@ public class accountTypeNewCustomer<inherits> extends BasicVariables {
 		RegistrationPage registerationPage = new RegistrationPage(driver);
 		OrderOverviewPage orderOverviewPage = new OrderOverviewPage(driver);
 		PayPalPage payPalPage = new PayPalPage(driver);
+		GreetingCardPage greetingCardPage = new GreetingCardPage(driver);
+		AddressAndPaymentMethodPage addressAndPaymentMethodPage = new AddressAndPaymentMethodPage(driver);
 
 		ensurePageLoaded();
 		generalPage.clickCloseCookieMessage(false);
@@ -85,12 +87,8 @@ public class accountTypeNewCustomer<inherits> extends BasicVariables {
 		deliveryPage.continueToGreetingCard().click();
 		log.info("Clicked on Weiter zur Grußkarte button");
 		Thread.sleep(1000);
-		deliveryPage.continueWithoutGreetingCard().click();
-		log.info("Clicked on Weiter ohne Grußkarte button");
-		Thread.sleep(1000);
-		deliveryPage.continueWithoutGifts().click();
-		log.info("Clicked on Weiter ohne Geschenke button");
-		Thread.sleep(1000);
+		greetingCardPage.processStepToOrder().click();
+		log.info("Clicked on 'Bestellen' in the Order Progress bar");
 		if(browserName.equalsIgnoreCase("mobile")) {
 			loginPage.buttonMobileRegister().click();
 		}else {
@@ -117,28 +115,35 @@ public class accountTypeNewCustomer<inherits> extends BasicVariables {
 		log.info("For registeration entered street number as 33");
 		registerationPage.registrationCity().sendKeys("Hamburg");
 		log.info("For registeration entered city as Hamburg");
-		((JavascriptExecutor) driver).executeScript("window.scrollBy(0,-180)");
 		registerationPage.copyDeliveryAndInvoiceAddress().click();
 		log.info("Checking the checkbox so that delivery and invoice address are same");
+		//Saving window handle name so that it can be used in the last step
+		String parentHandle = driver.getWindowHandle();
+		addressAndPaymentMethodPage.radioButtonPayPal().click();
+		log.info("Clicking PayPal radio button");
 		registerationPage.continueToOverview().click();
-		log.info("Clicked on Weiter zur Übersicht button");
-		orderOverviewPage.buttonToBuy().click();
-		log.info("Clicked on Kaufen button");
-
+		log.info("Clicked on 'Weiter zur Uebersicht' button");
+		//Scrolling the 'Direkt zu Paypal' button into view
+		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", orderOverviewPage.textFieldShippingCost());
+		Thread.sleep(500);
+		orderOverviewPage.buttonDirectToPaypal().click();
+		log.info("Clcked on the button 'Direkt zur PayPal'");
 		payPalPage.PayPalLogin();
 		if(browserName.equals("safari")) {
-			Thread.sleep(18000);
+			Thread.sleep(20000);
 			driver.switchTo().frame(1);
 			payPalPage.PayPalLogin();
 			Thread.sleep(6000);
 		}
 		driver.switchTo().defaultContent();
 		payPalPage.buttonPaypalPaymentConfirmation().click();
+		log.info("Clicked on the 'Jetzt bezahlen' button for payment confirmation");
 		driver.switchTo().defaultContent();
-		log.info("Clicked on the Jetzt bezhalen for payment confirmation");
 		if(browserName.equals("safari")) {
 			Thread.sleep(12000);
 		}
+		//switching to the main window for verification
+		driver.switchTo().window(parentHandle);
 		Assert.assertTrue(generalPage.textOrderConfirmation().getText().contains("Glückwunsch"));
 		log.info("Order is placed successfully");
 		
