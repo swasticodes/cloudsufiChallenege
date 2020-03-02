@@ -19,7 +19,7 @@ public class GeneralPage
 	@FindBy (xpath="//*[@id='cookieNote']/div/button") WebElement btn_Close_Cookie_Msg;
 	@FindBy (xpath="//*[contains(@class,'text-center thx-headline')]") WebElement text_Order_Confirmation;
 	@FindBy (xpath="//*[contains(@class,\"container p-0 widget-product-highlight\")]/div[3]/div[3]") WebElement link_First_Item;
-	@FindBy (xpath="(//*[contains(@class,\"sec-img\")])[2]") WebElement link_Second_Item;
+	@FindBy (xpath="(//*[contains(@class, 'widget-product product-card')])[2]") WebElement link_Second_Item;
 	@FindBy (xpath="//span[contains(text(),'Mein Konto')]") WebElement link_MyAccount;
 	@FindBy (xpath="//a[contains(text(),'Abmelden')]") WebElement link_Logout;
 	@FindBy (xpath="//span[contains(text(),'Premium-Lieferung')]") WebElement radioBtn_PremiumDelivery;

@@ -1155,10 +1155,10 @@ public class accountTypeNewCustomer<inherits> extends BasicVariables {
 		}
 		homePage.linkProducts().click();
 		log.info("Clicked on the Produkte link");
-		homePage.linkPiesAndGifts().click();
-		log.info("Clicked on the link Torten & Geschenke");
+		homePage.linkBouquets().click();
+		log.info("Clicked on the link 'Blumensträuße'");
 		generalPage.linkSecondItem().click();
-		log.info("Selecting the Second item on Torten & Geschenke page");
+		log.info("Selecting the second item on 'Blumensträuße' page");
 		generalPage.buttonSelectedItemNext().click();
 		log.info("Clicked on the Next button after selecting item");
 		Thread.sleep(1000);
@@ -1175,15 +1175,8 @@ public class accountTypeNewCustomer<inherits> extends BasicVariables {
 		deliveryPage.continueToGreetingCard().click();
 		log.info("Clicked on Weiter zur Grußkarte button");
 		Thread.sleep(1000);
-		greetingsCardPage.linkGreetingCardFirstItem().click();
-		log.info("Selected the first greeting card");
-		Thread.sleep(1000);
-		if(browserName.equalsIgnoreCase("mobile")) {
-			greetingsCardPage.mobileButtonContinueWithoutGreetingCardText().click();
-		}else {
-			greetingsCardPage.buttonContinueToGifts().click();
-		}
-		log.info("Clicked on the button Direkt zur Kasse");
+		greetingsCardPage.processStepToOrder().click();
+		log.info("Clicked on 'Bestellen' in the Order Progress bar");
 		if(browserName.equalsIgnoreCase("mobile")) {
 			loginPage.buttonMobileRegister().click();
 		}else {
@@ -1224,37 +1217,31 @@ public class accountTypeNewCustomer<inherits> extends BasicVariables {
 		log.info("Clicked button Geschenkkarte einlösen for redeeming gift card");
 		Assert.assertTrue(addressAndPaymentPage.textBoxGiftCardSuccessMessage().isDisplayed(),"The Gift Card Was not applied successfully. Check for balance of the gift card.");
 		log.info("Verified Gift Card applied success message");
-		if(addressAndPaymentPage.textBoxGiftCardPayableAmount().getText()!="0,00 €") {
-			//scrolling payment methods into view
-			((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", registerationPage.copyDeliveryAndInvoiceAddress());
-			addressAndPaymentPage.radioButtonRatepay().click();
-			log.info("Selected the payment method as Ratepay by clicking radio button Ratepay Rechnung");
-			addressAndPaymentPage.dropdownBirthDate().sendKeys(addressAndPaymentPage.ratepayBirthDate());
-			log.info("Entered the birth date for Ratepay");
-			if(browserName.equals("safari")) {
-				Select month = new Select(addressAndPaymentPage.dropdownBirthMonth());
-				month.selectByIndex(4);
-			}else {
-				addressAndPaymentPage.dropdownBirthMonth().sendKeys(addressAndPaymentPage.ratepayBirthMonth());
-			}
-			log.info("Entered the birth month for Ratepay");
-			addressAndPaymentPage.dropdownBirthYear().sendKeys(addressAndPaymentPage.ratepayBirthYear());
-			log.info("Entered the birth year for Ratepay");
-			addressAndPaymentPage.textFieldRatepayTelephoneNumber().sendKeys(addressAndPaymentPage.ratepayTelephoneNumber());
-			log.info("Entered the telephone number for Ratepay");
-			Thread.sleep(1000);
-			addressAndPaymentPage.checkBoxInvoiceConsentDeclaration().click();
-			log.info("Checked the Consent Declaration checkbox");
+		//scrolling payment methods into view
+		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", registerationPage.copyDeliveryAndInvoiceAddress());
+		addressAndPaymentPage.radioButtonRatepay().click();
+		log.info("Selected the payment method as Ratepay by clicking radio button Ratepay Rechnung");
+		addressAndPaymentPage.dropdownBirthDate().sendKeys(addressAndPaymentPage.ratepayBirthDate());
+		log.info("Entered the birth date for Ratepay");
+		if(browserName.equals("safari")) {
+			Select month = new Select(addressAndPaymentPage.dropdownBirthMonth());
+			month.selectByIndex(4);
+		}else {
+			addressAndPaymentPage.dropdownBirthMonth().sendKeys(addressAndPaymentPage.ratepayBirthMonth());
 		}
+		log.info("Entered the birth month for Ratepay");
+		addressAndPaymentPage.dropdownBirthYear().sendKeys(addressAndPaymentPage.ratepayBirthYear());
+		log.info("Entered the birth year for Ratepay");
+		addressAndPaymentPage.textFieldRatepayTelephoneNumber().sendKeys(addressAndPaymentPage.ratepayTelephoneNumber());
+		log.info("Entered the telephone number for Ratepay");
+		Thread.sleep(1000);
+		addressAndPaymentPage.checkBoxInvoiceConsentDeclaration().click();
+		log.info("Checked the Consent Declaration checkbox");
 		registerationPage.continueToOverview().click();
 		log.info("Clicked on Weiter zur Übersicht button");
 		orderOverviewPage.buttonToBuy().click();
 		log.info("Clicked on Kaufen button");
-		if(browserName.equalsIgnoreCase("mobile")) {
-			Assert.assertTrue(generalPage.textOrderConfirmation().getText().contains("Glückwunsch"));
-		}else {
-		Assert.assertEquals("Glückwunsch! Gute Wahl getroffen", generalPage.textOrderConfirmation().getText());
-		}
+		Assert.assertTrue(generalPage.textOrderConfirmation().getText().contains("Glückwunsch"));
 		log.info("Order is placed successfully");
 
 		log.info("*** Finished Test: newCustomerRatePayMethodTestWithGiftCard");
