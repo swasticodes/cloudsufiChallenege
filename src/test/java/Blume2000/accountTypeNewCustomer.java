@@ -229,7 +229,7 @@ public class accountTypeNewCustomer<inherits> extends BasicVariables {
 		addressAndPaymentPage.textFieldAccountHolder().sendKeys(addressAndPaymentPage.accountHolderName());
 		log.info("Entered the account holder name as "+ addressAndPaymentPage.accountHolderName());
 		addressAndPaymentPage.textFieldIBANNumber().sendKeys(addressAndPaymentPage.ibanNumber());
-		log.info("Entered the INAN number as "+ addressAndPaymentPage.ibanNumber());
+		log.info("Entered the IBAN number as "+ addressAndPaymentPage.ibanNumber());
 		addressAndPaymentPage.chkBoxSEPADirectDebit().click();
 		log.info("Checked the Direct debit checkbox");
 		registerationPage.continueToOverview().click();
@@ -562,6 +562,7 @@ public class accountTypeNewCustomer<inherits> extends BasicVariables {
 		RegistrationPage registerationPage = new RegistrationPage(driver);
 		AddressAndPaymentMethodPage addressAndPaymentPage = new AddressAndPaymentMethodPage(driver);
 		OrderOverviewPage orderOverviewPage = new OrderOverviewPage(driver);
+		GreetingCardPage greetingCardPage = new GreetingCardPage(driver);
 
 		ensurePageLoaded();
 		generalPage.clickCloseCookieMessage(false);
@@ -590,11 +591,8 @@ public class accountTypeNewCustomer<inherits> extends BasicVariables {
 		deliveryPage.continueToGreetingCard().click();
 		log.info("Clicked on Weiter zur Gruﬂkarte button");
 		Thread.sleep(1000);
-		deliveryPage.continueWithoutGreetingCard().click();
-		log.info("Clicked on Weiter ohne Gruﬂkarte button");
-		Thread.sleep(1000);
-		deliveryPage.continueWithoutGifts().click();
-		log.info("Clicked on Weiter ohne Geschenke button");
+		greetingCardPage.processStepToOrder().click();
+		log.info("Clicked on 'Bestellen' in the Order Progress bar");
 		if(browserName.equalsIgnoreCase("mobile")) {
 			loginPage.buttonMobileRegister().click();
 		}else {
