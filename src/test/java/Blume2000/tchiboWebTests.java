@@ -41,7 +41,7 @@ public class tchiboWebTests<inherits> extends BasicVariables {
 		log.info("Opening the URL "+(prop.getProperty("URL_Tchibo")));
 		driver.get(prop.getProperty("URL_Tchibo"));
 	}
-	@Test
+	@Test(enabled=false)
 	public void tchiboGuestCustomerPaypalPaymentMethodTest() throws InterruptedException, IOException
 	{
 		log.info("*** Starting Test: tchiboGuestCustomerPaypalPaymentMethodTest");
@@ -126,7 +126,7 @@ public class tchiboWebTests<inherits> extends BasicVariables {
 		log.info("*** Finished Test: tchiboGuestCustomerPaypalPaymentMethodTest");
 	}
 
-	@Test
+	@Test(enabled=false)
 	public void tchiboExistingCustomerSEPADirectDebitMethodTest() throws InterruptedException
 	{
 		log.info("*** Starting Test: tchiboExistingCustomerSEPADirectDebitMethodTest");
