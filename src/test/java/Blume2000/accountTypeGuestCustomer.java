@@ -249,7 +249,7 @@ public class accountTypeGuestCustomer<inherits> extends BasicVariables {
 		payPalPage.buttonPaypalPaymentConfirmation().click();
 		log.info("Clicked on the 'Jetzt bezahlen' button for payment confirmation");
 		driver.switchTo().defaultContent();
-		if(browserName.equals("safari")) {
+		if(browserName.equals("safari")||browserName.equals("firefox")) {
 			Thread.sleep(12000);
 		}
 		//switching to the main window for verification
