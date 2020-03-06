@@ -83,7 +83,7 @@ public class PayPalPage
 		return btn_Paypal_Continue;
 	}
 	
-	public boolean PayPalLogin()
+	public boolean PayPalLogin() throws InterruptedException
 	{
 		//For switching to the newly opened window
 		for( String winHandle : driver.getWindowHandles()) {
@@ -100,8 +100,9 @@ public class PayPalPage
 		    log.info("Clicked on the login button on Paypal page");
 		} else {
 			buttonPaypalPageContinue().click();
+			Thread.sleep(10000);
 			textFieldPassword().sendKeys(payPalPassword());
-		    log.info("Entered the PayPal Password as <CENSORED>");
+			log.info("Entered the PayPal Password as <CENSORED>");
 		    buttonPaypalLogin().click();
 		    log.info("Clicked on the login button on Paypal page");
 		    ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);",buttonPaypalPaymentContinue());
