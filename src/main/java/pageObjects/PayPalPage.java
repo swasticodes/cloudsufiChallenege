@@ -105,6 +105,7 @@ public class PayPalPage
 			log.info("Entered the PayPal Password as <CENSORED>");
 		    buttonPaypalLogin().click();
 		    log.info("Clicked on the login button on Paypal page");
+		    Thread.sleep(5000);
 		    ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);",buttonPaypalPaymentContinue());
 		    buttonPaypalPaymentContinue().click();
 		    log.info("Clicked on the Weiter button on Paypal page for selecting default CC for payment");
