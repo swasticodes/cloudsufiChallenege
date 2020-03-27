@@ -62,6 +62,8 @@ public class cscToolTests<inherits> extends BasicVariables {
 		log.info("Enterd the PLZ as '50825'");
 		cscCustomerRegistration.textFieldCity().sendKeys("Cologne");
 		log.info("Enterd the Ort as 'Cologne'");
+		cscCustomerRegistration.textFieldEmail().sendKeys("test@testemail.de");
+		log.info("Enterd the E-mail id");
 		cscCustomerRegistration.buttonSave().click();
 		Assert.assertTrue(cscCustomerDetailsPage.bannerCustomerNumber().getText().contains("Kunde"));
 
