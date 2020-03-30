@@ -4,16 +4,27 @@ import java.io.IOException;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import pageObjects.AddressAndPaymentMethodPage;
 import pageObjects.CSC_CustomerDetailsPage;
 import pageObjects.CSC_CustomerRegistrationPage;
+import pageObjects.CSC_GeneralPage;
 import pageObjects.CSC_HomePage;
+import pageObjects.DeliveryPage;
+import pageObjects.GeneralPage;
+import pageObjects.GreetingCardPage;
+import pageObjects.HomePage;
 import pageObjects.LoginPage;
+import pageObjects.OrderOverviewPage;
+import pageObjects.RegistrationPage;
 import resources.BasicVariables;
 
 public class cscToolTests<inherits> extends BasicVariables {
@@ -70,6 +81,170 @@ public class cscToolTests<inherits> extends BasicVariables {
 		log.info("*** Finished Test: cscNewCustomerCreation");
 	}
 
+	@Test(enabled=false)//Disabled due to bug in order placement
+	public void cscNewOrderCreation() throws InterruptedException
+	{
+		log.info("*** Starting Test: cscNewOrderCreation");
+
+		//Creating the Objects below to access the functions
+		LoginPage loginPage = new LoginPage(driver);
+		CSC_HomePage cscHomePage = new CSC_HomePage(driver);
+		CSC_CustomerRegistrationPage cscCustomerRegistration = new CSC_CustomerRegistrationPage(driver);
+		CSC_CustomerDetailsPage cscCustomerDetailsPage = new CSC_CustomerDetailsPage(driver);
+		CSC_GeneralPage cscGeneralPage = new CSC_GeneralPage(driver);
+
+		ensurePageLoaded();
+
+		loginPage.cscLogin();
+		cscHomePage.buttonNewOrder().click();
+		log.info("Clicked on the button 'Neu'");
+		cscCustomerRegistration.dropdwonButtonSalutation().click();
+		log.info("Clicked on the button for opening the dropdown 'Anrede'");
+		cscCustomerRegistration.dropdownOptionHerr().click();
+		log.info("Clicked on the Anrede option 'Herr'");
+		cscCustomerRegistration.textFieldFirstName().sendKeys("Max");
+		log.info("Enterd the Vorname as 'Max'");
+		cscCustomerRegistration.textFieldLastName().sendKeys("Mustermann");
+		log.info("Enterd the Nachname as 'Mustermann'");
+		cscCustomerRegistration.textFieldStreet().sendKeys("test str");
+		log.info("Enterd the Str. as 'test str'");
+		cscCustomerRegistration.textFieldHouseNumber().sendKeys("12");
+		log.info("Enterd the Nr. as '12'");
+		cscCustomerRegistration.textFieldPostalCode().sendKeys("50825");
+		log.info("Enterd the PLZ as '50825'");
+		cscCustomerRegistration.textFieldCity().sendKeys("Cologne");
+		log.info("Enterd the Ort as 'Cologne'");
+		cscCustomerRegistration.textFieldEmail().sendKeys("test@testemail.de");
+		log.info("Enterd the E-mail id");
+		cscCustomerRegistration.textFieldTelepjoneNumber().sendKeys("017649419647");
+		log.info("Enterd theTelephone Number");
+		cscGeneralPage.buttonNext().click();
+		log.info("Clicked on the button 'Weiter'");
+		Thread.sleep(3000);
+		cscCustomerRegistration.dropdwonButtonSalutation().click();
+		log.info("Clicked on the button for opening the dropdown 'Anrede'");
+		cscCustomerRegistration.dropdownOptionHerr().click();
+		log.info("Clicked on the Anrede option 'Herr'");
+		cscCustomerRegistration.textFieldFirstName().sendKeys("Max");
+		log.info("Enterd the Vorname as 'Max'");
+		cscCustomerRegistration.textFieldLastName().sendKeys("Mustermann");
+		log.info("Enterd the Nachname as 'Mustermann'");
+		cscCustomerRegistration.textFieldStreet().sendKeys("test str");
+		log.info("Enterd the Str. as 'test str'");
+		cscCustomerRegistration.textFieldHouseNumber().sendKeys("12");
+		log.info("Enterd the Nr. as '12'");
+		cscCustomerRegistration.textFieldPostalCode().sendKeys("50825");
+		log.info("Enterd the PLZ as '50825'");
+		cscCustomerRegistration.textFieldCity().click();
+		if( cscGeneralPage.errorPopupTechnicalSupport().isDisplayed()) 
+		{
+			Thread.sleep(4000);
+			Actions actions = new Actions(driver);
+			actions.sendKeys(Keys.ENTER);
+			actions.build().perform();
+		}
+		Thread.sleep(1000);
+		cscCustomerRegistration.textFieldCity().sendKeys("Cologne");	
+		log.info("Enterd the Ort as 'Cologne'");
+		cscCustomerRegistration.textFieldEmail().sendKeys("test@testemail.de");
+		log.info("Enterd the E-mail id");
+		cscCustomerRegistration.textFieldTelepjoneNumber().sendKeys("017649419647");
+		log.info("Enterd theTelephone Number");
+		cscCustomerRegistration.buttonSave().click();
+		Assert.assertTrue(cscCustomerDetailsPage.bannerCustomerNumber().getText().contains("Kunde"));
+
+		log.info("*** Finished Test: cscNewOrderCreation");
+	}
+
+
+	@Test
+	public void cscOrderNumberComparison() throws InterruptedException, IOException
+	{
+		log.info("*** Starting Test: cscOrderNumberComparison");
+
+		//Creating the Objects below to access the functions
+		//Creating the Objects below to access the functions
+		HomePage homePage = new HomePage(driver);
+		GeneralPage generalPage = new GeneralPage(driver);
+		DeliveryPage deliveryPage = new DeliveryPage(driver);
+		RegistrationPage registerationPage = new RegistrationPage(driver);
+		AddressAndPaymentMethodPage addressAndPaymentPage = new AddressAndPaymentMethodPage(driver);
+		OrderOverviewPage orderOverviewPage = new OrderOverviewPage(driver);
+		GreetingCardPage greetingCardPage = new GreetingCardPage(driver);
+		CSC_HomePage cscHomePage = new CSC_HomePage(driver);
+		LoginPage loginPage = new LoginPage(driver);
+		CSC_CustomerDetailsPage cscCustomerDetailsPage = new CSC_CustomerDetailsPage(driver);
+
+		ensurePageLoaded();
+		driver.get(prop.getProperty("URL"));
+		generalPage.clickCloseCookieMessage(false);
+		String browserName=prop.getProperty("browser");
+		if(browserName.equalsIgnoreCase("mobile")) {
+			homePage.mobileHamburgerMenu().click();
+		}
+		homePage.linkProducts().click();
+		log.info("Clicked on the Produkte link");
+		homePage.linkPlants().click();
+		log.info("Clicked on the Pflanzen link");
+		generalPage.linkFirstItem().click();
+		log.info("Selecting the First item on Pflanzen page");
+		generalPage.buttonSelectedItemNext().click();
+		log.info("Clicked on the Next button after selecting item");
+		Thread.sleep(1000);
+		deliveryPage.textFieldDeliveryPostalCode().sendKeys("22297");
+		log.info("Entered the delivery postal code 22297");
+		if(!browserName.equalsIgnoreCase("mobile")) {
+			deliveryPage.buttonNextPostalCode().click();
+			log.info("Clicked the next button after entering Postal Code");
+		}
+		Thread.sleep(2000);
+		deliveryPage.dayActiveDay().click();
+		log.info("Selecting the active day for delivery");
+		Thread.sleep(1000);
+		deliveryPage.continueToGreetingCard().click();
+		log.info("Clicked on Weiter zur Grußkarte button");
+		Thread.sleep(1000);
+		greetingCardPage.processStepToOrder().click();
+		log.info("Clicked on 'Bestellen' in the Order Progress bar");
+		registerationPage.textFieldEmail().sendKeys(registerationPage.registeredUserEmail());
+		log.info("Entered the email id as-> " + registerationPage.registeredUserEmail());
+		registerationPage.textFieldPassword().sendKeys(registerationPage.registeredUserPassword());
+		log.info("Entered the password as-> <CENSORED>");
+		registerationPage.buttonLogin().click();
+		log.info("Clicked on the 'Einloggen' button");
+		registerationPage.registrationSalutation().click();
+		log.info("For registration selected salutation as Herr");
+		registerationPage.registrationFirstName().sendKeys("TestFirst");
+		log.info("For registeration entered first name as TestFirst");
+		registerationPage.registrationLastName().sendKeys("TestLast");
+		log.info("For registeration entered last name as TestLast");
+		registerationPage.registrationStreet().sendKeys("Überseering");
+		log.info("For registeration entered street name as Überseering");
+		registerationPage.registrationStreetNumber().sendKeys("33");
+		log.info("For registeration entered street number as 33");
+		registerationPage.registrationCity().sendKeys("Hamburg");
+		log.info("For registeration entered city as Hamburg");
+		addressAndPaymentPage.radioButtonInvoice().click();
+		log.info("Selected the payment method as Invoice by clicking radio button Rechnung");
+		registerationPage.continueToOverview().click();
+		log.info("Clicked on Weiter zur Übersicht button");
+		orderOverviewPage.buttonToBuy().click();
+		log.info("Clicked on Kaufen button");
+		Assert.assertTrue(generalPage.textOrderConfirmation().getText().contains("Glückwunsch"));
+		log.info("Order is placed successfully");
+		//Storing the order number from the front end in a variable
+		String frontEndOrderNumber = generalPage.getOrderNumber();
+		log.info("The order number is ->"+frontEndOrderNumber);
+		driver.get(prop.getProperty("URL_CSC"));
+		log.info("Opened the CSC URL");
+		loginPage.cscLogin();
+		log.info("Logged in CSC");
+		cscHomePage.searchOrderNumber(frontEndOrderNumber);
+		log.info("Searched the order number in the CSC");
+		Assert.assertTrue(cscCustomerDetailsPage.bannerCustomerNumber().getText().contains("Kunde"));
+
+		log.info("*** Finished Test: cscOrderNumberComparison");
+	}
 
 	@AfterMethod
 	public void closeBrowser()

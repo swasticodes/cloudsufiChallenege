@@ -27,6 +27,7 @@ public class GeneralPage
 	@FindBy (xpath="(//*[@name='searchparam'])[1]") WebElement textField_Search;
 	@FindBy (xpath="(//*[contains(@class,'fa fa-search')])[2]") WebElement icon_StartSearch;
 	@FindBy (xpath="//*[contains(@class,'sec-img')]") WebElement first_Search_Result;
+	@FindBy (xpath="//*[contains(@class,'text-center pl-md-4 pr-md-4 copy-text')]") WebElement text_Get_Order_Number;
 	//Comment the above code and uncomment the code below in case of using Page Object model instead of Page Factory Model
 	//By link_Login = By.linkText("Anmelden");
 	
@@ -104,5 +105,11 @@ public class GeneralPage
 		textField_Search.sendKeys(articleId);
 		icon_StartSearch.click();
 		first_Search_Result.click();
+	}
+	public String getOrderNumber()
+	{
+		String text = text_Get_Order_Number.getText();
+		String orderNumber= text.substring(38, 46);
+		return orderNumber;
 	}
 }
