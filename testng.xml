@@ -25,4 +25,9 @@
 		<class name= "Blume2000.tchiboWebTests"/>
     </classes>
     </test>
+    <test name="CSC Tools Tests">
+    <classes>
+		<class name= "Blume2000.cscToolTests"/>
+    </classes>
+    </test>
 </suite> <!-- Suite -->
