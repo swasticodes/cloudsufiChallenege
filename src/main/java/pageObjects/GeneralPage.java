@@ -28,6 +28,8 @@ public class GeneralPage
 	@FindBy (xpath="(//*[contains(@class,'fa fa-search')])[2]") WebElement icon_StartSearch;
 	@FindBy (xpath="//*[contains(@class,'sec-img')]") WebElement first_Search_Result;
 	@FindBy (xpath="//*[contains(@class,'text-center pl-md-4 pr-md-4 copy-text')]") WebElement text_Get_Order_Number;
+	@FindBy (xpath="//*[@class = \"price \"]/span[2]") WebElement text_ItemPrice;
+	@FindBy (xpath="//*[contains(@class,\"article-number\")]/span") WebElement text_ArticleNumber;
 	//Comment the above code and uncomment the code below in case of using Page Object model instead of Page Factory Model
 	//By link_Login = By.linkText("Anmelden");
 	
@@ -111,5 +113,13 @@ public class GeneralPage
 		String text = text_Get_Order_Number.getText();
 		String orderNumber= text.substring(38, 46);
 		return orderNumber;
+	}
+	public String textItemPrice()
+	{
+		return text_ItemPrice.getText();
+	}
+	public String textArticleNumber()
+	{
+		return text_ArticleNumber.getText().substring(12, 20);
 	}
 }

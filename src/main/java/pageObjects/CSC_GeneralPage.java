@@ -1,5 +1,6 @@
 package pageObjects;
 
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -13,7 +14,12 @@ public class CSC_GeneralPage
 
 	@FindBy (xpath="//*[@class = 'v-button v-widget small v-button-small icon-align-right v-button-icon-align-right']") WebElement btn_next;
 	@FindBy (xpath="//*[text() = 'Es trat ein Fehler auf. Bitte später versuchen oder an die IT wenden.']") WebElement error_popup_technical_support;
+	@FindBy (xpath="//*[text() = 'Achtung']") WebElement popUp_Warning;
 	@FindBy (xpath="//*[text() = 'Ok']") WebElement button_Ok;
+	@FindBy (xpath="//*[contains(text(),'3 Hauptprodukt')]") WebElement tab_mainProduct;
+	@FindBy (xpath="//*[contains(@class,'v-filterselect-input')]") WebElement textField_searchArticle;
+	@FindBy (xpath="//*[contains(text(),'aktualisieren')]") WebElement btn_update;
+	@FindBy (xpath="(//*[contains(text(),'Preis')])[2]/font") WebElement text_priceOnCsc;
 	//Comment the above code and uncomment the code below in case of using Page Object model instead of Page Factory Model
 	//By link_Login = By.linkText("Anmelden");
 
@@ -38,5 +44,23 @@ public class CSC_GeneralPage
 	public WebElement buttonOk()
 	{
 		return button_Ok;
+	}
+	public WebElement popUpWarning()
+	{
+		return popUp_Warning;
+	}
+	public WebElement tabMainProduct()
+	{
+		return tab_mainProduct;
+	}
+	public void searchArticle(String articleId) throws InterruptedException
+	{
+		textField_searchArticle.sendKeys(articleId);
+		Thread.sleep(1000);
+		textField_searchArticle.sendKeys(Keys.RETURN);
+	}
+	public String textPriceOnCsc()
+	{
+		return text_priceOnCsc.getText().substring(0, 5).replace(".", ",");
 	}
 }

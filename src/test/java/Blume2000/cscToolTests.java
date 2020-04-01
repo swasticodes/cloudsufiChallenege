@@ -5,7 +5,6 @@ import java.io.IOException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
@@ -163,7 +162,6 @@ public class cscToolTests<inherits> extends BasicVariables {
 		log.info("*** Starting Test: cscOrderNumberComparison");
 
 		//Creating the Objects below to access the functions
-		//Creating the Objects below to access the functions
 		HomePage homePage = new HomePage(driver);
 		GeneralPage generalPage = new GeneralPage(driver);
 		DeliveryPage deliveryPage = new DeliveryPage(driver);
@@ -244,6 +242,60 @@ public class cscToolTests<inherits> extends BasicVariables {
 		Assert.assertTrue(cscCustomerDetailsPage.bannerCustomerNumber().getText().contains("Kunde"));
 
 		log.info("*** Finished Test: cscOrderNumberComparison");
+	}
+
+
+	@Test
+	public void cscPriceComparison() throws InterruptedException, IOException
+	{
+		log.info("*** Starting Test: cscPriceComparison");
+
+		//Creating the Objects below to access the functions
+		HomePage homePage = new HomePage(driver);
+		GeneralPage generalPage = new GeneralPage(driver);
+		CSC_HomePage cscHomePage = new CSC_HomePage(driver);
+		LoginPage loginPage = new LoginPage(driver);
+		CSC_GeneralPage cscGeneralPage = new CSC_GeneralPage(driver);
+
+		ensurePageLoaded();
+		driver.get(prop.getProperty("URL"));
+		generalPage.clickCloseCookieMessage(false);
+		String browserName=prop.getProperty("browser");
+		if(browserName.equalsIgnoreCase("mobile")) {
+			homePage.mobileHamburgerMenu().click();
+		}
+		homePage.linkProducts().click();
+		log.info("Clicked on the Produkte link");
+		homePage.linkPlants().click();
+		log.info("Clicked on the Pflanzen link");
+		generalPage.linkFirstItem().click();
+		log.info("Selecting the First item on Pflanzen page");
+		//Storing the price in a variable from front end
+		String itemPrice = generalPage.textItemPrice();
+		//Storing the Article Number in a variable
+		String articleNumber = generalPage.textArticleNumber();
+		driver.get(prop.getProperty("URL_CSC"));
+		log.info("Opened the CSC URL");
+		loginPage.cscLogin();
+		log.info("Logged in CSC");
+		cscHomePage.buttonNewOrder().click();
+		log.info("Clicked on the button 'Neu'");
+		cscGeneralPage.tabMainProduct().click();
+		log.info("Clicked on the tab 'Hauptprodukt'");
+		//Closing the Warning pop up
+		if( cscGeneralPage.popUpWarning().isDisplayed())
+		{
+			Thread.sleep(2000);
+			Actions actions = new Actions(driver);
+			actions.sendKeys(Keys.ENTER);
+			actions.build().perform();
+		}
+		Thread.sleep(2000);
+		cscGeneralPage.searchArticle(articleNumber);
+		log.info("Searching for the article number on CSC");
+		Assert.assertTrue(itemPrice.contains(cscGeneralPage.textPriceOnCsc()));
+
+		log.info("*** Finished Test: cscPriceComparison");
 	}
 
 	@AfterMethod
