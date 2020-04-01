@@ -272,8 +272,10 @@ public class cscToolTests<inherits> extends BasicVariables {
 		log.info("Selecting the First item on Pflanzen page");
 		//Storing the price in a variable from front end
 		String itemPrice = generalPage.textItemPrice();
+		log.info("Stored the item price from the front end to a variable");
 		//Storing the Article Number in a variable
 		String articleNumber = generalPage.textArticleNumber();
+		log.info("Stored the article id from the front end to a variable for comparison");
 		driver.get(prop.getProperty("URL_CSC"));
 		log.info("Opened the CSC URL");
 		loginPage.cscLogin();
@@ -290,10 +292,12 @@ public class cscToolTests<inherits> extends BasicVariables {
 			actions.sendKeys(Keys.ENTER);
 			actions.build().perform();
 		}
+		log.info("Closed the warning pop up");
 		Thread.sleep(2000);
 		cscGeneralPage.searchArticle(articleNumber);
 		log.info("Searching for the article number on CSC");
 		Assert.assertTrue(itemPrice.contains(cscGeneralPage.textPriceOnCsc()));
+		log.info("The price on the front end matches the price on CSC");
 
 		log.info("*** Finished Test: cscPriceComparison");
 	}
