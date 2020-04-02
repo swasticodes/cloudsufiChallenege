@@ -253,6 +253,11 @@ public class cscToolTests<inherits> extends BasicVariables {
 		//Creating the Objects below to access the functions
 		HomePage homePage = new HomePage(driver);
 		GeneralPage generalPage = new GeneralPage(driver);
+		GreetingCardPage greetingCardPage = new GreetingCardPage(driver);
+		DeliveryPage deliveryPage = new DeliveryPage(driver);
+		RegistrationPage registerationPage = new RegistrationPage(driver);
+		AddressAndPaymentMethodPage addressAndPaymentPage = new AddressAndPaymentMethodPage(driver);
+		OrderOverviewPage orderOverviewPage = new OrderOverviewPage(driver);
 		CSC_HomePage cscHomePage = new CSC_HomePage(driver);
 		LoginPage loginPage = new LoginPage(driver);
 		CSC_GeneralPage cscGeneralPage = new CSC_GeneralPage(driver);
@@ -270,12 +275,52 @@ public class cscToolTests<inherits> extends BasicVariables {
 		log.info("Clicked on the Pflanzen link");
 		generalPage.linkFirstItem().click();
 		log.info("Selecting the First item on Pflanzen page");
-		//Storing the price in a variable from front end
-		String itemPrice = generalPage.textItemPrice();
-		log.info("Stored the item price from the front end to a variable");
 		//Storing the Article Number in a variable
 		String articleNumber = generalPage.textArticleNumber();
 		log.info("Stored the article id from the front end to a variable for comparison");
+		generalPage.buttonSelectedItemNext().click();
+		log.info("Clicked on the Next button after selecting item");
+		Thread.sleep(1000);
+		deliveryPage.textFieldDeliveryPostalCode().sendKeys("22297");
+		log.info("Entered the delivery postal code 22297");
+		if(!browserName.equalsIgnoreCase("mobile")) {
+			deliveryPage.buttonNextPostalCode().click();
+			log.info("Clicked the next button after entering Postal Code");
+		}
+		Thread.sleep(2000);
+		deliveryPage.dayActiveDay().click();
+		log.info("Selecting the active day for delivery");
+		Thread.sleep(1000);
+		deliveryPage.continueToGreetingCard().click();
+		log.info("Clicked on Weiter zur Grußkarte button");
+		Thread.sleep(1000);
+		greetingCardPage.processStepToOrder().click();
+		log.info("Clicked on 'Bestellen' in the Order Progress bar");
+		registerationPage.textFieldEmail().sendKeys(registerationPage.registeredUserEmail());
+		log.info("Entered the email id as-> " + registerationPage.registeredUserEmail());
+		registerationPage.textFieldPassword().sendKeys(registerationPage.registeredUserPassword());
+		log.info("Entered the password as-> <CENSORED>");
+		registerationPage.buttonLogin().click();
+		log.info("Clicked on the 'Einloggen' button");
+		registerationPage.registrationSalutation().click();
+		log.info("For registration selected salutation as Herr");
+		registerationPage.registrationFirstName().sendKeys("TestFirst");
+		log.info("For registeration entered first name as TestFirst");
+		registerationPage.registrationLastName().sendKeys("TestLast");
+		log.info("For registeration entered last name as TestLast");
+		registerationPage.registrationStreet().sendKeys("Überseering");
+		log.info("For registeration entered street name as Überseering");
+		registerationPage.registrationStreetNumber().sendKeys("33");
+		log.info("For registeration entered street number as 33");
+		registerationPage.registrationCity().sendKeys("Hamburg");
+		log.info("For registeration entered city as Hamburg");
+		addressAndPaymentPage.radioButtonInvoice().click();
+		log.info("Selected the payment method as Invoice by clicking radio button Rechnung");
+		registerationPage.continueToOverview().click();
+		log.info("Clicked on Weiter zur Übersicht button");
+		//Storing the price in a variable from front end
+		String itemPrice = orderOverviewPage.textItemPrice();
+		log.info("Stored the item price from the front end to a variable");
 		driver.get(prop.getProperty("URL_CSC"));
 		log.info("Opened the CSC URL");
 		loginPage.cscLogin();

@@ -18,6 +18,7 @@ public class OrderOverviewPage
 	@FindBy (xpath="//*[contains(text(), 'Kaufen')]") WebElement btn_To_Buy;
 	@FindBy (xpath="//*[@id=\"orderConfirm\"]") WebElement btn_Direct_To_Paypal;
 	@FindBy (xpath="//*[contains(text(), 'Versandkosten')]") WebElement txtFld_Shipping_Cost;
+	@FindBy (xpath="(//*[contains(@class,'item-price')]/div)[3]") WebElement txtFld_itemPrice;
 	//Comment the above code and uncomment the code below in case of using Page Object model instead of Page Factory Model
 	//By link_Login = By.linkText("Anmelden");
 
@@ -61,5 +62,9 @@ public class OrderOverviewPage
 			e.printStackTrace();
 		}
 		return txtFld_Shipping_Cost;
+	}
+	public String textItemPrice()
+	{
+		return txtFld_itemPrice.getText();
 	}
 }
