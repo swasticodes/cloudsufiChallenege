@@ -18,8 +18,18 @@ public class CSC_GeneralPage
 	@FindBy (xpath="//*[text() = 'Ok']") WebElement button_Ok;
 	@FindBy (xpath="//*[contains(text(),'3 Hauptprodukt')]") WebElement tab_mainProduct;
 	@FindBy (xpath="//*[contains(@class,'v-filterselect-input')]") WebElement textField_searchArticle;
-	@FindBy (xpath="//*[contains(text(),'aktualisieren')]") WebElement btn_update;
+	@FindBy (xpath="//*[text()='aktualisieren']") WebElement btn_update;
 	@FindBy (xpath="(//*[contains(text(),'Preis')])[2]/font") WebElement text_priceOnCsc;
+	@FindBy (xpath="//*[@class='v-inline-datefield-calendarpanel-day v-inline-datefield-calendarpanel-day-today']/parent::*/following-sibling::*") WebElement date_deliveryDate;
+	@FindBy (xpath="//*[contains(text(), 'Standard-Lieferung')]") WebElement radiioButton_standardDelivery;
+	@FindBy (xpath="//*[text()='Lastschrift']") WebElement radioButton_directDebit;
+	@FindBy (xpath="//*[text()='IBAN']/parent::*/parent::*/parent::*//td[3]/input") WebElement textField_numberIBAN;
+	@FindBy (xpath="//*[text()='Kontoinhaber']/parent::*/parent::*/parent::*/td[3]/input") WebElement textField_accountHolder;
+	@FindBy (xpath="//*[text()='überprüfen']") WebElement btn_verify;
+	@FindBy (xpath="//*[text()='Bestellen']/parent::*/parent::*") WebElement btn_placeOrder;
+	@FindBy (xpath="(//*[@class='v-label v-widget v-label-undef-w'])[2]") WebElement textbox_OrderConfirmationMessage;
+
+	String testIbanNumber = "DE02120300000000202051";
 	//Comment the above code and uncomment the code below in case of using Page Object model instead of Page Factory Model
 	//By link_Login = By.linkText("Anmelden");
 
@@ -53,7 +63,7 @@ public class CSC_GeneralPage
 	{
 		return tab_mainProduct;
 	}
-	public void searchArticle(String articleId) throws InterruptedException
+	public void textFieldSearchArticle(String articleId) throws InterruptedException
 	{
 		textField_searchArticle.sendKeys(articleId);
 		Thread.sleep(1000);
@@ -62,5 +72,43 @@ public class CSC_GeneralPage
 	public String textPriceOnCsc()
 	{
 		return text_priceOnCsc.getText().substring(0, 5).replace(".", ",");
+	}
+	public WebElement dateDeliverDate()
+	{
+		return date_deliveryDate;
+	}
+	public WebElement radioButtonStandardDelivery()
+	{
+		return radiioButton_standardDelivery;
+	}
+	public WebElement buttonUpdate()
+	{
+		return btn_update;
+	}
+	public WebElement radioButtonDirectDebit()
+	{
+		return radioButton_directDebit;
+	}
+	public void textFieldNumberIBAN() throws InterruptedException
+	{
+		textField_numberIBAN.sendKeys(testIbanNumber);
+		Thread.sleep(1000);
+		textField_numberIBAN.sendKeys(Keys.RETURN);
+	}
+	public void textFieldAccountHolder()
+	{
+		textField_accountHolder.sendKeys("Max Mustrmann");
+	}
+	public WebElement buttonVerify()
+	{
+		return btn_verify;
+	}
+	public WebElement buttonPlaceOrder()
+	{
+		return btn_placeOrder;
+	}
+	public WebElement textBoxOrderConfirmationMessage()
+	{
+		return textbox_OrderConfirmationMessage;
 	}
 }

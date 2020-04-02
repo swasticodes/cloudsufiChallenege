@@ -64,10 +64,10 @@ public class cscToolTests<inherits> extends BasicVariables {
 		log.info("Enterd the Vorname as 'Max'");
 		cscCustomerRegistration.textFieldLastName().sendKeys("Mustermann");
 		log.info("Enterd the Nachname as 'Mustermann'");
-		cscCustomerRegistration.textFieldStreet().sendKeys("test str");
-		log.info("Enterd the Str. as 'test str'");
-		cscCustomerRegistration.textFieldHouseNumber().sendKeys("12");
-		log.info("Enterd the Nr. as '12'");
+		cscCustomerRegistration.textFieldStreet().sendKeys("Vogelsanger Str.");
+		log.info("Enterd the Str. as 'Vogelsanger Str.'");
+		cscCustomerRegistration.textFieldHouseNumber().sendKeys("286");
+		log.info("Enterd the Nr. as '286'");
 		cscCustomerRegistration.textFieldPostalCode().sendKeys("50825");
 		log.info("Enterd the PLZ as '50825'");
 		cscCustomerRegistration.textFieldCity().sendKeys("Cologne");
@@ -80,7 +80,7 @@ public class cscToolTests<inherits> extends BasicVariables {
 		log.info("*** Finished Test: cscNewCustomerCreation");
 	}
 
-	@Test(enabled=false)//Disabled due to bug in order placement
+	@Test(enabled=true)
 	public void cscNewOrderCreation() throws InterruptedException
 	{
 		log.info("*** Starting Test: cscNewOrderCreation");
@@ -89,7 +89,6 @@ public class cscToolTests<inherits> extends BasicVariables {
 		LoginPage loginPage = new LoginPage(driver);
 		CSC_HomePage cscHomePage = new CSC_HomePage(driver);
 		CSC_CustomerRegistrationPage cscCustomerRegistration = new CSC_CustomerRegistrationPage(driver);
-		CSC_CustomerDetailsPage cscCustomerDetailsPage = new CSC_CustomerDetailsPage(driver);
 		CSC_GeneralPage cscGeneralPage = new CSC_GeneralPage(driver);
 
 		ensurePageLoaded();
@@ -105,10 +104,10 @@ public class cscToolTests<inherits> extends BasicVariables {
 		log.info("Enterd the Vorname as 'Max'");
 		cscCustomerRegistration.textFieldLastName().sendKeys("Mustermann");
 		log.info("Enterd the Nachname as 'Mustermann'");
-		cscCustomerRegistration.textFieldStreet().sendKeys("test str");
-		log.info("Enterd the Str. as 'test str'");
-		cscCustomerRegistration.textFieldHouseNumber().sendKeys("12");
-		log.info("Enterd the Nr. as '12'");
+		cscCustomerRegistration.textFieldStreet().sendKeys("Vogelsanger Str.");
+		log.info("Enterd the Str. as 'Vogelsanger Str.'");
+		cscCustomerRegistration.textFieldHouseNumber().sendKeys("286");
+		log.info("Enterd the Nr. as '286'");
 		cscCustomerRegistration.textFieldPostalCode().sendKeys("50825");
 		log.info("Enterd the PLZ as '50825'");
 		cscCustomerRegistration.textFieldCity().sendKeys("Cologne");
@@ -124,18 +123,20 @@ public class cscToolTests<inherits> extends BasicVariables {
 		log.info("Clicked on the button for opening the dropdown 'Anrede'");
 		cscCustomerRegistration.dropdownOptionHerr().click();
 		log.info("Clicked on the Anrede option 'Herr'");
+		Thread.sleep(2000);
 		cscCustomerRegistration.textFieldFirstName().sendKeys("Max");
 		log.info("Enterd the Vorname as 'Max'");
 		cscCustomerRegistration.textFieldLastName().sendKeys("Mustermann");
 		log.info("Enterd the Nachname as 'Mustermann'");
-		cscCustomerRegistration.textFieldStreet().sendKeys("test str");
-		log.info("Enterd the Str. as 'test str'");
-		cscCustomerRegistration.textFieldHouseNumber().sendKeys("12");
-		log.info("Enterd the Nr. as '12'");
+		cscCustomerRegistration.textFieldStreet().sendKeys("Vogelsanger Str.");
+		log.info("Enterd the Str. as 'Vogelsanger Str.'");
+		cscCustomerRegistration.textFieldHouseNumber().sendKeys("286");
+		log.info("Enterd the Nr. as '286'");
 		cscCustomerRegistration.textFieldPostalCode().sendKeys("50825");
 		log.info("Enterd the PLZ as '50825'");
 		cscCustomerRegistration.textFieldCity().click();
-		if( cscGeneralPage.errorPopupTechnicalSupport().isDisplayed()) 
+		//Remove the if condition when the bug is fixed
+		if( cscGeneralPage.errorPopupTechnicalSupport().isDisplayed())
 		{
 			Thread.sleep(4000);
 			Actions actions = new Actions(driver);
@@ -149,8 +150,50 @@ public class cscToolTests<inherits> extends BasicVariables {
 		log.info("Enterd the E-mail id");
 		cscCustomerRegistration.textFieldTelepjoneNumber().sendKeys("017649419647");
 		log.info("Enterd theTelephone Number");
-		cscCustomerRegistration.buttonSave().click();
-		Assert.assertTrue(cscCustomerDetailsPage.bannerCustomerNumber().getText().contains("Kunde"));
+		cscGeneralPage.dateDeliverDate().click();
+		log.info("Selected the delivery date");
+		Thread.sleep(2000);
+		//Remove the if condition when the bug is fixed
+		if( cscGeneralPage.errorPopupTechnicalSupport().isDisplayed())
+		{
+			Thread.sleep(4000);
+			Actions actions = new Actions(driver);
+			actions.sendKeys(Keys.ENTER);
+			actions.build().perform();
+		}
+		cscGeneralPage.radioButtonStandardDelivery().click();
+		log.info("Selected Standard Delivery Option");
+		cscGeneralPage.buttonNext().click();
+		log.info("Clicked on the button 'Weiter'");
+		Thread.sleep(2000);
+		cscGeneralPage.textFieldSearchArticle("B");
+		log.info("Selecting the first item after serarching for 'B");
+		cscGeneralPage.buttonNext().click();
+		log.info("Clicked on the button 'Weiter'");
+		Thread.sleep(2000);
+		cscGeneralPage.buttonNext().click();
+		log.info("Clicked on the button 'Weiter'");
+		Thread.sleep(2000);
+		cscGeneralPage.buttonNext().click();
+		log.info("Clicked on the button 'Weiter'");
+		Thread.sleep(2000);
+		cscGeneralPage.buttonNext().click();
+		log.info("Clicked on the button 'Weiter'");
+		Thread.sleep(2000);
+		cscGeneralPage.radioButtonDirectDebit().click();
+		log.info("Clicked on the radio button 'Lastschrift'");
+		cscGeneralPage.textFieldAccountHolder();
+		log.info("Entered the account holder name");
+		cscGeneralPage.textFieldNumberIBAN();
+		log.info("Enterd the test IBAN number");
+		Thread.sleep(2000);
+		cscGeneralPage.buttonNext().click();
+		log.info("Clicked on the button 'Weiter'");
+		Thread.sleep(2000);
+		cscGeneralPage.buttonPlaceOrder().click();
+		log.info("Clicked on the button 'Bestellen'");
+		Thread.sleep(2000);
+		Assert.assertTrue(cscGeneralPage.textBoxOrderConfirmationMessage().getText().contains("Es wurde erfolgreich ein neuer Auftrag mit der Nummer:"));
 
 		log.info("*** Finished Test: cscNewOrderCreation");
 	}
@@ -339,7 +382,7 @@ public class cscToolTests<inherits> extends BasicVariables {
 		}
 		log.info("Closed the warning pop up");
 		Thread.sleep(2000);
-		cscGeneralPage.searchArticle(articleNumber);
+		cscGeneralPage.textFieldSearchArticle(articleNumber);
 		log.info("Searching for the article number on CSC");
 		Assert.assertTrue(itemPrice.contains(cscGeneralPage.textPriceOnCsc()));
 		log.info("The price on the front end matches the price on CSC");
