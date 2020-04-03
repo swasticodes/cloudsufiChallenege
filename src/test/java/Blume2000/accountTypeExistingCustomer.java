@@ -304,7 +304,7 @@ public class accountTypeExistingCustomer<inherits> extends BasicVariables {
 		log.info("*** Finished Test: existingCustomerRatePayMethodTest");
 	}
 
-	@Test
+	@Test(enabled=false)
 	public void existingCustomerPaypalMethodTest() throws InterruptedException
 	{
 		log.info("*** Starting Test: existingCustomerPaypalMethodTest");
@@ -483,7 +483,7 @@ public class accountTypeExistingCustomer<inherits> extends BasicVariables {
 		log.info("*** Finished Test: existingCustomerSEPADirectDebitMethodTest");
 	}
 
-	@Test
+	@Test(enabled=false)
 	public void existingCustomerPaypalMethodTopsellerTest() throws InterruptedException
 	{
 		log.info("*** Starting Test: existingCustomerPaypalMethodTopsellerTest");
@@ -578,7 +578,7 @@ public class accountTypeExistingCustomer<inherits> extends BasicVariables {
 		log.info("*** Finished Test: existingCustomerPaypalMethodTopsellerTest");
 	}
 
-	@Test
+	@Test(enabled=false)
 	public void existingCustomerPreLoginPaypalMethodTest() throws InterruptedException
 	{
 		log.info("*** Starting Test: existingCustomerPreLoginPaypalMethodTest");

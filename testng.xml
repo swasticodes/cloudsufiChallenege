@@ -7,27 +7,7 @@
 	</listeners>
     <test name="New User Registeration Tests">
   	<classes>    
-      <class name="Blume2000.accountTypeNewCustomer"/>
-    </classes>
-    </test>
-    <test name="Guest User Tests">
-    <classes>
-		<class name= "Blume2000.accountTypeGuestCustomer"/>
-    </classes>
-    </test>
-    <test name="Existing User Tests">
-    <classes>
-		<class name= "Blume2000.accountTypeExistingCustomer"/>
-    </classes>
-    </test>
-    <test name="Tchibo web Tests">
-    <classes>
-		<class name= "Blume2000.tchiboWebTests"/>
-    </classes>
-    </test>
-    <test name="CSC Tools Tests">
-    <classes>
-		<class name= "Blume2000.cscToolTests"/>
+      <class name="Blume2000.accountTypeExistingCustomer"/>
     </classes>
     </test>
 </suite> <!-- Suite -->
