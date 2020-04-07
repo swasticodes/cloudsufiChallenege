@@ -100,6 +100,7 @@ public class cscToolTests<inherits> extends BasicVariables {
 		log.info("Clicked on the button for opening the dropdown 'Anrede'");
 		cscCustomerRegistration.dropdownOptionHerr().click();
 		log.info("Clicked on the Anrede option 'Herr'");
+		Thread.sleep(2000);
 		cscCustomerRegistration.textFieldFirstName().sendKeys("Max");
 		log.info("Enterd the Vorname as 'Max'");
 		cscCustomerRegistration.textFieldLastName().sendKeys("Mustermann");
@@ -161,6 +162,7 @@ public class cscToolTests<inherits> extends BasicVariables {
 			actions.sendKeys(Keys.ENTER);
 			actions.build().perform();
 		}
+		Thread.sleep(1000);
 		cscGeneralPage.radioButtonStandardDelivery().click();
 		log.info("Selected Standard Delivery Option");
 		cscGeneralPage.buttonNext().click();
