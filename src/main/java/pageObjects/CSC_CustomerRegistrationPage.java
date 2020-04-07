@@ -23,7 +23,8 @@ public class CSC_CustomerRegistrationPage
 	@FindBy (xpath="//*[text() = 'E-Mail:']/parent::*/parent::*/parent::*/parent::*/tr[6]/td[3]/input") WebElement textField_Email;
 	@FindBy (xpath="//*[text() = 'Tel.-Nr. 1:']/parent::*/parent::*/parent::*/parent::*/tr[7]/td[3]/input") WebElement textField_TelNr;
 	@FindBy (xpath="(//*[@class='v-button v-widget friendly v-button-friendly buttonMenuBar v-button-buttonMenuBar'])[2]") WebElement btn_SaveEditedAddress;
-	@FindBy (xpath="(//*[@class='v-label v-widget v-label-undef-w'])[4]") WebElement textBox_SuccessfulEdit;
+	@FindBy (xpath="(//*[@class='v-label v-widget v-label-undef-w'])[3]") WebElement textBox_SuccessfulEdit;
+	@FindBy (xpath="(//*[@class='v-label v-widget v-label-undef-w'])[4]") WebElement textBox_SuccessfulOrderEdit;
 
 	//Comment the above code and uncomment the code below in case of using Page Object model instead of Page Factory Model
 	//By link_Login = By.linkText("Anmelden");
@@ -88,5 +89,9 @@ public class CSC_CustomerRegistrationPage
 	public WebElement textBoxSuccessfuledit()
 	{
 		return textBox_SuccessfulEdit;
+	}
+	public WebElement textBoxSuccessfulOrderEdit()
+	{
+		return textBox_SuccessfulOrderEdit;
 	}
 }

@@ -19,6 +19,8 @@ public class CSC_HomePage
 	@FindBy (xpath="(//*[text()='Vorname'])[1]/parent::div/following-sibling::input") WebElement textField_firstName;
 	@FindBy (xpath="(//*[text()='Nachname'])[1]/parent::div/following-sibling::input") WebElement textField_lastName;
 	@FindBy (xpath="(//*[text()='Straﬂe'])[1]/parent::div/following-sibling::input") WebElement textField_StreetName;
+	@FindBy (xpath="//*[@class='v-button v-widget tiny v-button-tiny icon-align-right v-button-icon-align-right v-has-height']") WebElement btn_advancedSearch;
+	@FindBy (xpath="//*[text()='E-Mail']/parent::*/following-sibling::input") WebElement textField_advancedSearchEmail;
 	//Comment the above code and uncomment the code below in case of using Page Object model instead of Page Factory Model
 	//By link_Login = By.linkText("Anmelden");
 
@@ -54,9 +56,19 @@ public class CSC_HomePage
 	{
 		textField_lastName.sendKeys(lastName);
 	}
-	public void textFieldStreetName(String streetName)
+	public void textFieldStreetName(String streetName) throws InterruptedException
 	{
 		textField_StreetName.sendKeys(streetName);
+		Thread.sleep(2000);
 		textField_StreetName.sendKeys(Keys.RETURN);
+	}
+	public WebElement buttonAdvancedSearch()
+	{
+		return btn_advancedSearch;
+	}
+	public void textFieldAdvancedSearchEmail(String serchForEmail)
+	{
+		textField_advancedSearchEmail.sendKeys(serchForEmail);
+		textField_advancedSearchEmail.sendKeys(Keys.RETURN);
 	}
 }

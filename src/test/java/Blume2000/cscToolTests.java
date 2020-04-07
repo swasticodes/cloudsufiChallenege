@@ -2,8 +2,10 @@ package Blume2000;
 
 import java.io.IOException;
 
+import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
@@ -489,7 +491,7 @@ public class cscToolTests<inherits> extends BasicVariables {
 		cscCustomerRegistration.buttonSaveEditedAddress().click();
 		log.info("Clicked on the Save button");
 		Thread.sleep(2000);
-		Assert.assertTrue(cscCustomerRegistration.textBoxSuccessfuledit().getText().contains("Die Änderung wurde gespeichert."));
+		Assert.assertTrue(cscCustomerRegistration.textBoxSuccessfulOrderEdit().getText().contains("Die Änderung wurde gespeichert."));
 
 		log.info("*** Finished Test: cscEditOrderDetails");
 	}
@@ -522,6 +524,81 @@ public class cscToolTests<inherits> extends BasicVariables {
 
 		log.info("*** Finished Test: cscSerachCustomerTest");
 	}
+
+	@Test(enabled=true)
+	public void cscEditCustomerDetails() throws InterruptedException
+	{
+		log.info("*** Starting Test: cscEditCustomerDetails");
+
+		//Creating the Objects below to access the functions
+		HomePage homePage = new HomePage(driver);
+		GeneralPage generalPage = new GeneralPage(driver);
+		LoginPage loginPage = new LoginPage(driver);
+		RegistrationPage registerationPage = new RegistrationPage(driver);
+		CSC_HomePage cscHomePage = new CSC_HomePage(driver);
+		CSC_CustomerRegistrationPage cscCustomerRegistration = new CSC_CustomerRegistrationPage(driver);
+		CSC_GeneralPage cscGeneralpage = new CSC_GeneralPage(driver);
+
+		ensurePageLoaded();
+		driver.get(prop.getProperty("URL"));
+		generalPage.clickCloseCookieMessage(false);
+
+		homePage.linkLogin().click();
+		loginPage.buttonRegister().click();
+		//Creating a random email id to register user
+		String emailId = RandomStringUtils.randomAlphabetic(8);
+		registerationPage.registrationEmail().sendKeys(emailId+"@testemail.de");
+		log.info("For registeration entered email id "+ emailId);
+		registerationPage.registrationPassword().sendKeys("123456");
+		log.info("For registeration entered password as 123456");
+		registerationPage.registrationConfrimPassword().sendKeys("123456");
+		log.info("For registeration confirmed password as 123456");
+		registerationPage.registrationSalutation().click();
+		log.info("For registration selected salutation as Herr");
+		registerationPage.textFieldNewUserCreationFirstName().sendKeys("TestFirst");
+		log.info("For registeration entered first name as TestFirst");
+		registerationPage.textFieldNewUserCreationLastName().sendKeys("TestLast");
+		log.info("For registeration entered last name as TestLast");
+		registerationPage.textFieldNewUserCreationStreetName().sendKeys("Überseering");
+		log.info("For registeration entered street name as Überseering");
+		registerationPage.textFieldNewUserCreationHouseNumber().sendKeys("33");
+		log.info("For registeration entered street number as 33");
+		registerationPage.textFieldNewUserCreationCity().sendKeys("Hamburg");
+		log.info("For registeration entered city as Hamburg");
+		registerationPage.textFieldNewUserCreationPostCode().sendKeys("20148");
+		log.info("For registeration entered postal code as '20148'");
+		registerationPage.dropdownNewUserCreationCountry().click();
+		registerationPage.dropDownentryDetuschland().click();
+		log.info("For registeration entered Country as 'Deutschland'");
+		registerationPage.buttonNewUserRegister().click();
+		log.info("Cliecked on the Register button");
+		Thread.sleep(2000);
+		driver.get(prop.getProperty("URL_CSC"));
+		log.info("Opened the CSC URL");
+		loginPage.cscLogin();
+		log.info("Logged in CSC");
+		Thread.sleep(2000);
+		cscHomePage.buttonAdvancedSearch().click();
+		log.info("Clicked on 'Erweitert' button");
+		cscHomePage.textFieldAdvancedSearchEmail(emailId+"@testemail.de");
+		log.info("Searched for the email id");
+		cscGeneralpage.buttonEdit().click();
+		log.info("Clicked on the 'Editieren' button");
+		Thread.sleep(1000);
+		cscCustomerRegistration.textFieldHouseNumber().clear();
+		log.info("Cleared the old House Number");
+		Thread.sleep(1000);
+		cscCustomerRegistration.textFieldHouseNumber().sendKeys("286");
+		log.info("Enterd the new Nr. as '286'");
+		Thread.sleep(1000);
+		cscCustomerRegistration.buttonSaveEditedAddress().click();
+		log.info("Clicked on the Save button");
+		Thread.sleep(2000);
+		Assert.assertTrue(cscCustomerRegistration.textBoxSuccessfuledit().getText().contains("Die Änderung wurde gespeichert."));
+
+		log.info("*** Finished Test: cscEditCustomerDetails");
+	}
+
 
 
 	@AfterMethod

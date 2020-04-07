@@ -32,6 +32,15 @@ public class RegistrationPage
 	@FindBy (id="loginPassword") WebElement textField_LoginPassword;
 	@FindBy (xpath="(//span[contains(text(),'Herr')])[1]") WebElement radioButton_tchibo_Herr_Salutation;
 	@FindBy (xpath="//*[contains(@class,'feedback-text')]") WebElement textBox_IncorrectLoginMessage;
+	@FindBy (xpath="//*[@id='invoiceFirstName']") WebElement textField_userCreationFirstName;
+	@FindBy (xpath="//*[@id='invoiceLastName']") WebElement textField_userCreationLastName;
+	@FindBy (xpath="//*[@id='invoiceStreet']") WebElement textField_userCreationStreetName;
+	@FindBy (xpath="//*[@id='invoiceStreetNo']") WebElement textField_userCreationHouseNumber;
+	@FindBy (xpath="//*[@id='invoicePostcode']") WebElement textField_userCreationZipCode;
+	@FindBy (xpath="//*[@id='invoiceCity']") WebElement textField_userCreationCity;
+	@FindBy (xpath="//*[@class='filter-option-inner-inner']") WebElement dropDown_userCreationCountry;
+	@FindBy (xpath="//*[@id='registrationFormSubmitBtn']") WebElement btn_userCreationRegister;
+	@FindBy (xpath="(//*[text()='Deutschland'])[2]") WebElement dropDownEntry_Deutschland;
 
 	String registeredUserEmail = "development@blume2000.de";
 	String registeredUserPassword = "development";
@@ -138,6 +147,42 @@ public class RegistrationPage
 	public WebElement textBoxIncorrectLoginMessage()
 	{
 		return textBox_IncorrectLoginMessage;
+	}
+	public WebElement textFieldNewUserCreationFirstName()
+	{
+		return textField_userCreationFirstName;
+	}
+	public WebElement textFieldNewUserCreationLastName()
+	{
+		return textField_userCreationLastName;
+	}
+	public WebElement textFieldNewUserCreationStreetName()
+	{
+		return textField_userCreationStreetName;
+	}
+	public WebElement textFieldNewUserCreationHouseNumber()
+	{
+		return textField_userCreationHouseNumber;
+	}
+	public WebElement textFieldNewUserCreationPostCode()
+	{
+		return textField_userCreationZipCode;
+	}
+	public WebElement textFieldNewUserCreationCity()
+	{
+		return textField_userCreationCity;
+	}
+	public WebElement dropdownNewUserCreationCountry()
+	{
+		return dropDown_userCreationCountry;
+	}
+	public WebElement buttonNewUserRegister()
+	{
+		return btn_userCreationRegister;
+	}
+	public WebElement dropDownentryDetuschland()
+	{
+		return dropDownEntry_Deutschland;
 	}
 
 }
