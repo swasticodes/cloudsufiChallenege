@@ -494,6 +494,35 @@ public class cscToolTests<inherits> extends BasicVariables {
 		log.info("*** Finished Test: cscEditOrderDetails");
 	}
 
+	@Test
+	public void cscSerachCustomerTest() throws InterruptedException
+	{
+		log.info("*** Starting Test: cscSerachCustomerTest");
+
+		//Creating the Objects below to access the functions
+		LoginPage loginPage = new LoginPage(driver);
+		CSC_HomePage cscHomePage = new CSC_HomePage(driver);
+		CSC_CustomerDetailsPage cscCustomerDetailsPage = new CSC_CustomerDetailsPage(driver);
+
+		ensurePageLoaded();
+
+		loginPage.cscLogin();
+		log.info("Logged in CSC");
+		Thread.sleep(1000);
+		cscHomePage.textFieldFirstName("testFirst");
+		log.info("Entered the first name in 'Vorname'");
+		Thread.sleep(1000);
+		cscHomePage.textFieldLastName("testLast");
+		log.info("Entered the last name in 'Nachname'");
+		Thread.sleep(1000);
+		cscHomePage.textFieldStreetName("test");
+		log.info("Entered the street name in 'Straﬂe'");
+		Thread.sleep(1000);
+		Assert.assertTrue(cscCustomerDetailsPage.bannerCustomerNumber().getText().contains("Kunde"));
+
+		log.info("*** Finished Test: cscSerachCustomerTest");
+	}
+
 
 	@AfterMethod
 	public void closeBrowser()

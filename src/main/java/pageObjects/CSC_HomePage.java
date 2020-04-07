@@ -1,5 +1,6 @@
 package pageObjects;
 
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -15,6 +16,9 @@ public class CSC_HomePage
 	@FindBy (xpath="(//*[contains(@class,'v-menubar-menuitem v-menubar-menuitem-primary')])[2]") WebElement btn_NewCustomer;
 	@FindBy (xpath="//*[@id = 'gwt-uid-5']") WebElement textField_OrderNumber;
 	@FindBy (xpath="//*[@class='v-button v-widget tiny v-button-tiny friendly v-button-friendly']") WebElement btn_Search;
+	@FindBy (xpath="(//*[text()='Vorname'])[1]/parent::div/following-sibling::input") WebElement textField_firstName;
+	@FindBy (xpath="(//*[text()='Nachname'])[1]/parent::div/following-sibling::input") WebElement textField_lastName;
+	@FindBy (xpath="(//*[text()='Straﬂe'])[1]/parent::div/following-sibling::input") WebElement textField_StreetName;
 	//Comment the above code and uncomment the code below in case of using Page Object model instead of Page Factory Model
 	//By link_Login = By.linkText("Anmelden");
 
@@ -41,5 +45,18 @@ public class CSC_HomePage
 		textField_OrderNumber.sendKeys(ordrNo);
 		Thread.sleep(2000);
 		btn_Search.click();
+	}
+	public void textFieldFirstName(String firstName)
+	{
+		textField_firstName.sendKeys(firstName);
+	}
+	public void textFieldLastName(String lastName)
+	{
+		textField_lastName.sendKeys(lastName);
+	}
+	public void textFieldStreetName(String streetName)
+	{
+		textField_StreetName.sendKeys(streetName);
+		textField_StreetName.sendKeys(Keys.RETURN);
 	}
 }
