@@ -393,6 +393,108 @@ public class cscToolTests<inherits> extends BasicVariables {
 		log.info("*** Finished Test: cscPriceComparison");
 	}
 
+	@Test
+	public void cscEditOrderDetails() throws InterruptedException, IOException
+	{
+		log.info("*** Starting Test: cscEditOrderDetails");
+
+		//Creating the Objects below to access the functions
+		HomePage homePage = new HomePage(driver);
+		GeneralPage generalPage = new GeneralPage(driver);
+		DeliveryPage deliveryPage = new DeliveryPage(driver);
+		RegistrationPage registerationPage = new RegistrationPage(driver);
+		AddressAndPaymentMethodPage addressAndPaymentPage = new AddressAndPaymentMethodPage(driver);
+		OrderOverviewPage orderOverviewPage = new OrderOverviewPage(driver);
+		GreetingCardPage greetingCardPage = new GreetingCardPage(driver);
+		CSC_HomePage cscHomePage = new CSC_HomePage(driver);
+		LoginPage loginPage = new LoginPage(driver);
+		CSC_GeneralPage cscGeneralpage = new CSC_GeneralPage(driver);
+		CSC_CustomerRegistrationPage cscCustomerRegistration = new CSC_CustomerRegistrationPage(driver);
+
+		ensurePageLoaded();
+		driver.get(prop.getProperty("URL"));
+		generalPage.clickCloseCookieMessage(false);
+		String browserName=prop.getProperty("browser");
+		if(browserName.equalsIgnoreCase("mobile")) {
+			homePage.mobileHamburgerMenu().click();
+		}
+		homePage.linkProducts().click();
+		log.info("Clicked on the Produkte link");
+		homePage.linkPlants().click();
+		log.info("Clicked on the Pflanzen link");
+		generalPage.linkFirstItem().click();
+		log.info("Selecting the First item on Pflanzen page");
+		generalPage.buttonSelectedItemNext().click();
+		log.info("Clicked on the Next button after selecting item");
+		Thread.sleep(1000);
+		deliveryPage.textFieldDeliveryPostalCode().sendKeys("22297");
+		log.info("Entered the delivery postal code 22297");
+		if(!browserName.equalsIgnoreCase("mobile")) {
+			deliveryPage.buttonNextPostalCode().click();
+			log.info("Clicked the next button after entering Postal Code");
+		}
+		Thread.sleep(2000);
+		deliveryPage.dayActiveDay().click();
+		log.info("Selecting the active day for delivery");
+		Thread.sleep(1000);
+		deliveryPage.continueToGreetingCard().click();
+		log.info("Clicked on Weiter zur Grußkarte button");
+		Thread.sleep(1000);
+		greetingCardPage.processStepToOrder().click();
+		log.info("Clicked on 'Bestellen' in the Order Progress bar");
+		registerationPage.textFieldEmail().sendKeys(registerationPage.registeredUserEmail());
+		log.info("Entered the email id as-> " + registerationPage.registeredUserEmail());
+		registerationPage.textFieldPassword().sendKeys(registerationPage.registeredUserPassword());
+		log.info("Entered the password as-> <CENSORED>");
+		registerationPage.buttonLogin().click();
+		log.info("Clicked on the 'Einloggen' button");
+		registerationPage.registrationSalutation().click();
+		log.info("For registration selected salutation as Herr");
+		registerationPage.registrationFirstName().sendKeys("TestFirst");
+		log.info("For registeration entered first name as TestFirst");
+		registerationPage.registrationLastName().sendKeys("TestLast");
+		log.info("For registeration entered last name as TestLast");
+		registerationPage.registrationStreet().sendKeys("Überseering");
+		log.info("For registeration entered street name as Überseering");
+		registerationPage.registrationStreetNumber().sendKeys("33");
+		log.info("For registeration entered street number as 33");
+		registerationPage.registrationCity().sendKeys("Hamburg");
+		log.info("For registeration entered city as Hamburg");
+		addressAndPaymentPage.radioButtonInvoice().click();
+		log.info("Selected the payment method as Invoice by clicking radio button Rechnung");
+		registerationPage.continueToOverview().click();
+		log.info("Clicked on Weiter zur Übersicht button");
+		orderOverviewPage.buttonToBuy().click();
+		log.info("Clicked on Kaufen button");
+		Assert.assertTrue(generalPage.textOrderConfirmation().getText().contains("Glückwunsch"));
+		log.info("Order is placed successfully");
+		//Storing the order number from the front end in a variable
+		String frontEndOrderNumber = generalPage.getOrderNumber();
+		log.info("The order number is ->"+frontEndOrderNumber);
+		driver.get(prop.getProperty("URL_CSC"));
+		log.info("Opened the CSC URL");
+		loginPage.cscLogin();
+		log.info("Logged in CSC");
+		cscHomePage.searchOrderNumber(frontEndOrderNumber);
+		log.info("Searched the order number in the CSC");
+		cscGeneralpage.buttonEdit().click();
+		log.info("Clicked on the 'Editieren' button");
+		Thread.sleep(1000);
+		cscCustomerRegistration.textFieldHouseNumber().clear();
+		log.info("Cleared the old House Number");
+		Thread.sleep(1000);
+		cscCustomerRegistration.textFieldHouseNumber().sendKeys("286");
+		log.info("Enterd the new Nr. as '286'");
+		Thread.sleep(1000);
+		cscCustomerRegistration.buttonSaveEditedAddress().click();
+		log.info("Clicked on the Save button");
+		Thread.sleep(2000);
+		Assert.assertTrue(cscCustomerRegistration.textBoxSuccessfuledit().getText().contains("Die Änderung wurde gespeichert."));
+
+		log.info("*** Finished Test: cscEditOrderDetails");
+	}
+
+
 	@AfterMethod
 	public void closeBrowser()
 	{

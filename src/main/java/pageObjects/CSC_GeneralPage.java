@@ -28,6 +28,7 @@ public class CSC_GeneralPage
 	@FindBy (xpath="//*[text()='überprüfen']") WebElement btn_verify;
 	@FindBy (xpath="//*[text()='Bestellen']/parent::*/parent::*") WebElement btn_placeOrder;
 	@FindBy (xpath="(//*[@class='v-label v-widget v-label-undef-w'])[2]") WebElement textbox_OrderConfirmationMessage;
+	@FindBy (xpath="//*[text()='Editieren']/parent::*") WebElement btn_Edit;
 
 	String testIbanNumber = "DE02120300000000202051";
 	//Comment the above code and uncomment the code below in case of using Page Object model instead of Page Factory Model
@@ -110,5 +111,9 @@ public class CSC_GeneralPage
 	public WebElement textBoxOrderConfirmationMessage()
 	{
 		return textbox_OrderConfirmationMessage;
+	}
+	public WebElement buttonEdit()
+	{
+		return btn_Edit;
 	}
 }
