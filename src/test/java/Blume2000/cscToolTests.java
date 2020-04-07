@@ -122,6 +122,7 @@ public class cscToolTests<inherits> extends BasicVariables {
 		Thread.sleep(3000);
 		cscCustomerRegistration.dropdwonButtonSalutation().click();
 		log.info("Clicked on the button for opening the dropdown 'Anrede'");
+		Thread.sleep(1000);
 		cscCustomerRegistration.dropdownOptionHerr().click();
 		log.info("Clicked on the Anrede option 'Herr'");
 		Thread.sleep(2000);
