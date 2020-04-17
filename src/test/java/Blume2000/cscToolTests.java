@@ -1,7 +1,6 @@
 package Blume2000;
 
 import java.io.IOException;
-
 import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -762,6 +761,147 @@ public class cscToolTests<inherits> extends BasicVariables {
 		Assert.assertTrue(cscGeneralPage.textBoxOrderConfirmationMessage().getText().contains("Es wurde erfolgreich ein neuer Auftrag mit der Nummer:"));
 
 		log.info("*** Finished Test: cscNewOrderUsingCC");
+	}
+
+	@Test
+	public void cscNewOrderUsingDirectDebit() throws InterruptedException, IOException
+	{
+		log.info("*** Starting Test: cscNewOrderUsingDirectDebit");
+
+		//Creating the Objects below to access the functions
+		LoginPage loginPage = new LoginPage(driver);
+		CSC_HomePage cscHomePage = new CSC_HomePage(driver);
+		CSC_CustomerRegistrationPage cscCustomerRegistration = new CSC_CustomerRegistrationPage(driver);
+		CSC_GeneralPage cscGeneralPage = new CSC_GeneralPage(driver);
+
+		ensurePageLoaded();
+
+		loginPage.cscLogin();
+		cscHomePage.buttonNewOrder().click();
+		log.info("Clicked on the button 'Neu'");
+		cscCustomerRegistration.dropdwonButtonSalutation().click();
+		log.info("Clicked on the button for opening the dropdown 'Anrede'");
+		cscCustomerRegistration.dropdownOptionHerr().click();
+		log.info("Clicked on the Anrede option 'Herr'");
+		Thread.sleep(2000);
+		cscCustomerRegistration.textFieldFirstName().sendKeys("Max");
+		log.info("Enterd the Vorname as 'Max'");
+		cscCustomerRegistration.textFieldLastName().sendKeys("Mustermann");
+		log.info("Enterd the Nachname as 'Mustermann'");
+		cscCustomerRegistration.textFieldStreet().sendKeys("Vogelsanger Str.");
+		log.info("Enterd the Str. as 'Vogelsanger Str.'");
+		cscCustomerRegistration.textFieldHouseNumber().sendKeys("286");
+		log.info("Enterd the Nr. as '286'");
+		cscCustomerRegistration.textFieldPostalCode().sendKeys("50825");
+		log.info("Enterd the PLZ as '50825'");
+		cscCustomerRegistration.textFieldCity().sendKeys("Cologne");
+		log.info("Enterd the Ort as 'Cologne'");
+		cscCustomerRegistration.textFieldEmail().sendKeys("test@testemail.de");
+		log.info("Enterd the E-mail id");
+		cscCustomerRegistration.textFieldTelepjoneNumber().sendKeys("017649419647");
+		log.info("Enterd theTelephone Number");
+		cscGeneralPage.buttonNext().click();
+		log.info("Clicked on the button 'Weiter'");
+		Thread.sleep(3000);
+		cscCustomerRegistration.dropdwonButtonSalutation().click();
+		log.info("Clicked on the button for opening the dropdown 'Anrede'");
+		Thread.sleep(1000);
+		cscCustomerRegistration.dropdownOptionHerr().click();
+		log.info("Clicked on the Anrede option 'Herr'");
+		Thread.sleep(2000);
+		cscCustomerRegistration.textFieldFirstName().sendKeys("Max");
+		log.info("Enterd the Vorname as 'Max'");
+		cscCustomerRegistration.textFieldLastName().sendKeys("Mustermann");
+		log.info("Enterd the Nachname as 'Mustermann'");
+		cscCustomerRegistration.textFieldStreet().sendKeys("Vogelsanger Str.");
+		log.info("Enterd the Str. as 'Vogelsanger Str.'");
+		cscCustomerRegistration.textFieldHouseNumber().sendKeys("286");
+		log.info("Enterd the Nr. as '286'");
+		cscCustomerRegistration.textFieldPostalCode().sendKeys("50825");
+		log.info("Enterd the PLZ as '50825'");
+		cscCustomerRegistration.textFieldCity().click();
+		//Remove the if condition when the bug is fixed
+		if( cscGeneralPage.errorPopupTechnicalSupport().isDisplayed())
+		{
+			Thread.sleep(4000);
+			Actions actions = new Actions(driver);
+			actions.sendKeys(Keys.ENTER);
+			actions.build().perform();
+		}
+		Thread.sleep(1000);
+		cscCustomerRegistration.textFieldCity().sendKeys("Cologne");
+		log.info("Enterd the Ort as 'Cologne'");
+		cscCustomerRegistration.textFieldEmail().sendKeys("test@testemail.de");
+		log.info("Enterd the E-mail id");
+		cscCustomerRegistration.textFieldTelepjoneNumber().sendKeys("017649419647");
+		log.info("Enterd theTelephone Number");
+		cscGeneralPage.dateDeliverDate().click();
+		log.info("Selected the delivery date");
+		Thread.sleep(2000);
+		//Remove the if condition when the bug is fixed
+		if( cscGeneralPage.errorPopupTechnicalSupport().isDisplayed())
+		{
+			Thread.sleep(4000);
+			Actions actions = new Actions(driver);
+			actions.sendKeys(Keys.ENTER);
+			actions.build().perform();
+		}
+		Thread.sleep(1000);
+		cscGeneralPage.radioButtonStandardDelivery().click();
+		log.info("Selected Standard Delivery Option");
+		cscGeneralPage.buttonNext().click();
+		log.info("Clicked on the button 'Weiter'");
+		Thread.sleep(2000);
+		cscGeneralPage.textFieldSearchArticle("B");
+		log.info("Selecting the first item after serarching for 'B");
+		cscGeneralPage.buttonNext().click();
+		log.info("Clicked on the button 'Weiter'");
+		Thread.sleep(1000);
+		cscGeneralPage.buttonUpdate().click();
+		log.info("Clicked on the button 'aktualisieren'");
+		Thread.sleep(1000);
+		cscGeneralPage.buttonAddToCartFirstItem().click();
+		log.info("Selected the first gift item");
+		Thread.sleep(1000);
+		cscGeneralPage.buttonNext().click();
+		log.info("Clicked on the button 'Weiter'");
+		Thread.sleep(1000);
+		cscGeneralPage.buttonUpdate().click();
+		log.info("Clicked on the button 'aktualisieren'");
+		Thread.sleep(1000);
+		cscGeneralPage.buttonAddToCartFirstItem().click();
+		log.info("Selected the first Greeting card item");
+		Thread.sleep(1000);
+		cscGeneralPage.textFieldGreetingCardText().sendKeys("test message");
+		log.info("Entered test message in greeting card text");
+		cscGeneralPage.buttonNext().click();
+		log.info("Clicked on the button 'Weiter'");
+		Thread.sleep(1000);
+		cscGeneralPage.buttonUpdate().click();
+		log.info("Clicked on the button 'aktualisieren'");
+		Thread.sleep(1000);
+		cscGeneralPage.buttonAddToCartFirstItem().click();
+		log.info("Selected the first Packaging option");
+		Thread.sleep(1000);
+		cscGeneralPage.buttonNext().click();
+		log.info("Clicked on the button 'Weiter'");
+		Thread.sleep(1000);
+		cscGeneralPage.radioButtonDirectDebit().click();
+		log.info("Clicked on the radio button 'Lastschrift'");
+		cscGeneralPage.textFieldAccountHolder();
+		log.info("Entered the account holder name");
+		cscGeneralPage.textFieldNumberIBAN();
+		log.info("Enterd the test IBAN number");
+		Thread.sleep(2000);
+		cscGeneralPage.buttonNext().click();
+		log.info("Clicked on the button 'Weiter'");
+		Thread.sleep(2000);
+		cscGeneralPage.buttonPlaceOrder().click();
+		log.info("Clicked on the button 'Bestellen'");
+		Thread.sleep(2000);
+		Assert.assertTrue(cscGeneralPage.textBoxOrderConfirmationMessage().getText().contains("Es wurde erfolgreich ein neuer Auftrag mit der Nummer:"));
+
+		log.info("*** Finished Test: cscNewOrderUsingDirectDebit");
 	}
 
 
