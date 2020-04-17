@@ -18,7 +18,7 @@ public class CSC_GeneralPage
 	@FindBy (xpath="//*[text() = 'Ok']") WebElement button_Ok;
 	@FindBy (xpath="//*[contains(text(),'3 Hauptprodukt')]") WebElement tab_mainProduct;
 	@FindBy (xpath="//*[contains(@class,'v-filterselect-input')]") WebElement textField_searchArticle;
-	@FindBy (xpath="//*[text()='aktualisieren']") WebElement btn_update;
+	@FindBy (xpath="(//span[@class='v-button-wrap'])[5]/parent::div") WebElement btn_update;
 	@FindBy (xpath="(//*[contains(text(),'Preis')])[2]/font") WebElement text_priceOnCsc;
 	@FindBy (xpath="//*[@class='v-inline-datefield-calendarpanel-day v-inline-datefield-calendarpanel-day-today']/parent::*/following-sibling::*") WebElement date_deliveryDate;
 	@FindBy (xpath="//*[contains(text(), 'Standard-Lieferung')]") WebElement radiioButton_standardDelivery;
@@ -29,6 +29,10 @@ public class CSC_GeneralPage
 	@FindBy (xpath="//*[text()='Bestellen']/parent::*/parent::*") WebElement btn_placeOrder;
 	@FindBy (xpath="(//*[@class='v-label v-widget v-label-undef-w'])[2]") WebElement textbox_OrderConfirmationMessage;
 	@FindBy (xpath="//*[text()='Editieren']/parent::*") WebElement btn_Edit;
+	@FindBy (xpath="//*[@class='v-slot v-slot-friendly'][1]") WebElement btn_AddToCart_FirstItem;
+	@FindBy (xpath="//*[@class='v-textarea v-widget v-has-width v-has-height']") WebElement textField_greetingCardText;
+	@FindBy (xpath="//*[text()='Kreditkarte']") WebElement radioButton_creditCard;
+	@FindBy (xpath="//*[@id='submitbutton']") WebElement btn_SaveCreditCardInfo;
 
 	String testIbanNumber = "DE02120300000000202051";
 	//Comment the above code and uncomment the code below in case of using Page Object model instead of Page Factory Model
@@ -115,5 +119,21 @@ public class CSC_GeneralPage
 	public WebElement buttonEdit()
 	{
 		return btn_Edit;
+	}
+	public WebElement buttonAddToCartFirstItem()
+	{
+		return btn_AddToCart_FirstItem;
+	}
+	public WebElement textFieldGreetingCardText()
+	{
+		return textField_greetingCardText;
+	}
+	public WebElement radioButtonCreditCard()
+	{
+		return radioButton_creditCard;
+	}
+	public WebElement buttonSaveCreditCardInfo()
+	{
+		return btn_SaveCreditCardInfo;
 	}
 }
