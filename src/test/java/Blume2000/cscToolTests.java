@@ -544,7 +544,9 @@ public class cscToolTests<inherits> extends BasicVariables {
 		generalPage.clickCloseCookieMessage(false);
 
 		homePage.linkLogin().click();
+		log.info("Clicked on the 'Anmelden' link");
 		loginPage.buttonRegister().click();
+		log.info("Clicked on the 'Registrieren' button");
 		//Creating a random email id to register user
 		String emailId = RandomStringUtils.randomAlphabetic(8);
 		registerationPage.registrationEmail().sendKeys(emailId+"@testemail.de");
