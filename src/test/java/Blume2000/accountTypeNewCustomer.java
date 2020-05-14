@@ -92,7 +92,7 @@ public class accountTypeNewCustomer<inherits> extends BasicVariables {
 		log.info("Clicked on the Register Button");
 		//Creating a random email id to register user
 		String emailId = RandomStringUtils.randomAlphabetic(8); 
-		registerationPage.registrationEmail().sendKeys(emailId+"@testemail.com");
+		registerationPage.registrationEmail().sendKeys(emailId+"@testemail.de");
 		log.info("For registeration entered email id "+ emailId);
 		registerationPage.registrationPassword().sendKeys("123456");
 		log.info("For registeration entered password as 123456");
@@ -199,7 +199,7 @@ public class accountTypeNewCustomer<inherits> extends BasicVariables {
 		log.info("Clicked on the Register Button");
 		//Creating a random email id to register user
 		String emailId = RandomStringUtils.randomAlphabetic(8);
-		registerationPage.registrationEmail().sendKeys(emailId+"@testemail.com");
+		registerationPage.registrationEmail().sendKeys(emailId+"@testemail.de");
 		log.info("For registeration entered email id "+ emailId);
 		registerationPage.registrationPassword().sendKeys("123456");
 		log.info("For registeration entered password as 123456");
@@ -294,7 +294,7 @@ public class accountTypeNewCustomer<inherits> extends BasicVariables {
 		log.info("Clicked on the Register Button");
 		//Creating a random email id to register user
 		String emailId = RandomStringUtils.randomAlphabetic(8);
-		registerationPage.registrationEmail().sendKeys(emailId+"@testemail.com");
+		registerationPage.registrationEmail().sendKeys(emailId+"@testemail.de");
 		log.info("For registeration entered email id "+ emailId);
 		registerationPage.registrationPassword().sendKeys("123456");
 		log.info("For registeration entered password as 123456");
@@ -408,7 +408,7 @@ public class accountTypeNewCustomer<inherits> extends BasicVariables {
 		log.info("Clicked on the Register Button");
 		//Creating a random email id to register user
 		String emailId = RandomStringUtils.randomAlphabetic(8);
-		registerationPage.registrationEmail().sendKeys(emailId+"@testemail.com");
+		registerationPage.registrationEmail().sendKeys(emailId+"@testemail.de");
 		log.info("For registeration entered email id "+ emailId);
 		registerationPage.registrationPassword().sendKeys("123456");
 		log.info("For registeration entered password as 123456");
@@ -495,7 +495,7 @@ public class accountTypeNewCustomer<inherits> extends BasicVariables {
 		log.info("Clicked on the Register Button");
 		//Creating a random email id to register user
 		String emailId = RandomStringUtils.randomAlphabetic(8);
-		registerationPage.registrationEmail().sendKeys(emailId+"@testemail.com");
+		registerationPage.registrationEmail().sendKeys(emailId+"@testemail.de");
 		log.info("For registeration entered email id "+ emailId);
 		registerationPage.registrationPassword().sendKeys("123456");
 		log.info("For registeration entered password as 123456");
@@ -596,7 +596,7 @@ public class accountTypeNewCustomer<inherits> extends BasicVariables {
 		log.info("Clicked on the Register Button");
 		//Creating a random email id to register user
 		String emailId = RandomStringUtils.randomAlphabetic(8);
-		registerationPage.registrationEmail().sendKeys(emailId+"@testemail.com");
+		registerationPage.registrationEmail().sendKeys(emailId+"@testemail.de");
 		log.info("For registeration entered email id "+ emailId);
 		registerationPage.registrationPassword().sendKeys("123456");
 		log.info("For registeration entered password as 123456");
@@ -703,7 +703,7 @@ public class accountTypeNewCustomer<inherits> extends BasicVariables {
 		log.info("Clicked on the Register Button");
 		//Creating a random email id to register user
 		String emailId = RandomStringUtils.randomAlphabetic(8);
-		registerationPage.registrationEmail().sendKeys(emailId+"@testemail.com");
+		registerationPage.registrationEmail().sendKeys(emailId+"@testemail.de");
 		log.info("For registeration entered email id "+ emailId);
 		registerationPage.registrationPassword().sendKeys("123456");
 		log.info("For registeration entered password as 123456");
@@ -821,7 +821,7 @@ public class accountTypeNewCustomer<inherits> extends BasicVariables {
 		log.info("Clicked on the Register Button");
 		//Creating a random email id to register user
 		String emailId = RandomStringUtils.randomAlphabetic(8);
-		registerationPage.registrationEmail().sendKeys(emailId+"@testemail.com");
+		registerationPage.registrationEmail().sendKeys(emailId+"@testemail.de");
 		log.info("For registeration entered email id "+ emailId);
 		registerationPage.registrationPassword().sendKeys("123456");
 		log.info("For registeration entered password as 123456");
@@ -944,7 +944,7 @@ public class accountTypeNewCustomer<inherits> extends BasicVariables {
 		log.info("Clicked on the Register Button");
 		//Creating a random email id to register user
 		String emailId = RandomStringUtils.randomAlphabetic(8);
-		registerationPage.registrationEmail().sendKeys(emailId+"@testemail.com");
+		registerationPage.registrationEmail().sendKeys(emailId+"@testemail.de");
 		log.info("For registeration entered email id "+ emailId);
 		registerationPage.registrationPassword().sendKeys("123456");
 		log.info("For registeration entered password as 123456");
@@ -1056,7 +1056,7 @@ public class accountTypeNewCustomer<inherits> extends BasicVariables {
 		log.info("Clicked on the Register Button");
 		//Creating a random email id to register user
 		String emailId = RandomStringUtils.randomAlphabetic(8);
-		registerationPage.registrationEmail().sendKeys(emailId+"@testemail.com");
+		registerationPage.registrationEmail().sendKeys(emailId+"@testemail.de");
 		log.info("For registeration entered email id "+ emailId);
 		registerationPage.registrationPassword().sendKeys("123456");
 		log.info("For registeration entered password as 123456");
@@ -1180,7 +1180,7 @@ public class accountTypeNewCustomer<inherits> extends BasicVariables {
 		log.info("Clicked on the Register Button");
 		//Creating a random email id to register user
 		String emailId = RandomStringUtils.randomAlphabetic(8);
-		registerationPage.registrationEmail().sendKeys(emailId+"@testemail.com");
+		registerationPage.registrationEmail().sendKeys(emailId+"@testemail.de");
 		log.info("For registeration entered email id "+ emailId);
 		registerationPage.registrationPassword().sendKeys("123456");
 		log.info("For registeration entered password as 123456");
@@ -1297,7 +1297,7 @@ public class accountTypeNewCustomer<inherits> extends BasicVariables {
 		log.info("Clicked on the Register Button");
 		//Creating a random email id to register user
 		String emailId = RandomStringUtils.randomAlphabetic(8);
-		registerationPage.registrationEmail().sendKeys(emailId+"@testemail.com");
+		registerationPage.registrationEmail().sendKeys(emailId+"@testemail.de");
 		log.info("For registeration entered email id "+ emailId);
 		registerationPage.registrationPassword().sendKeys("123456");
 		log.info("For registeration entered password as 123456");

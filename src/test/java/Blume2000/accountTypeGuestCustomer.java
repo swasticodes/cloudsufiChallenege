@@ -85,7 +85,7 @@ public class accountTypeGuestCustomer<inherits> extends BasicVariables {
 		log.info("Clicked on the button Als Gast bestellen");
 		//Creating a random email id to register user
 		String emailId = RandomStringUtils.randomAlphabetic(8);
-		registerationPage.registrationEmail().sendKeys(emailId+"@testemail.com");
+		registerationPage.registrationEmail().sendKeys(emailId+"@testemail.de");
 		log.info("For registeration entered email id "+ emailId);
 		registerationPage.registrationSalutation().click();
 		log.info("For registration selected salutation as Herr");
@@ -200,7 +200,7 @@ public class accountTypeGuestCustomer<inherits> extends BasicVariables {
 		log.info("Clicked on the button 'Als Gast bestellen'");
 		//Creating a random email id to register user
 		String emailId = RandomStringUtils.randomAlphabetic(8);
-		registerationPage.registrationEmail().sendKeys(emailId+"@testemail.com");
+		registerationPage.registrationEmail().sendKeys(emailId+"@testemail.de");
 		log.info("For registeration entered email id "+ emailId);
 		registerationPage.registrationSalutation().click();
 		log.info("For registration selected salutation as Herr");
@@ -327,7 +327,7 @@ public class accountTypeGuestCustomer<inherits> extends BasicVariables {
 		log.info("Clicked on the button Als Gast bestellen");
 		//Creating a random email id to register user
 		String emailId = RandomStringUtils.randomAlphabetic(8);
-		registerationPage.registrationEmail().sendKeys(emailId+"@testemail.com");
+		registerationPage.registrationEmail().sendKeys(emailId+"@testemail.de");
 		log.info("For registeration entered email id "+ emailId);
 		registerationPage.registrationSalutation().click();
 		log.info("For registration selected salutation as Herr");
@@ -414,7 +414,7 @@ public class accountTypeGuestCustomer<inherits> extends BasicVariables {
 		log.info("Clicked on the button Als Gast bestellen");
 		//Creating a random email id to register user
 		String emailId = RandomStringUtils.randomAlphabetic(8);
-		registerationPage.registrationEmail().sendKeys(emailId+"@testemail.com");
+		registerationPage.registrationEmail().sendKeys(emailId+"@testemail.de");
 		log.info("For registeration entered email id "+ emailId);
 		registerationPage.registrationSalutation().click();
 		log.info("For registration selected salutation as Herr");
@@ -507,7 +507,7 @@ public class accountTypeGuestCustomer<inherits> extends BasicVariables {
 		log.info("Clicked on the button Als Gast bestellen");
 		//Creating a random email id to register user
 		String emailId = RandomStringUtils.randomAlphabetic(8);
-		registerationPage.registrationEmail().sendKeys(emailId+"@testemail.com");
+		registerationPage.registrationEmail().sendKeys(emailId+"@testemail.de");
 		log.info("For registeration entered email id "+ emailId);
 		registerationPage.registrationSalutation().click();
 		log.info("For registration selected salutation as Herr");
@@ -623,7 +623,7 @@ public class accountTypeGuestCustomer<inherits> extends BasicVariables {
 				log.info("Clicked on the button Als Gast bestellen");
 				//Creating a random email id to register user
 				String emailId = RandomStringUtils.randomAlphabetic(8);
-				registerationPage.registrationEmail().sendKeys(emailId+"@testemail.com");
+				registerationPage.registrationEmail().sendKeys(emailId+"@testemail.de");
 				log.info("For registeration entered email id "+ emailId);
 				registerationPage.registrationSalutation().click();
 				log.info("For registration selected salutation as Herr");
