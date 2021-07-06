@@ -1,4 +1,5 @@
-13:46:49.181 [main] INFO  resources.BasicVariables - Driver is initializing
-13:46:52.323 [main] INFO  resources.BasicVariables - Opening the URLhttps://www.blume2000.de/
-13:53:26.747 [main] INFO  resources.BasicVariables - Driver is initializing
-13:53:29.880 [main] INFO  resources.BasicVariables - Opening the URLhttps://www.blume2000.de/
+08:42:07.797 [main] INFO  automationPracticeCloudSufi.sampleTest2 - Clicked on the radio button Mr.
+08:42:30.632 [main] INFO  automationPracticeCloudSufi.sampleTest2 - Submitted the registeration form after completion
+08:42:30.688 [main] INFO  automationPracticeCloudSufi.sampleTest2 - Account not created and an The error was displayed
+08:42:30.688 [main] INFO  automationPracticeCloudSufi.sampleTest2 - Finished Test: verifyUserAccountCreationErrorMessageFirstName
+08:42:31.807 [main] INFO  automationPracticeCloudSufi.sampleTest2 - ---------------Cleaned Up The Setup--------------

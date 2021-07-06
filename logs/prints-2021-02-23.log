@@ -1,0 +1,5 @@
+16:13:09.403 [main] INFO  Blume2000.accountTypeExistingCustomer - Driver is initializing
+16:15:08.458 [main] INFO  Blume2000.accountTypeExistingCustomer - Driver is initializing
+16:15:29.498 [main] INFO  Blume2000.accountTypeExistingCustomer - Opening the URL https://www-stage3.blume2000.de
+16:15:45.206 [main] INFO  Blume2000.accountTypeExistingCustomer - *** Starting Test: existingCustomerPaypalMethodTest
+16:16:10.404 [main] INFO  Blume2000.accountTypeExistingCustomer - Clicked on the Produkte link

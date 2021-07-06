@@ -1,0 +1,5 @@
+11:41:13.438 [main] INFO  Blume2000.accountTypeExistingCustomer - *** Starting Test: existingCustomerPaypalMethodTest
+11:41:42.540 [main] INFO  Blume2000.accountTypeExistingCustomer - Clicked on the Produkte link
+11:41:46.809 [main] INFO  Blume2000.accountTypeExistingCustomer - Clicked on the Geschenksets link
+14:54:32.996 [main] INFO  Blume2000.accountTypeExistingCustomer - Driver is initializing
+14:54:41.279 [main] INFO  Blume2000.accountTypeExistingCustomer - Opening the URL https://www-stage3.blume2000.de

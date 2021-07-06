@@ -1,0 +1,7 @@
+11:40:36.728 [main] INFO  Blume2000.cscToolTests - Clicked on the 'Editieren' button
+11:40:37.806 [main] INFO  Blume2000.cscToolTests - Cleared the old House Number
+11:40:38.929 [main] INFO  Blume2000.cscToolTests - Enterd the new Nr. as '286'
+11:40:40.060 [main] INFO  Blume2000.cscToolTests - Clicked on the Save button
+11:40:51.354 [main] INFO  Blume2000.cscToolTests - Opened the staging website
+11:40:56.418 [main] INFO  Blume2000.cscToolTests - Clicked on the 'Anmelden' link
+11:40:58.701 [main] INFO  Blume2000.cscToolTests - Entered the email id as-> development@blume2000.de

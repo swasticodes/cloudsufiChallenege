@@ -1,0 +1,5 @@
+22:26:36.994 [main] INFO  Blume2000.accountTypeGuestCustomer - Enetered the Credit Card CVV number
+22:26:38.240 [main] INFO  Blume2000.accountTypeGuestCustomer - Clicked on 'Weiter zur Übersicht' button
+22:27:03.904 [main] INFO  Blume2000.accountTypeGuestCustomer - Clicked on Kaufen button
+22:27:08.058 [main] INFO  Blume2000.accountTypeGuestCustomer - Order is placed successfully
+22:27:08.059 [main] INFO  Blume2000.accountTypeGuestCustomer - *** Finished Test: guestCustomerCreditCardMethodTest

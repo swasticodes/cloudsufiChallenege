@@ -1,0 +1,5 @@
+20:49:22.349 [main] INFO  resources.BasicVariables - Entered the PayPal Email address as tulpe@blume2000.de
+20:49:24.208 [main] INFO  resources.BasicVariables - Entered the PayPal Password as <CENSORED>
+20:49:34.525 [main] INFO  resources.BasicVariables - Clicked on the login button on Paypal page
+20:49:41.782 [main] INFO  resources.BasicVariables - Clicked on the Weiter button on Paypal page for selecting default CC for payment
+20:49:43.970 [main] INFO  Blume2000.accountTypeExistingCustomer - Clicked on the 'Jetzt bezahlen' button for payment confirmation

@@ -1,0 +1,5 @@
+17:54:56.950 [main] INFO  resources.BasicVariables - Clicked on the Weiter button on Paypal page for selecting default CC for payment
+17:54:59.404 [main] INFO  Blume2000.accountTypeNewCustomer - Clicked on the 'Jetzt bezahlen' button for payment confirmation
+17:55:15.459 [main] INFO  Blume2000.accountTypeNewCustomer - Order is placed successfully
+17:55:15.459 [main] INFO  Blume2000.accountTypeNewCustomer - *** Finished Test: newCustomerPaypalPaymentMethodTest
+17:55:20.151 [main] INFO  Blume2000.accountTypeNewCustomer - ---------------Closed The Browser--------------

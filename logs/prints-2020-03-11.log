@@ -1,0 +1,6 @@
+21:39:57.118 [main] INFO  Blume2000.accountTypeNewCustomer - Entered the account holder name as Tester
+21:39:57.183 [main] INFO  Blume2000.accountTypeNewCustomer - Entered the IBAN number as DE12500105170648489890
+21:39:57.437 [main] INFO  Blume2000.accountTypeNewCustomer - Checked the Direct debit checkbox
+21:39:59.531 [main] INFO  Blume2000.accountTypeNewCustomer - Clicked on Weiter zur Übersicht button
+21:40:23.807 [main] INFO  Blume2000.accountTypeNewCustomer - Clicked on Kaufen button
+21:40:27.839 [main] INFO  Blume2000.accountTypeNewCustomer - Order is placed successfully

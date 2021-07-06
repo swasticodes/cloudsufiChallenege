@@ -1,0 +1,6 @@
+22:29:17.117 [main] INFO  Blume2000.tchiboWebTests - Clicked on Kaufen button
+22:29:22.976 [main] INFO  Blume2000.tchiboWebTests - ---------------Closed The Browser--------------
+22:29:22.977 [main] INFO  Blume2000.tchiboWebTests - Driver is initializing
+22:29:28.740 [main] INFO  Blume2000.tchiboWebTests - Opening the URL https://tchibo-stage.blume2000.de/
+22:29:32.705 [main] INFO  Blume2000.tchiboWebTests - *** Starting Test: tchiboGuestCustomerPaypalPaymentMethodTest
+22:29:56.903 [main] INFO  Blume2000.tchiboWebTests - Clicked on the Anlässe link

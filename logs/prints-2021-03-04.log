@@ -1,0 +1,5 @@
+15:51:18.930 [main] INFO  Blume2000.accountTypeExistingCustomer - ---------------Closed The Browser--------------
+15:51:18.938 [main] INFO  Blume2000.accountTypeExistingCustomer - ---------------Cleaned Up The Setup--------------
+15:55:14.379 [main] INFO  Blume2000.accountTypeExistingCustomer - Driver is initializing
+15:55:21.312 [main] INFO  Blume2000.accountTypeExistingCustomer - Opening the URL https://app.meinmvp.de
+15:55:25.195 [main] INFO  Blume2000.accountTypeExistingCustomer - *** Starting Test: existingCustomerSEPADirectDebitMethodTest

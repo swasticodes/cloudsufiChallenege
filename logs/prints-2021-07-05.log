@@ -1,0 +1,5 @@
+20:45:38.082 [main] INFO  automationPracticeCloudSufi.sampleTest2 - Clicked on the button Create An Account
+20:45:48.330 [main] INFO  automationPracticeCloudSufi.sampleTest2 - ---------------Cleaned Up The Setup--------------
+20:46:54.956 [main] INFO  automationPracticeCloudSufi.sampleTest2 - Driver is initializing
+20:47:02.287 [main] INFO  automationPracticeCloudSufi.sampleTest2 - Opening the URL null
+20:47:05.665 [main] INFO  automationPracticeCloudSufi.sampleTest2 - Started Test: verifyNewUserAccountCreation

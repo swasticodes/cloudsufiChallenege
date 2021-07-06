@@ -1,0 +1,6 @@
+13:55:43.485 [main] INFO  Blume2000.sampleTest2 - Opening the URL https://www-stage3.blume2000.de
+13:55:44.014 [main] INFO  Blume2000.sampleTest2 - *** Starting Test: userLoginWithIncorrectCredntialsTest
+13:55:44.021 [main] INFO  Blume2000.sampleTest2 - ---------------Cleaned Up The Setup--------------
+13:57:17.663 [main] INFO  Blume2000.sampleTest2 - Driver is initializing
+13:57:24.826 [main] INFO  Blume2000.sampleTest2 - Opening the URL https://www-stage3.blume2000.de
+13:57:25.453 [main] INFO  Blume2000.sampleTest2 - ---------------Cleaned Up The Setup--------------

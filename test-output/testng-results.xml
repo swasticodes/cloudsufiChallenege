@@ -1,151 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="2" ignored="0" total="3" passed="1">
+<testng-results skipped="0" failed="0" ignored="4" total="5" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Suite" duration-ms="101105" started-at="2019-01-22T06:42:04Z" finished-at="2019-01-22T06:43:45Z">
+  <suite name="Suite" duration-ms="46089" started-at="2021-07-06T03:11:45Z" finished-at="2021-07-06T03:12:31Z">
     <groups>
     </groups>
-    <test name="Login Page Tests" duration-ms="90321" started-at="2019-01-22T06:42:04Z" finished-at="2019-01-22T06:43:34Z">
-      <class name="Blume2000.loginPageTest">
-        <test-method status="PASS" signature="openBrowser()[pri:0, instance:Blume2000.loginPageTest@54c62d71]" name="openBrowser" is-config="true" duration-ms="11808" started-at="2019-01-22T06:42:04Z" finished-at="2019-01-22T06:42:15Z">
+    <test name="Test" duration-ms="46089" started-at="2021-07-06T03:11:45Z" finished-at="2021-07-06T03:12:31Z">
+      <class name="automationPracticeCloudSufi.sampleTest2">
+        <test-method status="PASS" signature="openBrowser()[pri:0, instance:automationPracticeCloudSufi.sampleTest2@68e965f5]" name="openBrowser" is-config="true" duration-ms="16647" started-at="2021-07-06T03:11:45Z" finished-at="2021-07-06T03:12:02Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- openBrowser -->
-        <test-method status="FAIL" signature="loginTest(java.lang.String, java.lang.String)[pri:0, instance:Blume2000.loginPageTest@54c62d71]" name="loginTest" duration-ms="3237" started-at="2019-01-22T06:42:15Z" data-provider="testData" finished-at="2019-01-22T06:42:19Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[test@test.com]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[testpassword]]>
-              </value>
-            </param>
-          </params>
-          <exception class="java.lang.AssertionError">
-            <message>
-              <![CDATA[expected [Ich2 bin bereits Kunde bei Blume2000.de] but found [Ich bin bereits Kunde bei Blume2000.de]]]>
-            </message>
-            <full-stacktrace>
-              <![CDATA[java.lang.AssertionError: expected [Ich2 bin bereits Kunde bei Blume2000.de] but found [Ich bin bereits Kunde bei Blume2000.de]
-at org.testng.Assert.fail(Assert.java:96)
-at org.testng.Assert.failNotEquals(Assert.java:776)
-at org.testng.Assert.assertEqualsImpl(Assert.java:137)
-at org.testng.Assert.assertEquals(Assert.java:118)
-at org.testng.Assert.assertEquals(Assert.java:453)
-at org.testng.Assert.assertEquals(Assert.java:463)
-at Blume2000.loginPageTest.loginTest(loginPageTest.java:35)
-at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
-at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
-at java.lang.reflect.Method.invoke(Unknown Source)
-at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:124)
-at org.testng.internal.Invoker.invokeMethod(Invoker.java:580)
-at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:716)
-at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:988)
-at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
-at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)
-at org.testng.TestRunner.privateRun(TestRunner.java:648)
-at org.testng.TestRunner.run(TestRunner.java:505)
-at org.testng.SuiteRunner.runTest(SuiteRunner.java:455)
-at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:450)
-at org.testng.SuiteRunner.privateRun(SuiteRunner.java:415)
-at org.testng.SuiteRunner.run(SuiteRunner.java:364)
-at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:84)
-at org.testng.TestNG.runSuitesSequentially(TestNG.java:1208)
-at org.testng.TestNG.runSuitesLocally(TestNG.java:1137)
-at org.testng.TestNG.runSuites(TestNG.java:1049)
-at org.testng.TestNG.run(TestNG.java:1017)
-at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:114)
-at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
-at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
-]]>
-            </full-stacktrace>
-          </exception> <!-- java.lang.AssertionError -->
+        <test-method status="PASS" signature="verifyUserAccountCreationErrorMessageFirstName()[pri:0, instance:automationPracticeCloudSufi.sampleTest2@68e965f5]" name="verifyUserAccountCreationErrorMessageFirstName" duration-ms="28289" started-at="2021-07-06T03:12:02Z" finished-at="2021-07-06T03:12:30Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- loginTest -->
-        <test-method status="FAIL" signature="loginTest(java.lang.String, java.lang.String)[pri:0, instance:Blume2000.loginPageTest@54c62d71]" name="loginTest" duration-ms="3261" started-at="2019-01-22T06:43:26Z" data-provider="testData" finished-at="2019-01-22T06:43:29Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[test2@test.com]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[test2password]]>
-              </value>
-            </param>
-          </params>
-          <exception class="java.lang.AssertionError">
-            <message>
-              <![CDATA[expected [Ich2 bin bereits Kunde bei Blume2000.de] but found [Ich bin bereits Kunde bei Blume2000.de]]]>
-            </message>
-            <full-stacktrace>
-              <![CDATA[java.lang.AssertionError: expected [Ich2 bin bereits Kunde bei Blume2000.de] but found [Ich bin bereits Kunde bei Blume2000.de]
-at org.testng.Assert.fail(Assert.java:96)
-at org.testng.Assert.failNotEquals(Assert.java:776)
-at org.testng.Assert.assertEqualsImpl(Assert.java:137)
-at org.testng.Assert.assertEquals(Assert.java:118)
-at org.testng.Assert.assertEquals(Assert.java:453)
-at org.testng.Assert.assertEquals(Assert.java:463)
-at Blume2000.loginPageTest.loginTest(loginPageTest.java:35)
-at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
-at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
-at java.lang.reflect.Method.invoke(Unknown Source)
-at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:124)
-at org.testng.internal.Invoker.invokeMethod(Invoker.java:580)
-at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:716)
-at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:988)
-at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
-at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)
-at org.testng.TestRunner.privateRun(TestRunner.java:648)
-at org.testng.TestRunner.run(TestRunner.java:505)
-at org.testng.SuiteRunner.runTest(SuiteRunner.java:455)
-at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:450)
-at org.testng.SuiteRunner.privateRun(SuiteRunner.java:415)
-at org.testng.SuiteRunner.run(SuiteRunner.java:364)
-at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:84)
-at org.testng.TestNG.runSuitesSequentially(TestNG.java:1208)
-at org.testng.TestNG.runSuitesLocally(TestNG.java:1137)
-at org.testng.TestNG.runSuites(TestNG.java:1049)
-at org.testng.TestNG.run(TestNG.java:1017)
-at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:114)
-at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
-at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
-]]>
-            </full-stacktrace>
-          </exception> <!-- java.lang.AssertionError -->
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- loginTest -->
-        <test-method status="PASS" signature="closeBrowser()[pri:0, instance:Blume2000.loginPageTest@54c62d71]" name="closeBrowser" is-config="true" duration-ms="1202" started-at="2019-01-22T06:43:33Z" finished-at="2019-01-22T06:43:34Z">
+        </test-method> <!-- verifyUserAccountCreationErrorMessageFirstName -->
+        <test-method status="PASS" signature="closeBrowser()[pri:0, instance:automationPracticeCloudSufi.sampleTest2@68e965f5]" name="closeBrowser" is-config="true" duration-ms="1115" started-at="2021-07-06T03:12:30Z" finished-at="2021-07-06T03:12:31Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- closeBrowser -->
-      </class> <!-- Blume2000.loginPageTest -->
-    </test> <!-- Login Page Tests -->
-    <test name="Home Page Tests" duration-ms="10738" started-at="2019-01-22T06:43:34Z" finished-at="2019-01-22T06:43:45Z">
-      <class name="Blume2000.homePageTest">
-        <test-method status="PASS" signature="openBrowser()[pri:0, instance:Blume2000.homePageTest@49872d67]" name="openBrowser" is-config="true" duration-ms="8181" started-at="2019-01-22T06:43:34Z" finished-at="2019-01-22T06:43:42Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- openBrowser -->
-        <test-method status="PASS" signature="registerationTest()[pri:0, instance:Blume2000.homePageTest@49872d67]" name="registerationTest" duration-ms="1711" started-at="2019-01-22T06:43:42Z" finished-at="2019-01-22T06:43:44Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- registerationTest -->
-        <test-method status="PASS" signature="closeBrowser()[pri:0, instance:Blume2000.homePageTest@49872d67]" name="closeBrowser" is-config="true" duration-ms="840" started-at="2019-01-22T06:43:44Z" finished-at="2019-01-22T06:43:45Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- closeBrowser -->
-      </class> <!-- Blume2000.homePageTest -->
-    </test> <!-- Home Page Tests -->
+      </class> <!-- automationPracticeCloudSufi.sampleTest2 -->
+    </test> <!-- Test -->
   </suite> <!-- Suite -->
 </testng-results>

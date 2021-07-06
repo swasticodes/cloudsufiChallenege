@@ -1,0 +1,6 @@
+16:38:27.993 [main] INFO  Blume2000.cscToolTests - Opening the URL http://csc-test.intern.blume2000.de/csc
+16:38:29.295 [main] INFO  Blume2000.cscToolTests - *** Starting Test: cscSerachCustomerTest
+16:38:36.619 [main] INFO  Blume2000.cscToolTests - Logged in CSC
+16:38:38.069 [main] INFO  Blume2000.cscToolTests - Entered the first name in 'Vorname'
+16:38:39.211 [main] INFO  Blume2000.cscToolTests - Entered the last name in 'Nachname'
+16:38:42.410 [main] INFO  Blume2000.cscToolTests - Entered the street name in 'Straﬂe'

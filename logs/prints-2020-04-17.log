@@ -1,0 +1,6 @@
+16:45:15.307 [main] INFO  Blume2000.cscToolTests - Entered the account holder name
+16:45:16.662 [main] INFO  Blume2000.cscToolTests - Enterd the test IBAN number
+16:45:18.819 [main] INFO  Blume2000.cscToolTests - Clicked on the button 'Weiter'
+16:45:21.000 [main] INFO  Blume2000.cscToolTests - Clicked on the button 'Bestellen'
+16:45:23.063 [main] INFO  Blume2000.cscToolTests - *** Finished Test: cscNewOrderUsingDirectDebit
+16:45:24.576 [main] INFO  Blume2000.cscToolTests - ---------------Closed The Browser--------------

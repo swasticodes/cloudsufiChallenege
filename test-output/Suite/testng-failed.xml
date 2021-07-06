@@ -2,17 +2,17 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Suite]">
   <listeners>
-    <listener class-name="Blume2000.listeners"/>
+    <listener class-name="automationPracticeCloudSufi.listeners"/>
   </listeners>
-  <test thread-count="5" name="Login Page Tests(failed)">
+  <test thread-count="5" name="Test(failed)">
     <classes>
-      <class name="Blume2000.loginPageTest">
+      <class name="automationPracticeCloudSufi.sampleTest2">
         <methods>
-          <include name="closeBrowser"/>
-          <include name="loginTest" invocation-numbers="0 1"/>
+          <include name="verifyNewUserAccountCreation"/>
           <include name="openBrowser"/>
+          <include name="closeBrowser"/>
         </methods>
-      </class> <!-- Blume2000.loginPageTest -->
+      </class> <!-- automationPracticeCloudSufi.sampleTest2 -->
     </classes>
-  </test> <!-- Login Page Tests(failed) -->
+  </test> <!-- Test(failed) -->
 </suite> <!-- Failed suite [Suite] -->

@@ -1,0 +1,7 @@
+19:00:23.501 [main] INFO  Blume2000.cscToolTests - Enterd the Str. as 'Vogelsanger Str.'
+19:00:23.808 [main] INFO  Blume2000.cscToolTests - Enterd the Nr. as '286'
+19:00:24.193 [main] INFO  Blume2000.cscToolTests - Enterd the PLZ as '50825'
+19:00:24.653 [main] INFO  Blume2000.cscToolTests - Enterd the Ort as 'Cologne'
+19:00:25.240 [main] INFO  Blume2000.cscToolTests - Enterd the E-mail id
+19:00:30.503 [main] INFO  Blume2000.cscToolTests - *** Finished Test: cscNewCustomerCreation
+19:00:31.965 [main] INFO  Blume2000.cscToolTests - ---------------Closed The Browser--------------

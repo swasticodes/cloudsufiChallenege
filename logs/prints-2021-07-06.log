@@ -1,0 +1,5 @@
+08:42:02.407 [main] INFO  automationPracticeCloudSufi.sampleTest2 - Started Test: verifyUserAccountCreationErrorMessageFirstName
+08:42:05.505 [main] INFO  automationPracticeCloudSufi.sampleTest2 - Clicked on Sign In Button
+08:42:05.507 [main] INFO  automationPracticeCloudSufi.sampleTest2 - Crated the id ---> testuserc2D7@testaura.com for registration
+08:42:05.717 [main] INFO  automationPracticeCloudSufi.sampleTest2 - Enetred the email id ---> testuserc2D7@testaura.com
+08:42:05.897 [main] INFO  automationPracticeCloudSufi.sampleTest2 - Clicked on the button Create An Account

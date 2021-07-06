@@ -1,0 +1,5 @@
+21:32:30.086 [main] INFO  Blume2000.accountTypeNewCustomer - Checking the checkbox so that delivery and invoice address are same
+21:32:30.379 [main] INFO  Blume2000.accountTypeNewCustomer - Clicking PayPal radio button
+21:32:34.985 [main] INFO  Blume2000.accountTypeNewCustomer - Clicked on 'Weiter zur Uebersicht' button
+21:33:16.311 [main] INFO  Blume2000.accountTypeNewCustomer - Clcked on the button 'Direkt zur PayPal'
+21:33:49.036 [main] INFO  resources.BasicVariables - Entered the PayPal Email address as tulpe@blume2000.de
