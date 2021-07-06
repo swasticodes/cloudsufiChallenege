@@ -29,7 +29,7 @@ public class sampleTest2<inherits> extends BasicVariables {
 		driver.get(prop.getProperty("URLAutomationPractice"));
 	}
 
-	@Test(enabled=false)
+	@Test(enabled=true)
 	public void verifySignInButtonOnHomePage() throws InterruptedException
 	{
 		log.info("Started Test: verifySignInButtonOnHomePage");
@@ -43,7 +43,7 @@ public class sampleTest2<inherits> extends BasicVariables {
 		log.info("Finished Test: verifySignInButtonOnHomePage");
 	}
 	
-	@Test(enabled=false)
+	@Test(enabled=true)
 	public void verifyVisibilityOfCreateAnAccountButton() throws InterruptedException
 	{
 		log.info("Started Test: verifyCreateAnAccountButtonEnableAndVisible");
@@ -62,7 +62,7 @@ public class sampleTest2<inherits> extends BasicVariables {
 		log.info("Finished Test: verifyVisibilityOfCreateAnAccountButton");
 	}
 	
-	@Test(enabled=false)
+	@Test(enabled=true)
 	public void verifyUserAccountCreationPageUsingNewEmail() throws InterruptedException
 	{
 		log.info("Started Test: verifyUserAccountCreationPageUsingNewEmail");
@@ -90,7 +90,7 @@ public class sampleTest2<inherits> extends BasicVariables {
 		log.info("Finished Test: verifyUserAccountCreationPageUsingNewEmail");
 	}
 	
-	@Test(enabled=false)
+	@Test(enabled=true)
 	public void verifyNewUserAccountCreation() throws InterruptedException
 	{
 		log.info("Started Test: verifyNewUserAccountCreation");
